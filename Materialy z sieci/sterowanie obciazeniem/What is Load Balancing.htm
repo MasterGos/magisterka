@@ -1,0 +1,1445 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml"><head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="What%20is%20Load%20Balancing_pliki/css.css" rel="stylesheet" type="text/css">
+    <link href="What%20is%20Load%20Balancing_pliki/css_002.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="http://www.wisegeek.com/favicon.ico">
+    <link rel="apple-touch-icon" href="http://www.wisegeek.com/apple-touch-icon.png">
+                <link rel="canonical" href="http://www.wisegeek.org/what-is-load-balancing.htm">
+            <!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" href="/res/grey-rows/css/styles-ie6.css" />
+    <![endif]-->
+    <title>What is Load Balancing?</title>    <link rel="stylesheet" type="text/css" href="What%20is%20Load%20Balancing_pliki/articleCSS_grey-rows.css">
+    
+    <meta http-equiv="imagetoolbar" content="no">
+
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.wisegeek.com/learn-something-new-every-day-rss">
+
+    <meta property="fb:page_id" content="210552350553">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="wiseGEEK">
+    
+    <meta http-equiv="content-language" content="en-US">
+
+    <meta name="description" property="og:description" content="Load balancing is the process in which inbound Internet protocol traffic is distributed across multiple servers. This is important...">
+
+          <meta property="og:url" content="http://www.wisegeek.org/what-is-load-balancing.htm">
+                      	<meta property="og:image" content="http://images.wisegeek.com/racks-of-servers.jpg"> 
+                	<meta property="og:image" content="http://images.wisegeek.com/web-servers-and-computers.jpg"> 
+          
+            <script data-readbythumbseed="true" src="What%20is%20Load%20Balancing_pliki/beacon.js" async=""></script><script data-readbythumbseed="true" type="text/javascript" async="" src="What%20is%20Load%20Balancing_pliki/quant.js"></script><script data-readbythumbseed="true" src="What%20is%20Load%20Balancing_pliki/ga.js" async="" type="text/javascript"></script><script data-readbythumbseed="true" src="What%20is%20Load%20Balancing_pliki/osd.js" type="text/javascript"></script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_invisible{display:none}
+.fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yA/x/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/y6/x/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
+.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yA/x/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/y6/x/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yA/x/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/y6/x/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+/* @noflip */
+.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+/* @noflip */
+.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yD/x/Cou7n-nqK52.gif)
+no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+body.fb_hidden{-webkit-transform:none;height:100%;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100%
+}
+.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yc/x/3rhSv5V8j3o.gif)
+white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
+.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
+.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}
+.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%
+}
+.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100%, from(#4966A6),
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
+.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
+.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yJ/x/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:left}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{position:relative;display:-moz-inline-block;display:inline-block}
+.fb_iframe_widget iframe{position:absolute}
+.fb_iframe_widget_lift{z-index:1}
+.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify;vertical-align:text-bottom}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_fluid{display:inline}
+.fb_iframe_widget_fluid span{width:100%}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yJ/x/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_button_simple,
+.fb_button_simple_rtl{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yH/x/eIpbnVKI9lR.png);background-repeat:no-repeat;cursor:pointer;outline:none;text-decoration:none}
+.fb_button_simple_rtl{background-position:right 0}
+.fb_button_simple .fb_button_text{margin:0 0 0 20px;padding-bottom:1px}
+.fb_button_simple_rtl .fb_button_text{margin:0 10px 0 0}
+a.fb_button_simple:hover .fb_button_text,
+a.fb_button_simple_rtl:hover .fb_button_text,
+.fb_button_simple:hover .fb_button_text,
+.fb_button_simple_rtl:hover .fb_button_text{text-decoration:underline}
+.fb_button,
+.fb_button_rtl{background:#29447e url(http://static.ak.fbcdn.net/rsrc.php/v2/yl/x/FGFbc80dUKj.png);background-repeat:no-repeat;cursor:pointer;display:inline-block;padding:0 0 0 1px;text-decoration:none;outline:none}
+.fb_button .fb_button_text,
+.fb_button_rtl .fb_button_text{background:#5f78ab url(http://static.ak.fbcdn.net/rsrc.php/v2/yl/x/FGFbc80dUKj.png);border-top:solid 1px #879ac0;border-bottom:solid 1px #1a356e;color:#fff;display:block;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-weight:bold;padding:2px 6px 3px 6px;margin:1px 1px 0 21px;text-shadow:none}
+a.fb_button,
+a.fb_button_rtl,
+.fb_button,
+.fb_button_rtl{text-decoration:none}
+a.fb_button:active .fb_button_text,
+a.fb_button_rtl:active .fb_button_text,
+.fb_button:active .fb_button_text,
+.fb_button_rtl:active .fb_button_text{border-bottom:solid 1px #29447e;border-top:solid 1px #45619d;background:#4f6aa3;text-shadow:none}
+.fb_button_xlarge,
+.fb_button_xlarge_rtl{background-position:left -60px;font-size:24px;line-height:30px}
+.fb_button_xlarge .fb_button_text{padding:3px 8px 3px 12px;margin-left:38px}
+a.fb_button_xlarge:active{background-position:left -99px}
+.fb_button_xlarge_rtl{background-position:right -268px}
+.fb_button_xlarge_rtl .fb_button_text{padding:3px 8px 3px 12px;margin-right:39px}
+a.fb_button_xlarge_rtl:active{background-position:right -307px}
+.fb_button_large,
+.fb_button_large_rtl{background-position:left -138px;font-size:13px;line-height:16px}
+.fb_button_large .fb_button_text{margin-left:24px;padding:2px 6px 4px 6px}
+a.fb_button_large:active{background-position:left -163px}
+.fb_button_large_rtl{background-position:right -346px}
+.fb_button_large_rtl .fb_button_text{margin-right:25px}
+a.fb_button_large_rtl:active{background-position:right -371px}
+.fb_button_medium,
+.fb_button_medium_rtl{background-position:left -188px;font-size:11px;line-height:14px}
+a.fb_button_medium:active{background-position:left -210px}
+.fb_button_medium_rtl{background-position:right -396px}
+.fb_button_text_rtl,
+.fb_button_medium_rtl .fb_button_text{padding:2px 6px 3px 6px;margin-right:22px}
+a.fb_button_medium_rtl:active{background-position:right -418px}
+.fb_button_small,
+.fb_button_small_rtl{background-position:left -232px;font-size:10px;line-height:10px}
+.fb_button_small .fb_button_text{padding:2px 6px 3px;margin-left:17px}
+a.fb_button_small:active,
+.fb_button_small:active{background-position:left -250px}
+.fb_button_small_rtl{background-position:right -440px}
+.fb_button_small_rtl .fb_button_text{padding:2px 6px;margin-right:18px}
+a.fb_button_small_rtl:active{background-position:right -458px}
+.fb_share_count_wrapper{position:relative;float:left}
+.fb_share_count{background:#b0b9ec none repeat scroll 0 0;color:#333;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;text-align:center}
+.fb_share_count_inner{background:#e8ebf2;display:block}
+.fb_share_count_right{margin-left:-1px;display:inline-block}
+.fb_share_count_right .fb_share_count_inner{border-top:solid 1px #e8ebf2;border-bottom:solid 1px #b0b9ec;margin:1px 1px 0 1px;font-size:10px;line-height:10px;padding:2px 6px 3px;font-weight:bold}
+.fb_share_count_top{display:block;letter-spacing:-1px;line-height:34px;margin-bottom:7px;font-size:22px;border:solid 1px #b0b9ec}
+.fb_share_count_nub_top{border:none;display:block;position:absolute;left:7px;top:35px;margin:0;padding:0;width:6px;height:7px;background-repeat:no-repeat;background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yP/x/bSOHtKbCGYI.png)}
+.fb_share_count_nub_right{border:none;display:inline-block;padding:0;width:5px;height:10px;background-repeat:no-repeat;background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/x/i_oIVTKMYsL.png);vertical-align:top;background-position:right 5px;z-index:10;left:2px;margin:0 2px 0 0;position:relative}
+.fb_share_no_count{display:none}
+.fb_share_size_Small .fb_share_count_right .fb_share_count_inner{font-size:10px}
+.fb_share_size_Medium .fb_share_count_right .fb_share_count_inner{font-size:11px;padding:2px 6px 3px;letter-spacing:-1px;line-height:14px}
+.fb_share_size_Large .fb_share_count_right .fb_share_count_inner{font-size:13px;line-height:16px;padding:2px 6px 4px;font-weight:normal;letter-spacing:-1px}
+.fb_share_count_hidden .fb_share_count_nub_top,
+.fb_share_count_hidden .fb_share_count_top,
+.fb_share_count_hidden .fb_share_count_nub_right,
+.fb_share_count_hidden .fb_share_count_right{visibility:hidden}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fb_edge_widget_with_comment{position:relative;*z-index:1000}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50% 50%;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
+.FB_Loader{margin-top:0}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+/* @noflip */
+.fbpluginrecommendationsbarleft{left:10px}
+/* @noflip */
+.fbpluginrecommendationsbarright{right:10px}</style><link media="all" type="text/css" href="What%20is%20Load%20Balancing_pliki/Lightbox.css" rel="stylesheet"><script type="text/javascript" src="What%20is%20Load%20Balancing_pliki/SenseHandler.ashx"></script><script type="text/javascript" src="What%20is%20Load%20Balancing_pliki/FiveminCookieCache_002.ashx"></script><script type="text/javascript" src="What%20is%20Load%20Balancing_pliki/ThumbSeed2.js"></script><style type="text/css">.fmtsw#fmtsw *,.fmtsw#fmtsw div,.fmtsw#fmtsw span,.fmtsw#fmtsw dl,.fmtsw#fmtsw dt,.fmtsw#fmtsw dd,.fmtsw#fmtsw ul,.fmtsw#fmtsw ol,.fmtsw#fmtsw li,.fmtsw#fmtsw ul li,.fmtsw#fmtsw h1,.fmtsw#fmtsw h2,.fmtsw#fmtsw h3,.fmtsw#fmtsw h4,.fmtsw#fmtsw h5,.fmtsw#fmtsw h6,.fmtsw#fmtsw pre,.fmtsw#fmtsw code,.fmtsw#fmtsw form,.fmtsw#fmtsw fieldset,.fmtsw#fmtsw legend,.fmtsw#fmtsw input,.fmtsw#fmtsw button,.fmtsw#fmtsw textarea,.fmtsw#fmtsw p,.fmtsw#fmtsw blockquote,.fmtsw#fmtsw th,.fmtsw#fmtsw td,.fmtsw#fmtsw img,.fmtsw#fmtsw address,.fmtsw#fmtsw caption,.fmtsw#fmtsw cite,.fmtsw#fmtsw code,.fmtsw#fmtsw dfn,.fmtsw#fmtsw em,.fmtsw#fmtsw strong,.fmtsw#fmtsw th,.fmtsw#fmtsw var,.fmtsw#fmtsw optgroup,.fmtsw#fmtsw a,.fmtsw#fmtsw del,.fmtsw#fmtsw ins{border:none;padding:0;margin:0;font-variant:normal;font-weight:normal !important;font-style:inherit;font-family:inherit;font-size:100%;letter-spacing:0;line-height:1em;text-decoration:none;}.fmtsw#fmtsw table{border-collapse:collapse;border-spacing:0;}.fmtsw#fmtsw ul li,.fmtsw#fmtsw li{display:block;list-style:none;}.fmtsw#fmtsw div,.fmtsw#fmtsw dl,.fmtsw#fmtsw dt,.fmtsw#fmtsw dd,.fmtsw#fmtsw ul,.fmtsw#fmtsw ol,.fmtsw#fmtsw li,.fmtsw#fmtsw ul li,.fmtsw#fmtsw h1,.fmtsw#fmtsw h2,.fmtsw#fmtsw h3,.fmtsw#fmtsw h4,.fmtsw#fmtsw h5,.fmtsw#fmtsw h6,.fmtsw#fmtsw pre,.fmtsw#fmtsw code,.fmtsw#fmtsw form,.fmtsw#fmtsw fieldset,.fmtsw#fmtsw legend,.fmtsw#fmtsw p,.fmtsw#fmtsw blockquote{display:block;} .clearfix:after{visibility:hidden;display:block;font-size:0;content:' ';clear:both;height:0;}* html .clearfix{zoom:1;}*:first-child+html .clearfix{zoom:1;}#fmtsw *{font-family:verdana;}.fmts-c#fmtsw{position:relative;overflow:hidden;font-size:12px;text-align:left;font-style:normal;font-weight:normal;font-family:verdana;}.fmts-c#fmtsw a{text-decoration:none;outline:none;}.fmts-c#fmtsw .fmts-header{margin-top:26px;border-bottom-width:2px;border-bottom-style:solid;padding-bottom:5px;position:relative;zoom:1;}.fmts-side-addUnit{margin-top: 26px;}.fmts-side-addUnit .fmts-c#fmtsw .fmts-header{	margin-top: 0;}.fmts-c#fmtsw .fmts-header h2{font-weight:bold !important;font-size:14px;background-color:Transparent!important;background-image:none!important;height:auto!important;padding:0!important;margin:0!important;}#fmtsw.fmts-c .fmts-vc{overflow:hidden;padding-top:11px!important;}#fmtsw.fmts-c .fmts-vl{overflow:hidden;width:1000000px;height:auto!important;}#fmtsw.fmts-c .fmts-video-col{float:left;}#fmtsw.fmts-c .fmts-video-row{margin-bottom:11px!important;float:left;clear:both;}#fmtsw.fmts-c .fmts-vi{float:left;overflow:hidden;}#fmtsw.fmts-c LI.fmts-last{margin-right:0!important;}#fmtsw.fmts-c LI.fmts-vi-loading,#fmtsw.fmts-c LI.fmts-vi-notloaded{background-repeat:no-repeat;background-position:center center;background-color:Transparent!important;}#fmtsw.fmts-c LI.fmts-vi-loaded{cursor:pointer;}#fmtsw.fmts-c LI.fmts-vi-loading .fmts-img_wrapper,#fmtsw.fmts-c LI.fmts-vi-notloaded .fmts-img_wrapper,#fmtsw.fmts-c LI.fmts-vi-loading .fmts-desc,#fmtsw.fmts-c LI.fmts-vi-notloaded .fmts-desc{visibility:hidden;}#fmtsw.fmts-c .fmts-vi .fmts-img_wrapper{position:relative;overflow:hidden;}#fmtsw.fmts-c .fmts-vi .fmts-img_wrapper .fmts-img{position:absolute;background:black;}#fmtsw.fmts-c .fmts-vi .fmts-img A{display:block;}#fmtsw.fmts-c .fmts-ts-0-hover .fmts-img_wrapper IMG,#fmtsw.fmts-c .fmts-ts-1-hover .fmts-img_wrapper IMG,#fmtsw.fmts-c .fmts-ts-2-hover .fmts-img_wrapper IMG{opacity:.5;filter:alpha(opacity=50);}#fmtsw.fmts-c .fmts-vi .fmts-btn_play{position:absolute;width:26px;height:22px;background:url(http://pshared.5min.com/Graphics/ThumbSeed/btn_play_small.png) no-repeat;margin:-11px 0 0 -13px;top:50%;left:50%;overflow:hidden;text-indent:-1000px;cursor:pointer;}* HTML #fmtsw.fmts-c .fmts-vi .fmts-btn_play{background:none;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://pshared.5min.com/Graphics/ThumbSeed/btn_play_small.png');}#fmtsw.fmts-c .fmts-vi .fmts-btn_click{position:absolute;width:96px;height:18px;background:url(http://pshared.5min.com/Graphics/ThumbSeed/btn_click.png) no-repeat;margin:18px 0 0 -48px;top:50%;left:50%;font-size:11px;font-weight:bold !important;font-family:Verdana;color:White!important;line-height:18px;text-align:center;display:none;}* HTML #fmtsw.fmts-c .fmts-vi .fmts-btn_click{background:none;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://pshared.5min.com/Graphics/ThumbSeed/btn_click.png');}#fmtsw.fmts-c .fmts-ts-0-hover .fmts-btn_click,#fmtsw.fmts-c .fmts-ts-1-hover .fmts-btn_click,#fmtsw.fmts-c .fmts-ts-2-hover .fmts-btn_click{display:block;}#fmtsw.fmts-c .fmts-vi .fmts-desc{overflow:hidden;}#fmtsw.fmts-c .fmts-vi .fmts-desc a{display:block;font-size:11px;line-height:13px;overflow:hidden;padding:4px 3px 0;}#fmtsw.fmts-tl-0 .fmts-vi .fmts-img_wrapper,#fmtsw.fmts-tl-0 .fmts-vi .fmts-desc{float:left;}#fmtsw.fmts-tl-0 .fmts-vi .fmts-desc A{padding:3px 7px 0;line-height:15px;}#fmtsw.fmts-c .fmts-ts-0{width:150px;}#fmtsw.fmts-c .fmts-ts-0-loading{background-image:url(http://pshared.5min.com/Graphics/ThumbSeed/preloader_big.gif);}#fmtsw.fmts-c .fmts-ts-0 .fmts-img_wrapper,#fmtsw.fmts-c .fmts-ts-0-hover .fmts-img_wrapper .fmts-img,#fmtsw.fmts-c .fmts-ts-0 .fmts-img_wrapper IMG{width:148px;height:111px;}#fmtsw.fmts-c .fmts-ts-0-hover .fmts-img_wrapper .fmts-img{clip:rect(3px 145px 108px 3px);}#fmtsw.fmts-tl-0 .fmts-ts-0 .fmts-desc{width:152px;height:111px;}#fmtsw.fmts-tl-0 .fmts-ts-0 .fmts-desc A{padding:4px 7px 0;font-size:13px;line-height:17px;}#fmtsw.fmts-c .fmts-ts-0 .fmts-play a.fmts-btn_play{width:34px;height:29px;background:url(http://pshared.5min.com/Graphics/ThumbSeed/btn_play.png) no-repeat;margin:-14px 0 0 -17px;}* HTML #fmtsw.fmts-c .fmts-ts-0 .fmts-play a.fmts-btn_play{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://pshared.5min.com/Graphics/ThumbSeed/btn_play.png');}#fmtsw.fmts-c .fmts-ts-1{width:111px;}#fmtsw.fmts-c .fmts-ts-1-loading{background-image:url(http://pshared.5min.com/Graphics/ThumbSeed/preloader_big.gif);}#fmtsw.fmts-c .fmts-ts-1 .fmts-img_wrapper,#fmtsw.fmts-c .fmts-ts-1 .fmts-img_wrapper .fmts-img,#fmtsw.fmts-c .fmts-ts-1 .fmts-img_wrapper IMG{width:109px;height:81px;}#fmtsw.fmts-c .fmts-ts-1-hover .fmts-img_wrapper .fmts-img{clip:rect(2px 107px 79px 2px);}#fmtsw.fmts-tl-0 .fmts-ts-1 .fmts-desc{width:124px;height:81px;}#fmtsw.fmts-c .fmts-ts-2{width:86px;}#fmtsw.fmts-c .fmts-ts-2-loading{background-image:url(http://pshared.5min.com/Graphics/ThumbSeed/preloader_small.gif);}#fmtsw.fmts-c .fmts-ts-2 .fmts-img_wrapper,#fmtsw.fmts-c .fmts-ts-2 .fmts-img_wrapper .fmts-img,#fmtsw.fmts-c .fmts-ts-2 .fmts-img_wrapper IMG{width:84px;height:63px;}#fmtsw.fmts-c .fmts-ts-2-hover .fmts-img_wrapper .fmts-img{clip:rect(2px 82px 61px 2px);}#fmtsw.fmts-tl-0 .fmts-ts-2 .fmts-desc{width:89px;height:63px;}#fmtsw.fmts-c .fmts-ts-2 .fmts-btn_click{width:78px;height:16px;background:url(http://pshared.5min.com/Graphics/ThumbSeed/btn_click.png) no-repeat;margin:12px 0 0 -39px;font-size:9px;line-height:16px;}* HTML #fmtsw.fmts-c .fmts-ts-2 .fmts-btn_click{filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://pshared.5min.com/Graphics/ThumbSeed/btn_click_small.png');}#fmtsw.fmts-c .fmts-footer{border-top-width:1px!important;border-top-style:solid!important;padding-top:5px!important;margin-bottom:11px!important;position:relative;z-index:1;}#fmtsw.fmts-c .fmts-by-5min-link,#fmtsw.fmts-c .fmts-by-5min-text{font-size:12px;float:right;}#fmtsw.fmts-c .fmts-header .fmts-5min-elements{position:absolute;right:0;bottom:2px;}#fmtsw.fmts-c .fmts-footer .fmts-5min-elements{width:auto!important;}#fmtsw.fmts-c .fmts-header .fmts-by-5min-link,#fmtsw.fmts-c .fmts-header .fmts-by-5min-text{margin-left:6px!important;}#fmtsw.fmts-c .fmts-footer .fmts-by-5min-link,#fmtsw.fmts-c .fmts-footer .fmts-by-5min-text{float:left;}.fmts-side-addUnit .fmts-ad{float:left;border:0;overflow:hidden;}.fmts-side-addUnit .fmtsw{float:left;margin-right:10px!important;}.fmts-carousel-nav{float:right;margin-top:-2px!important;}.fmts-header .fmts-carousel-nav{margin-left:6px!important;}.fmts-carousel-nav A{font-weight:bold!important;font-size:16px!important;font-family:Arial;cursor:pointer;float:left;}.fmts-carousel-nav SPAN{position:relative;top:-1px;font-size:12px!important;float:left;}.fmts-carousel-nav .fmts-button-disabled{font-weight:normal!important;position:relative;}.fmts-carousel-previous-disabled{padding-left:2px!important;left:-1px;}.fmts-carousel-next-disabled{padding-left:1px!important;padding-right:1px!important;}</style><script type="text/javascript" src="What%20is%20Load%20Balancing_pliki/FiveminCookieCache.ashx"></script></head>
+    <body style="overflow: auto;" xmlns:dc="http://purl.org/dc/elements/1.1/" onload="set10SecTimer('/Ping10Sec.php', 0);"><div style="position: absolute; top: 0px; left: 0px;"><embed style="visibility: visible;" name="FiveminPlayerCookie" src="What%20is%20Load%20Balancing_pliki/PlayerCookie.swf" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" height="0" width="0"></div><div class="suggestDiv" style="position: absolute; border: 1px solid rgb(153, 153, 153); text-align: left; background-color: white; display: none; font-family: MS Shell Dlg,Verdana,Arial,Pragmatica,sans-serif; font-size: 11pt; white-space: normal; z-index: 1000; top: 62px; left: 838px;"></div>
+    
+    <noscript>
+      <img src="http://b.scorecardresearch.com/p?c1=2&c2=8556372&cv=2.0&cj=1" />
+    </noscript>
+    <!-- End comScore Tag -->
+    <div class="wrapAll">
+      <div id="newsweekTopAutorization" class="topAutorization"></div>
+      <div class="wrapHeader">
+		    <a href="http://www.wisegeek.org/" class="logo">
+		      <span class="part1">wise</span><span class="part2">GEEK</span><br>
+		      <span class="caption">clear answers for common questions</span>
+		    </a>
+    	  <div class="headerLinksWrap">
+    	    <a href="http://www.wisegeek.com/how-can-i-contact-wisegeek.htm">Feedback</a>
+    	    <a href="http://www.wisegeek.com/who-is-wisegeek.htm">About wiseGEEK</a>
+            <script data-readbythumbseed="true">
+function manageLogin(that)
+{
+	if(that.innerHTML == 'Login')
+	{
+		if (document.getElementById('newsweekTopAutorization').innerHTML == "")
+			document.getElementById('newsweekTopAutorization').innerHTML = document.getElementById('PageArticleOffsite_login-loginFormContainer_id').innerHTML;
+
+		$('#PageArticleOffsite_login-loginForm_id').show('slow', function(){$('#PageArticleOffsite_login-login_id').focus();});
+		that.innerHTML = 'Close';
+	}
+	else
+	{
+		$('#PageArticleOffsite_login-loginForm_id').hide('slow')
+		that.innerHTML = 'Login'
+	};
+}
+</script>
+	<a href="#" title="login" onclick="manageLogin(this);">Login</a>
+<div id="PageArticleOffsite_login-loginFormContainer_id" style="display:none;margin:0;padding:0;">
+	<div style="height:50px;display:none;padding-top:10px;" id="PageArticleOffsite_login-loginForm_id">
+		<div style="float:right;padding-right:4.5%">
+			<form method="POST">
+				<input name="PageArticleOffsite_login-login" id="PageArticleOffsite_login-login_id" type="text">
+				<input value="" name="PageArticleOffsite_login-password" type="password">
+				<input name="PageArticleOffsite_login-onSuccessRedirect" value="http://www.wisegeek.org/what-is-load-balancing.htm" type="hidden">
+				<input name="PageArticleOffsite_login-onErrorRedirect" value="" type="hidden">
+				<input value="Login" tabindex="0" name="action[PageArticleOffsite_login:login]" type="submit">
+				<br>
+				<a tabindex="3" href="http://www.wisegeek.com/password-recovery.htm">forgot password?</a>
+			</form>
+		</div>
+	</div>
+</div>          </div>
+          <div class="search">
+                            <form action="http://s.wisegeek.org/s/" id="cse-search-box">
+    <input name="cx" value="001721306601487571258:xvwilsw1lpg" type="hidden">
+    <input name="cof" value="FORID:10" type="hidden">
+    <input name="ie" value="ISO-8859-1" type="hidden">
+    <input style="border: 1px solid rgb(126, 157, 185); padding: 2px; background: url(&quot;http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif&quot;) no-repeat scroll left center rgb(255, 255, 255);" autocomplete="off" id="sHead" name="q" class="text" type="text">
+    <input value="" name="sa" class="but search_but" type="submit">
+<input value="www.wisegeek.org/what-is-load-balancing.htm" name="siteurl" type="hidden"><input value="www.google.pl/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=9&amp;ved=0CHcQFjAI&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm&amp;ei=H1cXUeT2BYnb4QTohIGIBw&amp;usg=AFQjCNHgGyr7w3Je0Y0JhbxaZ1yUxSPeMQ" name="ref" type="hidden"><input name="ss" type="hidden"></form>
+                      </div>
+      </div>
+      
+      
+     <span style="float:right; padding: 13px 40px 1px;">
+        <span style="float: left;font-weight: bold; color: white;">Category:&nbsp;</span>
+        <dl class="dropdown" style="font-size: 90%; float: right; //float: none;">
+          <dt><a href="#" "="">
+                <span>Internet</span>
+                <div style="float:right; display: inline;">▼</div>
+              </a>
+          </dt>
+          <dd>
+            <ul style="display: none;">
+                              <li><a href="http://www.wisegeek.org/internet.htm">Internet</a></li>
+                              <li><a href="http://www.wisegeek.org/technology.htm">Technology</a></li>
+                              <li><a href="http://www.wisegeek.org/business.htm">Business</a></li>
+                              <li><a href="http://www.wisegeek.org/science.htm">Science</a></li>
+                              <li><a href="http://www.wisegeek.org/industry.htm">Industry</a></li>
+                              <li><a href="http://www.wisegeek.org/finance.htm">Finance</a></li>
+                              <li><a href="http://www.wisegeek.org/training.htm">Education</a></li>
+                              <li><a href="http://www.wisegeek.org/food.htm">Food</a></li>
+                              <li><a href="http://www.wisegeek.org/beauty.htm">Beauty</a></li>
+                              <li><a href="http://www.wisegeek.org/language.htm">Language</a></li>
+                              <li><a href="http://www.wisegeek.org/miscellaneous.htm">Miscellaneous</a></li>
+                              <li><a href="http://www.wisegeek.org/anatomy.htm">Anatomy</a></li>
+                              <li><a href="http://www.wisegeek.org/health.htm">Health</a></li>
+                              <li><a href="http://www.wisegeek.org/crafts.htm">Crafts</a></li>
+                              <li><a href="http://www.wisegeek.org/automobiles.htm">Cars</a></li>
+                              <li><a href="http://www.wisegeek.org/home.htm">Home</a></li>
+                              <li><a href="http://www.wisegeek.org/medicine.htm">Medicine</a></li>
+                              <li><a href="http://www.wisegeek.org/fashion.htm">Fashion</a></li>
+                              <li><a href="http://www.wisegeek.org/fitness.htm">Fitness</a></li>
+                              <li><a href="http://www.wisegeek.org/arts.htm">Art</a></li>
+                              <li><a href="http://www.wisegeek.org/us.htm">United States</a></li>
+                              <li><a href="http://www.wisegeek.org/environment.htm">Environment</a></li>
+                              <li><a href="http://www.wisegeek.org/travel.htm">Travel</a></li>
+                              <li><a href="http://www.wisegeek.org/history.htm">History</a></li>
+                              <li><a href="http://www.wisegeek.org/people.htm">People</a></li>
+                              <li><a href="http://www.wisegeek.org/world.htm">World</a></li>
+                              <li><a href="http://www.wisegeek.org/legal.htm">Law</a></li>
+                              <li><a href="http://www.wisegeek.org/sports.htm">Hobbies</a></li>
+                              
+            </ul>
+          </dd>
+        </dl>
+     </span>
+	     
+<h1 class="mainTitle">
+  What is Load Balancing?</h1>
+<div class="wrapBody">
+    <div class="googleAdv pad_left" id="gLinkUnit0"><div class="gLinkUnitCaption"><a href="http://www.google.com/url?ct=abg&amp;q=https://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://www.wisegeek.org/what-is-load-balancing.htm%26gl%3DPL%26hl%3Den%26client%3Dca-pub-8290526608142878&amp;usg=AFQjCNH7PuuZOCQ7vfJWsZZr3w5w-0AaKQ">AdChoices</a></div>  <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Load+Balancing&amp;rt=ChBRF1csAAe9yQrfzkFWABWCEg5Mb2FkIEJhbGFuY2luZxoIZhQtr9LGK2MoAVITCO_voK-mq7UCFQQx3wodUAUA-w&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">Load Balancing</a></div> <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Server+Solutions&amp;rt=ChBRF1csAAe93ArfzkFWABWCEhBTZXJ2ZXIgU29sdXRpb25zGggcmkbUGa1WzCgBUhMI7--gr6artQIVBDHfCh1QBQD7&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">Server Solutions</a></div> <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Windows+Server&amp;rt=ChBRF1csAAe94QrfzkFWABWCEg5XaW5kb3dzIFNlcnZlchoIOl-M-RwQPGUoAVITCO_voK-mq7UCFQQx3wodUAUA-w&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">Windows Server</a></div> <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Virtual+Server+Hosting&amp;rt=ChBRF1csAAe95QrfzkFWABWCEhZWaXJ0dWFsIFNlcnZlciBIb3N0aW5nGghEMlxQXDBT0ygBUhMI7--gr6artQIVBDHfCh1QBQD7&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">Virtual Server Hosting</a></div> <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Web+Server+Health&amp;rt=ChBRF1csAAe96ArfzkFWABWCEhFXZWIgU2VydmVyIEhlYWx0aBoIrDb2zc93o10oAVITCO_voK-mq7UCFQQx3wodUAUA-w&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">Web Server Health</a></div></div>
+  
+  <div class="leftCol">
+            <div class="linksBlock">
+      <div class="gLinkUnit gLinkUnitInline RelatedTopicsContainer" blocknum="1">
+        <div class="col1" style="width:80%;">
+                      <div class="gLinkUnitKeyword RelatedTopicsLink"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-routers#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Routers&amp;b=1&amp;p=0&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Routers</a></div>
+                      <div class="gLinkUnitKeyword RelatedTopicsLink"><a href="http://topics.wisegeek.org/topics.htm?high-availability-load-balancing#a=3069&amp;t=grey-rows&amp;k=High%20Availability%20Load%20Balancing&amp;b=1&amp;p=1&amp;s=" target="_blank" class="RelatedTopicsLink">High Availability Load Balancing</a></div>
+                      <div class="gLinkUnitKeyword RelatedTopicsLink"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-solution#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Solution&amp;b=1&amp;p=2&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Solution</a></div>
+                      <div class="gLinkUnitKeyword RelatedTopicsLink"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-web-servers#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Web%20Servers&amp;b=1&amp;p=3&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Web Servers</a></div>
+                      <div class="gLinkUnitKeyword RelatedTopicsLink"><a href="http://topics.wisegeek.org/topics.htm?load-balancing#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing&amp;b=1&amp;p=4&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing</a></div>
+                      <div class="gLinkUnitKeyword RelatedTopicsLink"><a href="http://topics.wisegeek.org/topics.htm?internet-load-balancing#a=3069&amp;t=grey-rows&amp;k=Internet%20Load%20Balancing&amp;b=1&amp;p=5&amp;s=" target="_blank" class="RelatedTopicsLink">Internet Load Balancing</a></div>
+                      <div class="gLinkUnitKeyword RelatedTopicsLink"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-switch#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Switch&amp;b=1&amp;p=6&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Switch</a></div>
+                  </div>
+      </div>
+    </div>
+    
+    
+                        	<div class="imageBlock" id="images">
+              	                  <a name="Racks of servers"> </a>
+                  <div class="imageShadow">
+                    <div class="topRound">
+                      <div class="lr"></div>
+                      <div class="rr"></div>
+                      <div class="rep"></div>
+                    </div>
+                    <div class="ls">
+                      <div class="rs" align="center">
+                        <div class="wrapLightbox">
+                        <a href="http://images.wisegeek.com/racks-of-servers.jpg" title="Racks of servers" class="lightbox">
+                          <span style="opacity: 0; z-index: 10;"></span>
+                          <img src="What%20is%20Load%20Balancing_pliki/racks-of-servers.jpg" alt="Racks of servers" class="imgNew">
+                        </a>
+                        </div>
+                        <div class="imgCaption">
+                          Racks of servers                        </div>
+                      </div>
+                    </div>
+                      <div class="bottomRound">
+                        <div class="lr"></div>
+                        <div class="rr"></div>
+                        <div class="rep"></div>
+                      </div>
+                 </div>                 
+                               <a name="web servers and computers"> </a>
+                  <div class="imageShadow">
+                    <div class="topRound">
+                      <div class="lr"></div>
+                      <div class="rr"></div>
+                      <div class="rep"></div>
+                    </div>
+                    <div class="ls">
+                      <div class="rs" align="center">
+                        <div class="wrapLightbox">
+                        <a href="http://images.wisegeek.com/web-servers-and-computers.jpg" title="Computers connected to a server." class="lightbox">
+                          <span style="opacity: 0; z-index: 10;"></span>
+                          <img src="What%20is%20Load%20Balancing_pliki/web-servers-and-computers.jpg" alt="Computers connected to a server." class="imgNew">
+                        </a>
+                        </div>
+                        <div class="imgCaption">
+                          Computers connected to a server.                        </div>
+                      </div>
+                    </div>
+                      <div class="bottomRound">
+                        <div class="lr"></div>
+                        <div class="rr"></div>
+                        <div class="rep"></div>
+                      </div>
+                 </div>                 
+                                          <div class="linksContaner" style="text-align: center;">
+                 <a href="#" class="lbslideshow" style="">View slideshow of images above</a>
+               </div>
+                              <div class="linksContaner" style="text-align: center;">
+                 <a href="#" class="lbdyk" style="">Watch the Did-You-Know slideshow</a>
+               </div>
+             </div>
+                      
+
+        	<div class="standartBlock googleAdv1 gLinkUnitBlock2columns" id="gLinkUnit1"><div class="googleAdvT"><div class="gLinkUnitCaption"><a href="http://www.google.com/url?ct=abg&amp;q=https://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://www.wisegeek.org/what-is-load-balancing.htm%26gl%3DPL%26hl%3Den%26client%3Dca-pub-8290526608142878&amp;usg=AFQjCNH7PuuZOCQ7vfJWsZZr3w5w-0AaKQ">AdChoices</a></div></div><div class="col1"><div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Load+Balancer&amp;rt=ChBRF1csAAe97ArfzkFWABWCEg1Mb2FkIEJhbGFuY2VyGgismATh9tixOygBMAJSEwjv76Cvpqu1AhUEMd8KHVAFAPs&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">Load Balancer</a></div><div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=DNS+Server&amp;rt=ChBRF1csAAe98wrfzkFWABWCEgpETlMgU2VydmVyGgjeXhKQG9wZLigBMAJSEwjv76Cvpqu1AhUEMd8KHVAFAPs&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">DNS Server</a></div><div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Process+Server&amp;rt=ChBRF1csAAe9-ArfzkFWABWCEg5Qcm9jZXNzIFNlcnZlchoId2Z3xPotHsIoATACUhMI7--gr6artQIVBDHfCh1QBQD7&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">Process Server</a></div><div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Data+Server&amp;rt=ChBRF1csAAe9_ArfzkFWABWCEgtEYXRhIFNlcnZlchoI-JI8eWZjrXcoATACUhMI7--gr6artQIVBDHfCh1QBQD7&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">Data Server</a></div><div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Virtualization+Server&amp;rt=ChBRF1csAAe-AQrfzkFWABWCEhVWaXJ0dWFsaXphdGlvbiBTZXJ2ZXIaCJNqsTikMFFBKAEwAlITCO_voK-mq7UCFQQx3wodUAUA-w&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">Virtualization Server</a></div><div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Cisco+Server&amp;rt=ChBRF1csAAe-BQrfzkFWABWCEgxDaXNjbyBTZXJ2ZXIaCGYte75j68LzKAEwAlITCO_voK-mq7UCFQQx3wodUAUA-w&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">Cisco Server</a></div></div></div>
+        <div class="standartBlock" style="background: none; padding: 0;" id="socialWidgetBlock"><iframe style="border: medium none; overflow: hidden; width: 292px; height: 258px; font-family: Droid Sans,Arial,sans-serif;" allowtransparency="true" src="What%20is%20Load%20Balancing_pliki/likebox.htm" frameborder="0" scrolling="no"></iframe>
+      <div style="margin-top:12px; margin-left: 18px;">
+        <a href="https://twitter.com/wiseGEEK" class="twitter-follow-button" data-show-count="true" data-size="large">Follow @wiseGEEK</a>
+      </div>
+    </div>
+    <div class="standartBlock">
+      <div class="title">Article Details</div>
+      <div class="indent">
+      <ul class="indent">
+        <li>
+                      <span class="indent">
+                              Written By:
+                                            <span property="dc:creator">Vikram Sehjpal</span>
+                          </span>
+                  </li>
+                        <li>
+          <span class="indent">
+            Edited By: <span property="dc:editor">Lucy Oppenheimer</span>
+          </span>
+        </li>
+                                <li>
+          <span class="indent">
+    		    Last Modified Date: <span property="dc:date">26 November 2012</span>
+          </span>
+        </li>
+                <li>
+          <span class="indent">
+            <span property="dc:rights">Copyright Protected: <br>
+              <span>2003-2013</span>
+            </span>
+            <span property="dc:publisher">Conjecture Corporation</span>
+          </span>
+        </li>
+      </ul>
+      </div>
+    </div>
+
+    
+      <div class="standartBlock justify">
+      <div class="title">
+        Free Widgets for your Site/Blog
+      </div>
+      <!--Widget section-->
+        
+  <table class="WidgetCarcass" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <td>
+        <div class="WidgetBlock">
+          <div class="WidgetContent">
+            <div class="WidgetTitle">
+              <a href="http://www.wisegeek.com/">
+                Did You Know?
+              </a>
+            </div>
+            <div class="WidgetText">            
+              <span>Cells from a fetus can make their way into a mother's brain, remaining there for decades.</span>&nbsp;
+              <a target="_blank" href="http://goo.gl/SCHXR">more...</a>
+            </div>
+          </div>
+          <div class="WidgetFooter">
+            <a href="http://www.wisegeek.com/#widget">get widget
+            </a>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody></table>
+  
+  
+
+      <!--Widget ENDS-->
+      <br>
+      <!--History Widget section-->
+      
+  <table class="WidgetCarcass" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <td>
+        <div class="WidgetBlock">
+          <div class="WidgetContent">
+            <div class="WidgetTitle">
+              <a href="http://www.wisegeek.com/">
+                This Day in History
+              </a>
+            </div>
+            <div class="WidgetText">
+              <b id="PageArticleOffsite_history-widget-FeedDate_id">February 10</b>
+              <b>,</b>&nbsp;
+              <b id="PageArticleOffsite_history-widget-FeedYear_id">1996</b>
+              <b>:</b>&nbsp;
+              <span id="PageArticleOffsite_history-widget-FeedText_id">The world chess champion lost to a computer.</span>&nbsp;
+              <a target="_blank" id="PageArticleOffsite_history-widget-FeedLink_id" href="http://www.wisegeek.com/what-happened-on-february-10.htm">more...</a>
+            </div>
+          </div>
+          <div class="WidgetFooter">
+            <a href="http://www.wisegeek.com/#widget"> get widget
+            </a>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody></table>
+ 
+    
+      <!--History Widget ENDS-->
+    </div>
+      
+		   			<div class="standartBlock feedback">
+<div class="title">Subscribe to wiseGEEK</div>
+<p>Learn something new every day
+<a href="http://wisegeek.com/how-can-i-subscribe-to-wisegeek.htm" target="_blank" style="float: right;">More Info...</a>
+   by email
+</p>
+    <div class="noFloat">
+    	<form method="post" action="subscribe.htm" onsubmit="if (document.getElementById('subscribeEmail').value.replace(' enter email address', '') == '' ) return false;">
+    		<input class="text" id="subscribeEmail" name="email" value=" enter email address" onfocus="if (this.value==' enter email address') this.value=''" type="text">
+       	<input class="but submit_but" value="" type="submit">
+			</form>
+		</div>
+</div>		    </div>
+
+    <div class="rightCol">
+      <div class="leftPad18"><div class="wrapHighlight">
+                  <!-- google_ad_section_start -->
+        <p>Load balancing is the process by which inbound <a href="http://www.wisegeek.com/what-is-tcpip.htm">Internet protocol</a>
+ (IP) traffic can be distributed across multiple servers. This enhances 
+the performance of the servers, leads to their optimal use, and ensures 
+that no single server is overwhelmed. The practice is particularly 
+important for busy networks, where it is difficult to predict the number
+ of requests that will be issued to a server.</p><p>Typically, two or 
+more web serves are employed in a load balancing scheme. In case one of 
+the servers begins to get overloaded, the requests are forwarded to 
+another server. This process brings down the service time by allowing 
+multiple servers to handle the requests. Service time is reduced by 
+using a load balancer to identify which server has the appropriate 
+availability to receive the traffic.</p><p>The process, very generally, 
+is straightforward.  A webpage request is sent to the load balancer, 
+which forwards the request to one of the servers. That server responds 
+back to the balancer, which in turn sends the request on to the end 
+user.</p><p>Load balancing allows service to continue even in the face of server down time due to server failure or <a href="http://www.wisegeek.com/what-is-server-maintenance.htm">server maintenance</a>.
+ If a company is using several servers and one of them fails, its 
+website or other services will still be available to its users, as the 
+traffic will be diverted to the other servers in the <a href="http://www.wisegeek.com/what-is-a-server-farm.htm">server farm</a>. In Global Server Load Balancing (GSLB) the load is distributed to geographically scattered <a href="http://www.wisegeek.com/what-is-a-server-farm.htm">server farms</a>, depending on their load, health, or proximity.</p>        <div class="googleAdv2" id="ad_block_1"><div class="gLinkUnitCaption ads_title"><a href="http://www.google.com/url?ct=abg&amp;q=https://www.google.com/adsense/support/bin/request.py%3Ftrunc%3D1%26contact%3Dabg_afc%26url%3Dhttp://www.wisegeek.org/what-is-load-balancing.htm%26gl%3DPL%26hl%3Den%26client%3Dca-pub-8290526608142878%26ai0%3DCieVhK1cXUb7mLMve_AaEioD4A4ruxskEysvC52XAjbcBEAEgkqH1ASgNUNfu8WJg6czDhcwayAEBqQK0euFv72q2PqgDAaoEb0_QhUwzl7QleX8X5XxMMDkIQwbPkKiT_2nkRSHgwCkudpni2f0cNHgWhfx6q15sI0eCFjT0XeyXoHkaQqA-DaoGp-4gM8tKuB8RmY3MXudOxV_zOTSIZYnvAS6Bzysmtz99i6tpTwa0eSrPj9kMioAHqvH9Kg%26ai1%3DCcF9rK1cXUb7mLMve_AaEioD4A8iTkt0CuIuskTfAjbcBEAIgkqH1ASgNULT3i8gBYOnMw4XMGsgBAakCCHLaKm0DYj6oAwGqBHlP0OVp9YutH0HNpPQbTDBgUV0c2ZKqk_EspVg0XRsadGqZ5pPoHGx4FtylZLFIbiFHjFN16Uikz79wDxvkJFPrBanraXzIR7UQHJOKxRehUtzacIw3qGTDJTUGsclpJ18870W2aZcDAWrKyS2gHqIYDWFLukDLUrrkgAe20tEK%26ai2%3DC1RQJK1cXUb7mLMve_AaEioD4A8y1tpYD1JaPo0nAjbcBEAMgkqH1ASgNUKf85pUCYOnMw4XMGqABuI2Q_QPIAQGpAptPNpFUgLo-qAMBqgRyT9DVGSSXtiV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP3mPRGQ3qv1Mi3f2yyn5PXmqL8_dpyok9hO0x0rwjiAYBgAew8u8C%26ai3%3DC6inqK1cXUb7mLMve_AaEioD4A6PhgOQDs4bJz1rAjbcBEAQgkqH1ASgNUNuerYb4_____wFg6czDhcwaoAGFldLWA8gBAakC5Vom9XJubD6oAwGqBHNP0OUdyI2tGUHNpPQbTDBgUV0c2ZKqk_EspVg0XRsadGqZ5pPoHGx4FtylZLFIbiFHjFN16Uikz79wDxvkJFPrBanraXzIR7UQHJOKxRehUtzacIw3iGWs5wEuy8A2Jm86iExeak_CAWrKyW10C6eLyJlxiAYBgAfj6q0p%26ai4%3DCW1zwK1cXUb7mLMve_AaEioD4A5WCvvoC1a-T0UjY0IvUQhAFIJKh9QEoDVCI9tzI-v____8BYOnMw4XMGqAB1eaq_gPIAQGpAsxSpsOxSrI-qAMBqgR7T9DVez2XsCV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP9mJi0-c4s_LONiYAPZVMzGCnBSxsP8otZOtl7Q4hWxpWn4ryDpiviAYBgAeTmdUB%26ai5%3DC7WqEK1cXUb7mLMve_AaEioD4A6rUj5YDsrKlqjHAjbcBEAYgkqH1ASgNUNawse4CYOnMw4XMGsgBAakCtHrhb-9qtj6oAwGqBHFP0MVYIpezJXl_F-V8TDA5CEMGz5Cok_9p5EUh4MApLnaZ4tn9HDR4FoX8eqtebCNHghY09F3sl6B5GkKgPg2qBqfuIDPLSrgfEZmNzF7nTsU38o_eY9EZDeq_UyLd_bLKfk9eaovz92nKiT2E7RXXHoAHqNVQ&amp;usg=AFQjCNH3Cq3JRswEP6keqGaPfxJ2be1lmQ">AdChoices</a></div><table cellpadding="0" cellspacing="0"><tbody><tr><td class="col1"><a class="advTitle" href="http://googleads.g.doubleclick.net/aclk?sa=L&amp;ai=CieVhK1cXUb7mLMve_AaEioD4A4ruxskEysvC52XAjbcBEAEgkqH1ASgNUNfu8WJg6czDhcwayAEBqQK0euFv72q2PqgDAaoEb0_QhUwzl7QleX8X5XxMMDkIQwbPkKiT_2nkRSHgwCkudpni2f0cNHgWhfx6q15sI0eCFjT0XeyXoHkaQqA-DaoGp-4gM8tKuB8RmY3MXudOxV_zOTSIZYnvAS6Bzysmtz99i6tpTwa0eSrPj9kMioAHqvH9Kg&amp;num=1&amp;sig=AOD64_35cD7sxUlamkQjLqQVOCLiN5SyfQ&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.smartdc.net/" onmouseover="window.status='www.smartdc.net'; return true;" onmouseout="window.status=''" target="_blank">Rack space and bandwidth</a></td><td class="col2"><div class="description_link"><div class="adText">SmartDC colocation = 10 GbE + 100G Level3, GlobalCrossing,Cogent,NL-IX</div> <a class="url" href="http://googleads.g.doubleclick.net/aclk?sa=L&amp;ai=CieVhK1cXUb7mLMve_AaEioD4A4ruxskEysvC52XAjbcBEAEgkqH1ASgNUNfu8WJg6czDhcwayAEBqQK0euFv72q2PqgDAaoEb0_QhUwzl7QleX8X5XxMMDkIQwbPkKiT_2nkRSHgwCkudpni2f0cNHgWhfx6q15sI0eCFjT0XeyXoHkaQqA-DaoGp-4gM8tKuB8RmY3MXudOxV_zOTSIZYnvAS6Bzysmtz99i6tpTwa0eSrPj9kMioAHqvH9Kg&amp;num=1&amp;sig=AOD64_35cD7sxUlamkQjLqQVOCLiN5SyfQ&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.smartdc.net/" onmouseover="window.status='www.smartdc.net'; return true;" onmouseout="window.status=''" target="_blank">www.smartdc.net</a></div></td></tr><tr><td class="col1"><a class="advTitle" href="http://googleads.g.doubleclick.net/aclk?sa=L&amp;ai=CcF9rK1cXUb7mLMve_AaEioD4A8iTkt0CuIuskTfAjbcBEAIgkqH1ASgNULT3i8gBYOnMw4XMGsgBAakCCHLaKm0DYj6oAwGqBHlP0OVp9YutH0HNpPQbTDBgUV0c2ZKqk_EspVg0XRsadGqZ5pPoHGx4FtylZLFIbiFHjFN16Uikz79wDxvkJFPrBanraXzIR7UQHJOKxRehUtzacIw3qGTDJTUGsclpJ18870W2aZcDAWrKyS2gHqIYDWFLukDLUrrkgAe20tEK&amp;num=2&amp;sig=AOD64_01koRHfczydtysPr8lFbJhmwSCxA&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.chevalgrp.com" onmouseover="window.status='www.chevalgrp.com'; return true;" onmouseout="window.status=''" target="_blank">Server, Network, 19" Rack</a></td><td class="col2"><div class="description_link"><div class="adText">Standard and OEM. Outdoor Cabinets Over 350,000 Exported Globally</div> <a class="url" href="http://googleads.g.doubleclick.net/aclk?sa=L&amp;ai=CcF9rK1cXUb7mLMve_AaEioD4A8iTkt0CuIuskTfAjbcBEAIgkqH1ASgNULT3i8gBYOnMw4XMGsgBAakCCHLaKm0DYj6oAwGqBHlP0OVp9YutH0HNpPQbTDBgUV0c2ZKqk_EspVg0XRsadGqZ5pPoHGx4FtylZLFIbiFHjFN16Uikz79wDxvkJFPrBanraXzIR7UQHJOKxRehUtzacIw3qGTDJTUGsclpJ18870W2aZcDAWrKyS2gHqIYDWFLukDLUrrkgAe20tEK&amp;num=2&amp;sig=AOD64_01koRHfczydtysPr8lFbJhmwSCxA&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.chevalgrp.com" onmouseover="window.status='www.chevalgrp.com'; return true;" onmouseout="window.status=''" target="_blank">www.chevalgrp.com</a></div></td></tr><tr><td class="col1"><a class="advTitle" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=C1RQJK1cXUb7mLMve_AaEioD4A8y1tpYD1JaPo0nAjbcBEAMgkqH1ASgNUKf85pUCYOnMw4XMGqABuI2Q_QPIAQGpAptPNpFUgLo-qAMBqgRyT9DVGSSXtiV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP3mPRGQ3qv1Mi3f2yyn5PXmqL8_dpyok9hO0x0rwjiAYBgAew8u8C&amp;num=3&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_2byhvj4Am2F8A1K4lah-lYVNY8OQ&amp;client=ca-pub-8290526608142878&amp;adurl=http://hidemyass.com/vpn/r6572:137/%255Bvpn%2520servers%255D" onmouseover="window.status='www.HideMyAss.com'; return true;" onmouseout="window.status=''" target="_blank">Introducing Pro VPN</a></td><td class="col2"><div class="description_link"><div class="adText">Connect to VPN Service From $6.55/m Increase Your Online Security Today</div> <a class="url" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=C1RQJK1cXUb7mLMve_AaEioD4A8y1tpYD1JaPo0nAjbcBEAMgkqH1ASgNUKf85pUCYOnMw4XMGqABuI2Q_QPIAQGpAptPNpFUgLo-qAMBqgRyT9DVGSSXtiV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP3mPRGQ3qv1Mi3f2yyn5PXmqL8_dpyok9hO0x0rwjiAYBgAew8u8C&amp;num=3&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_2byhvj4Am2F8A1K4lah-lYVNY8OQ&amp;client=ca-pub-8290526608142878&amp;adurl=http://hidemyass.com/vpn/r6572:137/%255Bvpn%2520servers%255D" onmouseover="window.status='www.HideMyAss.com'; return true;" onmouseout="window.status=''" target="_blank">www.HideMyAss.com</a></div></td></tr><tr><td class="col1"><a class="advTitle" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=C6inqK1cXUb7mLMve_AaEioD4A6PhgOQDs4bJz1rAjbcBEAQgkqH1ASgNUNuerYb4_____wFg6czDhcwaoAGFldLWA8gBAakC5Vom9XJubD6oAwGqBHNP0OUdyI2tGUHNpPQbTDBgUV0c2ZKqk_EspVg0XRsadGqZ5pPoHGx4FtylZLFIbiFHjFN16Uikz79wDxvkJFPrBanraXzIR7UQHJOKxRehUtzacIw3iGWs5wEuy8A2Jm86iExeak_CAWrKyW10C6eLyJlxiAYBgAfj6q0p&amp;num=4&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_1pn82yz0MEGfao8iwRuLrhEOg6Lw&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.metel.eu/produkty%3FcategoryId%3D22" onmouseover="window.status='www.metel.eu'; return true;" onmouseout="window.status=''" target="_blank">Převod 2xRS232 / Ethernet</a></td><td class="col2"><div class="description_link"><div class="adText">TCP klient/server, UDP, Apollo, Dominus, Galaxy, Peridect...</div> <a class="url" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=C6inqK1cXUb7mLMve_AaEioD4A6PhgOQDs4bJz1rAjbcBEAQgkqH1ASgNUNuerYb4_____wFg6czDhcwaoAGFldLWA8gBAakC5Vom9XJubD6oAwGqBHNP0OUdyI2tGUHNpPQbTDBgUV0c2ZKqk_EspVg0XRsadGqZ5pPoHGx4FtylZLFIbiFHjFN16Uikz79wDxvkJFPrBanraXzIR7UQHJOKxRehUtzacIw3iGWs5wEuy8A2Jm86iExeak_CAWrKyW10C6eLyJlxiAYBgAfj6q0p&amp;num=4&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_1pn82yz0MEGfao8iwRuLrhEOg6Lw&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.metel.eu/produkty%3FcategoryId%3D22" onmouseover="window.status='www.metel.eu'; return true;" onmouseout="window.status=''" target="_blank">www.metel.eu</a></div></td></tr><tr><td class="col1"><a class="advTitle" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=CW1zwK1cXUb7mLMve_AaEioD4A5WCvvoC1a-T0UjY0IvUQhAFIJKh9QEoDVCI9tzI-v____8BYOnMw4XMGqAB1eaq_gPIAQGpAsxSpsOxSrI-qAMBqgR7T9DVez2XsCV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP9mJi0-c4s_LONiYAPZVMzGCnBSxsP8otZOtl7Q4hWxpWn4ryDpiviAYBgAeTmdUB&amp;num=5&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_3SXPhFduJ6761DTXkfLEQ0WG1BaQ&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.toradex.com" onmouseover="window.status='www.toradex.com/embedded-modules'; return true;" onmouseout="window.status=''" target="_blank">Quad-Core ARM Computer</a></td><td class="col2"><div class="description_link"><div class="adText">Dual Displ 3D-Graphic&amp;Video 1GB RAM 2GB FLASH, from 89€ - 125$</div> <a class="url" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=CW1zwK1cXUb7mLMve_AaEioD4A5WCvvoC1a-T0UjY0IvUQhAFIJKh9QEoDVCI9tzI-v____8BYOnMw4XMGqAB1eaq_gPIAQGpAsxSpsOxSrI-qAMBqgR7T9DVez2XsCV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP9mJi0-c4s_LONiYAPZVMzGCnBSxsP8otZOtl7Q4hWxpWn4ryDpiviAYBgAeTmdUB&amp;num=5&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_3SXPhFduJ6761DTXkfLEQ0WG1BaQ&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.toradex.com" onmouseover="window.status='www.toradex.com/embedded-modules'; return true;" onmouseout="window.status=''" target="_blank">www.toradex.com/embedded-modules</a></div></td></tr></tbody></table></div>
+        <p>There are several methods by which loads can be balanced. If 
+the servers are similar in hardware specifications, the Perceptive 
+(which predicts the server based on historical and current data) and the
+ Fastest Response Time methods can be the best to use. On the other 
+hand, if the hardware specifications are different, the Weighted Round 
+Robin method, which assigns requests to servers in turn according their 
+weights, may be a better solution because it can assign more requests to
+ the server that can handle a greater volume.</p>        <!-- google_ad_section_end -->
+        <div class="googleAdv2" id="ad_block_2"><div class="gLinkUnitCaption ads_title"><a href="http://www.google.com/url?ct=abg&amp;q=https://www.google.com/adsense/support/bin/request.py%3Ftrunc%3D1%26contact%3Dabg_afc%26url%3Dhttp://www.wisegeek.org/what-is-load-balancing.htm%26gl%3DPL%26hl%3Den%26client%3Dca-pub-8290526608142878%26ai0%3DCieVhK1cXUb7mLMve_AaEioD4A4ruxskEysvC52XAjbcBEAEgkqH1ASgNUNfu8WJg6czDhcwayAEBqQK0euFv72q2PqgDAaoEb0_QhUwzl7QleX8X5XxMMDkIQwbPkKiT_2nkRSHgwCkudpni2f0cNHgWhfx6q15sI0eCFjT0XeyXoHkaQqA-DaoGp-4gM8tKuB8RmY3MXudOxV_zOTSIZYnvAS6Bzysmtz99i6tpTwa0eSrPj9kMioAHqvH9Kg%26ai1%3DCcF9rK1cXUb7mLMve_AaEioD4A8iTkt0CuIuskTfAjbcBEAIgkqH1ASgNULT3i8gBYOnMw4XMGsgBAakCCHLaKm0DYj6oAwGqBHlP0OVp9YutH0HNpPQbTDBgUV0c2ZKqk_EspVg0XRsadGqZ5pPoHGx4FtylZLFIbiFHjFN16Uikz79wDxvkJFPrBanraXzIR7UQHJOKxRehUtzacIw3qGTDJTUGsclpJ18870W2aZcDAWrKyS2gHqIYDWFLukDLUrrkgAe20tEK%26ai2%3DC1RQJK1cXUb7mLMve_AaEioD4A8y1tpYD1JaPo0nAjbcBEAMgkqH1ASgNUKf85pUCYOnMw4XMGqABuI2Q_QPIAQGpAptPNpFUgLo-qAMBqgRyT9DVGSSXtiV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP3mPRGQ3qv1Mi3f2yyn5PXmqL8_dpyok9hO0x0rwjiAYBgAew8u8C%26ai3%3DC6inqK1cXUb7mLMve_AaEioD4A6PhgOQDs4bJz1rAjbcBEAQgkqH1ASgNUNuerYb4_____wFg6czDhcwaoAGFldLWA8gBAakC5Vom9XJubD6oAwGqBHNP0OUdyI2tGUHNpPQbTDBgUV0c2ZKqk_EspVg0XRsadGqZ5pPoHGx4FtylZLFIbiFHjFN16Uikz79wDxvkJFPrBanraXzIR7UQHJOKxRehUtzacIw3iGWs5wEuy8A2Jm86iExeak_CAWrKyW10C6eLyJlxiAYBgAfj6q0p%26ai4%3DCW1zwK1cXUb7mLMve_AaEioD4A5WCvvoC1a-T0UjY0IvUQhAFIJKh9QEoDVCI9tzI-v____8BYOnMw4XMGqAB1eaq_gPIAQGpAsxSpsOxSrI-qAMBqgR7T9DVez2XsCV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP9mJi0-c4s_LONiYAPZVMzGCnBSxsP8otZOtl7Q4hWxpWn4ryDpiviAYBgAeTmdUB%26ai5%3DC7WqEK1cXUb7mLMve_AaEioD4A6rUj5YDsrKlqjHAjbcBEAYgkqH1ASgNUNawse4CYOnMw4XMGsgBAakCtHrhb-9qtj6oAwGqBHFP0MVYIpezJXl_F-V8TDA5CEMGz5Cok_9p5EUh4MApLnaZ4tn9HDR4FoX8eqtebCNHghY09F3sl6B5GkKgPg2qBqfuIDPLSrgfEZmNzF7nTsU38o_eY9EZDeq_UyLd_bLKfk9eaovz92nKiT2E7RXXHoAHqNVQ&amp;usg=AFQjCNH3Cq3JRswEP6keqGaPfxJ2be1lmQ">AdChoices</a></div><table cellpadding="0" cellspacing="0"><tbody><tr><td class="col1"><a class="advTitle" href="http://googleads.g.doubleclick.net/aclk?sa=L&amp;ai=C7WqEK1cXUb7mLMve_AaEioD4A6rUj5YDsrKlqjHAjbcBEAYgkqH1ASgNUNawse4CYOnMw4XMGsgBAakCtHrhb-9qtj6oAwGqBHFP0MVYIpezJXl_F-V8TDA5CEMGz5Cok_9p5EUh4MApLnaZ4tn9HDR4FoX8eqtebCNHghY09F3sl6B5GkKgPg2qBqfuIDPLSrgfEZmNzF7nTsU38o_eY9EZDeq_UyLd_bLKfk9eaovz92nKiT2E7RXXHoAHqNVQ&amp;num=6&amp;sig=AOD64_1ZcJHq8eFfgd-mdjxqRvQobSqu1g&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.MobileNetSwitch.com" onmouseover="window.status='MobileNetSwitch.com'; return true;" onmouseout="window.status=''" target="_blank">Net Switcher for Windows</a></td><td class="col2"><div class="description_link"><div class="adText">Switch network settings on the fly For Windows 7, 8 and Windows XP</div> <a class="url" href="http://googleads.g.doubleclick.net/aclk?sa=L&amp;ai=C7WqEK1cXUb7mLMve_AaEioD4A6rUj5YDsrKlqjHAjbcBEAYgkqH1ASgNUNawse4CYOnMw4XMGsgBAakCtHrhb-9qtj6oAwGqBHFP0MVYIpezJXl_F-V8TDA5CEMGz5Cok_9p5EUh4MApLnaZ4tn9HDR4FoX8eqtebCNHghY09F3sl6B5GkKgPg2qBqfuIDPLSrgfEZmNzF7nTsU38o_eY9EZDeq_UyLd_bLKfk9eaovz92nKiT2E7RXXHoAHqNVQ&amp;num=6&amp;sig=AOD64_1ZcJHq8eFfgd-mdjxqRvQobSqu1g&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.MobileNetSwitch.com" onmouseover="window.status='MobileNetSwitch.com'; return true;" onmouseout="window.status=''" target="_blank">MobileNetSwitch.com</a></div></td></tr><tr><td class="col1"><a class="advTitle" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=Cq5cFK1cXUb7mLMve_AaEioD4A7_fgpYC55OQ-0iljNHSHxAHIJKh9QEoDVD_4fy9______8BYOnMw4XMGqAB6euf3wPIAQGpArR64W_varY-qAMBqgR7T9DVDiOXsiV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP9mJg0-de8ajRNiYAPZVMzGCnBSxsP8otZOtl7Q4hWxpWn4rqfd-NiAYBgAf_k-Ag&amp;num=7&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_2ku2MmJT4qLF4ejH1QW4ibIOSLIw&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.TeamViewer.com/start.aspx%3Fpid%3Dgoogle.r.po.d_hybrid_to.desk.text_network" onmouseover="window.status='www.TeamViewer.com'; return true;" onmouseout="window.status=''" target="_blank">Zdalny dostęp PC</a></td><td class="col2"><div class="description_link"><div class="adText">Zdalny dostęp bez instalacji. Testuj teraz bezpłatnie!</div> <a class="url" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=Cq5cFK1cXUb7mLMve_AaEioD4A7_fgpYC55OQ-0iljNHSHxAHIJKh9QEoDVD_4fy9______8BYOnMw4XMGqAB6euf3wPIAQGpArR64W_varY-qAMBqgR7T9DVDiOXsiV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP9mJg0-de8ajRNiYAPZVMzGCnBSxsP8otZOtl7Q4hWxpWn4rqfd-NiAYBgAf_k-Ag&amp;num=7&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_2ku2MmJT4qLF4ejH1QW4ibIOSLIw&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.TeamViewer.com/start.aspx%3Fpid%3Dgoogle.r.po.d_hybrid_to.desk.text_network" onmouseover="window.status='www.TeamViewer.com'; return true;" onmouseout="window.status=''" target="_blank">www.TeamViewer.com</a></div></td></tr><tr><td class="col1"><a class="advTitle" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=CDZERK1cXUb7mLMve_AaEioD4A-HcoK4D8bnCwU7AjbcBEAggkqH1ASgNUJWb6jVg6czDhcwaoAHV-5H_A8gBAagDAaoEcU_QxVgil70leX8X5XxMMDkIQwbPkKiT_2nkRSHgwCkudpni2f0cNHgWhfx6q15sI0eCFjT0XeyXoHkaQqA-DaoGp-4gM8tKuB8RmY3MXudOxTfyj95j0RkN6r9TIt39ssp-T15qi_P3acqJPYTtPuY9iAYBgAeThG4&amp;num=8&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_0PpHkSWhb3ghcrxRsRN20CLzHGwQ&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.server4you.net/%3Fref%3DGOS4EUTX" onmouseover="window.status='www.SERVER4YOU.net'; return true;" onmouseout="window.status=''" target="_blank">Your SERVER4YOU Server</a></td><td class="col2"><div class="description_link"><div class="adText">Rent Low-Price eg. Fujit. Primergy. 8 Cores, 16 GB RAM, 2x2000 GB HDD</div> <a class="url" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=CDZERK1cXUb7mLMve_AaEioD4A-HcoK4D8bnCwU7AjbcBEAggkqH1ASgNUJWb6jVg6czDhcwaoAHV-5H_A8gBAagDAaoEcU_QxVgil70leX8X5XxMMDkIQwbPkKiT_2nkRSHgwCkudpni2f0cNHgWhfx6q15sI0eCFjT0XeyXoHkaQqA-DaoGp-4gM8tKuB8RmY3MXudOxTfyj95j0RkN6r9TIt39ssp-T15qi_P3acqJPYTtPuY9iAYBgAeThG4&amp;num=8&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_0PpHkSWhb3ghcrxRsRN20CLzHGwQ&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.server4you.net/%3Fref%3DGOS4EUTX" onmouseover="window.status='www.SERVER4YOU.net'; return true;" onmouseout="window.status=''" target="_blank">www.SERVER4YOU.net</a></div></td></tr><tr><td class="col1"><a class="advTitle" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=CSqoNK1cXUb7mLMve_AaEioD4A7H0i60C0ba0skPAjbcBEAkgkqH1ASgNUJT8r5H4_____wFg6czDhcwaoAHnsu77A8gBAakCZ_O-egKblT6oAwGqBHhP0PUTAJe8JXl_F-V8TDA5CEMGz5Cok_9p5EUh4MApLnaZ4tn9HDR4FoX8eqtebCNHghY09F3sl6B5GkKgPg2qBqfuIDPLSrgfEZmNzF7nTsU38o_-YvffTMXFWn3czbStd6ddskrz92nKyemR6KEYTTG7XMf_J2iIBgGAB4HNkQQ&amp;num=9&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_2NFchg3HMP4gnqUoEY9j1DjB0trA&amp;client=ca-pub-8290526608142878&amp;adurl=http://navi.pl/katalog/17/0/serwery_ntp.html" onmouseover="window.status='ntp.navi.pl'; return true;" onmouseout="window.status=''" target="_blank">NTP Time Server M300 GPS</a></td><td class="col2"><div class="description_link"><div class="adText">Natychmiastowa Dostawa. internet time synchronization linux, windows</div> <a class="url" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=CSqoNK1cXUb7mLMve_AaEioD4A7H0i60C0ba0skPAjbcBEAkgkqH1ASgNUJT8r5H4_____wFg6czDhcwaoAHnsu77A8gBAakCZ_O-egKblT6oAwGqBHhP0PUTAJe8JXl_F-V8TDA5CEMGz5Cok_9p5EUh4MApLnaZ4tn9HDR4FoX8eqtebCNHghY09F3sl6B5GkKgPg2qBqfuIDPLSrgfEZmNzF7nTsU38o_-YvffTMXFWn3czbStd6ddskrz92nKyemR6KEYTTG7XMf_J2iIBgGAB4HNkQQ&amp;num=9&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_2NFchg3HMP4gnqUoEY9j1DjB0trA&amp;client=ca-pub-8290526608142878&amp;adurl=http://navi.pl/katalog/17/0/serwery_ntp.html" onmouseover="window.status='ntp.navi.pl'; return true;" onmouseout="window.status=''" target="_blank">ntp.navi.pl</a></div></td></tr></tbody></table></div>
+      <div class="highlight"></div></div></div>
+            <div class="standartBlock" id="videos">
+        <h2>Related Videos</h2>
+        <div class="relatedVideo">     
+        <div style="display: block;"><div style="" id="fmts-wrapper-0" class="fmts-wrapper clearfix fmts-firefox"><div class="fmtsw fmts-c fmts-tl-1" id="fmtsw" style="width: 605px; font-size: 11px; visibility: visible;"><div style="height: 170px;" class="fmts-vc"><ul class="fmts-vl clearfix"><li class="fmts-video-col"><ul><li style="width: 685px;" class="fmts-video-row clearfix"><ul><li class="fmts-vi fmts-ts-0  fmts-vi-loaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517173096.htm"><img src="What%20is%20Load%20Balancing_pliki/517173096_7_148_111.jpg" height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517173096.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517173096.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="CEATEC: Murata Robot Navigates New Challenge" href="http://videos.wisegeek.org/videos/517173096.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">CEATEC: Murata Robot Navigates New Challenge</a></div></li><li class="fmts-vi fmts-ts-0  fmts-vi-loaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517665445.htm"><img src="What%20is%20Load%20Balancing_pliki/517665445_3_148_111.jpg" height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517665445.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517665445.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="Send Files Securely With Silent Circle’s Mobile App" href="http://videos.wisegeek.org/videos/517665445.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">Send Files Securely With Silent Circle’s Mobile App</a></div></li><li class="fmts-vi fmts-ts-0 fmts-last  fmts-vi-loaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 1px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517664447.htm"><img src="What%20is%20Load%20Balancing_pliki/517664447_19_148_111.jpg" height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517664447.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517664447.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="Foundation Interview: Hosain Rahman of Jawbone" href="http://videos.wisegeek.org/videos/517664447.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">Foundation Interview: Hosain Rahman of Jawbone</a></div></li></ul></li></ul></li><li class="fmts-video-col"><ul><li style="width: 685px;" class="fmts-video-row clearfix"><ul><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517662397.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517662397.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517662397.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="Quick Access To Displays Preferences" href="http://videos.wisegeek.org/videos/517662397.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">Quick Access To Displays Preferences</a></div></li><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517666795.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517666795.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517666795.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="LaCie 5big Thunderbolt Storage Device Review" href="http://videos.wisegeek.org/videos/517666795.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">LaCie 5big Thunderbolt Storage Device Review</a></div></li><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded fmts-last" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 1px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517662975.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517662975.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517662975.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="The Canon EOS 6D: A Lovely Camera, but Watch the Tradeoffs" href="http://videos.wisegeek.org/videos/517662975.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">The Canon EOS 6D: A Lovely Camera, but Watch the Tradeoffs</a></div></li></ul></li></ul></li><li class="fmts-video-col"><ul><li style="width: 685px;" class="fmts-video-row clearfix"><ul><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517666448.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517666448.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517666448.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="Real Time Bidding Story Is Evolving Into Real Time Buying" href="http://videos.wisegeek.org/videos/517666448.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">Real Time Bidding Story Is Evolving Into Real Time Buying</a></div></li><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517665428.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517665428.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517665428.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="Jason Forbes Talks About Zeebox's Unified Screen Experience" href="http://videos.wisegeek.org/videos/517665428.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">Jason Forbes Talks About Zeebox's Unified Screen Experience</a></div></li><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded fmts-last" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 1px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517666782.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517666782.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517666782.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="Nokia Lumia 620 Lowers the Bar" href="http://videos.wisegeek.org/videos/517666782.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">Nokia Lumia 620 Lowers the Bar</a></div></li></ul></li></ul></li><li class="fmts-video-col"><ul><li style="width: 685px;" class="fmts-video-row clearfix"><ul><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517663469.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517663469.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517663469.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="CouchCachet: You Did WHAT Last Night?" href="http://videos.wisegeek.org/videos/517663469.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">CouchCachet: You Did WHAT Last Night?</a></div></li><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517666555.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517666555.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517666555.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="How Users and Brands Stay Creative on Vine" href="http://videos.wisegeek.org/videos/517666555.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">How Users and Brands Stay Creative on Vine</a></div></li><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded fmts-last" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 1px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517667828.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517667828.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517667828.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="Will.I.Am Talks Tech" href="http://videos.wisegeek.org/videos/517667828.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">Will.I.Am Talks Tech</a></div></li></ul></li></ul></li><li class="fmts-video-col"><ul><li style="width: 685px;" class="fmts-video-row clearfix"><ul><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517666205.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517666205.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517666205.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="Twitter's Vine Gets NC-17 Rating" href="http://videos.wisegeek.org/videos/517666205.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">Twitter's Vine Gets NC-17 Rating</a></div></li><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517662668.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517662668.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517662668.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="Twitter's Super Bowl Touchdown" href="http://videos.wisegeek.org/videos/517662668.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">Twitter's Super Bowl Touchdown</a></div></li><li title="Reuters Embraces Ustream as &quot;Targeted&quot; Video News Video Platform" class="fmts-vi fmts-ts-0 fmts-vi-notloaded fmts-last" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 1px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517664434.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517664434.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517664434.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="Reuters Embraces Ustream as &quot;Targeted&quot; Video News Video Platform" href="http://videos.wisegeek.org/videos/517664434.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">Reuters Embraces Ustream as "Targeted" Video News Video...</a></div></li></ul></li></ul></li><li class="fmts-video-col"><ul><li style="width: 685px;" class="fmts-video-row clearfix"><ul><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517664430.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517664430.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517664430.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="Win Her Heart on Valentine's Day" href="http://videos.wisegeek.org/videos/517664430.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">Win Her Heart on Valentine's Day</a></div></li><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517663994.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517663994.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517663994.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="HTC One SV Review" href="http://videos.wisegeek.org/videos/517663994.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">HTC One SV Review</a></div></li><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded fmts-last" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 1px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517663763.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517663763.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517663763.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="MapQuest For iPhone" href="http://videos.wisegeek.org/videos/517663763.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">MapQuest For iPhone</a></div></li></ul></li></ul></li><li class="fmts-video-col"><ul><li style="width: 685px;" class="fmts-video-row clearfix"><ul><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517665415.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517665415.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517665415.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="Samsung Series 5 UltraTouch Review" href="http://videos.wisegeek.org/videos/517665415.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">Samsung Series 5 UltraTouch Review</a></div></li><li class="fmts-vi fmts-ts-0 fmts-vi-notloaded" style="background-color: transparent; width: 148px; margin-right: 80px; margin-left: 0px;"><div class="fmts-img_wrapper"><div class="fmts-img"><a href="http://videos.wisegeek.org/videos/517663947.htm"><img height="111" width="148"></a></div><div class="fmts-play"><a href="http://videos.wisegeek.org/videos/517663947.htm" class="fmts-btn_play">Play</a><a href="http://videos.wisegeek.org/videos/517663947.htm" class="fmts-btn_click">Click to Play</a></div></div><div style="font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;" class="fmts-desc"><a title="Build Your Own Blimp Using LEGOs" href="http://videos.wisegeek.org/videos/517663947.htm" style="color: rgb(0, 0, 0); font-family: Verdana; font-size: 11px; font-weight: normal; line-height: 13px; height: 48px;">Build Your Own Blimp Using LEGOs</a></div></li></ul></li></ul></li></ul></div></div></div></div><script data-readbythumbseed="true" src="What%20is%20Load%20Balancing_pliki/ThumbSeed2_002.js" type="text/javascript"></script></div>
+        <style>
+        div.relatedVideo .clearfix {height:auto!important;}
+        </style>
+        <div id="gLinkUnit2" class="googleAdv"><div class="gLinkUnitCaption"><a href="http://www.google.com/url?ct=abg&amp;q=https://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://www.wisegeek.org/what-is-load-balancing.htm%26gl%3DPL%26hl%3Den%26client%3Dca-pub-8290526608142878&amp;usg=AFQjCNH7PuuZOCQ7vfJWsZZr3w5w-0AaKQ">AdChoices</a></div>  <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=MS+Server+2012&amp;rt=ChBRF1csAAe-CQrfzkFWABWCEg5NUyBTZXJ2ZXIgMjAxMhoIhmL02N-XuSAoATADUhMI7--gr6artQIVBDHfCh1QBQD7&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">MS Server 2012</a></div> <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=IP+Server&amp;rt=ChBRF1csAAe-DgrfzkFWABWCEglJUCBTZXJ2ZXIaCFkxUrVIPeGhKAEwA1ITCO_voK-mq7UCFQQx3wodUAUA-w&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">IP Server</a></div> <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Server+Hardware&amp;rt=ChBRF1csAAe-EgrfzkFWABWCEg9TZXJ2ZXIgSGFyZHdhcmUaCNKl1RXBeDRvKAEwA1ITCO_voK-mq7UCFQQx3wodUAUA-w&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">Server Hardware</a></div> <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Server+High+Availability&amp;rt=ChBRF1csAAe-FgrfzkFWABWCEhhTZXJ2ZXIgSGlnaCBBdmFpbGFiaWxpdHkaCJPNJfNWVdBmKAEwA1ITCO_voK-mq7UCFQQx3wodUAUA-w&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm">Server High Availability</a></div></div>
+      </div>
+      <div class="standartBlock" id="related_articles">
+        <h2>Related wiseGEEK Articles</h2>
+        <div class="links">
+                    <div class="" property="dc:relation">
+            <a href="http://www.wisegeek.com/what-is-fatigue-limit.htm">What Is Fatigue Limit?</a>
+          </div>
+          <div class="lSep"></div>
+                    <div class="" property="dc:relation">
+            <a href="http://www.wisegeek.com/what-is-dynamic-balancing.htm">What Is Dynamic Balancing?</a>
+          </div>
+          <div class="lSep"></div>
+                    <div class="" property="dc:relation">
+            <a href="http://www.wisegeek.com/what-is-a-network-load-balancer.htm">What Is a Network Load Balancer?</a>
+          </div>
+          <div class="lSep"></div>
+                    <div class="" property="dc:relation">
+            <a href="http://www.wisegeek.com/what-is-a-design-load.htm">What Is a Design Load?</a>
+          </div>
+          <div class="lSep"></div>
+                    <div class="" property="dc:relation">
+            <a href="http://www.wisegeek.com/what-is-a-prop-balancer.htm">What Is a Prop Balancer?</a>
+          </div>
+          <div class="lSep"></div>
+                    <div class="" property="dc:relation">
+            <a href="http://www.wisegeek.com/what-is-server-virtualization.htm">What Is Server Virtualization?</a>
+          </div>
+          <div class="lSep"></div>
+                    <div class="" property="dc:relation">
+            <a href="http://www.wisegeek.com/what-is-a-server-migration.htm">What Is a Server Migration?</a>
+          </div>
+          <div class="lSep"></div>
+                  </div>
+        <div id="ad_block_3" class="googleAdv2"><div class="gLinkUnitCaption ads_title"><a href="http://www.google.com/url?ct=abg&amp;q=https://www.google.com/adsense/support/bin/request.py%3Ftrunc%3D1%26contact%3Dabg_afc%26url%3Dhttp://www.wisegeek.org/what-is-load-balancing.htm%26gl%3DPL%26hl%3Den%26client%3Dca-pub-8290526608142878%26ai0%3DCieVhK1cXUb7mLMve_AaEioD4A4ruxskEysvC52XAjbcBEAEgkqH1ASgNUNfu8WJg6czDhcwayAEBqQK0euFv72q2PqgDAaoEb0_QhUwzl7QleX8X5XxMMDkIQwbPkKiT_2nkRSHgwCkudpni2f0cNHgWhfx6q15sI0eCFjT0XeyXoHkaQqA-DaoGp-4gM8tKuB8RmY3MXudOxV_zOTSIZYnvAS6Bzysmtz99i6tpTwa0eSrPj9kMioAHqvH9Kg%26ai1%3DCcF9rK1cXUb7mLMve_AaEioD4A8iTkt0CuIuskTfAjbcBEAIgkqH1ASgNULT3i8gBYOnMw4XMGsgBAakCCHLaKm0DYj6oAwGqBHlP0OVp9YutH0HNpPQbTDBgUV0c2ZKqk_EspVg0XRsadGqZ5pPoHGx4FtylZLFIbiFHjFN16Uikz79wDxvkJFPrBanraXzIR7UQHJOKxRehUtzacIw3qGTDJTUGsclpJ18870W2aZcDAWrKyS2gHqIYDWFLukDLUrrkgAe20tEK%26ai2%3DC1RQJK1cXUb7mLMve_AaEioD4A8y1tpYD1JaPo0nAjbcBEAMgkqH1ASgNUKf85pUCYOnMw4XMGqABuI2Q_QPIAQGpAptPNpFUgLo-qAMBqgRyT9DVGSSXtiV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP3mPRGQ3qv1Mi3f2yyn5PXmqL8_dpyok9hO0x0rwjiAYBgAew8u8C%26ai3%3DC6inqK1cXUb7mLMve_AaEioD4A6PhgOQDs4bJz1rAjbcBEAQgkqH1ASgNUNuerYb4_____wFg6czDhcwaoAGFldLWA8gBAakC5Vom9XJubD6oAwGqBHNP0OUdyI2tGUHNpPQbTDBgUV0c2ZKqk_EspVg0XRsadGqZ5pPoHGx4FtylZLFIbiFHjFN16Uikz79wDxvkJFPrBanraXzIR7UQHJOKxRehUtzacIw3iGWs5wEuy8A2Jm86iExeak_CAWrKyW10C6eLyJlxiAYBgAfj6q0p%26ai4%3DCW1zwK1cXUb7mLMve_AaEioD4A5WCvvoC1a-T0UjY0IvUQhAFIJKh9QEoDVCI9tzI-v____8BYOnMw4XMGqAB1eaq_gPIAQGpAsxSpsOxSrI-qAMBqgR7T9DVez2XsCV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP9mJi0-c4s_LONiYAPZVMzGCnBSxsP8otZOtl7Q4hWxpWn4ryDpiviAYBgAeTmdUB%26ai5%3DC7WqEK1cXUb7mLMve_AaEioD4A6rUj5YDsrKlqjHAjbcBEAYgkqH1ASgNUNawse4CYOnMw4XMGsgBAakCtHrhb-9qtj6oAwGqBHFP0MVYIpezJXl_F-V8TDA5CEMGz5Cok_9p5EUh4MApLnaZ4tn9HDR4FoX8eqtebCNHghY09F3sl6B5GkKgPg2qBqfuIDPLSrgfEZmNzF7nTsU38o_eY9EZDeq_UyLd_bLKfk9eaovz92nKiT2E7RXXHoAHqNVQ&amp;usg=AFQjCNH3Cq3JRswEP6keqGaPfxJ2be1lmQ">AdChoices</a></div><table cellpadding="0" cellspacing="0"><tbody><tr><td class="col1"><a class="advTitle" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=CO4dIK1cXUb7mLMve_AaEioD4A8CYq_EE4On86W_4gq2_QhAKIJKh9QEoDVDXzOSPB2DpzMOFzBqgAaDt6sQDyAEBqAMBqgR4T9ClWTmXvyV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP_mLGkRfExVp93M20rXenXbJK8_dpysnpkeihGE0xu1yu_x9WiAYBgAfIkpU7&amp;num=10&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_0ODMNQJ0FTjR8rdsrGWs-Ecu6fdQ&amp;client=ca-pub-8290526608142878&amp;adurl=http://servercraft.co/dedicated-servers/" onmouseover="window.status='servercraft.co'; return true;" onmouseout="window.status=''" target="_blank">Dedicated Servers $49</a></td><td class="col2"><div class="description_link"><div class="adText">Reliable &amp; Affordable Dedicated Servers. 5 Day Money Back. Buy Now!</div> <a class="url" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=CO4dIK1cXUb7mLMve_AaEioD4A8CYq_EE4On86W_4gq2_QhAKIJKh9QEoDVDXzOSPB2DpzMOFzBqgAaDt6sQDyAEBqAMBqgR4T9ClWTmXvyV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP_mLGkRfExVp93M20rXenXbJK8_dpysnpkeihGE0xu1yu_x9WiAYBgAfIkpU7&amp;num=10&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_0ODMNQJ0FTjR8rdsrGWs-Ecu6fdQ&amp;client=ca-pub-8290526608142878&amp;adurl=http://servercraft.co/dedicated-servers/" onmouseover="window.status='servercraft.co'; return true;" onmouseout="window.status=''" target="_blank">servercraft.co</a></div></td></tr><tr><td class="col1"><a class="advTitle" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=CWOnOK1cXUb7mLMve_AaEioD4A6aLkZIDhqy2gU32qr64NxALIJKh9QEoDVCInZ3V______8BYOnMw4XMGqABltWl-gPIAQGpAmfzvnoCm5U-qAMBqgR-T9DlGReXviV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FT_GPtmJn2-fv5VtkFquf1374XIJMlP6ByREokeihGA3lrllGf8x9DxJa_Ip1iAYBgAfSqtoF&amp;num=11&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_0Rs3_B5pkOyA13pwZTECAHHxTlvg&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.axadirect.pl/oferta4/ubezpieczenie-samochodu-oc.html%3Fm%3D130001" onmouseover="window.status='axadirect.pl'; return true;" onmouseout="window.status=''" target="_blank">OC już od 282 zł/rok</a></td><td class="col2"><div class="description_link"><div class="adText">Tu najtaniej ubezpieczysz samochód. OC już od 282 zł rocznie!</div> <a class="url" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=CWOnOK1cXUb7mLMve_AaEioD4A6aLkZIDhqy2gU32qr64NxALIJKh9QEoDVCInZ3V______8BYOnMw4XMGqABltWl-gPIAQGpAmfzvnoCm5U-qAMBqgR-T9DlGReXviV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FT_GPtmJn2-fv5VtkFquf1374XIJMlP6ByREokeihGA3lrllGf8x9DxJa_Ip1iAYBgAfSqtoF&amp;num=11&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_0Rs3_B5pkOyA13pwZTECAHHxTlvg&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.axadirect.pl/oferta4/ubezpieczenie-samochodu-oc.html%3Fm%3D130001" onmouseover="window.status='axadirect.pl'; return true;" onmouseout="window.status=''" target="_blank">axadirect.pl</a></div></td></tr><tr><td class="col1"><a class="advTitle" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=C_8x9K1cXUb7mLMve_AaEioD4A5G01vAC0e_EpF_Z2R4QDCCSofUBKA1Q7ujW1vj_____AWDpzMOFzBqgAa_crv0DyAEBqAMBqgR4T9DlByaXuSV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP_mKBsivjxVp93M20rXenXbJK8_dpysnpkeihGE0xu1yn0DJviAYBgAe5o9EC&amp;num=12&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_2QDAJk28wgWz-Kf35PHb5dFQRzug&amp;client=ca-pub-8290526608142878&amp;adurl=https://dns.he.net" onmouseover="window.status='dns.he.net'; return true;" onmouseout="window.status=''" target="_blank">Free DNS Hosting</a></td><td class="col2"><div class="description_link"><div class="adText">Dual Stack: IPv6 and IPv4 Includes Dynamic DNS Support</div> <a class="url" href="http://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=C_8x9K1cXUb7mLMve_AaEioD4A5G01vAC0e_EpF_Z2R4QDCCSofUBKA1Q7ujW1vj_____AWDpzMOFzBqgAa_crv0DyAEBqAMBqgR4T9DlByaXuSV5fxflfEwwOQhDBs-QqJP_aeRFIeDAKS52meLZ_Rw0eBaF_HqrXmwjR4IWNPRd7JegeRpCoD4Nqgan7iAzy0q4HxGZjcxe507FN_KP_mKBsivjxVp93M20rXenXbJK8_dpysnpkeihGE0xu1yn0DJviAYBgAe5o9EC&amp;num=12&amp;cid=5GgAGr8EUk_kjzLiDHPHLHsC&amp;sig=AOD64_2QDAJk28wgWz-Kf35PHb5dFQRzug&amp;client=ca-pub-8290526608142878&amp;adurl=https://dns.he.net" onmouseover="window.status='dns.he.net'; return true;" onmouseout="window.status=''" target="_blank">dns.he.net</a></div></td></tr><tr><td class="col1"><a class="advTitle" href="http://googleads.g.doubleclick.net/aclk?sa=L&amp;ai=CK0BpK1cXUb7mLMve_AaEioD4A5bK1oMC1vnUviXAjbcBEA0gkqH1ASgNULj_lpwCYOnMw4XMGsgBAakCZ_O-egKblT6oAwGqBHhP0OU_GZe4JXl_F-V8TDA5CEMGz5Cok_9p5EUh4MApLnaZ4tn9HDR4FoX8eqtebCNHghY09F3sl6B5GkKgPg2qBqfuIDPLSrgfEZmNzF7nTsU38o_-Yri9A8rFWn3czbStd6ddskrz92nKyemR6KEYTTG7XN6WBn2AB4bIhg8&amp;num=13&amp;sig=AOD64_0gLVVfzQrlfqS9E8sx-P_7Pl104Q&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.ergonet.pl" onmouseover="window.status='www.ergonet.pl'; return true;" onmouseout="window.status=''" target="_blank">MS Exchange 2010 Hosting</a></td><td class="col2"><div class="description_link"><div class="adText">Microsoft Lync 2010 Hosting 30-dniowy darmowy test</div> <a class="url" href="http://googleads.g.doubleclick.net/aclk?sa=L&amp;ai=CK0BpK1cXUb7mLMve_AaEioD4A5bK1oMC1vnUviXAjbcBEA0gkqH1ASgNULj_lpwCYOnMw4XMGsgBAakCZ_O-egKblT6oAwGqBHhP0OU_GZe4JXl_F-V8TDA5CEMGz5Cok_9p5EUh4MApLnaZ4tn9HDR4FoX8eqtebCNHghY09F3sl6B5GkKgPg2qBqfuIDPLSrgfEZmNzF7nTsU38o_-Yri9A8rFWn3czbStd6ddskrz92nKyemR6KEYTTG7XN6WBn2AB4bIhg8&amp;num=13&amp;sig=AOD64_0gLVVfzQrlfqS9E8sx-P_7Pl104Q&amp;client=ca-pub-8290526608142878&amp;adurl=http://www.ergonet.pl" onmouseover="window.status='www.ergonet.pl'; return true;" onmouseout="window.status=''" target="_blank">www.ergonet.pl</a></div></td></tr></tbody></table></div>
+      </div>
+      <!-- google_ad_section_start(weight=ignore) -->
+
+      <div class="standartBlock discussBlock" id="discussions"><div class="wrapHighlight">
+        <h2>
+                  Discuss this Article
+                </h2>
+                          
+
+
+
+<table class="discussTable" id="PageArticleOffsite_discussionPosts-postsContainer_id" cellpadding="0" cellspacing="0">
+      
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        anon266732</b>
+    <br>
+    <span>Post 19</span>
+        </td>
+    <td class="col2"><p>How is math used in load balancing? What kind?        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+
+  </tbody><tbody>
+    <tr class="adBlock">
+      <td class="col1"></td>
+      <td class="col2"><div class="gLinkUnit gLinkUnitInline RelatedTopicsContainer gInlineBlock"></div></td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+   </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        anon157489</b>
+    <br>
+    <span>Post 18</span>
+        </td>
+    <td class="col2"><p>@anon46463: Have you tried jetNEXUS, They have a
+ feature set similar to F5 but a price point closer to Kemp (although a 
+little more expensive).</p><p>        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+
+  </tbody><tbody>
+    <tr class="adBlock">
+      <td class="col1"></td>
+      <td class="col2"><div class="gLinkUnit gLinkUnitInline RelatedTopicsContainer gInlineBlock"></div></td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+   </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        anon127714</b>
+    <br>
+    <span>Post 16</span>
+        </td>
+    <td class="col2"><p>What happens if the load balancer goes down?        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+  </tbody><tbody>
+    <tr class="relatedTopics">
+      <td class="col1">Related Topics</td>
+      <td class="col2">
+        <div class="gLinkUnitInline RelatedTopicsContainer gInlineBlock" blocknum="2">
+                          <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-routers#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Routers&amp;b=2&amp;p=0&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Routers</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?internet-load-balancing#a=3069&amp;t=grey-rows&amp;k=Internet%20Load%20Balancing&amp;b=2&amp;p=1&amp;s=" target="_blank" class="RelatedTopicsLink">Internet Load Balancing</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing&amp;b=2&amp;p=2&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?high-availability-load-balancing#a=3069&amp;t=grey-rows&amp;k=High%20Availability%20Load%20Balancing&amp;b=2&amp;p=3&amp;s=" target="_blank" class="RelatedTopicsLink">High Availability Load Balancing</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-switch#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Switch&amp;b=2&amp;p=4&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Switch</a></div>
+                </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+  </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        anon119730</b>
+    <br>
+    <span>Post 15</span>
+        </td>
+    <td class="col2"><p>how can we implement load balancing using sensor networks?        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+
+  </tbody><tbody>
+    <tr class="adBlock">
+      <td class="col1"></td>
+      <td class="col2"><div class="gLinkUnit gLinkUnitInline RelatedTopicsContainer gInlineBlock"></div></td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+   </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        Balancer561</b>
+    <br>
+    <span>Post 14</span>
+        </td>
+    <td class="col2"><p>@Anon107606: Think of a load balancer in terms 
+of your Lit 101 Class. It's kind of like the Little Dutch Boy (not the 
+painter) who comes across a dike with leaks popping out in a hundred 
+different places.</p><p>Except this Dutch Boy has more arms than the Hindu Goddess Kali and enough fingers to plug 100 holes.        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+
+  </tbody><tbody>
+    <tr class="adBlock">
+      <td class="col1"></td>
+      <td class="col2"><div class="gLinkUnit gLinkUnitInline RelatedTopicsContainer gInlineBlock"></div></td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+   </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        anon107606</b>
+    <br>
+    <span>Post 13</span>
+        </td>
+    <td class="col2"><p>The given info is good, but i want more info 
+about load balancing. How can I find it? This topic is for our BE 
+project. please give extra information. Thanks.        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+  </tbody><tbody>
+    <tr class="relatedTopics">
+      <td class="col1">Related Topics</td>
+      <td class="col2">
+        <div class="gLinkUnitInline RelatedTopicsContainer gInlineBlock" blocknum="3">
+                          <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing&amp;b=3&amp;p=0&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?internet-load-balancing#a=3069&amp;t=grey-rows&amp;k=Internet%20Load%20Balancing&amp;b=3&amp;p=1&amp;s=" target="_blank" class="RelatedTopicsLink">Internet Load Balancing</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-web-servers#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Web%20Servers&amp;b=3&amp;p=2&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Web Servers</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-solution#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Solution&amp;b=3&amp;p=3&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Solution</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-routers#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Routers&amp;b=3&amp;p=4&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Routers</a></div>
+                </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+  </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        anon95254</b>
+    <br>
+    <span>Post 12</span>
+        </td>
+    <td class="col2"><p>excellent explanation.        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+
+  </tbody><tbody>
+    <tr class="adBlock">
+      <td class="col1"></td>
+      <td class="col2"><div class="gLinkUnit gLinkUnitInline RelatedTopicsContainer gInlineBlock"></div></td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+   </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        anon84462</b>
+    <br>
+    <span>Post 11</span>
+        </td>
+    <td class="col2"><p>how to route a web page request from the client 
+to the server connected to the internet and to get back the response 
+from the server to client. both client and server connected in lan. 
+please can you tell the settings or need to be done. please.        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+
+  </tbody><tbody>
+    <tr class="adBlock">
+      <td class="col1"></td>
+      <td class="col2"><div class="gLinkUnit gLinkUnitInline RelatedTopicsContainer gInlineBlock"></div></td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+   </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        anon82485</b>
+    <br>
+    <span>Post 10</span>
+        </td>
+    <td class="col2"><p>Very nice and clear explanation about load balancing. now i can do my project. thanks.</p><p>        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+  </tbody><tbody>
+    <tr class="relatedTopics">
+      <td class="col1">Related Topics</td>
+      <td class="col2">
+        <div class="gLinkUnitInline RelatedTopicsContainer gInlineBlock" blocknum="4">
+                          <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-web-servers#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Web%20Servers&amp;b=4&amp;p=0&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Web Servers</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-solution#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Solution&amp;b=4&amp;p=1&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Solution</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?internet-load-balancing#a=3069&amp;t=grey-rows&amp;k=Internet%20Load%20Balancing&amp;b=4&amp;p=2&amp;s=" target="_blank" class="RelatedTopicsLink">Internet Load Balancing</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing&amp;b=4&amp;p=3&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?high-availability-load-balancing#a=3069&amp;t=grey-rows&amp;k=High%20Availability%20Load%20Balancing&amp;b=4&amp;p=4&amp;s=" target="_blank" class="RelatedTopicsLink">High Availability Load Balancing</a></div>
+                </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+  </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        anon71053</b>
+    <br>
+    <span>Post 9</span>
+        </td>
+    <td class="col2"><p>Does it mean that what ever service the user 
+wants in spite of server failure that the data is stored on all the 
+servers?        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+
+  </tbody><tbody>
+    <tr class="adBlock">
+      <td class="col1"></td>
+      <td class="col2"><div class="gLinkUnit gLinkUnitInline RelatedTopicsContainer gInlineBlock"></div></td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+   </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        anon54417</b>
+    <br>
+    <span>Post 8</span>
+        </td>
+    <td class="col2"><p>Good stuff.        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+
+  </tbody><tbody>
+    <tr class="adBlock">
+      <td class="col1"></td>
+      <td class="col2"><div class="gLinkUnit gLinkUnitInline RelatedTopicsContainer gInlineBlock"></div></td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+   </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        anon52117</b>
+    <br>
+    <span>Post 7</span>
+        </td>
+    <td class="col2"><p>A very informative article.        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+  </tbody><tbody>
+    <tr class="relatedTopics">
+      <td class="col1">Related Topics</td>
+      <td class="col2">
+        <div class="gLinkUnitInline RelatedTopicsContainer gInlineBlock" blocknum="5">
+                          <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-routers#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Routers&amp;b=5&amp;p=0&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Routers</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?internet-load-balancing#a=3069&amp;t=grey-rows&amp;k=Internet%20Load%20Balancing&amp;b=5&amp;p=1&amp;s=" target="_blank" class="RelatedTopicsLink">Internet Load Balancing</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?high-availability-load-balancing#a=3069&amp;t=grey-rows&amp;k=High%20Availability%20Load%20Balancing&amp;b=5&amp;p=2&amp;s=" target="_blank" class="RelatedTopicsLink">High Availability Load Balancing</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-switch#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Switch&amp;b=5&amp;p=3&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Switch</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing&amp;b=5&amp;p=4&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing</a></div>
+                </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+  </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        anon46463</b>
+    <br>
+    <span>Post 6</span>
+        </td>
+    <td class="col2"><p>I couldn't order the LoadMaster 1500, looks like
+ they discontinued it, I got the 2000, it works pretty good. I would 
+love to use perlbal, just to much work for setup and maintenance, rather
+ spend that time on my application development. Wish I had the budget 
+for the F5, even though I know I'll only use 5 percent of the features. 
+        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+
+  </tbody><tbody>
+    <tr class="adBlock">
+      <td class="col1"></td>
+      <td class="col2"><div id="gLinkUnit3" class="gLinkUnit gLinkUnitInline RelatedTopicsContainer gInlineBlock"><div class="gLinkUnitCaption"><a href="http://www.google.com/url?ct=abg&amp;q=https://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://www.wisegeek.org/what-is-load-balancing.htm%26gl%3DPL%26hl%3Den%26client%3Dca-pub-8290526608142878&amp;usg=AFQjCNH7PuuZOCQ7vfJWsZZr3w5w-0AaKQ#a=3069&amp;t=grey-rows&amp;k=AdChoices&amp;b=null&amp;p=0&amp;s=">AdChoices</a></div>  <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Buy+Server&amp;rt=ChBRF1csAAe-GwrfzkFWABWCEgpCdXkgU2VydmVyGgilxKgfGevIDygBMARSEwjv76Cvpqu1AhUEMd8KHVAFAPs&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm#a=3069&amp;t=grey-rows&amp;k=Buy%20Server&amp;b=null&amp;p=1&amp;s=">Buy Server</a></div> <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Appliance+Server&amp;rt=ChBRF1csAAe-HwrfzkFWABWCEhBBcHBsaWFuY2UgU2VydmVyGggWs8xQ6so_NygBMARSEwjv76Cvpqu1AhUEMd8KHVAFAPs&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm#a=3069&amp;t=grey-rows&amp;k=Appliance%20Server&amp;b=null&amp;p=2&amp;s=">Appliance Server</a></div> <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Server+Configuration&amp;rt=ChBRF1csAAe-NgrfzkFWABWCEhRTZXJ2ZXIgQ29uZmlndXJhdGlvbhoI-XtEdB16QOooATAEUhMI7--gr6artQIVBDHfCh1QBQD7&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm#a=3069&amp;t=grey-rows&amp;k=Server%20Configuration&amp;b=null&amp;p=3&amp;s=">Server Configuration</a></div> <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Virtualized+Server&amp;rt=ChBRF1csAAe-PArfzkFWABWCEhJWaXJ0dWFsaXplZCBTZXJ2ZXIaCGxjD6ju3bHqKAEwBFITCO_voK-mq7UCFQQx3wodUAUA-w&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm#a=3069&amp;t=grey-rows&amp;k=Virtualized%20Server&amp;b=null&amp;p=4&amp;s=">Virtualized Server</a></div> <div class="gLinkUnitKeyword"><a target="_blank" href="http://related.wisegeek.org/related/?kw=Server+Racks&amp;rt=ChBRF1csAAe-QQrfzkFWABWCEgxTZXJ2ZXIgUmFja3MaCCIcEbaG6hOWKAEwBFITCO_voK-mq7UCFQQx3wodUAUA-w&amp;url=http%3A%2F%2Fwww.wisegeek.org%2Fwhat-is-load-balancing.htm#a=3069&amp;t=grey-rows&amp;k=Server%20Racks&amp;b=null&amp;p=5&amp;s=">Server Racks</a></div></div></td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+   </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        castleinfo</b>
+    <br>
+    <span>Post 5</span>
+        </td>
+    <td class="col2"><p>Kemp load balancers are fine, but the base 1500 
+isn't great hardware and they aren't as flexible as they could be. The 
+Loadbalancer R16 is high spec'd but license restricted. Coyote is sound 
+but restricted and if you have the money F5, open source solutions are 
+LVS and haproxy.        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+
+  </tbody><tbody>
+    <tr class="adBlock">
+      <td class="col1"></td>
+      <td class="col2"><div class="gLinkUnit gLinkUnitInline RelatedTopicsContainer gInlineBlock"></div></td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+   </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        bsvr</b>
+    <br>
+    <span>Post 4</span>
+        </td>
+    <td class="col2"><p>Is there any difference b/w "network load 
+balancing in TCP/IP" and "dynamic load balancing in distributed system 
+in the presence of delay"</p><p>If related... in what way?        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+  </tbody><tbody>
+    <tr class="relatedTopics">
+      <td class="col1">Related Topics</td>
+      <td class="col2">
+        <div class="gLinkUnitInline RelatedTopicsContainer gInlineBlock" blocknum="6">
+                          <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-routers#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Routers&amp;b=6&amp;p=0&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Routers</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?high-availability-load-balancing#a=3069&amp;t=grey-rows&amp;k=High%20Availability%20Load%20Balancing&amp;b=6&amp;p=1&amp;s=" target="_blank" class="RelatedTopicsLink">High Availability Load Balancing</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?internet-load-balancing#a=3069&amp;t=grey-rows&amp;k=Internet%20Load%20Balancing&amp;b=6&amp;p=2&amp;s=" target="_blank" class="RelatedTopicsLink">Internet Load Balancing</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing&amp;b=6&amp;p=3&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing</a></div>
+                  <div class="gLinkUnitKeyword RelatedTopicsLink" style="white-space: nowrap"><a href="http://topics.wisegeek.org/topics.htm?load-balancing-switch#a=3069&amp;t=grey-rows&amp;k=Load%20Balancing%20Switch&amp;b=6&amp;p=4&amp;s=" target="_blank" class="RelatedTopicsLink">Load Balancing Switch</a></div>
+                </div>
+      </td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+  </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        anon24827</b>
+    <br>
+    <span>Post 3</span>
+        </td>
+    <td class="col2"><p>How we can implement for the web server?        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+
+  </tbody><tbody>
+    <tr class="adBlock">
+      <td class="col1"></td>
+      <td class="col2"><div class="gLinkUnit gLinkUnitInline RelatedTopicsContainer gInlineBlock"></div></td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+   </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        todd77</b>
+    <br>
+    <span>Post 2</span>
+        </td>
+    <td class="col2"><p>This exactly what I need, I am going to buy a 
+load balancer from KEMP.  Anyone use them, they seem to have a great 
+price to feature ratio?        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+
+  </tbody><tbody>
+    <tr class="adBlock">
+      <td class="col1"></td>
+      <td class="col2"><div class="gLinkUnit gLinkUnitInline RelatedTopicsContainer gInlineBlock"></div></td>
+    </tr>
+    <tr>
+      <td class="indent" colspan="2"></td>
+    </tr>
+   </tbody>
+        
+  <tbody><tr>
+    <td class="col1">
+    <b>
+        gantastar</b>
+    <br>
+    <span>Post 1</span>
+        </td>
+    <td class="col2"><p>Excellent explanation about LOAD BALANCING. This one is very clear, simple and easy to understand        </p></td>
+  </tr>
+  <tr>
+    <td class="indent" colspan="2"></td>
+  </tr>
+  </tbody></table>
+        
+                  <div class="joinForm">
+            
+  						<div>
+  						  							<h2>Post your comments</h2>
+
+  							<div id="PageArticleOffsite-discussionPostBoxHolder_id" style="width:440px;">
+  							  								
+<div id="FB_HiddenContainer" style="position:absolute; top:-10000px; width:0px; height:0px;"></div>
+
+<div class="discussionsUIHolder">
+
+	 <div class="discussionsPostUI">
+	   <div class="discussionsPostUIHolder">
+				<div class=" fb_reset" id="fb-root"><script data-readbythumbseed="true" async="" src="What%20is%20Load%20Balancing_pliki/all.js"></script><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="What%20is%20Load%20Balancing_pliki/oauth.htm" style="display: none;" allowtransparency="true" name="f122a5ff37139a6" frameborder="0" scrolling="no"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="What%20is%20Load%20Balancing_pliki/xd_arbiter.htm" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0" scrolling="no"></iframe><iframe src="What%20is%20Load%20Balancing_pliki/xd_arbiter_002.htm" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0" scrolling="no"></iframe></div></div></div>
+       <a class="discussionTitleLink">
+         <h2 class="discussionsPostHeader">
+    	                  Post Anonymously
+                    </h2>
+
+         
+       </a>
+
+			<form method="post" id="PageArticleOffsite_discussionPostBox-postForm_id">
+
+			   
+
+        <textarea _realchangedataindex="0" id="PageArticleOffsite_discussionPostBox-contentTA_id" name="PageArticleOffsite_discussionPostBox-content"></textarea>
+
+	      
+				
+             	     <div id="captchaForm" style="display: none">
+             <input value="submit post" class="discussionsButton" id="PageArticleOffsite_discussionPostBox-createPost_id" type="button">
+  	         <span class="discussionsPostText">please enter the following code:</span>
+  					 <img src="" align="top" border="1">
+             <input name="PageArticleOffsite_discussionPostBox-captchaText" style="width:80px; height: 30px; padding:0 .3em; font-size:14pt" type="text">
+             <input name="PageArticleOffsite_discussionPostBox-captchaId" value="597520562" type="hidden">
+    	     </div>
+                      <input value="submit post" class="lightboxForm discussionsButton" href="#captchaForm" type="button">
+        
+  	     <input name="action[PageArticleOffsite_discussionPostBox:createPost]" value="submit post" type="hidden">
+  	     
+	       <div class="clearfix"></div>
+	     </form>
+	   </div>
+	 </div>
+
+	 
+		<div class="discussionsActionsUI">
+
+			<div class="discussionsLoginUI">
+				<div class="discussionsPostUIHolder">
+									<h2 class="discussionsPostHeader">Login</h2>
+
+					<form method="POST" action="">
+						<input name="PageArticleOffsite_discussionPostBox_loginDiscussions-onSuccessRedirect" value="http://www.wisegeek.org/what-is-load-balancing.htm" type="hidden">
+						<input name="PageArticleOffsite_discussionPostBox_loginDiscussions-onErrorRedirect" value="http://www.wisegeek.com/login.htm" type="hidden">
+						<table class="discussionsFormTable" border="0" cellpadding="0" cellspacing="0">
+							<tbody><tr>
+								<td class="discussionsLabel">username</td>
+								<td class="discussionsInputText">
+									<input name="PageArticleOffsite_discussionPostBox_loginDiscussions-login" type="text">
+								</td>
+							</tr>
+							<tr>
+								<td class="discussionsLabel">password</td>
+								<td class="discussionsInputText">
+									<input name="PageArticleOffsite_discussionPostBox_loginDiscussions-password" value="" type="password">
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="center">
+									<input value="login" class="discussionsButton" name="action[PageArticleOffsite_discussionPostBox_loginDiscussions:login]" type="submit">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" class="center">
+									<a href="http://www.wisegeek.com/password-recovery.htm">forgot password?</a>
+								</td>
+							</tr>
+						</tbody></table>
+					</form>
+
+					<div style="position:relative; left:0px; top:-5px; text-align:center;">
+						<span style="font-size:90%;">or connect with facebook</span><br>
+						<fb:login-button fb-xfbml-state="rendered" class=" fb_iframe_widget" login_text=""><span style="width: 70px; height: 22px;"><iframe class="" src="What%20is%20Load%20Balancing_pliki/login_button.htm" style="border: medium none; width: 70px; height: 22px;" allowtransparency="true" name="f335ed9f0d4d308" frameborder="0" height="1000px" scrolling="no" width="1000px"></iframe></span></fb:login-button>
+					</div>
+
+				</div>
+			</div>
+
+	   <div class="discussionsRegistrationUI">
+  	   <div class="discussionsPostUIHolder">
+	       <h2 class="discussionsPostHeader">Register</h2>
+
+	       <form method="POST" action="/signup.htm">
+	         <input name="mode" value="signup" type="hidden">
+  	       <table class="discussionsFormTable" border="0" cellpadding="0" cellspacing="0">
+  	       <tbody><tr>
+  	         <td class="discussionsLabel">
+  	           username
+  	         </td>
+  	         <td class="discussionsInputText">
+  	           <input name="disc_login" type="text">
+  	         </td>
+           </tr>
+  	       <tr>
+  	         <td class="discussionsLabel">
+  	           password
+  	         </td>
+  	         <td class="discussionsInputText">
+  	           <input name="disc_password" type="password">
+  	         </td>
+           </tr>
+           <tr>
+  	         <td class="discussionsLabel">
+  	           confirm
+  	         </td>
+  	         <td class="discussionsInputText">
+  	           <input name="confirm" type="password">
+  	         </td>
+           </tr>
+           <tr>
+  	         <td class="discussionsLabel">
+  	           email
+  	         </td>
+  	         <td class="discussionsInputText">
+  	           <input name="email" type="text">
+  	         </td>
+           </tr>
+           <tr>
+  	         <td class="center" colspan="2">
+  	           <input value="Register" class="discussionsButton" type="submit">
+  	         </td>
+           </tr>
+           </tbody></table>
+         </form>
+
+       </div>
+	   </div>
+
+	   <div class="clearfix"></div>
+	 </div>
+
+	 
+<div class="clearfix"></div>
+
+
+</div>  							  							</div>
+  						  						</div>
+
+                  </div>
+        
+    <div style="left: 106px; height: 18px; width: 502px; top: 394px; display: block;" class="highlight"></div></div></div>
+  </div>
+</div>
+
+
+
+<div style="display:none;">
+   
+    <a href="http://images.wisegeek.com/images/dyk/05-black-cats-bad-luck-good-luck.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/02-there-are-more-chickens-than-people-in-the-world.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/03-butterflies-taste-with-their-feet.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/01-lightning-strikes-earth-8-million-times-a-day.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/04-calories-burned-per-mile.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/06-dolphins-sleep-with-one-eye-open.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/07-humans-are-born-with-300-bones.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/08-turtles-can-breathe-through-their-rear-ends.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/09-a-flea-can-jump-130-times-its-own-height.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/10-the-brain-requires-20-percent-of-the-bodies-oxygen-and-calories.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/11-australias-kangaroo-population.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/12-about-11-percent-of-earths-land-surface-is-used-to-grow-crops.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/13-bullfrogs-do-not-sleep.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/14-supertanker-takes-20-minutes-to-stop.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/15-china-produces-more-pigs-than-all-other-countries-combined.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/16-about-97-percent-of-the-water-on-earth-is-undrinkable.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/17-vanilla-makes-up-almost-one-third-of-ice-cream-sales.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/18-the-diameter-of-the-moon-is-less-than-the-distance-from-la-to-ny.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/19-people-dont-sneeze-when-theyre-asleep.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/20-sun-comprises-99-percent-of-solar-system-mass.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/21-the-eiffel-tower-gets-about-six-inches-taller-in-the-heat-of-summer.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/22-about-ten-percent-of-the-worlds-population-lives-in-the-southern-hemisphere.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/23-almost-half-the-people-in-manhattan-live-alone.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/24-the-average-american-consumes-120-apples-per-year.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/25-the-average-person-walks-around-the-earth-four-times.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/26-polar-bear-hair-is-transparent.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/27-twelve-people-have-walked-on-the-moon.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/28-women-blink-twice-as-often-as-men.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/29-average-depth-of-the-ocean.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/30-seventy-percent-of-the-red-meat-eaten-worldwide-is-goat-meat.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/31-a-pineapple-isnt-a-single-fruit.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/32-flamingos-get-their-distinctive-color-from-the-foods-they-eat.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/33-silent-and-listen-use-the-same-letters.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/34-chinas-gdp.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/35-the-largest-animal-that-ever-lived-is-currently-living.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/36-us-tap-water-costs-250-10000-times-less-than-bottled-water.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/37-rubiks-cube-can-be-solved-in-20-moves-or-less.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/38-the-ipad-2-would-have-been-the-worlds-fastest-computer-in-1994.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/39-your-heart-beats-more-than-100000-times-per-day.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/40-if-you-properly-shuffle-a-deck-of-cards.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/41-only-20-percent-of-americans-have-passports.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/42-the-total-weight-of-all-the-worlds-ants.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/43-only-three-companies-have-not-adopted-the-metric-system.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/44-eight-of-the-ten-costliest-disasters-in-us-history-have-been-hurricanes.jpg" class="lightbox2"> </a>
+       <a href="http://images.wisegeek.com/images/dyk/45-the-world-consumes-two-liters-of-oil-per-person-per-day.jpg" class="lightbox2"> </a>
+     </div>
+</div>
+<div class="wrapFooter">
+  <div style="clear:both;"></div>
+  <div class="footer">
+  
+    <a href="http://www.wisegeek.org/" class="logo">
+      <span class="part1">wise</span><span class="part2">GEEK</span><br>
+      <span class="caption">clear answers for common questions</span>
+    </a>
+
+    <div class="rightLinks">
+	    <a href="http://www.wisegeek.com/faq.htm">FAQ</a><br>
+	    <a href="http://www.wisegeek.com/how-can-i-contact-wisegeek.htm">Contact Us</a><br>
+	    <a href="http://www.wisegeek.com/what-is-the-wisegeek-privacy-policy.htm">Privacy Policy</a><br>
+	    <a href="http://www.wisegeek.com/what-are-wisegeeks-terms-and-conditions.htm">Terms and Conditions</a><br>
+	    <br>
+	    <span property="dc:rights">
+      Copyright © 2003 - 2013</span>
+      <span property="dc:publisher">
+      Conjecture Corporation
+      </span>
+    </div>
+  </div>
+</div>
+
+	<div style="display:none;visibility:hidden;">
+	<iframe src="What%20is%20Load%20Balancing_pliki/cross-login.htm"></iframe>
+</div>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="http://www.wisegeek.com/res/common/js/plugins/flashcanvas/flashcanvas.js"></script>
+<![endif]-->
+<script data-readbythumbseed="true" type="text/javascript" src="cross-login_data/framework.js"></script>
+<script data-readbythumbseed="true" type="text/javascript" src="cross-login_data/ControlCustomSearch.js"></script>
+<script data-readbythumbseed="true" type="text/javascript" src="What%20is%20Load%20Balancing_pliki/articleJS_grey-rows.js"></script>
+
+
+  <script data-readbythumbseed="true" type="text/javascript"><!--
+    var iCurrADLinksUnitsCount = 0;
+  //-->
+  </script>
+
+
+  <script data-readbythumbseed="true" type="text/javascript">
+    window.google_adlink_request_perfomed = false;
+  </script>
+  <script data-readbythumbseed="true" type="text/javascript"><!--
+  google_hints = "";
+  google_ad_client = "pub-8290526608142878";
+  google_ad_output = "js";
+  google_feedback = "on";
+  google_max_num_ads = 13;
+  google_skip = 0;
+  google_ad_type = "text";
+  google_ad_channel = "297+6059253484+0289938425+7328376727+9332816861+4151876031+90+12+126+221";
+  display_url = 1;
+
+
+      iGlobalMainAdsLength = 4;
+  
+    var iCurrADLinksUnitsCount = 3;
+
+    aGoogleParams = fill_related_topics_links([{"keyword":"Load Balancing","url":"http:\/\/topics.wisegeek.org\/topics.htm?load-balancing"},{"keyword":"Load Balancing Switch","url":"http:\/\/topics.wisegeek.org\/topics.htm?load-balancing-switch"},{"keyword":"Load Balancing Web Servers","url":"http:\/\/topics.wisegeek.org\/topics.htm?load-balancing-web-servers"},{"keyword":"Internet Load Balancing","url":"http:\/\/topics.wisegeek.org\/topics.htm?internet-load-balancing"},{"keyword":"Load Balancing Solution","url":"http:\/\/topics.wisegeek.org\/topics.htm?load-balancing-solution"},{"keyword":"Load Balancing Routers","url":"http:\/\/topics.wisegeek.org\/topics.htm?load-balancing-routers"},{"keyword":"High Availability Load Balancing","url":"http:\/\/topics.wisegeek.org\/topics.htm?high-availability-load-balancing"}], 'RelatedTopicsContainer', 'RelatedTopicsLink', 'div', iCurrADLinksUnitsCount);
+    var sGoogleNumRadlinksPerUnit = '5,6,4' + aGoogleParams[1];
+    var aGoogleNumRadlinksPerUnit = sGoogleNumRadlinksPerUnit.split(',');
+
+    //document.getElementById('adsTable').style.display = 'block';
+
+  //-->
+  </script>
+  <script data-readbythumbseed="true" type="text/javascript" src="What%20is%20Load%20Balancing_pliki/show_ads.js"></script><script data-readbythumbseed="true" src="What%20is%20Load%20Balancing_pliki/show_ads_impl.js"></script><script data-readbythumbseed="true">google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><script data-readbythumbseed="true" language="JavaScript1.1" src="What%20is%20Load%20Balancing_pliki/ads"></script>
+
+
+  
+    <script data-readbythumbseed="true" type="text/javascript"><!--
+      window.google_adlink_request_perfomed = true;
+      var globalLinks = null;
+
+      google_ad_client = "pub-8290526608142878";
+      google_ad_output = "js";
+      google_feedback = "on";
+      google_max_num_ads = 0;
+      google_ad_channel = "297+6059253484+0289938425+7328376727+9332816861+4151876031+90+12+126+221";
+      google_num_radlinks = 15 + aGoogleParams[0];
+      google_max_radlink_len = '30';
+      google_num_radlinks_per_unit = sGoogleNumRadlinksPerUnit;
+      google_rl_mode = 'relevance';
+     //-->
+    </script>
+    <script data-readbythumbseed="true" type="text/javascript" src="What%20is%20Load%20Balancing_pliki/show_ads.js"></script><script data-readbythumbseed="true" src="What%20is%20Load%20Balancing_pliki/show_ads_impl.js"></script><script data-readbythumbseed="true">google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><script data-readbythumbseed="true" language="JavaScript1.1" src="What%20is%20Load%20Balancing_pliki/ads_002"></script>
+  
+
+
+<script data-readbythumbseed="true" language="javascript" type="text/javascript"> new ControlsManager();
+(function(){ var c = ControlsManager.getInstance();  c.addControl('02daf3526ce95854ec172e376bd2c3e5',new PageArticle({"url":"\/what-is-load-balancing.htm","postSuccessfull":false,"postError":false,"scrollToPostBox":null,"customImages":true,"tab_5min_fallback":"16","tab_5min_categories":"140,134,16,2","baseWgDomain":"wisegeek.org","__id":"02daf3526ce95854ec172e376bd2c3e5","__name":"PageArticleOffsite","__childControls":{"search":"968fd709da2bc25018e2297ec2afc9ae","discussionPostBox":"719bb27627d9a3ecbabe795b43fd7293"},"__parentControlId":null}));
+  c.addControl('968fd709da2bc25018e2297ec2afc9ae',new ControlCustomSearch({"tpl":"grey-rows","crossDomain":false,"__id":"968fd709da2bc25018e2297ec2afc9ae","__name":"search","__childControls":[],"__parentControlId":"02daf3526ce95854ec172e376bd2c3e5"}));
+  c.addControl('719bb27627d9a3ecbabe795b43fd7293',new ControlDiscussionPostBox({"url":"\/what-is-load-balancing.htm","api_key":"8c11e0bfd365e7338157de4c03c3cca4","app_id":"115218921845642","fb_session":"null","xd_url":"\/fb_xd_receiver","isFacebookUser":false,"_ids":{"logoutForm":"PageArticleOffsite_discussionPostBox-logoutForm_id","logoutLink":"PageArticleOffsite_discussionPostBox-logoutLink_id","contentTA":"PageArticleOffsite_discussionPostBox-contentTA_id","createPost":"PageArticleOffsite_discussionPostBox-createPost_id","postForm":"PageArticleOffsite_discussionPostBox-postForm_id"},"_actions":{"createFacebookAccount":"action[PageArticleOffsite_discussionPostBox:createFacebookAccount]","getCaptchaId":"action[PageArticleOffsite_discussionPostBox:getCaptchaId]"},"__id":"719bb27627d9a3ecbabe795b43fd7293","__name":"discussionPostBox","__childControls":[],"__parentControlId":"02daf3526ce95854ec172e376bd2c3e5"}));
+})();</script>
+<script data-readbythumbseed="true">
+var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-176713-17']);
+  _gaq.push(['_setDomainName', '.wisegeek.org']);
+
+_gaq.push(['_setVar'], 'category=internet-computers&dp=2006-03&pt=grey-rows&rk=09&subdomain=www');
+
+_gaq.push(['_setCustomVar', 1, 'Tag', '', 3]);
+_gaq.push(['_setCustomVar', 2, 'MonthPublished', '2006-03', 3]);
+_gaq.push(['_setCustomVar', 3, 'Template', 'grey-rows', 3]);
+_gaq.push(['_setCustomVar', 4, 'Category', 'internet-computers', 3]);
+_gaq.push(['_setCustomVar', 5, 'Subdomain', 'www', 3]);
+
+
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script');
+  ga.type = 'text/javascript';
+  ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+
+<!-- Start Quantcast tag -->
+<script data-readbythumbseed="true" type="text/javascript">
+var _qevents = _qevents || [];
+
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure"  : "http://edge")  + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+_qevents.push({
+qacct:"p-e39qsVhukR7DA"
+});
+</script>
+
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-e39qsVhukR7DA.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+    <!-- google_ad_section_end -->
+  
+  
+<script data-readbythumbseed="true">
+function replaceLinkHashes()
+{
+	var divElems = document.getElementsByTagName('div');
+	for(var i = 0; i < divElems.length; i++)
+	{
+		if (divElems[i].className.indexOf('RelatedTopicsContainer') != -1)
+		{
+			var aElems = divElems[i].getElementsByTagName('a');
+			for(var j = 0; j < aElems.length; j++)
+			{
+				/*  a - article id, t - template, k - keyword
+						b - block num, p - link position inside block*/
+				aElems[j].hash = 'a=' + encodeURIComponent(3069) +  '&t=' + encodeURIComponent('grey-rows') +
+												'&k=' + encodeURIComponent(aElems[j].innerHTML) + '&b=' + encodeURIComponent(divElems[i].getAttribute('blockNum')) +
+												'&p=' + encodeURIComponent(j) + '&s=' +  encodeURIComponent('');
+			}
+		}
+	}
+}
+
+window.addEventListener ? window.addEventListener('load', replaceLinkHashes, false) :
+												 (window.attachEvent ? window.attachEvent("onload", replaceLinkHashes) : false);
+
+</script>
+  
+  
+<div style="position:absolute;top:0;left:0;"><object style="visibility: visible;" data="What%20is%20Load%20Balancing_pliki/StorageCookieSWF_01.swf" name="fivemincookieswf" id="fivemincookieswf" type="application/x-shockwave-flash" height="1" width="1"><param value="true" name="swliveconnect"><param value="always" name="allowscriptaccess"><param value="jscbOnLoad=FIVEMIN.storage.flashAvailable" name="flashvars"></object></div></body></html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="js" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Distributed Applications Vs Service Oriented Architectures | </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="http://www.d-net.research-infrastructures.eu/sites/all/themes/acquia_marina/favicon.ico" type="image/x-icon">
+
+    
+    <link type="text/css" rel="stylesheet" media="all" href="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/node.css">
+<link type="text/css" rel="stylesheet" media="all" href="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/defaults.css">
+<link type="text/css" rel="stylesheet" media="all" href="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/system.css">
+<link type="text/css" rel="stylesheet" media="all" href="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/system-menus.css">
+<link type="text/css" rel="stylesheet" media="all" href="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/user.css">
+<link type="text/css" rel="stylesheet" media="all" href="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/content-module.css">
+<link type="text/css" rel="stylesheet" media="all" href="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/fckeditor.css">
+<link type="text/css" rel="stylesheet" media="all" href="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/style.css">
+<link type="text/css" rel="stylesheet" media="all" href="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/icons.css">
+<link type="text/css" rel="stylesheet" media="all" href="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/dblog.css">
+<link type="text/css" rel="stylesheet" media="all" href="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/fixed.css">
+<link type="text/css" rel="stylesheet" media="all" href="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/fonts_1.css">
+    <!--[if IE 7]>
+      <link type="text/css" rel="stylesheet" media="all" href="/sites/all/themes/acquia_marina/ie7-fixes.css" />
+    <![endif]-->
+    <!--[if lte IE 6]>
+      <link type="text/css" rel="stylesheet" media="all" href="/sites/all/themes/acquia_marina/ie6-fixes.css" />
+    <![endif]-->
+        <script src="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/ga.js" async="" type="text/javascript"></script><script type="text/javascript" src="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/jquery.js"></script>
+<script type="text/javascript" src="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/drupal.js"></script>
+<script type="text/javascript" src="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/script.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/" });
+//--><!]]>
+</script>
+  </head>
+
+  <body class="not-logged-in not-front full-node node-type-page layout-first-main preface-first-middle-last">
+    <div id="page" class="clearfix">
+      
+              <div id="skip">
+          <a href="#main-content">Skip to Main Content</a>
+        </div>
+            <div id="header-wrapper">
+        <div id="header" class="clearfix">
+          
+                
+          <div id="header-first">
+                                    <h1><a href="http://www.d-net.research-infrastructures.eu/" title="Home">D-NET LAB</a></h1>
+                                  </div><!-- /header-first -->
+  
+          <div id="header-middle">
+                      </div><!-- /header-middle -->
+      
+          <div id="header-last">
+                      </div><!-- /header-last -->
+      
+        </div><!-- /header -->
+      </div><!-- /header-wrapper -->
+      
+      <div id="primary-menu-wrapper" class="clearfix">
+                <div id="primary-menu">
+          <ul class="menu"><li class="expanded first active-trail"><a href="http://www.d-net.research-infrastructures.eu/node/1" title="Overview">Overview</a><ul class="menu"><li class="leaf first"><a href="http://www.d-net.research-infrastructures.eu/node/4" title="What is D-Net for?">What is D-NET for?</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/3" title="General Concepts">General Concepts</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/5" title="System Architecture">System Architecture</a></li>
+<li class="leaf last active-trail"><a href="http://www.d-net.research-infrastructures.eu/node/34" title="Distributed Applications Vs Service Oriented Architectures" class="active">Why SOA?</a></li>
+</ul></li>
+<li class="expanded"><a href="http://www.d-net.research-infrastructures.eu/node/8" title="Software">D-NET Software</a><ul class="menu"><li class="leaf first"><a href="http://www.d-net.research-infrastructures.eu/node/11" title="Enabling Area">Enabling Service Area</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/10" title="Data Area">Data Mediation Area</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/43" title="Data Conversion Area">Data Conversion Area</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/44" title="Data Storage and Indexing Area">Data Storage and Indexing Area</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/42" title="Data Curation and Enrichment Area">Data Curation and Enrichment Area</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/9" title="End User Functionality Area">Data Provision Area</a></li>
+<li class="leaf last"><a href="http://www.d-net.research-infrastructures.eu/node/32" title="Service typologies">Service patterns</a></li>
+</ul></li>
+<li class="expanded"><a href="http://www.d-net.research-infrastructures.eu/node/24" title="D-Net Framework">D-NET Resource Framework</a><ul class="menu"><li class="leaf first"><a href="http://www.d-net.research-infrastructures.eu/node/29" title="Resource registration and resource profiles">Resource registration</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/30" title="Application patterns">Application patterns</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/31" title="Resource Model">Resource Model</a></li>
+<li class="leaf last"><a href="http://www.d-net.research-infrastructures.eu/node/33" title="Service Orchestration and blackboard protocol">Blackboard protocol</a></li>
+</ul></li>
+<li class="expanded"><a href="http://www.d-net.research-infrastructures.eu/node/12" title="Community">Community</a><ul class="menu"><li class="leaf first"><a href="http://www.d-net.research-infrastructures.eu/node/15" title="Sponsors">Technical Partners</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/22" title="D-Net Installations">D-NET Installations</a></li>
+<li class="leaf last"><a href="http://www.d-net.research-infrastructures.eu/node/7" title="Publications">Publications</a></li>
+</ul></li>
+<li class="expanded"><a href="http://www.d-net.research-infrastructures.eu/node/16" title="Getting Started">Getting Started</a><ul class="menu"><li class="leaf first"><a href="http://www.d-net.research-infrastructures.eu/node/41" title="Downlaod">Download</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/18" title="Installation">Installation</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/20" title="License">License</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/40" title="Documentation">Documentation</a></li>
+<li class="collapsed last"><a href="http://www.d-net.research-infrastructures.eu/node/37" title="FAQ">FAQ</a></li>
+</ul></li>
+<li class="expanded last"><a href="http://www.d-net.research-infrastructures.eu/node/36" title="DRIVER Project and Infrastructure">DRIVER Project</a><ul class="menu"><li class="leaf first last"><a href="http://www.d-net.research-infrastructures.eu/node/35" title="DRIVER D-NET API key">DRIVER D-NET API key</a></li>
+</ul></li>
+</ul>        </div><!-- /primary_menu -->
+              </div><!-- /primary-menu-wrapper -->
+
+      <div id="preface">
+                <div id="preface-wrapper" class="prefaces-3 clearfix">
+                  
+                    <div id="preface-first" class="column">
+            
+<!-- start block.tpl.php -->
+<div class="block-wrapper odd">
+        
+        <div id="block-block-4" class="block block-block">
+                    <div class="content">
+            <p><img alt="" src="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/d-netAgain.png" height="210" width="240"></p>
+          </div>
+        </div>
+  
+    
+</div>
+<!-- /end block.tpl.php -->
+          </div><!-- /preface-first -->
+          
+                    <div id="preface-middle" class="column">
+            
+<!-- start block.tpl.php -->
+<div class="block-wrapper odd">
+        
+        <div id="block-block-5" class="block block-block">
+                                <h2 class="title block-title pngfix">Getting Started</h2>
+                    <div class="content">
+            <p><a href="http://www.d-net.research-infrastructures.eu/node/41">Download</a><br>
+<a href="http://www.d-net.research-infrastructures.eu/?q=node/18">Installation</a><br>
+<a href="http://www.d-net.research-infrastructures.eu/?q=node/20">License</a></p>
+          </div>
+        </div>
+  
+    
+</div>
+<!-- /end block.tpl.php -->
+          </div><!-- /preface-middle -->
+          
+                    <div id="preface-last" class="column">
+            
+<!-- start block.tpl.php -->
+<div class="block-wrapper odd">
+        
+        <div id="block-block-3" class="block block-block">
+                                <h2 class="title block-title pngfix">Overview</h2>
+                    <div class="content">
+            <p><a href="http://www.d-net.research-infrastructures.eu/?q=node/3">General Concepts</a><br>
+<a href="http://www.d-net.research-infrastructures.eu/?q=node/5">System Architecture</a><br>
+<a href="http://www.d-net.research-infrastructures.eu/?q=node/6">Resource Model</a><br>
+<a href="http://www.d-net.research-infrastructures.eu/?q=node/7">Publications</a></p>
+          </div>
+        </div>
+  
+    
+</div>
+<!-- /end block.tpl.php -->
+          </div><!-- /preface-last -->
+                  </div><!-- /preface-wrapper -->
+              </div><!-- /preface -->
+
+      <div id="main-wrapper">
+        <div id="main" class="clearfix">
+          
+                    <div id="breadcrumb">
+            <div class="breadcrumb"><a href="http://www.d-net.research-infrastructures.eu/">Home</a></div>          </div><!-- /breadcrumb -->
+                  
+                    <div id="sidebar-first">
+            
+<!-- start block.tpl.php -->
+<div class="block-wrapper odd">
+     <!-- see preprocess_block() -->
+  <div class="rounded-block">
+    <div class="rounded-block-top-left"></div>
+    <div class="rounded-block-top-right"></div>
+    <div class="rounded-outside">
+      <div class="rounded-inside">
+        <p class="rounded-topspace"></p>
+        
+        <div id="block-menu-primary-links" class="block block-menu">
+                                <div class="block-icon pngfix"></div>
+                      <h2 class="title block-title pngfix">Main Menu</h2>
+                    <div class="content">
+            <ul class="menu"><li class="expanded first active-trail"><a href="http://www.d-net.research-infrastructures.eu/node/1" title="Overview">Overview</a><ul class="menu"><li class="leaf first"><a href="http://www.d-net.research-infrastructures.eu/node/4" title="What is D-Net for?">What is D-NET for?</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/3" title="General Concepts">General Concepts</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/5" title="System Architecture">System Architecture</a></li>
+<li class="leaf last active-trail"><a href="http://www.d-net.research-infrastructures.eu/node/34" title="Distributed Applications Vs Service Oriented Architectures" class="active">Why SOA?</a></li>
+</ul></li>
+<li class="expanded"><a href="http://www.d-net.research-infrastructures.eu/node/8" title="Software">D-NET Software</a><ul class="menu"><li class="leaf first"><a href="http://www.d-net.research-infrastructures.eu/node/11" title="Enabling Area">Enabling Service Area</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/10" title="Data Area">Data Mediation Area</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/43" title="Data Conversion Area">Data Conversion Area</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/44" title="Data Storage and Indexing Area">Data Storage and Indexing Area</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/42" title="Data Curation and Enrichment Area">Data Curation and Enrichment Area</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/9" title="End User Functionality Area">Data Provision Area</a></li>
+<li class="leaf last"><a href="http://www.d-net.research-infrastructures.eu/node/32" title="Service typologies">Service patterns</a></li>
+</ul></li>
+<li class="expanded"><a href="http://www.d-net.research-infrastructures.eu/node/24" title="D-Net Framework">D-NET Resource Framework</a><ul class="menu"><li class="leaf first"><a href="http://www.d-net.research-infrastructures.eu/node/29" title="Resource registration and resource profiles">Resource registration</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/30" title="Application patterns">Application patterns</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/31" title="Resource Model">Resource Model</a></li>
+<li class="leaf last"><a href="http://www.d-net.research-infrastructures.eu/node/33" title="Service Orchestration and blackboard protocol">Blackboard protocol</a></li>
+</ul></li>
+<li class="expanded"><a href="http://www.d-net.research-infrastructures.eu/node/12" title="Community">Community</a><ul class="menu"><li class="leaf first"><a href="http://www.d-net.research-infrastructures.eu/node/15" title="Sponsors">Technical Partners</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/22" title="D-Net Installations">D-NET Installations</a></li>
+<li class="leaf last"><a href="http://www.d-net.research-infrastructures.eu/node/7" title="Publications">Publications</a></li>
+</ul></li>
+<li class="expanded"><a href="http://www.d-net.research-infrastructures.eu/node/16" title="Getting Started">Getting Started</a><ul class="menu"><li class="leaf first"><a href="http://www.d-net.research-infrastructures.eu/node/41" title="Downlaod">Download</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/18" title="Installation">Installation</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/20" title="License">License</a></li>
+<li class="leaf"><a href="http://www.d-net.research-infrastructures.eu/node/40" title="Documentation">Documentation</a></li>
+<li class="collapsed last"><a href="http://www.d-net.research-infrastructures.eu/node/37" title="FAQ">FAQ</a></li>
+</ul></li>
+<li class="expanded last"><a href="http://www.d-net.research-infrastructures.eu/node/36" title="DRIVER Project and Infrastructure">DRIVER Project</a><ul class="menu"><li class="leaf first last"><a href="http://www.d-net.research-infrastructures.eu/node/35" title="DRIVER D-NET API key">DRIVER D-NET API key</a></li>
+</ul></li>
+</ul>          </div>
+        </div>
+  
+          <p class="rounded-bottomspace"></p>
+      </div><!-- /rounded-inside -->
+    </div>
+    <div class="rounded-block-bottom-left"></div>
+    <div class="rounded-block-bottom-right"></div>
+  </div><!-- /rounded-block -->
+    
+</div>
+<!-- /end block.tpl.php -->
+
+<!-- start block.tpl.php -->
+<div class="block-wrapper even">
+     <!-- see preprocess_block() -->
+  <div class="rounded-block">
+    <div class="rounded-block-top-left"></div>
+    <div class="rounded-block-top-right"></div>
+    <div class="rounded-outside">
+      <div class="rounded-inside">
+        <p class="rounded-topspace"></p>
+        
+        <div id="block-user-1" class="block block-user">
+                                <div class="block-icon pngfix"></div>
+                      <h2 class="title block-title pngfix">Navigation</h2>
+                    <div class="content">
+            <ul class="menu"><li class="leaf first last"><a href="http://www.d-net.research-infrastructures.eu/login" title="">Login</a></li>
+</ul>          </div>
+        </div>
+  
+          <p class="rounded-bottomspace"></p>
+      </div><!-- /rounded-inside -->
+    </div>
+    <div class="rounded-block-bottom-left"></div>
+    <div class="rounded-block-bottom-right"></div>
+  </div><!-- /rounded-block -->
+    
+</div>
+<!-- /end block.tpl.php -->
+          </div><!-- /sidebar-first -->
+          
+          <div id="content-wrapper">
+
+            
+                        
+            <div id="content">
+              <a name="main-content" id="main-content"></a>
+              
+              
+              <div id="content-inner">
+                
+                              
+		 	            <h1 class="title">
+        	 Distributed Applications Vs Service Oriented Architectures	            </h1>
+         	                 
+
+
+                <div id="content-content">
+                  
+<!-- start node.tpl.php -->
+<div id="node-34" class="node odd full-node node-type-page">
+  
+  
+  <div class="meta">
+      </div>
+
+  <div class="content">
+    <p class="rtejustify">Service-based distributed applications are 
+based on strong agreements on where the services are located and what 
+kind of functionalities they provide. For example, in the following 
+figure, a user interface service sends a query to a serch service, which
+ in turn decides which index service can better reply to the query. The 
+search service hardcodes the references to the two index services. The 
+drawback of this choice is that whenever an instance of an&nbsp;Index 
+Service has to be added/removed from the architecture, the status of the
+ search service needs to be manually modified. In turn, this means that 
+it is hard for multiple organizations to cooperate over the same 
+distributed system.</p>
+<p class="rtecenter"><img src="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/DistApplication.jpg" alt="" height="144" width="400"></p>
+<p>&nbsp;</p>
+<p class="rtejustify">In a Service-Oriented Architectures services can 
+join (registering a profile) or leave (unregistering the profile) the 
+system anytime; e.g., peer to peer applications. To this aim SOAs are 
+operated by so-called Enabling Services, which are in charge of keeping 
+the map of available services and offer <em>discovery </em> mechanisms. 
+Typically, services are designed to discover on demand and interact with
+ services of given types (i.e. providing certain APIs and relative 
+functionalities), rather than to refer to known instances of services. 
+The figure below shows how the search scenario above can be interpreted 
+in a SOA.</p>
+<p>&nbsp;</p>
+<p><img src="Distributed%20Applications%20Vs%20Service%20Oriented%20Architectures%20__pliki/SOA.jpg" alt="" height="250" width="700"></p>
+<p class="rtejustify">In this scenario, both User Interface Services and
+ Search Services must dynamically look up the Enabling Services to find 
+the search services and the index services, respectively, that are 
+available for their use. Note how the introduction of a new search 
+service in the architecture (the one on the right), is followed by: 
+registration of the service, look up of the status to automatically 
+configure the service, and finally notification of the registration of 
+the new services to the user interface, which subscribed to such events.
+ By subscribing to registration and unregistration of a type of service 
+(e.g. search service), the consuming service (e.g. user interface 
+service) can avoid "polling", i.e. repeated look up operations to the 
+Enabling Services to update the internal status.</p>
+  </div>
+
+    
+  
+  </div>
+<!-- /#node-34 -->
+                </div>
+              </div><!-- /content-inner -->
+            </div><!-- /content -->
+
+                      </div><!-- /content-wrapper -->
+          
+          
+                    
+          
+                    <div id="footer" class="clearfix">
+                                    
+<!-- start block.tpl.php -->
+<div class="block-wrapper odd">
+        
+        <div id="block-block-8" class="block block-block">
+                    <div class="content">
+            <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24837644-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>          </div>
+        </div>
+  
+    
+</div>
+<!-- /end block.tpl.php -->
+                                  </div><!-- /footer -->
+                    
+        </div><!-- /main -->
+      </div><!-- /main-wrapper -->
+    </div><!-- /page -->
+      
+
+</body></html>

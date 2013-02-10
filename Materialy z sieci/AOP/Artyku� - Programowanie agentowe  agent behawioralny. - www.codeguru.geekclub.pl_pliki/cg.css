@@ -1,0 +1,148 @@
+﻿#static {background-color: #fff;}
+
+/*a {color:#656262;}
+a:hover {color: #31a6ea;}
+a.brown {color: #553a96;}
+a.brown:hover {color: #ff6600;}
+span.gray {color: #999999; font-size: 14px;}
+.news span.gray {color: #656262; font-size: 11px;} 
+.news h4 a{color: #656262; font-size: 13px;} 
+.news h4 p span{color: #656262; font-size: 11px;} */
+
+#top .logo {background: url(../_img/logoMain.png) no-repeat center bottom; height: 83px; width: 225px; padding-top: 29px; float: left; margin-bottom: 10px; position: relative;}
+#top .logoWSS {background: url(../_img/logoMain1.png) no-repeat center bottom; height: 83px; width: 225px; padding-top: 29px; float: left; margin-bottom: 10px; position: relative;}
+#top .logoCG {background: url(../_img/logoMain2.png) no-repeat center bottom; height: 83px; width: 225px; padding-top: 29px; float: left; margin-bottom: 10px; position: relative;}
+#top .logoUX {background: url(../_img/logoMain3.png) no-repeat center bottom; height: 83px; width: 225px; padding-top: 29px; float: left; margin-bottom: 10px; position: relative;}
+
+#top .logoArrow {position: absolute; bottom: 15px; left: 90px;}
+
+/*
+#top .actions {color: #333333; text-shadow: 1px 1px 0px #ffffff;}
+#top .actions ul li a {color: #9d3300;}
+#top .actions ul li a:hover {color: #ff6600;}
+#top .actions ul li a span {color: #333333;}
+#top .actions ul li a.logout {border-left: 1px solid #8fa8b4; font-weight: bold;}
+
+#top .actions fieldset input[type=text] {border: 1px solid #ececec; border-top-color: #9c9c9c; border-right: none; border-radius: 3px 0 0 3px; -moz-border-radius: 3px 0 0 3px; -webkit-border-radius: 3px 0 0 3px;}
+#top .actions fieldset input[type=submit] {background-image: url(../_img/cgSearch.gif); border-radius: 0 3px 3px 0; -moz-border-radius: 0 3px 3px 0; -webkit-border-radius: 0 3px 3px 0; border: 0; font-size: 14px; color: #ffffff; text-shadow: -1px -1px 0px #303030;}
+*/
+/*#mainMenu ul li span {display: block; height: 100%; background: url(../_img/menuBorderDark.png) no-repeat right center;}
+#mainMenu ul li a {display: block; font-size: 14px; color: #ffffff; background-position: 0 0; text-shadow: -1px -1px 0px #303030;}
+#mainMenu ul li a:hover {background-position: 0 -38px;}
+#mainMenu ul li a.active {background: #ff6600; box-shadow: inset 0 3px 4px 1px #9a511d; -moz-box-shadow: inset 0 3px 4px 1px #9a511d; -webkit-box-shadow: inset 0 3px 4px 1px #9a511d; color: #102b2a; text-shadow: none;}
+
+#mainMenu ul li a.news {width: 137px;}
+#mainMenu ul li a.knowlege {width: 142px;}
+#mainMenu ul li a.board {width: 109px;}
+#mainMenu ul li a.events {width: 143px;}
+#mainMenu ul li a.groups {width: 108px;}
+#mainMenu ul li a.users {width: 147px;}
+#mainMenu ul li a.club {width: 138px; border-radius: 0 3px 3px 0; -moz-border-radius: 0 3px 3px 0; -webkit-border-radius: 0 3px 3px 0}
+#mainMenu ul li a.inspirations {width: 105px;}
+
+h2 {color: #066b9a; border-bottom: 1px solid #e5e5e5;}
+
+.simpleUserBox .specialRank {background-color: #9d3300; }
+.simpleUserBox .pointsRank .pointsRankInner  {background-image: url('../_img/bg-points-rank-cg.png');}
+
+.leftCol {width: 690px; margin-right: 40px;}
+
+.leftCol .publicProfile h3 {color: #333333;}
+.leftCol .publicProfile h3 .online {color: #00cc33;}
+.leftCol .publicProfile dl dt {color: #999999;}
+.leftCol .publicProfile dl dd {color: #333333;}
+
+.fontSizer a.active {color: #31a6ea;}
+
+.userSettings .typePicker {width: 240px;}
+
+.body .fancyboxPage, .body .title {color: #066b9a;}
+
+.addonsWrapper {border-bottom: 1px solid #e5e5e5;}
+
+.headlineAddons ul li a {background-position: 0 0; color: #ffffff;}
+.headlineAddons ul li a:hover {background-position: 0 -22px; color: #ffffff; text-decoration: none;}
+.headlineAddons ul li a.active {background: #ffffff; border: 1px solid #e5e5e5; border-bottom: none; margin-top: -5px; padding-top: 4px; padding-bottom: 1px; color: #000000; margin-left: 0px; margin-right: -1px; *zoom: 1;}
+.headlineAddons ul li a.active:hover {color: #066b9a;}
+
+.filtersWrapper > div:hover a {text-decoration: underline; color: #31a6ea;}
+
+.rightCol .tags ul li a, .mainCol .allTags li a {color: #31a6ea;}
+.rightCol .tags ul li a:hover, .mainCol .allTags li a:hover {color: #066b9a; text-decoration: none;}
+.rightCol .tags ul li a span, .mainCol .allTags li a span {color: #999999;}
+
+.contextTag, .contextTag a {color: #31a6ea;}
+.contextTag:hover, .contextTag a:hover {color: #066b9a;}
+
+.roundButton.orange {background-position: 0 0; color: #ffffff; text-shadow: -1px -1px 0px #303030;}
+.roundButton.orange:hover {background-position: 0 -25px;}
+.roundButton.blue {background-position: 0 -50px; color: #ffffff; text-shadow: -1px -1px 0px #303030;}
+.roundButton.blue:hover {background-position: 0 -75px;}
+.roundButton.white {background-position: 0 -100px; color: #066b9a; text-shadow: 1px 1px 0px #ffffff; border: 1px solid #3f9eca; height: 23px;}
+.roundButton.white:hover {background-position: 0 -123px;}
+.roundButton.sand {background-position: 0 -146px; color: #78550e; text-shadow: 1px 1px 0px #ffffff; border: 1px solid #9e9884; height: 23px;}
+.roundButton.sand:hover {background-position: 0 -169px;}
+.roundButton.btForum {background-position: 0 -0px; color: #ffffff; text-shadow: -1px -1px 0px #303030;}
+.roundButton.btForum:hover {background-position: 0 -25px;}
+
+.K2Pager span.pageSelected {color: #31a6ea;}
+/*
+#footer {color: #999999; background-color: #e9e9e9; padding:1px 0 0 0;}
+#footer a {color: #31a6ea;}
+#footer .top, #footer .middle {border-bottom: 1px solid #cccccc;}
+#footer .top span {color: #31a6ea; float: left;}
+#footer .top ul li, #footer .middle ul li  {border-left: 1px solid #ededed;}
+*/
+
+/* FOOTER */
+.footer {padding-top:16px;margin-top:10px;overflow:hidden;font-family: Segoe UI, Tahoma, Arial, Verdana, sans-serif;min-height: 55px;}    
+.footer ul {overflow:hidden;margin:0;}
+.footer li {float:left;margin-right:5px;list-style-image:none;color:#848484; margin-bottom:5px;}
+.footer li:hover {list-style-image:none;}
+.footer li a {display:block;padding:0 2px;color:#000;line-height:16px;}
+.footer li a:hover {text-decoration:underline!important;}
+.footer .links {float:left;width:850px;}
+.footer .links li {float:right;}
+.footer .row {margin:0;}
+.footer .copyright {float:right;width:110px;padding-right:0;margin-top:2px;color:#000;}
+.footer .copyright a {display:block;background:transparent url('../_img/microsoft_logo_90x16.png') no-repeat;width:107px;height:20px;text-indent:-9999px;text-align:left;}
+.footer .azure { position: absolute; }
+
+
+#logOn label {}
+#logOn .login {cursor: pointer; height: 25px; padding: 0 30px; color: #ffffff; text-shadow: -1px -1px 0px #303030; border: 0; vertical-align: middle; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; background-image: url(../_img/cgBtnOrange.gif)}
+#logOn .login:hover {background-image: url(../_img/cgBtnOrangeHover.gif)}
+
+.staticPagesMenu li {background-color: #1d6f95;}
+.staticPagesMenu li a {color: #ffffff;}
+.staticPagesMenu li:hover {background-color: #183c59;}
+.staticPagesMenu li.active {border: 1px solid #E5E5E5; background-color: #ffffff;}
+.staticPagesMenu li.active a {color: #000000;}
+.staticPagesMenu li.active:hover a {color: #066b9a;}
+
+.eventCalendar .oneDay,
+.eventCalendar .oneDayEmpty {}
+
+.postUserButtons .roundButton, .roundButton.watch {background:transparent url('../_img/BGbuttons.png') 0 -100px repeat-x;border:1px solid #3f9eca; color:#066b9a;text-shadow:0 1px 0 #FFF;line-height:22px;height:23px;}
+.postUserButtons .roundButton:hover, .roundButton.watch:hover {background-position:0 -123px;}
+
+.postAdminButtons .roundButton {background:transparent url('../_img/BGbuttons.png') 0 -146px repeat-x;border:1px solid #9e9884; color:#6d4f1f;text-shadow:0 1px 0 #FFF;line-height:22px;height:23px;}
+.postAdminButtons .roundButton:hover {background-position:0 -169px;}
+.roundButton.remove {color:#FF0000;}
+.postMainButtons .roundButton.blue {/*border:1px solid #095b81;*/}
+
+/* POST SOLUTION */
+.postSolution .divPostContent {}
+.postSolution .divPostContent span.answerArrow {}
+
+/* CLUB ONLINE */
+.rewardCategoryName a, profileCOActivityList a, .profileCOOrderHistory a, .rewardPageInfo a {}
+.profileCOActivityList h3, .profileCOActivityList h3 a, .profileCOOrderHistory h3 a {}
+
+ul.forumTabs.huge li a {background-position: 0 -60px;}
+ul.forumTabs.huge li a:hover {background-position: 0 -90px;}
+
+.clearfix
+{
+	clear:both;
+}

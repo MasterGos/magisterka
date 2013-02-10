@@ -1,0 +1,1899 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+	<title>How to Implement Load Balancing to Distribute Workload - CodeProject</title> 
+	<link type="text/css" rel="stylesheet" href="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/Main.css">
+
+	
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="Description" content="Simple example showing how to implement the load balancing if you need to increase the performance by distributing the workload across multiple services.; Author: Ondrej_Uzovic; Updated: 22 Jan 2012; Section: Threads, Processes &amp; IPC; Chapter: General Programming; Updated: 22 Jan 2012">
+<meta name="Keywords" content="C#, .NET,Threads, Processes &amp; IPC,General Programming,Free source code, tutorials">
+<meta name="Author" content="Ondrej_Uzovic">
+<meta name="Rating" content="General">
+<meta name="Robots" content="index, follow, NOODP">
+<meta name="Revisit-After" content="1 days">
+<meta name="application-name" content="CodeProject">
+
+<meta name="msapplication-navbutton-color" content="#FF9900">
+<meta name="msapplication-tooltip" content="Your Development Resource.">
+<meta name="msapplication-starturl" content="http://www.codeproject.com/?pinned=true">
+<meta name="msapplication-task" content="name=Homepage;action-uri=http://www.codeproject.com/;icon-uri=http://www.codeproject.com/favico.ico">
+<meta name="msapplication-task" content="name=Latest Articles;action-uri=http://www.codeproject.com/script/articles/Latest.aspx;icon-uri=http://www.codeproject.com/favico.ico">
+<meta name="msapplication-task" content="name=Questions and Answers;action-uri=http://www.codeproject.com/script/Answers/;icon-uri=http://www.codeproject.com/favico.ico">
+<meta name="msapplication-task" content="name=The Lounge;action-uri=http://www.codeproject.com/Lounge.aspx;icon-uri=http://www.codeproject.com/favico.ico">
+
+<link rel="dns-prefetch" href="http://ajax.googleapis.com/"> 
+<link rel="canonical" href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work">
+
+
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - All Topics" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=1">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - MFC/C++" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=2">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - C#" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=3">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - VB.NET" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=6">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - Mobile" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=18">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - ASP.NET" href="http://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=4">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Lounge Postings" href="http://www.codeproject.com/webservices/LoungeRSS.aspx">
+<link rel="search" type="application/opensearchdescription+xml" title="CodeProject" href="http://www.codeproject.com/info/OpenSearch.xml">
+
+	<!-- base href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work" -->
+	<link rel="icon" href="http://www.codeproject.com/favicon.ico" type="image/ico">
+<link rel="shortcut icon" href="http://www.codeproject.com/favicon.ico" type="image/ico">
+<link rel="apple-touch-icon" href="http://www.codeproject.com/images/FavIcon-Apple.png" type="image/png">
+<script async="" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/cbgapi.loaded_0"></script><script src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/widgets.js" id="twitter-wjs"></script><script gapi_processed="true" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/plusone.js" async="" type="text/javascript"></script><script src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/all.js" id="facebook-jssdk"></script><script src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/beacon.js" async=""></script><script type="text/javascript" language="Javascript">//<![CDATA[
+function defrm () { /* thanks twitter */ document.write = ''; window.top.location = window.self.location;  setTimeout(function() { document.body.innerHTML = ''; }, 0);  window.self.onload = function(evt) { document.body.innerHTML = ''; }; }if (window.top !== window.self) {  try {  if (window.top.location.host) { /* will throw */ } else { defrm(); /* chrome */ }  } catch (ex) { defrm(); /* everyone else */ } }if (typeof(DemoUrl)!='undefined')   document.write(unescape('%3Cme')+'ta http'+'-equiv="re'+'fresh"                  con'+'tent="1;url='+DemoUrl+unescape('"%3CE'));
+(function () {var lqa = document.createElement('script'); lqa.type = 'text/javascript'; lqa.async = true; lqa.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.lakequincy.com/m.min.js?dt=2.6.130206.1';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(lqa);})();
+
+//]]>
+</script><script src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/m.js" async="" type="text/javascript"></script>
+
+	
+<script type="text/javascript">
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "13507173" });
+  (function() {
+	var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+	s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+	el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=13507173&cv=2.0&cj=1" id="ctl00_Auditing_ComScore" />
+</noscript>
+
+
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-1735123-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_setDomainName', 'www.codeproject.com']);
+	_gaq.push(['_setSessionTimeout', '1200']); 
+
+	(function () {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})(); 
+</script><script src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/ga.js" async="" type="text/javascript"></script>
+
+
+<style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_invisible{display:none}
+.fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yA/x/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/y6/x/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
+.fb_dialog_close_icon:hover{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yA/x/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/y6/x/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yA/x/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/y6/x/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+/* @noflip */
+.fb_dialog_top_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_top_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+/* @noflip */
+.fb_dialog_bottom_left{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+/* @noflip */
+.fb_dialog_bottom_right{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yD/x/Cou7n-nqK52.gif)
+no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+body.fb_hidden{-webkit-transform:none;height:100%;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100%
+}
+.fb_dialog.fb_dialog_mobile.loading{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yc/x/3rhSv5V8j3o.gif)
+white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay.hidden{display:none}
+.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
+.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}
+.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%
+}
+.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px
+}
+.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100%, from(#4966A6),
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
+.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
+.fb_dialog_content .dialog_content{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yJ/x/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:left}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{position:relative;display:-moz-inline-block;display:inline-block}
+.fb_iframe_widget iframe{position:absolute}
+.fb_iframe_widget_lift{z-index:1}
+.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify;vertical-align:text-bottom}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_fluid{display:inline}
+.fb_iframe_widget_fluid span{width:100%}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(http://static.ak.fbcdn.net/rsrc.php/v2/yJ/x/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_button_simple,
+.fb_button_simple_rtl{background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yH/x/eIpbnVKI9lR.png);background-repeat:no-repeat;cursor:pointer;outline:none;text-decoration:none}
+.fb_button_simple_rtl{background-position:right 0}
+.fb_button_simple .fb_button_text{margin:0 0 0 20px;padding-bottom:1px}
+.fb_button_simple_rtl .fb_button_text{margin:0 10px 0 0}
+a.fb_button_simple:hover .fb_button_text,
+a.fb_button_simple_rtl:hover .fb_button_text,
+.fb_button_simple:hover .fb_button_text,
+.fb_button_simple_rtl:hover .fb_button_text{text-decoration:underline}
+.fb_button,
+.fb_button_rtl{background:#29447e url(http://static.ak.fbcdn.net/rsrc.php/v2/yl/x/FGFbc80dUKj.png);background-repeat:no-repeat;cursor:pointer;display:inline-block;padding:0 0 0 1px;text-decoration:none;outline:none}
+.fb_button .fb_button_text,
+.fb_button_rtl .fb_button_text{background:#5f78ab url(http://static.ak.fbcdn.net/rsrc.php/v2/yl/x/FGFbc80dUKj.png);border-top:solid 1px #879ac0;border-bottom:solid 1px #1a356e;color:#fff;display:block;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-weight:bold;padding:2px 6px 3px 6px;margin:1px 1px 0 21px;text-shadow:none}
+a.fb_button,
+a.fb_button_rtl,
+.fb_button,
+.fb_button_rtl{text-decoration:none}
+a.fb_button:active .fb_button_text,
+a.fb_button_rtl:active .fb_button_text,
+.fb_button:active .fb_button_text,
+.fb_button_rtl:active .fb_button_text{border-bottom:solid 1px #29447e;border-top:solid 1px #45619d;background:#4f6aa3;text-shadow:none}
+.fb_button_xlarge,
+.fb_button_xlarge_rtl{background-position:left -60px;font-size:24px;line-height:30px}
+.fb_button_xlarge .fb_button_text{padding:3px 8px 3px 12px;margin-left:38px}
+a.fb_button_xlarge:active{background-position:left -99px}
+.fb_button_xlarge_rtl{background-position:right -268px}
+.fb_button_xlarge_rtl .fb_button_text{padding:3px 8px 3px 12px;margin-right:39px}
+a.fb_button_xlarge_rtl:active{background-position:right -307px}
+.fb_button_large,
+.fb_button_large_rtl{background-position:left -138px;font-size:13px;line-height:16px}
+.fb_button_large .fb_button_text{margin-left:24px;padding:2px 6px 4px 6px}
+a.fb_button_large:active{background-position:left -163px}
+.fb_button_large_rtl{background-position:right -346px}
+.fb_button_large_rtl .fb_button_text{margin-right:25px}
+a.fb_button_large_rtl:active{background-position:right -371px}
+.fb_button_medium,
+.fb_button_medium_rtl{background-position:left -188px;font-size:11px;line-height:14px}
+a.fb_button_medium:active{background-position:left -210px}
+.fb_button_medium_rtl{background-position:right -396px}
+.fb_button_text_rtl,
+.fb_button_medium_rtl .fb_button_text{padding:2px 6px 3px 6px;margin-right:22px}
+a.fb_button_medium_rtl:active{background-position:right -418px}
+.fb_button_small,
+.fb_button_small_rtl{background-position:left -232px;font-size:10px;line-height:10px}
+.fb_button_small .fb_button_text{padding:2px 6px 3px;margin-left:17px}
+a.fb_button_small:active,
+.fb_button_small:active{background-position:left -250px}
+.fb_button_small_rtl{background-position:right -440px}
+.fb_button_small_rtl .fb_button_text{padding:2px 6px;margin-right:18px}
+a.fb_button_small_rtl:active{background-position:right -458px}
+.fb_share_count_wrapper{position:relative;float:left}
+.fb_share_count{background:#b0b9ec none repeat scroll 0 0;color:#333;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;text-align:center}
+.fb_share_count_inner{background:#e8ebf2;display:block}
+.fb_share_count_right{margin-left:-1px;display:inline-block}
+.fb_share_count_right .fb_share_count_inner{border-top:solid 1px #e8ebf2;border-bottom:solid 1px #b0b9ec;margin:1px 1px 0 1px;font-size:10px;line-height:10px;padding:2px 6px 3px;font-weight:bold}
+.fb_share_count_top{display:block;letter-spacing:-1px;line-height:34px;margin-bottom:7px;font-size:22px;border:solid 1px #b0b9ec}
+.fb_share_count_nub_top{border:none;display:block;position:absolute;left:7px;top:35px;margin:0;padding:0;width:6px;height:7px;background-repeat:no-repeat;background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yP/x/bSOHtKbCGYI.png)}
+.fb_share_count_nub_right{border:none;display:inline-block;padding:0;width:5px;height:10px;background-repeat:no-repeat;background-image:url(http://static.ak.fbcdn.net/rsrc.php/v2/yL/x/i_oIVTKMYsL.png);vertical-align:top;background-position:right 5px;z-index:10;left:2px;margin:0 2px 0 0;position:relative}
+.fb_share_no_count{display:none}
+.fb_share_size_Small .fb_share_count_right .fb_share_count_inner{font-size:10px}
+.fb_share_size_Medium .fb_share_count_right .fb_share_count_inner{font-size:11px;padding:2px 6px 3px;letter-spacing:-1px;line-height:14px}
+.fb_share_size_Large .fb_share_count_right .fb_share_count_inner{font-size:13px;line-height:16px;padding:2px 6px 4px;font-weight:normal;letter-spacing:-1px}
+.fb_share_count_hidden .fb_share_count_nub_top,
+.fb_share_count_hidden .fb_share_count_top,
+.fb_share_count_hidden .fb_share_count_nub_right,
+.fb_share_count_hidden .fb_share_count_right{visibility:hidden}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fb_edge_widget_with_comment{position:relative;*z-index:1000}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50% 50%;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
+.FB_Loader{margin-top:0}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+/* @noflip */
+.fbpluginrecommendationsbarleft{left:10px}
+/* @noflip */
+.fbpluginrecommendationsbarright{right:10px}</style></head>	
+
+<body data-twttr-rendered="true" class="firefox firefox18">
+
+<a href="#Main"><img alt="Click here to Skip to main content" class="access-link" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t.gif"></a>
+
+
+
+
+
+<div class="page-background">
+
+	
+	
+
+	
+
+	<table id="ctl00_Bn" style="width:100%;height:135px" class="banner fixed" cellpadding="0" cellspacing="0">
+	<tbody><tr valign="bottom">
+		<td class="blank-background" style="height:31px">&nbsp;</td>
+		<td class="blank-background" rowspan="3" style="width:250px;height:135px"><a href="http://www.codeproject.com/"><img id="ctl00_Logo" tabindex="1" title="CodeProject" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/logo250x135.gif" alt="Home" style="height:135px;width:250px;border-width:0px;"></a></td>
+		<td class="blank-background align-right" style="width:728px;height:31px">
+
+<div class="container memberbar clearfix">
+
+	<div id="ctl00_MemberMenu_GenInfo" class="float-left">9,643,436 members (43,334 online) &nbsp; &nbsp; </div>
+
+	<div class="float-left">
+		
+	</div>
+
+	<div class="float-right">
+		
+
+		
+
+			<script type="text/javascript">//<!--
+			function doSubmit(secure)
+			{
+				if (secure)
+					document.subForm.action = "https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work"
+				else
+					document.subForm.action = "https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work"
+				document.subForm.submit();
+				return true;
+			}//-->
+			</script>
+
+			<a name="SignUp"></a>
+			<span class="member-signin tooltip">
+				<span><a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work">Sign in</a></span>
+
+				<div class="tooltip-flyout">
+					<form name="subForm" id="subForm" action="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work" method="post" class="tight">
+
+						
+						<input id="FormName" name="FormName" value="MenuBarForm" type="hidden">
+
+						<div>Email</div>
+						<div><input class="small-text" name="Email" id="Email" type="email"></div>
+						<div>Password</div>
+						<div><input class="small-text" name="Password" id="Password" type="password"></div>
+						<div class="action">
+							<script type="text/javascript">
+function Join(){document.location.href='http://www.codeproject.com/script/Membership/Modify.aspx';return false;}
+document.write('<input type="button" class="create" onclick="return Join();" value="Join"');
+document.write('<input type="hidden" name="fld_quicksign" value="true" />');
+</script><input class="create" onclick="return Join();" value="Join" <input="" name="fld_quicksign" type="button">
+							<input value="Sign in" class="signin" onclick="return doSubmit(false);" type="submit">
+						</div>
+
+						<div class="container">
+							
+							&nbsp;
+							<a id="ctl00_MemberMenu_SendPassword" class="forgot float-right" href="http://www.codeproject.com/script/Membership/SendPassword.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work">Forgot your password?</a>
+						</div>
+					</form>
+
+					<hr class="divider-dark">
+
+					<a title="Sign in using Facebook" class="oauth" href="http://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Facebook" style="vertical-align:bottom;padding-right:3px"><img title="Sign in using Facebook" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/facebook.png" alt="" style="border-width:0px;"></a><a title="Sign in using Google" class="oauth" href="http://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Google" style="vertical-align:bottom;padding-right:3px"><img title="Sign in using Google" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/google-plus.png" alt="" style="border-width:0px;"></a>
+				</div>
+		
+	</span></div>
+</div></td>
+		<td class="blank-background" style="height:31px">&nbsp;</td>
+	</tr>
+	<tr valign="middle">
+		<td class="theme1-background" style="height:94px">&nbsp;</td>
+		<td class="theme1-background ad"><div class="lqm_ad" lqm_publisher="lqm.codeproject.site" lqm_zone="ros" lqm_format="728x90" lqm_tags="C#, .NET,rating4.5"><iframe id="lqmad1" marginwidth="0" marginheight="0" frameborder="0" height="90" scrolling="no" width="728"></iframe></div></td>
+		<td class="theme1-background" style="height:94px">&nbsp;</td>
+	</tr>
+	<tr valign="top">
+		<td style="height: 10px;"></td>
+		<td style="height: 10px;" class="blank-background"></td>
+		<td style="height: 10px;"></td>
+	</tr>
+</tbody></table>
+
+
+	<a href="#Main"><img alt="Click here to Skip to main content" class="access-link" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t.gif"></a>
+
+	
+	<div id="ctl00_TPR" class="sub-headerbar fixed">
+	<table class="extended" cellpadding="0" cellspacing="0"><tbody><tr><td nowrap="nowrap">
+		
+
+<div class="navbar clearfix">
+<ul class="navmenu openable">
+
+<li><a id="ctl00_TopNavBar_Home" href="http://www.codeproject.com/">home</a>
+
+
+</li><li class=""><a id="ctl00_TopNavBar_Art" class="down selected" href="http://www.codeproject.com/script/Articles/Latest.aspx">articles</a>
+
+	<ul>
+		<li class=""><a id="ctl00_TopNavBar_ArtTopicList" class="fly" onmouseover="navBarMenu.ShowMap(this, 'ctl00_TopNavBar_MapFlyout');" href="http://www.codeproject.com/script/Content/SiteMap.aspx">Chapters and Sections<span class="has-submenu">&gt;</span></a><ul id="ctl00_TopNavBar_MapFlyout">
+			<li>
+				<div id="siteMap">
+					<img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/animated.gif" alt="loading" style="margin:150px;width:100px;height:100px;">
+				</div>
+			</li>
+			</ul>
+		</li>
+		<li><a id="ctl00_TopNavBar_ArtSearch" class="fly break" href="http://www.codeproject.com/search.aspx">Search</a></li>
+		<li><a id="ctl00_TopNavBar_ArtLatestArts" class="fly" href="http://www.codeproject.com/script/Articles/Latest.aspx?at=1,3,7">Latest Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtLatestTips" class="fly" href="http://www.codeproject.com/script/Articles/Latest.aspx?at=6">Latest Tips/Tricks</a></li>
+		<li><a id="ctl00_TopNavBar_ArtTop" class="fly" href="http://www.codeproject.com/script/Articles/TopArticles.aspx?ta_so=5">Top Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtBeginner" class="fly" href="http://www.codeproject.com/search.aspx?aidlst=152&amp;sa_us=True">Beginner Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtBlogArticles" class="fly break" href="http://www.codeproject.com/script/Articles/BlogArticleList.aspx">Technical Blogs</a></li>
+		<li><a id="ctl00_TopNavBar_ArtGuide" class="fly" href="http://www.codeproject.com/info/Submit.aspx">Posting/Update Guidelines</a></li>
+		<li><a id="ctl00_TopNavBar_ArtHelpForum" class="fly" href="http://www.codeproject.com/Forums/1641/Article-Writing.aspx">Article Help Forum</a></li>
+		<li><a id="ctl00_TopNavBar_ArtCompetition" class="fly break" href="http://www.codeproject.com/script/Awards/CurrentCompetitions.aspx?cmpTpId=1">Article Competition</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostArticle" class="fly highlight1" href="http://www.codeproject.com/script/Articles/Submit.aspx">
+			<img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/write-gr.png" height="13px" width="19px"> Submit an article or tip
+			</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostBlog" class="fly highlight2" href="http://www.codeproject.com/script/Articles/BlogFeed.aspx">
+			<img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/write-or.png" height="13px" width="19px"> Post your Blog
+			</a></li>		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+
+<li class=""><a id="ctl00_TopNavBar_Answers" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active">quick answers</a>
+	<ul>
+		<li id="ctl00_TopNavBar_AQL"><a id="ctl00_TopNavBar_ArticleQuestion" class="fly highlight1" href="#_comments">
+			<img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/write-gr.png" height="13px" width="19px"> Ask a Question about this 
+			article</a>
+		</li>
+
+		<li><a id="ctl00_TopNavBar_QAAsk" class="fly highlight2" href="http://www.codeproject.com/Questions/ask.aspx"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/write-or.png" height="13px" width="19px"> Ask a Question</a></li>
+
+		
+		<li><a id="ctl00_TopNavBar_QAUnanswered" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=unanswered">View Unanswered Questions</a></li>
+		<li><a id="ctl00_TopNavBar_QALatest" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active">View All Questions...</a></li>
+		
+				<li><a id="ctl00_TopNavBar_QATR_ctl00_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=81" style="padding-left:30px">C# questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl01_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=85" style="padding-left:30px">ASP.NET questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl02_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=842" style="padding-left:30px">VB.NET questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl03_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=308" style="padding-left:30px">C#4.0 questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl04_Tag" class="fly" href="http://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=78" style="padding-left:30px">C++ questions</a></li>
+			
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+
+<li class=""><a id="ctl00_TopNavBar_Forums" href="http://www.codeproject.com/script/Forums/List.aspx">discussions</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_MessageBoardsAll" class="fly" href="http://www.codeproject.com/script/Forums/List.aspx">All Message Boards...</a></li>
+		<li class=""><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1580997/Application-Lifecycle.aspx">Application Lifecycle<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="http://www.codeproject.com/Forums/1533717/Running-a-Business.aspx">Running a Business</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/1533716/Sales-Marketing.aspx">Sales / Marketing</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/1651/Collaboration-Beta-Testing.aspx">Collaboration / Beta Testing</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/3304/Work-Training-Issues.aspx">Work &amp; Training Issues</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/369270/Design-and-Architecture.aspx">Design and Architecture</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/12076/ASP-NET.aspx">ASP.NET</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1580226/JavaScript.aspx">JavaScript</a>
+</li>
+<li class=""><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1647/C-Cplusplus-MFC.aspx">C / C++ / MFC<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="http://www.codeproject.com/Forums/4486/ATL-WTL-STL.aspx">ATL /  WTL / STL</a></li>
+<li><a class="fly" href="http://www.codeproject.com/Forums/3785/Managed-Cplusplus-CLI.aspx">Managed C++/CLI</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1649/Csharp.aspx">C#</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1627782/Free-Tools.aspx">Free Tools</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1725/Database.aspx">Database</a>
+</li>
+<li class=""><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/186301/Hardware-Devices.aspx">Hardware &amp; Devices<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="http://www.codeproject.com/Forums/1644/System-Admin.aspx">System Admin</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1606152/Hosting-and-Servers.aspx">Hosting and Servers</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1643/Java.aspx">Java</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1650/NET-Framework.aspx">.NET Framework</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/13695/Mobile.aspx">Mobile</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1653293/VS-11-NET-4-5.aspx">VS 11 &amp; .NET 4.5</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1540733/Sharepoint.aspx">Sharepoint</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1004257/Silverlight-WPF.aspx">Silverlight / WPF</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1646/Visual-Basic.aspx">Visual Basic</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1640/Web-Development.aspx">Web Development</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="http://www.codeproject.com/Forums/1645/Site-Bugs-Suggestions.aspx">Site Bugs / Suggestions</a>
+</li>
+
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+
+
+<li class=""><a id="ctl00_TopNavBar_Features" href="http://www.codeproject.com/Feature/">features</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_Catalog" class="fly" href="http://www.codeproject.com/script/Catalog/List.aspx">Component &amp; Service Catalog</a></li>
+		<li><a id="ctl00_TopNavBar_Comps" class="fly" href="http://www.codeproject.com/script/Awards/CurrentCompetitions.aspx?cmpTpId=1&amp;awsac=true">Competitions</a></li>
+		<li><a id="ctl00_TopNavBar_News" class="fly" href="http://www.codeproject.com/script/News/List.aspx">News</a></li>
+		<li><a id="ctl00_TopNavBar_Insider" class="fly" href="http://www.codeproject.com/Feature/Insider/">The Insider Newsletter</a></li>
+		<li><a id="ctl00_TopNavBar_Newsletters" class="fly" href="http://www.codeproject.com/script/Mailouts/Archive.aspx?mtpid=1">Newsletter archive</a></li>
+		<li><a id="ctl00_TopNavBar_Surveys" class="fly" href="http://www.codeproject.com/script/Surveys/List.aspx">Surveys</a></li>
+		<li><a id="ctl00_TopNavBar_Showcase" class="fly" href="http://www.codeproject.com/KB/showcase/">Product Showcase</a></li>
+
+		
+		<li><a id="ctl00_TopNavBar_Stuff" class="fly" href="http://www.codeproject.com/Info/Stuff.aspx">CodeProject Stuff</a></li>
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+<li class=""><a id="ctl00_TopNavBar_Lounge" href="http://www.codeproject.com/Lounge.aspx">community</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_InsiderLnk" class="fly" href="http://www.codeproject.com/insider.aspx">The Insider News</a></li>
+		<li><a id="ctl00_TopNavBar_LoungeLnk" class="fly" href="http://www.codeproject.com/Lounge.aspx">The Lounge &nbsp;</a></li>
+		<li><a id="ctl00_TopNavBar_WeirdWonderful" class="fly" href="http://www.codeproject.com/Feature/WeirdAndWonderful.aspx">The Weird &amp; The Wonderful</a></li>
+		<li><a id="ctl00_TopNavBar_SoapBoxLnk" class="fly" href="http://www.codeproject.com/Forums/1536756/The-Soapbox.aspx">The Soapbox</a></li>
+		<li><a id="ctl00_TopNavBar_PRLnk" class="fly break" href="http://www.codeproject.com/Forums/1738007/Press-Releases.aspx">Press Releases</a></li>
+		<li><a id="ctl00_TopNavBar_WhosWho" class="fly" href="http://www.codeproject.com/script/Membership/Profiles.aspx">Who's Who</a></li>
+		<li><a id="ctl00_TopNavBar_MVPs" class="fly" href="http://www.codeproject.com/script/Awards/MVPWinners.aspx">Most Valuable Professionals</a></li>
+		<li><a id="ctl00_TopNavBar_Companies" class="fly break" href="http://www.codeproject.com/script/Membership/Profiles.aspx?mgtid=1&amp;mgm=True">Company Listings</a></li>
+
+		
+		<li class=""><a class="fly" href="http://www.codeproject.com/Forums/1580229/Hindi.aspx">Non-English Language
+			<span class="has-submenu">&gt;</span></a>
+		<ul>
+		<li><a class="fly" href="http://www.codeproject.com/Forums/1580229/Hindi.aspx">General Indian Topics</a></li>
+		<li><a class="fly" href="http://www.codeproject.com/Forums/1580230/Chinese.aspx">General Chinese Topics</a></li>
+		</ul>
+		</li><li class="last"></li>
+		
+	</ul>
+
+</li>
+
+
+<li class="" style="margin-left:20px"><a id="ctl00_TopNavBar_Help" href="http://www.codeproject.com/KB/FAQs/">help</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_HelpWhatIs" class="fly" href="http://www.codeproject.com/info/guide.aspx">What is 'CodeProject'?</a></li>
+		<li><a id="ctl00_TopNavBar_HelpGeneral" class="fly break" href="http://www.codeproject.com/KB/FAQs/">General FAQ</a></li>
+		<li><a id="ctl00_TopNavBar_HelpPostQuestion" class="fly break highlight1" href="http://www.codeproject.com/Questions/ask.aspx">Ask a Question</a></li>
+		<li><a id="ctl00_TopNavBar_HelpBugs" class="fly" href="http://www.codeproject.com/Forums/1645/Site-Bugs-Suggestions.aspx">Bugs and Suggestions</a></li>
+		<li><a id="ctl00_TopNavBar_HelpArticles" class="fly" href="http://www.codeproject.com/Forums/1641/Article-Writing.aspx">Article Help Forum</a></li>
+		<li><a id="ctl00_TopNavBar_HelpSiteMap" class="fly" href="http://www.codeproject.com/script/Content/SiteMap.aspx">Site Map</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAdvertise" class="fly" href="http://lakequincy.com/">Advertise with us</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAboutUs" class="fly" href="http://www.codeproject.com/info/about.aspx">About Us</a></li>
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+</ul>
+
+</div>
+	</td><td align="right">
+		
+
+<div class="searchbar">
+
+<form method="get" action="/search.aspx" name="Search" class="tight">
+
+
+<table class="search" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><input tabindex="2" class="search  subdue" id="sb_tb" value="Search for articles, questions, tips" name="q"></td><td><input src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/search.gif" type="image"></td></tr></tbody></table>
+
+<div class="hover-container">
+	<div style="display: none;" id="SearchFilter" class="search-advanced small-text align-left">
+	<b>Search within:<br></b>
+		
+		<input id="sb_kw" name="sbo" value="kw" checked="checked" type="radio"><label for="sb_kw">Articles</label><br>
+<input id="sb_qa" name="sbo" value="qa" type="radio"><label for="sb_qa">Quick Answers</label><br>
+<input id="sb_fm" name="sbo" value="fm" type="radio"><label for="sb_fm">Messages</label><br>
+<input id="sb_ctlk" name="sbo" value="ctlk" type="radio"><label for="sb_ctlk">Product Catalog</label><br>
+
+
+		
+		
+	</div>
+</div>
+</form>
+
+</div>
+	</td></tr></tbody></table>
+	<div class="sub-headerbar-divider"></div>
+	</div>
+	
+
+	<div id="A" class="container-content-wrap fixed"> 
+	<div class="container-content hreview-aggregate"> 
+
+		<div class="clearfix">
+			<div class="float-left container-breadcrumb">
+				<div><a href="http://www.codeproject.com/script/Content/SiteMap.aspx">Articles</a> » <a href="http://www.codeproject.com/Chapters/6/General-Programming.aspx">General Programming</a> » <a href="http://www.codeproject.com/KB/threads/">Threads, Processes &amp; IPC</a> » <a href="http://www.codeproject.com/KB/threads/#Inter-Process+Communication">Inter-Process Communication</a></div>
+			</div>
+
+			<div class="align-left float-right padded-top">
+				
+
+
+
+
+ 
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+			<div class="float-right container-breadcrumb article-nav">
+				
+<div class="">
+
+
+<a id="ctl00_PrevNext_NextLink" title="Next" href="http://www.codeproject.com/script/Articles/PrevNextLookup.aspx?aid=318290&amp;at=1&amp;secId=58" style="margin-left:5px">Next</a>
+<img id="ctl00_PrevNext_NextImg" title="Next" rel="nofollow" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/arrow-right.png" style="border-width:0px;vertical-align:bottom;">
+</div>
+			</div>
+		</div>
+
+		<table class="extended container-article-parts" cellpadding="0" cellspacing="0"><tbody><tr valign="top">
+		<td>
+
+			<div id="ctl00_Nav" class="container-article-tabs">
+				<div class="tabs">
+					
+
+<div class="">
+	<div class="selected">Article</div><div class="unselected"><a href="http://www.codeproject.com/script/Articles/ViewDownloads.aspx?aid=318290">Browse Code</a></div><div class="unselected"><a href="http://www.codeproject.com/script/Articles/Statistics.aspx?aid=318290">Stats</a></div><div class="unselected"><a href="http://www.codeproject.com/script/Articles/ListVersions.aspx?aid=318290">Revisions (2)</a></div><div class="unselected"><a href="http://www.codeproject.com/script/Articles/ListAlternatives.aspx?aid=318290">Alternatives</a></div>
+</div>	
+
+
+					<!-- anchorLink used to auto-link to comments at end of article -->
+					<div class="unselected"><a href="http://www.codeproject.com/MasterPages/#_comments" id="ctl00_CommentLink" class="anchorLink">Comments &amp; 
+						Discussions <span id="ctl00_CmtCnt">(9)</span></a>
+					</div>
+				</div>
+
+				
+			</div>
+
+		</td>
+		<td>
+			
+			<div id="AT" class="container-article  fixed"> 
+		
+				
+				 
+				<a name="Main"></a>
+
+				
+				<a name="_articleTop" id="_articleTop"></a>
+				<div class="item">
+				<h1 id="ctl00_ArticleTitle" class="fn">How to Implement Load Balancing to Distribute Workload</h1> 
+				</div>
+
+				
+				<div class="entry">
+					By <span class="author"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=5953716" rel="author">Ondrej_Uzovic</a></span>, 
+					<span class="date">22 Jan 2012</span>
+			
+								
+				</div>
+
+				
+				<!-- Yes, I'm weak -->
+				<table class="container-rating"><tbody><tr><td>
+					<div id="ctl00_CurRat" class="tooltip anchorLink" style="cursor:pointer" onclick="scrollToAnchor('#_rating');" name="CurRat_318290">
+				
+						
+
+<table class="small-text" cellpadding="0" cellspacing="0">
+<tbody><tr>
+	
+	<td class="nowrap">
+
+		<span id="ctl00_ArticleRating_VI">
+		<div class="nowrap rating-stars-large" style="height:19px;width:139px;position:relative;">
+	<div class="clipped align-left float-left" style="height:19px;width:136px;">
+		<img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/stars-fill-lg.png" style="border-width:0px;">
+	</div><div class="clipped" style="height:19px;width:3px;position:relative;">
+		<img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/stars-empty-lg.png" style="border-width:0px;position:absolute;top:0;right:0;">
+	</div>
+</div>
+		</span>
+
+		
+	</td>
+	
+	<td id="ctl00_ArticleRating_VR" class="nowrap">
+		&nbsp;
+		<span id="ctl00_ArticleRating_VotesR">&nbsp;<span class="rating">4.86</span> (<span class="count">6 votes</span>)</span>
+		
+	</td>
+
+</tr>
+
+</tbody></table>
+
+
+						<div id="ctl00_RB" class="speech-bubble-container-up">
+							<div class="speech-bubble-up" style="width:150px !important">
+								            
+<div>
+<table class="feature" title="Voting Distribution. Recent data only" cellpadding="0" cellspacing="0" height="50px" width="100%"><tbody><tr class="chart-row"><td class="chart-column"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_002.gif" alt="" title="" border="0px" height="1px" width="20pxpx"><br><span title="0 votes">1</span></td>
+<td class="chart-column"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_002.gif" alt="" title="" border="0px" height="1px" width="20pxpx"><br><span title="0 votes">2</span></td>
+<td class="chart-column"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_002.gif" alt="" title="" border="0px" height="1px" width="20pxpx"><br><span title="0 votes">3</span></td>
+<td class="chart-column"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/pollcol.gif" alt="1 vote, 16.7%" title="1 vote, 16.7%" border="0px" height="10px" width="20pxpx"><br><span title="1 vote">4</span></td>
+<td class="chart-column"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/pollcol.gif" alt="5 votes, 83.3%" title="5 votes, 83.3%" border="0px" height="50px" width="20pxpx"><br><span title="5 votes">5</span></td>
+</tr></tbody></table><div class="small-text align-center">4.86/5 - 6 votes</div><div class="small-text align-center subdue">μ 4.86, σ<sub>a</sub> 0.96 [<a href="http://www.codeproject.com/KB/FAQs/RatingReputationFAQ.aspx#noisefilter">?</a>]</div>
+</div>
+							</div>
+							<div class="speech-bubble-pointer-up">
+								<div class="speech-bubble-pointer-up-inner"></div>
+							</div>
+						</div>
+					</div>
+				</td>
+				<td>
+					&nbsp;
+					
+				</td></tr></tbody></table>
+
+				
+				
+
+				
+				
+
+				
+				
+				
+
+					
+				
+
+				<form name="aspnetForm" method="post" action="/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work" id="aspnetForm" style="margin:0;padding:0">
+<div>
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMjExOTQzNjk4Mw9kFgJmD2QWBAIKDxYCHgVjbGFzcwUTc3ViLWhlYWRlcmJhciBmaXhlZGQCCw8WAh8ABRxjb250YWluZXItY29udGVudC13cmFwIGZpeGVkFhACAQ9kFgJmDxYCHgRUZXh0BaECPGRpdj48YSBocmVmPSIvc2NyaXB0L0NvbnRlbnQvU2l0ZU1hcC5hc3B4Ij5BcnRpY2xlczwvYT4gJiMxODc7IDxhIGhyZWY9Ii9DaGFwdGVycy82L0dlbmVyYWwtUHJvZ3JhbW1pbmcuYXNweCI+R2VuZXJhbCBQcm9ncmFtbWluZzwvYT4gJiMxODc7IDxhIGhyZWY9Ii9LQi90aHJlYWRzLyI+VGhyZWFkcywgUHJvY2Vzc2VzICYgSVBDPC9hPiAmIzE4NzsgPGEgaHJlZj0iL0tCL3RocmVhZHMvI0ludGVyLVByb2Nlc3MrQ29tbXVuaWNhdGlvbiI+SW50ZXItUHJvY2VzcyBDb21tdW5pY2F0aW9uPC9hPjwvZGl2PmQCAw9kFgQCBA8PFgIeC05hdmlnYXRlVXJsBTkvc2NyaXB0L0F3YXJkcy9BZG1pbi9Bd2FyZE9iamVjdC5hc3B4P29iaWQ9MzE4MjkwJm9idGlkPTJkZAIODw8WAh8CBTAvc2NyaXB0L0FydGljbGVzL0FkbWluL1F1ZXVlRWRpdC5hc3B4P2FpZD0zMTgyOTBkZAIFD2QWBAICDw8WBh8CBT0vc2NyaXB0L0FydGljbGVzL1ByZXZOZXh0TG9va3VwLmFzcHg/YWlkPTMxODI5MCZhdD0xJnNlY0lkPTU4HgdUb29sVGlwBQROZXh0HgdWaXNpYmxlZ2RkAgMPDxYEHghJbWFnZVVybAUXL0ltYWdlcy9hcnJvdy1yaWdodC5wbmcfBGcWBB4Fc3R5bGUFFnZlcnRpY2FsLWFsaWduOmJvdHRvbTseA3JlbAUIbm9mb2xsb3dkAgcPZBYEAgMPFgQeBGhyZWYFCiNfY29tbWVudHMfAAUKYW5jaG9yTGluaxYCAgEPFgIeCWlubmVyaHRtbAUDKDkpZAIFDw8WAh8CBTcvc2NyaXB0L0FydGljbGVzL1N1Ym1pc3Npb25XaXphcmQuYXNweD9hdD0xJmFwaWQ9MzE4MjkwZGQCCQ8WAh8ABRhjb250YWluZXItYXJ0aWNsZSAgZml4ZWQWBgIBDxYCHwRnFgZmDxYCHwkFNkhvdyB0byBJbXBsZW1lbnQgTG9hZCBCYWxhbmNpbmcgdG8gRGlzdHJpYnV0ZSBXb3JrbG9hZGQCAQ8WAh8BBVE8YSBocmVmPSIvc2NyaXB0L01lbWJlcnNoaXAvVmlldy5hc3B4P21pZD01OTUzNzE2IiByZWw9ImF1dGhvciI+T25kcmVqX1V6b3ZpYzwvYT5kAgIPFgIfAQULMjIgSmFuIDIwMTJkAgMPDxYCHwRnZGQCDQ9kFgICAg8WAh4GYWN0aW9uBUMvQXJ0aWNsZXMvMzE4MjkwL0hvdy10by1JbXBsZW1lbnQtTG9hZC1CYWxhbmNpbmctdG8tRGlzdHJpYnV0ZS1Xb3JrFggCAQ9kFgICAQ8WAh8EaGQCAw9kFgICAg9kFgICAQ8QZGQWAGQCCQ8WAh4LXyFJdGVtQ291bnQCAWQCCw9kFgICAQ8WAh8BBXw8YSBjbGFzcz0iYW5jaG9yTGluayIgaHJlZj0iL0FydGljbGVzLzMxODI5MC9Ib3ctdG8tSW1wbGVtZW50LUxvYWQtQmFsYW5jaW5nLXRvLURpc3RyaWJ1dGUtV29yayNfYXJ0aWNsZVRvcCI+QXJ0aWNsZSBUb3A8L2E+ZAILD2QWAgILD2QWBAICDw8WAh8CBVEvQXJ0aWNsZXMvMzE4MjkwL0hvdy10by1JbXBsZW1lbnQtTG9hZC1CYWxhbmNpbmctdG8tRGlzdHJpYnV0ZS1Xb3JrP2Rpc3BsYXk9UHJpbnRkZAIEDw8WAh8CBTIvc2NyaXB0L2NvbW1vbi9UZWxsRnJpZW5kLmFzcHg/b2J0aWQ9MiZvYmlkPTMxODI5MGRkAg0PDxYEHwEFCVBlcm1hbGluax8CBUMvQXJ0aWNsZXMvMzE4MjkwL0hvdy10by1JbXBsZW1lbnQtTG9hZC1CYWxhbmNpbmctdG8tRGlzdHJpYnV0ZS1Xb3JrZGQCHQ8WAh8BBR9Db3B5cmlnaHQgMjAxMiBieSBPbmRyZWpfVXpvdmljZGTQy5buwER6R0GBiQASFrcwDnSg/A==" type="hidden">
+</div>
+
+<div>
+
+	<input name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCAKlsbjxAwLAlMXDBwLBlMXDBwLClMXDBwLDlMXDBwLElMXDBwLP+++tCwK5upDkCwtP6ZWIiMEnL5N2MYT4p8jVEKuv" type="hidden">
+</div>
+
+						
+						<div id="contentdiv" class="article-text">
+						
+
+
+
+
+<ul class="Download">
+<li><a href="http://www.codeproject.com/KB/threads/318290/LoadBalancing.zip">Download LoadBalancing - 17.62 KB</a></li>
+</ul>
+
+<h2>Introduction</h2>
+<p>
+The example demonstrates a communication scenario where the capacity of 
+one running service is not enough and you want to increase the 
+performance by distributing the workload across multiple services.
+To simulate the scenario, the example below implements a client 
+application using a service to calculate π (PI) number. The calculation 
+is split into many small intervals (400 in our example).
+Therefore, the service gets overloaded and the performance drops down.<br>
+<br>
+The solution for such scenarios could be using of load balancer. The 
+load balancer is a component maintaining a farm of services (typically 
+same services but running on different machines) and is exposed to 
+receive messages instead of the real service. The client does not know 
+about this setup and thinks it communicates directly with the service. 
+When the client sends a request, the load balancer receives this message
+ and forwards it to the service picked from the farm. The service 
+processes the message and sends back the response that is routed via the
+ load balancer back to the client.<br>
+<br>
+To run the example bellow you must execute applications in the following order:<br>
+1. PiCalculator  up to 3 instances.<br>
+2. LoadBalancer<br>
+3. Client<br>
+<br>
+The example bellow uses <code>Eneter Messaging Framework</code> that provides functionality for various communication scenarios.
+(The framework is free for non-commercial use (<a href="http://eneter.net/LicenseAgreement.htm">License</a>) and can be downloaded from <a href="http://www.eneter.net/">http://www.eneter.net</a>.
+More detailed technical info can be found at <a href="http://www.eneter.net/OnlineHelp/EneterMessagingFramework/Index.html">http://www.eneter.net/OnlineHelp/EneterMessagingFramework/Index.html</a>.)<br>
+<br>
+<a href="http://www.codeproject.com/KB/threads/318290/UsingOfLoadBalancer.gif">
+<img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/UsingOfLoadBalancer.gif" alt="UsingOfLoadBalancer.gif" border="0" width="650">
+</a>
+</p>
+<h2>Client</h2>
+<p>
+The client is a simple application containing a button sending the 
+request to the service to calculate π (PI) number. The calculation is 
+split into many small intervals. Therefore, the client sends about 400 
+messages each containing a small interval for the calculation.
+Then it collects all responses and summarizes them together to get the 
+final result, the PI number.
+</p>
+<div style="display:block" width="100%" id="premain0" class="pre-action-link"><img preid="0" style="cursor: pointer;" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/minus.gif" id="preimg0" height="9" width="9"><span preid="0" style="cursor: pointer; margin-bottom: 0px;" id="precollapse0"> Collapse</span><span> | </span><a preid="0" href="#">Copy Code</a></div><pre style="margin-top: 0px;" id="pre0" lang="CS"><span class="code-keyword">using</span> System;
+<span class="code-keyword">using</span> System.Windows.Forms;
+<span class="code-keyword">using</span> Eneter.Messaging.EndPoints.TypedMessages;
+<span class="code-keyword">using</span> Eneter.Messaging.MessagingSystems.MessagingSystemBase;
+<span class="code-keyword">using</span> Eneter.Messaging.MessagingSystems.TcpMessagingSystem;
+
+<span class="code-keyword">namespace</span> Client
+{
+    <span class="code-keyword">public</span> <span class="code-keyword">partial</span> <span class="code-keyword">class</span> Form1 : Form
+    {
+        <span class="code-comment">//</span><span class="code-comment"> Requested calculation range.
+</span>        <span class="code-keyword">public</span> <span class="code-keyword">class</span> Range
+        {
+            <span class="code-keyword">public</span> <span class="code-keyword">double</span> From;
+            <span class="code-keyword">public</span> <span class="code-keyword">double</span> To;
+        }
+
+        <span class="code-keyword">public</span> Form1()
+        {
+            InitializeComponent();
+            OpenConnection();
+        }
+
+        <span class="code-keyword">public</span> <span class="code-keyword">void</span> OpenConnection()
+        {
+            <span class="code-comment">//</span><span class="code-comment"> Create TCP messaging for the communication.
+</span>            <span class="code-comment">//</span><span class="code-comment"> Note: Requests are sent to the balancer that will forward them
+</span>            <span class="code-comment">//</span><span class="code-comment">       to available services.
+</span>            IMessagingSystemFactory myMessaging
+                = <span class="code-keyword">new</span> TcpMessagingSystemFactory();
+            IDuplexOutputChannel anOutputChannel
+                = myMessaging.CreateDuplexOutputChannel(<span class="code-string">"</span><span class="code-string">tcp://127.0.0.1:8060/"</span>);
+
+            <span class="code-comment">//</span><span class="code-comment"> Create sender to send requests.
+</span>            IDuplexTypedMessagesFactory aSenderFactory
+                = <span class="code-keyword">new</span> DuplexTypedMessagesFactory();
+            mySender = aSenderFactory.CreateDuplexTypedMessageSender&lt;<span class="code-keyword">double</span>, Range&gt;();
+
+            <span class="code-comment">//</span><span class="code-comment"> Subscribe to receive response messages.
+</span>            mySender.ResponseReceived += OnResponseReceived;
+
+            <span class="code-comment">//</span><span class="code-comment"> Attach the output channel and be able to send messages and receive responses.
+</span>            mySender.AttachDuplexOutputChannel(anOutputChannel);
+        }
+
+        <span class="code-keyword">private</span> <span class="code-keyword">void</span> Form1_FormClosed(<span class="code-keyword">object</span> sender, FormClosedEventArgs e)
+        {
+            <span class="code-comment">//</span><span class="code-comment"> Detach the output channel and stop listening for responses.
+</span>            mySender.DetachDuplexOutputChannel();
+        }
+
+        <span class="code-keyword">private</span> <span class="code-keyword">void</span> CalculatePiBtn_Click(<span class="code-keyword">object</span> sender, EventArgs e)
+        {
+            myCalculatedPi = <span class="code-digit">0</span>.<span class="code-digit">0</span>;
+
+            <span class="code-comment">//</span><span class="code-comment"> Split calculation of PI to 400 ranges and sends them for the calculation.
+</span>            <span class="code-keyword">for</span> (<span class="code-keyword">double</span> i = -1.<span class="code-digit">0</span>; i &lt;= <span class="code-digit">1</span>.<span class="code-digit">0</span>; i += <span class="code-digit">0</span>.<span class="code-digit">005</span>)
+            {
+                Range anInterval = <span class="code-keyword">new</span> Range() { From = i, To = i + <span class="code-digit">0</span>.<span class="code-digit">005</span> };
+                mySender.SendRequestMessage(anInterval);
+            }
+        }
+
+        <span class="code-keyword">private</span> <span class="code-keyword">void</span> OnResponseReceived(<span class="code-keyword">object</span> sender, TypedResponseReceivedEventArgs&lt;<span class="code-keyword">double</span>&gt; e)
+        {
+            <span class="code-comment">//</span><span class="code-comment"> Receive responses (calculations for ranges) and calculate PI.
+</span>            myCalculatedPi += e.ResponseMessage;
+
+            <span class="code-comment">//</span><span class="code-comment"> Display the number.
+</span>            <span class="code-comment">//</span><span class="code-comment"> Note: The UI control can be used only from the UI thread.
+</span>            InvokeInUIThread(() =&gt; ResultTextBox.Text = myCalculatedPi.ToString());
+        }
+
+        <span class="code-comment">//</span><span class="code-comment"> Helper method to invoke some functionality in UI thread.
+</span>        <span class="code-keyword">private</span> <span class="code-keyword">void</span> InvokeInUIThread(Action uiMethod)
+        {
+            <span class="code-comment">//</span><span class="code-comment"> If we are not in the UI thread then we must synchronize via the invoke mechanism.
+</span>            <span class="code-keyword">if</span> (InvokeRequired)
+            {
+                Invoke(uiMethod);
+            }
+            <span class="code-keyword">else</span>
+            {
+                uiMethod();
+            }
+        }
+
+        <span class="code-keyword">private</span> IDuplexTypedMessageSender&lt;<span class="code-keyword">double</span>, Range&gt; mySender;
+        <span class="code-keyword">private</span> <span class="code-keyword">double</span> myCalculatedPi;
+    }
+}
+</pre>
+<h2>Load Balancer</h2>
+<p>
+The load balancer is a simple console application acting as a real 
+service. In this example it has a farm of three services. (To keep 
+things simple, all three services run on the same computer. They listens
+ to different ports.)
+When a user presses the button in the client application, the load 
+balancer receives about 400 request messages and distributes them to its
+ three services from the farm.
+To decide which service is picked from the farm, the load balancer uses 
+Round-Robin algorithm. Therefore, all services are chosen evenly.
+(The Round-Robin algorithm is suitable for load balancing if processing 
+of requests takes approximately same time.)
+
+The code is very simple. The whole implementation is here:
+</p>
+<div style="display:block" width="100%" id="premain1" class="pre-action-link"><img preid="1" style="cursor: pointer;" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/minus.gif" id="preimg1" height="9" width="9"><span preid="1" style="cursor: pointer; margin-bottom: 0px;" id="precollapse1"> Collapse</span><span> | </span><a preid="1" href="#">Copy Code</a></div><pre style="margin-top: 0px;" id="pre1" lang="CS"><span class="code-keyword">using</span> System;
+<span class="code-keyword">using</span> Eneter.Messaging.MessagingSystems.MessagingSystemBase;
+<span class="code-keyword">using</span> Eneter.Messaging.MessagingSystems.TcpMessagingSystem;
+<span class="code-keyword">using</span> Eneter.Messaging.Nodes.LoadBalancer;
+
+<span class="code-keyword">namespace</span> LoadBalancer
+{
+    <span class="code-keyword">class</span> Program
+    {
+        <span class="code-keyword">static</span> <span class="code-keyword">void</span> Main(<span class="code-keyword">string</span>[] args)
+        {
+            <span class="code-comment">//</span><span class="code-comment"> Create TCP messaging for the communication with the client
+</span>            <span class="code-comment">//</span><span class="code-comment"> and with services performing requests.
+</span>            IMessagingSystemFactory aMessaging = <span class="code-keyword">new</span> TcpMessagingSystemFactory();
+
+            <span class="code-comment">//</span><span class="code-comment"> Create load balancer.
+</span>            <span class="code-comment">//</span><span class="code-comment"> It receives requests from the client and forwards them to available services
+</span>            <span class="code-comment">//</span><span class="code-comment"> to balance the workload.
+</span>            ILoadBalancerFactory aLoadBalancerFactory
+                = <span class="code-keyword">new</span> RoundRobinBalancerFactory(aMessaging);
+            ILoadBalancer aLoadBalancer
+                = aLoadBalancerFactory.CreateLoadBalancer();
+
+            <span class="code-comment">//</span><span class="code-comment"> Addresses of available services.
+</span>            <span class="code-keyword">string</span>[] anAvailableServices = {
+                       <span class="code-string">"</span><span class="code-string">tcp://127.0.0.1:8071/"</span>, <span class="code-string">"</span><span class="code-string">tcp://127.0.0.1:8072/"</span>, <span class="code-string">"</span><span class="code-string">tcp://127.0.0.1:8073/"</span> };
+
+            <span class="code-comment">//</span><span class="code-comment"> Add IP addresses of services to the load balancer.
+</span>            <span class="code-keyword">foreach</span> (<span class="code-keyword">string</span> anIpAddress <span class="code-keyword">in</span> anAvailableServices)
+            {
+                aLoadBalancer.AddDuplexOutputChannel(anIpAddress);
+            }
+
+            <span class="code-comment">//</span><span class="code-comment"> Create input channel that will listen to requests from clients.
+</span>            IDuplexInputChannel anInputChannel
+                = aMessaging.CreateDuplexInputChannel(<span class="code-string">"</span><span class="code-string">tcp://127.0.0.1:8060/"</span>);
+
+            <span class="code-comment">//</span><span class="code-comment"> Attach the input channel to the load balancer and start listening.
+</span>            aLoadBalancer.AttachDuplexInputChannel(anInputChannel);
+
+            Console.WriteLine(<span class="code-string">"</span><span class="code-string">Load Balancer is running.\r\nPress ENTER to stop."</span>);
+            Console.ReadLine();
+
+            <span class="code-comment">//</span><span class="code-comment"> Stop lisening.
+</span>            aLoadBalancer.DetachDuplexInputChannel();
+        }
+    }
+}
+</pre>
+<h2>PI Calculator</h2>
+<p>
+The calculator is a simple service (console application). It receives 
+requests to perform calculations for specific intervals. When the 
+calculation is done, it sends back the calculation result.
+</p>
+<div style="display:block" width="100%" id="premain2" class="pre-action-link"><img preid="2" style="cursor: pointer;" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/minus.gif" id="preimg2" height="9" width="9"><span preid="2" style="cursor: pointer; margin-bottom: 0px;" id="precollapse2"> Collapse</span><span> | </span><a preid="2" href="#">Copy Code</a></div><pre style="margin-top: 0px;" id="pre2" lang="CS"><span class="code-keyword">using</span> System;
+<span class="code-keyword">using</span> System.Collections.Generic;
+<span class="code-keyword">using</span> System.Net;
+<span class="code-keyword">using</span> System.Net.NetworkInformation;
+<span class="code-keyword">using</span> Eneter.Messaging.EndPoints.TypedMessages;
+<span class="code-keyword">using</span> Eneter.Messaging.MessagingSystems.MessagingSystemBase;
+<span class="code-keyword">using</span> Eneter.Messaging.MessagingSystems.TcpMessagingSystem;
+
+<span class="code-keyword">namespace</span> PiCalculator
+{
+    <span class="code-comment">//</span><span class="code-comment"> Requested calculation range.
+</span>    <span class="code-keyword">public</span> <span class="code-keyword">class</span> Range
+    {
+        <span class="code-keyword">public</span> <span class="code-keyword">double</span> From;
+        <span class="code-keyword">public</span> <span class="code-keyword">double</span> To;
+    }
+
+    <span class="code-keyword">class</span> Program
+    {
+        <span class="code-keyword">static</span> <span class="code-keyword">void</span> Main(<span class="code-keyword">string</span>[] args)
+        {
+            <span class="code-keyword">string</span> aServiceAddress = GetMyAddress();
+            <span class="code-keyword">if</span> (aServiceAddress == <span class="code-string">"</span><span class="code-string">"</span>)
+            {
+                Console.WriteLine(<span class="code-string">"</span><span class="code-string">The service could not start because all possible ports are occupied."</span>);
+                <span class="code-keyword">return</span>;
+            }
+
+            <span class="code-comment">//</span><span class="code-comment"> Create TCP messaging for receiving requests.
+</span>            IMessagingSystemFactory aMessaging = <span class="code-keyword">new</span> TcpMessagingSystemFactory();
+            IDuplexInputChannel anInputChannel = aMessaging.CreateDuplexInputChannel(aServiceAddress);
+
+            <span class="code-comment">//</span><span class="code-comment"> Create typed message receiver to receive requests.
+</span>            <span class="code-comment">//</span><span class="code-comment"> It receives request messages of type Range and sends back
+</span>            <span class="code-comment">//</span><span class="code-comment"> response messages of type double.
+</span>            IDuplexTypedMessagesFactory aReceiverFactory = <span class="code-keyword">new</span> DuplexTypedMessagesFactory();
+            IDuplexTypedMessageReceiver&lt;<span class="code-keyword">double</span>, Range&gt; aReceiver
+                = aReceiverFactory.CreateDuplexTypedMessageReceiver&lt;<span class="code-keyword">double</span>, Range&gt;();
+
+            <span class="code-comment">//</span><span class="code-comment"> Subscribre to messages.
+</span>            aReceiver.MessageReceived += OnMessageReceived;
+
+            <span class="code-comment">//</span><span class="code-comment"> Attach the input channel and start listening.
+</span>            aReceiver.AttachDuplexInputChannel(anInputChannel);
+
+            Console.WriteLine(<span class="code-string">"</span><span class="code-string">Root Square Calculator listening to "</span> + aServiceAddress +
+                <span class="code-string">"</span><span class="code-string"> is running.\r\n Press ENTER to stop."</span>);
+            Console.ReadLine();
+
+            <span class="code-comment">//</span><span class="code-comment"> Detach the input channel and stop listening.
+</span>            aReceiver.DetachDuplexInputChannel();
+        }
+
+        <span class="code-keyword">private</span> <span class="code-keyword">static</span> <span class="code-keyword">void</span> OnMessageReceived(<span class="code-keyword">object</span> sender, TypedRequestReceivedEventArgs&lt;Range&gt; e)
+        {
+            Console.WriteLine(<span class="code-string">"</span><span class="code-string">Calculate From: {0} To: {1}"</span>, e.RequestMessage.From, e.RequestMessage.To);
+
+            <span class="code-comment">//</span><span class="code-comment"> Calculate requested range.
+</span>            <span class="code-keyword">double</span> aResult = <span class="code-digit">0</span>.<span class="code-digit">0</span>;
+            <span class="code-keyword">double</span> aDx = <span class="code-digit">0</span>.<span class="code-digit">000000001</span>;
+            <span class="code-keyword">for</span> (<span class="code-keyword">double</span> x = e.RequestMessage.From; x &lt; e.RequestMessage.To; x += aDx)
+            {
+                aResult += <span class="code-digit">2</span> * Math.Sqrt(<span class="code-digit">1</span> - x * x) * aDx;
+            }
+
+            <span class="code-comment">//</span><span class="code-comment"> Response back the result.
+</span>            IDuplexTypedMessageReceiver&lt;<span class="code-keyword">double</span>, Range&gt; aReceiver
+                = (IDuplexTypedMessageReceiver&lt;<span class="code-keyword">double</span>, Range&gt;)sender;
+            aReceiver.SendResponseMessage(e.ResponseReceiverId, aResult);
+        }
+
+        <span class="code-comment">//</span><span class="code-comment"> Helper method to get the address.
+</span>        <span class="code-comment">//</span><span class="code-comment"> Note: Since our example services are running on the same machine,
+</span>        <span class="code-comment">//</span><span class="code-comment">       we must ensure they do not try to listen to the same IP address.
+</span>        <span class="code-keyword">private</span> <span class="code-keyword">static</span> <span class="code-keyword">string</span> GetMyAddress()
+        {
+            List&lt;<span class="code-keyword">int</span>&gt; aPossiblePorts = <span class="code-keyword">new</span> List&lt;<span class="code-keyword">int</span>&gt;(<span class="code-keyword">new</span> <span class="code-keyword">int</span>[]{ <span class="code-digit">8071</span>, <span class="code-digit">8072</span>, <span class="code-digit">8073</span> });
+
+            <span class="code-comment">//</span><span class="code-comment"> When we execute this service three time we want to get three instances
+</span>            <span class="code-comment">//</span><span class="code-comment"> listening to different port.
+</span>            IPGlobalProperties anIpGlobalProperties = IPGlobalProperties.GetIPGlobalProperties();
+            IPEndPoint[] aTcpListeners = anIpGlobalProperties.GetActiveTcpListeners();
+
+            <span class="code-comment">//</span><span class="code-comment"> Remove from the possible ports those which are used.
+</span>            <span class="code-keyword">foreach</span> (IPEndPoint aListener <span class="code-keyword">in</span> aTcpListeners)
+            {
+                aPossiblePorts.Remove(aListener.Port);
+            }
+
+            <span class="code-comment">//</span><span class="code-comment"> Get the first available port.
+</span>            <span class="code-keyword">if</span> (aPossiblePorts.Count &gt; <span class="code-digit">0</span>)
+            {
+                <span class="code-keyword">return</span> <span class="code-string">"</span><span class="code-string">tcp://127.0.0.1:"</span> + aPossiblePorts[<span class="code-digit">0</span>] + <span class="code-string">"</span><span class="code-string">/"</span>;
+            }
+
+            <span class="code-comment">//</span><span class="code-comment"> All three instances are used.
+</span>            <span class="code-keyword">return</span> <span class="code-string">"</span><span class="code-string">"</span>;
+        }
+
+    }
+}
+</pre>
+<p>
+And here are all applications communicating together.
+</p>
+<p>
+<a href="http://www.codeproject.com/KB/threads/318290/UsingOfLoadBalancer.gif">
+<img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/LoadBalancingApplicationUI.jpg" alt="LoadBalancingApplicationUI.jpg" border="0" width="650">
+</a>
+</p>
+
+
+						</div>
+						
+
+						
+						
+						<h2>License</h2>
+						<div id="LicenseTerms"><p>This article, along with any associated source code and files, is licensed under <a href="http://www.codeproject.com/info/cpol10.aspx" rel="license">The Code Project Open License (CPOL)</a></p></div>
+						
+
+						
+						<h2 id="ctl00_AboutHeading">About the Author</h2>
+
+						<div class="float-right" style="margin:0 0 25px 25px;border:1px solid #ccc">
+						<div class="lqm_ad" lqm_publisher="lqm.codeproject.site" lqm_zone="ros" lqm_format="300x250" lqm_loadonview="true" lqm_tags="C#, .NET,rating4.5"></div>
+						</div>
+
+						
+						
+
+<table class="container-member" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr valign="top">
+<td id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberPhotoTable" style="width:155px;overflow:hidden">
+	<center><img id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberPhoto" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/32311365-d2fd-49f9-81bf-0e1370454c87.gif" style="border-width:0px;"></center>
+</td>
+
+<td style="padding-left:25px">
+	<b><a id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberProfileLink" class="author" href="http://www.codeproject.com/Members/OndrejUzo">Ondrej_Uzovic</a></b>
+	<div>
+		<div class="company">
+			<span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberJobTitle">Architect</span>
+			<span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberCompany"></span>
+		</div>
+
+		<div class="padded-top"><span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberLocation">Slovakia <img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/SK.gif" alt="Slovakia" height="11px" width="16px"></span></div>
+		
+		<div><span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberType">Member</span></div>
+		<div>
+			
+			
+		</div>
+
+		
+	</div>
+</td>
+</tr>
+</tbody></table>
+
+<div class="padded-top">
+	No Biography provided
+</div>
+<br>
+						
+						
+
+						<div class="clearfix"></div>
+
+						
+						<div id="ctl00_RateArticleRow" class="clearfix voting-bar">
+						<div class="float-left" style="padding-top:8px"><a class="anchorLink" href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work#_articleTop">Article Top</a></div>
+						<div class="float-left"><a id="_rating" name="_rating">&nbsp;</a></div> 
+						<div class="float-left">
+
+<div class="social-bookmarks">
+<span class="facebook"><div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/xd_arbiter.htm" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0" scrolling="no"></iframe><iframe src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/xd_arbiter_002.htm" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0" scrolling="no"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div><div fb-xfbml-state="rendered" class="fb-like fb_edge_widget_with_comment fb_iframe_widget" data-href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="segoe ui"><span style="height: 20px; width: 73px;"><iframe src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/like.htm" class="fb_ltr" title="Like this content on Facebook." style="border: medium none; overflow: hidden; height: 20px; width: 73px;" name="f34f3d01cddf64" id="f312328cee0b4a" scrolling="no"></iframe></span></div></span>
+<span class="google"><div id="___plusone_0" style="height: 20px; width: 90px; display: inline-block; text-indent: 0px; margin: 0px; padding: 0px; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline;"><iframe title="+1" data-gapiattached="true" allowtransparency="true" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/fastbutton.htm" name="I0_1360356278978" id="I0_1360356278978" vspace="0" tabindex="0" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div></span>
+<iframe data-twttr-rendered="true" title="Twitter Tweet Button" style="width: 109px; height: 20px;" class="twitter-share-button twitter-count-horizontal" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/tweet_button.htm" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+</div></div> 
+						<div class="float-right align-right">
+							<div id="ctl00_RateArticle_RateItemWrapper" class="small-text" name="RateItem_318290">
+
+	<table class="small-text" cellpadding="0" cellspacing="0" width="100%">
+	<tbody><tr>
+		<td id="ctl00_RateArticle_VoteResultDiv" align="right" nowrap="nowrap">
+			<span class="voteRes"></span>
+			<img class="loaderImg" alt="loading..." src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/animated_loading_blue.gif" style="display:none;" height="16px" width="16px"> 
+		</td>
+
+	
+		<td class="voteTbl" style="white-space:nowrap" align="right">
+			<table class="small-text">
+			<tbody><tr>
+				<td id="ctl00_RateArticle_SignIn" nowrap="nowrap">
+					<a href="#SignUp">Sign Up</a> to vote
+				</td>
+
+				
+				<td id="ctl00_RateArticle_StartForm" align="right" nowrap="nowrap">
+					<i>&nbsp;&nbsp;Poor</i>
+				</td>
+
+				<td id="ctl00_RateArticle_VoteFormDiv" class="nowrap">
+					
+
+					<span id="ctl00_RateArticle_RB" class="tooltip ajaxHist radio voting">
+						<span id="ctl00_RateArticle_VoteRBL"><input id="ctl00_RateArticle_VoteRBL_0" name="ctl00$RateArticle$VoteRBL" value="1" onclick="ChkRtctl00_RateArticle(1, 318290);
+$('#ctl00_RateArticle_RCD').show();
+;" type="radio"><input id="ctl00_RateArticle_VoteRBL_1" name="ctl00$RateArticle$VoteRBL" value="2" onclick="ChkRtctl00_RateArticle(2, 318290);
+$('#ctl00_RateArticle_RCD').show();
+;" type="radio"><input id="ctl00_RateArticle_VoteRBL_2" name="ctl00$RateArticle$VoteRBL" value="3" onclick="ChkRtctl00_RateArticle(3, 318290);
+$('#ctl00_RateArticle_RCD').show();
+;" type="radio"><input id="ctl00_RateArticle_VoteRBL_3" name="ctl00$RateArticle$VoteRBL" value="4" onclick="ChkRtctl00_RateArticle(4, 318290);
+$('#ctl00_RateArticle_RCD').show();
+;" type="radio"><input id="ctl00_RateArticle_VoteRBL_4" name="ctl00$RateArticle$VoteRBL" value="5" onclick="ChkRtctl00_RateArticle(5, 318290);
+$('#ctl00_RateArticle_RCD').show();
+;" type="radio"></span> 
+
+						
+					</span>
+
+				</td>
+
+				<td id="ctl00_RateArticle_EndForm" align="left">
+					<i>Excellent</i>
+				</td>
+
+				<td style="padding-left:5px">	
+					<input name="ctl00$RateArticle$SubmitRateBtn" value="Vote" onclick="return PostBack_ctl00_RateArticle_RateItemWrapper();" id="ctl00_RateArticle_SubmitRateBtn" class="button" type="submit">
+				</td>
+			</tr>
+			</tbody></table>
+			
+		</td>
+	</tr>
+	</tbody></table>
+	<div class="hover-container">
+		<div id="ctl00_RateArticle_RCD" class="rating-comment align-left float-right">
+			Add a reason or comment to your vote: <a href="#" id="clear-rate_ctl00_RateArticle_RCD" title="close">x</a><br>
+			<textarea class="RateComment" rows="5" cols="60" style="width:98%;"></textarea>
+			<span id="ctl00_RateArticle_CommentReq" class="subdue">Votes of 3 or less require a comment</span>
+		</div>
+	</div>
+</div>
+						</div>
+						</div>
+						
+
+					</form>
+
+					
+					<div style="margin:auto;height:90px;margin-top:10px"> 
+						<div class="lqm_ad" lqm_publisher="lqm.codeproject.site" lqm_zone="bottom" lqm_format="728x90" lqm_loadonview="true" lqm_tags="C#, .NET,pos_bottom"></div>
+					</div>
+					
+
+					
+					
+					<h2>Comments and Discussions</h2>
+					<a class="float-left" name="_comments" id="_comments">&nbsp;</a><div id="_MessageBoardctl00_MessageBoard" onclick="return SwitchMessage(event, null)">
+	<table id="ForumTable" class="forum relaxed" cellpadding="0" cellspacing="0">
+		<tbody><tr>
+			<td class="header1 callout"><b>You must <a href="https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work%3ffid%3d1680519%26df%3d90%26mpp%3d25%26noise%3d3%26prof%3dFalse%26sort%3dPosition%26view%3dQuick%26spc%3dRelaxed">Sign In</a> to use this message board.</b></td>
+		</tr><tr>
+			<td><table border="0" cellpadding="3px" cellspacing="0" width="100%">
+				<tbody><tr class="header1">
+					<td colspan="2" style="white-space:nowrap;"><div class="container">
+						<div class="float-right">
+							<form action="/Search.aspx?fid=0" method="get" class="tight">
+								<input name="fid" value="1680519" type="hidden"><b>Search this forum </b><input class="text-input" name="qf" style="width:200px;" type="text">&nbsp;<input value="Go" class="button" type="submit">
+							</form>
+						</div>
+					</div></td></tr><tr class="header2">
+						<td></td><td style="width:100%;"><div style="text-align:right;">
+							<form action="/script/Forums/SetOptions.aspx?floc=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work&amp;fid=1680519&amp;df=90&amp;mpp=25&amp;noise=3&amp;prof=False&amp;sort=Position&amp;view=Quick&amp;spc=Relaxed" method="get" style="margin:0;padding:0;">
+								<input name="fid" value="1680519" type="hidden"><input name="currentQS" value="?floc=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work&amp;fid=1680519&amp;df=90&amp;mpp=25&amp;noise=3&amp;prof=False&amp;sort=Position&amp;view=Quick&amp;spc=Relaxed" type="hidden"><input name="floc" value="/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work" type="hidden"><input name="prof" id="prof" style="vertical-align:middle;" type="checkbox"><label for="prof">Profile popups</label>&nbsp;&nbsp;&nbsp;&nbsp;Spacing<select size="1" class="dropdown" name="spc">
+									<option selected="selected" value="Relaxed">Relaxed</option><option value="Compact">Compact</option><option value="Tight">Tight</option>
+								</select>&nbsp;&nbsp;Noise<select size="1" class="dropdown" name="noise">
+									<option value="1">Very High</option><option value="2">High</option><option selected="selected" value="3">Medium</option><option value="4">Low</option><option value="5">Very Low</option>
+								</select>&nbsp;&nbsp;Layout<select size="1" class="dropdown" name="view">
+									<option selected="selected" value="Quick">Normal</option><option value="Topic">Open Topics</option><option value="Expanded">Open All</option><option value="Thread">Thread View</option><option value="Normal">No Javascript</option><option value="Preview">Preview</option>
+								</select>&nbsp;&nbsp;Per page<select size="1" class="dropdown" name="mpp">
+									<option value="10">10</option><option selected="selected" value="25">25</option><option value="50">50</option>
+								</select>&nbsp;&nbsp;&nbsp;<input value="Update" name="SetOpt" class="button" type="submit">
+							</form>
+						</div></td>
+					</tr>
+				
+			</tbody></table></td></tr><tr>
+				<td><a name="xx0xx"></a><table border="0" cellpadding="2px" cellspacing="0" width="100%">
+					<tbody><tr class="navbar">
+						<td></td><td style="text-align:right;width:50%;"></td><td style="text-align:right;white-space:nowrap;"><span class="subdue">First</span> <span class="subdue">Prev</span> <span class="subdue">Next</span></td>
+					</tr>
+				</tbody></table></td>
+			</tr><tr>
+				<td><table class="fixed-layout blank-background" border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tbody><tr>
+						<td><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_003.gif" alt="" border="0" height="5px" width="1px"></td>
+					</tr><tr id="F4425037_h0" class="header hover-row root">
+						<td class="subject-line quick " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="indent" width="20px"><a name="xx4425037xx"></a><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_question.gif" alt="Question" align="top" height="16px" width="16px"></td><td class="subject hover-container"><a class="message-link" name="4425037" parent="0" thread="4425037" href="http://www.codeproject.com/Messages/4425037/The-load-balancer-continue-to-send-requests-to-det.aspx">The load balancer continue to send requests to detached services?</a> <a onclick="return Pin(this);" href="#" title="Click to pin message"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/pin.png" alt="Pin" align="top" border="0" height="13px" width="13px"></a></td><td class="icon"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/icn-member-16.gif" title="member" alt="member" border="0" height="16px"></td><td class="author"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=2998372">television_pham</a></td><td class="date">11 Nov '12 - 16:34&nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4425037_h1" class="content root selected" style="display:none;">
+						<td class="quick" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr valign="top">
+								<td class="indent align-right" style="width:20px;"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_003.gif" alt="" height="1px" width="20px"><div class="voteform" ownerid="2998372" msgid="4425037" votingtype="GoodOrBad">
+
+								</div></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">Great article!!!<br>
+&nbsp;<br>
+However, I have one question: does the load balancer continue to send 
+messages to detached services? I tried stopping a PI calculator while 
+calculating, and the load balancer seemed to keep sending messages to 
+that service because the final result was not right (not equal to 
+3.14...). If so, how to avoid that behavior to get the correct result?<br></td>
+											</tr><tr class="footer" style="vertical-align:top;">
+												<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work">Sign In</a>·<a href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?fid=1680519&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;tid=4425037" title="View&nbsp;Thread">View&nbsp;Thread</a>·<a href="http://www.codeproject.com/Messages/4425037/The-load-balancer-continue-to-send-requests-to-det.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4425037" data-ref="3_4425037" class="rating-label" style="white-space:nowrap;"></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4427064_h0" class="header hover-row">
+						<td class="subject-line quick " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="indent" width="38px"><a name="xx4427064xx"></a><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_answer.gif" alt="Answer" align="top" height="16px" width="16px"></td><td class="subject hover-container"><a class="message-link" name="4427064" parent="4425037" thread="4425037" href="http://www.codeproject.com/Messages/4427064/Re-The-load-balancer-continue-to-send-requests-to-.aspx">Re: The load balancer continue to send requests to detached services?</a> <a onclick="return Pin(this);" href="#" title="Click to pin message"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/pin.png" alt="Pin" align="top" border="0" height="13px" width="13px"></a></td><td class="icon"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/icn-member-16.gif" title="member" alt="member" border="0" height="16px"></td><td class="author"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=5953716">Ondrej_Uzovic</a></td><td class="date">13 Nov '12 - 22:26&nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4427064_h1" class="content selected" style="display:none;">
+						<td class="quick" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr valign="top">
+								<td class="indent align-right" style="width:38px;"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_003.gif" alt="" height="1px" width="38px"><div class="voteform" ownerid="5953716" msgid="4427064" votingtype="GoodOrBad">
+
+								</div></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">Thank you for your question. I am glad you like the article.<br>
+The load balancer works the way that if the service from the pool is not
+ available it will try to forward the incoming request to the next 
+service from the pool.<br>
+&nbsp;<br>
+However, the problem is, if the service from the pool received the 
+request and then became unavailable (e.g. the process was killed). In 
+such case, this service will not send back the response.<br>
+So, e.g. if the service received the request to calculate a portion of 
+the PI number and then you close it the calculation for this portion 
+will not be delivered back to the client and you get the incorrect 
+result.<br>
+&nbsp;<br>
+The load balancer is focused only on the communication logic. And so it 
+does not have any knowledge about incoming request messages that are 
+forwarded to services from the pool. Therefore it does not know if it is
+ one-way request or if the client expects one or more responses.<br>
+&nbsp;<br>
+So if you like to make the scenario robust you need to implement a logic
+ on the client side that would monitor if all expected responses are 
+received. If not then the client may repeat the request.<br>
+&nbsp;<br>
+(Nevertheless, when I checked the code of the load balancer I discovered
+ a small inefficiency. -&gt; The load balancer does not remove 
+unavailable services from the pool. It tries to forward the request to 
+the service. If it fails it tries to forward it to the next service. But
+ the service stays there and the next time load balancer tries it again.<br>
+I will correct this issue in the next release of the framework.)<br>
+&nbsp;<br>
+I hope I answered your question.<br></td>
+											</tr><tr class="footer" style="vertical-align:top;">
+												<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work">Sign In</a>·<a href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?fid=1680519&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;tid=4425037" title="View&nbsp;Thread">View&nbsp;Thread</a>·<a href="http://www.codeproject.com/Messages/4427064/Re-The-load-balancer-continue-to-send-requests-to-.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4427064" data-ref="3_4427064" class="rating-label" style="white-space:nowrap;"></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4433892_h0" class="header hover-row">
+						<td class="subject-line quick " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="indent" width="56px"><a name="xx4433892xx"></a><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_general.gif" alt="General" align="top" height="16px" width="16px"></td><td class="subject hover-container"><a class="message-link" name="4433892" parent="4427064" thread="4425037" href="http://www.codeproject.com/Messages/4433892/Re-The-load-balancer-continue-to-send-requests-to-.aspx">Re: The load balancer continue to send requests to detached services?</a> <a onclick="return Pin(this);" href="#" title="Click to pin message"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/pin.png" alt="Pin" align="top" border="0" height="13px" width="13px"></a></td><td class="icon"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/icn-member-16.gif" title="member" alt="member" border="0" height="16px"></td><td class="author"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=2998372">television_pham</a></td><td class="date">21 Nov '12 - 17:59&nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4433892_h1" class="content selected" style="display:none;">
+						<td class="quick" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr valign="top">
+								<td class="indent align-right" style="width:56px;"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_003.gif" alt="" height="1px" width="56px"><div class="voteform" ownerid="2998372" msgid="4433892" votingtype="GoodOrBad">
+
+								</div></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">Thank you very much for you answer!!!<br></td>
+											</tr><tr class="footer" style="vertical-align:top;">
+												<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work">Sign In</a>·<a href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?fid=1680519&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;tid=4425037" title="View&nbsp;Thread">View&nbsp;Thread</a>·<a href="http://www.codeproject.com/Messages/4433892/Re-The-load-balancer-continue-to-send-requests-to-.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4433892" data-ref="3_4433892" class="rating-label" style="white-space:nowrap;"></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4150548_h0" class="header hover-row root">
+						<td class="subject-line quick " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="indent" width="20px"><a name="xx4150548xx"></a><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_question.gif" alt="Question" align="top" height="16px" width="16px"></td><td class="subject hover-container"><a class="message-link" name="4150548" parent="0" thread="4150548" href="http://www.codeproject.com/Messages/4150548/Your-words-about-Eneter-vs-MSMQ.aspx">Your words about Eneter vs. MSMQ??</a> <a onclick="return Pin(this);" href="#" title="Click to pin message"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/pin.png" alt="Pin" align="top" border="0" height="13px" width="13px"></a></td><td class="icon"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/icn-member-16.gif" title="member" alt="member" border="0" height="16px"></td><td class="author"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=594652">Fidel Orozco Gómez</a></td><td class="date">7 Feb '12 - 14:54&nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4150548_h1" class="content root selected" style="display:none;">
+						<td class="quick" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr valign="top">
+								<td class="indent align-right" style="width:20px;"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_003.gif" alt="" height="1px" width="20px"><div class="voteform" ownerid="594652" msgid="4150548" votingtype="GoodOrBad">
+
+								</div></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">I have not played with the Eneter framework 
+yet, but besides the obvious differences (Support for WP 7), I am 
+intrigued which will be the benefice of using Emerit over WCF with 
+MSMQ.... Could you elaborate about it?<br></td>
+											</tr><tr class="footer" style="vertical-align:top;">
+												<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work">Sign In</a>·<a href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?fid=1680519&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;tid=4150548" title="View&nbsp;Thread">View&nbsp;Thread</a>·<a href="http://www.codeproject.com/Messages/4150548/Your-words-about-Eneter-vs-MSMQ.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4150548" data-ref="3_4150548" class="rating-label" style="white-space:nowrap;"></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4303536_h0" class="header hover-row">
+						<td class="subject-line quick " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="indent" width="38px"><a name="xx4303536xx"></a><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_answer.gif" alt="Answer" align="top" height="16px" width="16px"></td><td class="subject hover-container"><a class="message-link" name="4303536" parent="4150548" thread="4150548" href="http://www.codeproject.com/Messages/4303536/Re-Your-words-about-Eneter-vs-MSMQ.aspx">Re: Your words about Eneter vs. MSMQ??</a> <a onclick="return Pin(this);" href="#" title="Click to pin message"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/pin.png" alt="Pin" align="top" border="0" height="13px" width="13px"></a></td><td class="icon"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/icn-member-16.gif" title="member" alt="member" border="0" height="16px"></td><td class="author"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=5953716">Ondrej_Uzovic</a></td><td class="date">8 Jul '12 - 11:04&nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4303536_h1" class="content selected" style="display:none;">
+						<td class="quick" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr valign="top">
+								<td class="indent align-right" style="width:38px;"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_003.gif" alt="" height="1px" width="38px"><div class="voteform" ownerid="5953716" msgid="4303536" votingtype="GoodOrBad">
+
+								</div></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">Hi Fidel, sorry for late response.<br>
+I see following differences/benefits of the Eneter framework:<br>
+&nbsp;<br>
+-&gt;    Eneter works across multiple platforms. The current version 4.1
+ supports:  .NET, Java, Android, Silverlight, Mono, Windows Phone. 
+(other platforms like Java Script, C++ should come in the future)<br>
+&nbsp;<br>
+-&gt;    The idea of Eneter differs from WCF. Eneter does not abstract 
+the interprocess communication into a local call. Instead of that Eneter
+ provides well defined components (e.g. Broker, Router, Load Balancer, 
+Dispatcher, ..., Message Sender and Receiver) you can "click" together 
+to create a desired communication scenario. It also provides 
+functionality to handle specifics of communication across the network. 
+E.g. automatic reconnect in case of unstable network.<br>
+&nbsp;<br>
+-&gt;    I also believe, using Eneter is easier and more straight 
+forward. E.g. if you implement the scenario from this article with using
+ WCF it would be probably more complex.<br>
+&nbsp;<br>
+<br>
+I hope I answered your question.<br></td>
+											</tr><tr class="footer" style="vertical-align:top;">
+												<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work">Sign In</a>·<a href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?fid=1680519&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;tid=4150548" title="View&nbsp;Thread">View&nbsp;Thread</a>·<a href="http://www.codeproject.com/Messages/4303536/Re-Your-words-about-Eneter-vs-MSMQ.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4303536" data-ref="3_4303536" class="rating-label" style="white-space:nowrap;"></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4140819_h0" class="header hover-row root">
+						<td class="subject-line quick " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="indent" width="20px"><a name="xx4140819xx"></a><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_general.gif" alt="General" align="top" height="16px" width="16px"></td><td class="subject hover-container"><a class="message-link" name="4140819" parent="0" thread="4140819" href="http://www.codeproject.com/Messages/4140819/My-vote-of-5.aspx">My vote of 5</a> <a onclick="return Pin(this);" href="#" title="Click to pin message"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/pin.png" alt="Pin" align="top" border="0" height="13px" width="13px"></a></td><td class="icon"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/icn-member-16.gif" title="member" alt="member" border="0" height="16px"></td><td class="author"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=5537889">moragos</a></td><td class="date">27 Jan '12 - 9:27&nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4140819_h1" class="content root selected" style="display:none;">
+						<td class="quick" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr valign="top">
+								<td class="indent align-right" style="width:20px;"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_003.gif" alt="" height="1px" width="20px"><div class="voteform" ownerid="5537889" msgid="4140819" votingtype="GoodOrBad">
+
+								</div></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">Interesting and useful.<br></td>
+											</tr><tr class="footer" style="vertical-align:top;">
+												<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work">Sign In</a>·<a href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?fid=1680519&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;tid=4140819" title="View&nbsp;Thread">View&nbsp;Thread</a>·<a href="http://www.codeproject.com/Messages/4140819/My-vote-of-5.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4140819" data-ref="3_4140819" class="rating-label" style="white-space:nowrap;"></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4135834_h0" class="header hover-row root">
+						<td class="subject-line quick " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="indent" width="20px"><a name="xx4135834xx"></a><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_general.gif" alt="General" align="top" height="16px" width="16px"></td><td class="subject hover-container"><a class="message-link" name="4135834" parent="0" thread="4135834" href="http://www.codeproject.com/Messages/4135834/My-vote-of-5.aspx">My vote of 5</a> <a onclick="return Pin(this);" href="#" title="Click to pin message"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/pin.png" alt="Pin" align="top" border="0" height="13px" width="13px"></a></td><td class="icon"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/icn-member-16.gif" title="member" alt="member" border="0" height="16px"></td><td class="author"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=2677606">johannesnestler</a></td><td class="date">22 Jan '12 - 23:31&nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4135834_h1" class="content root selected" style="display:none;">
+						<td class="quick" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr valign="top">
+								<td class="indent align-right" style="width:20px;"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_003.gif" alt="" height="1px" width="20px"><div class="voteform" ownerid="2677606" msgid="4135834" votingtype="GoodOrBad">
+
+								</div></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">excellent!<br></td>
+											</tr><tr class="footer" style="vertical-align:top;">
+												<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work">Sign In</a>·<a href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?fid=1680519&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;tid=4135834" title="View&nbsp;Thread">View&nbsp;Thread</a>·<a href="http://www.codeproject.com/Messages/4135834/My-vote-of-5.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4135834" data-ref="3_4135834" class="rating-label" style="white-space:nowrap;"></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4135664_h0" class="header hover-row root">
+						<td class="subject-line quick " width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="indent" width="20px"><a name="xx4135664xx"></a><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_general.gif" alt="General" align="top" height="16px" width="16px"></td><td class="subject hover-container"><a class="message-link" name="4135664" parent="0" thread="4135664" href="http://www.codeproject.com/Messages/4135664/My-vote-of-5.aspx">My vote of 5</a> <a onclick="return Pin(this);" href="#" title="Click to pin message"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/pin.png" alt="Pin" align="top" border="0" height="13px" width="13px"></a></td><td class="icon"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/icn-member-16.gif" title="member" alt="member" border="0" height="16px"></td><td class="author"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=4888293">pothiq</a></td><td class="date">22 Jan '12 - 17:24&nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4135664_h1" class="content root selected" style="display:none;">
+						<td class="quick" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr valign="top">
+								<td class="indent align-right" style="width:20px;"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_003.gif" alt="" height="1px" width="20px"><div class="voteform" ownerid="4888293" msgid="4135664" votingtype="GoodOrBad">
+
+								</div></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">Very Impressive.<br></td>
+											</tr><tr class="footer" style="vertical-align:top;">
+												<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work">Sign In</a>·<a href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?fid=1680519&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;tid=4135664" title="View&nbsp;Thread">View&nbsp;Thread</a>·<a href="http://www.codeproject.com/Messages/4135664/My-vote-of-5.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4135664" data-ref="3_4135664" class="rating-label" style="white-space:nowrap;"></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4135558_h0" class="header hover-row root">
+						<td class="subject-line quick  vote-lo" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr>
+								<td class="indent" width="20px"><a name="xx4135558xx"></a><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_general.gif" alt="General" align="top" height="16px" width="16px"></td><td class="subject hover-container"><a class="message-link" name="4135558" parent="0" thread="4135558" href="http://www.codeproject.com/Messages/4135558/My-vote-of-5.aspx">My vote of 5</a> <a onclick="return Pin(this);" href="#" title="Click to pin message"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/pin.png" alt="Pin" align="top" border="0" height="13px" width="13px"></a></td><td class="icon"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/icn-member-16.gif" title="member" alt="member" border="0" height="16px"></td><td class="author"><a href="http://www.codeproject.com/script/Membership/View.aspx?mid=5174756">Filip D'haene</a></td><td class="date">22 Jan '12 - 12:20&nbsp;</td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr id="F4135558_h1" class="content root selected" style="display:none;">
+						<td class="quick" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+							<tbody><tr valign="top">
+								<td class="indent align-right" style="width:20px;"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_003.gif" alt="" height="1px" width="20px"><div class="voteform" ownerid="5174756" msgid="4135558" votingtype="GoodOrBad">
+
+								</div></td><td class="text"><table border="0" cellpadding="0" cellspacing="5px" width="100%">
+									<tbody><tr>
+										<td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+											<tbody><tr>
+												<td colspan="2">Excellent article!!!<br>
+&nbsp;<br>
+Thanks for sharing.  <img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/smiley_smile.gif" alt="Smile | :)" align="top"> <br></td>
+											</tr><tr class="footer" style="vertical-align:top;">
+												<td><a href="http://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f318290%2fHow-to-Implement-Load-Balancing-to-Distribute-Work">Sign In</a>·<a href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?fid=1680519&amp;df=90&amp;mpp=25&amp;sort=Position&amp;spc=Relaxed&amp;tid=4135558" title="View&nbsp;Thread">View&nbsp;Thread</a>·<a href="http://www.codeproject.com/Messages/4135558/My-vote-of-5.aspx" title="Get permanent link">Permalink</a></td><td style="text-align:right;"><span id="MVF4135558" data-ref="3_4135558" class="rating-label" style="white-space:nowrap;"><span>2.00/5 (1 vote)</span></span></td>
+											</tr>
+										</tbody></table></td>
+									</tr>
+								</tbody></table></td>
+							</tr>
+						</tbody></table></td>
+					</tr><tr>
+						<td><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/t_003.gif" alt="" border="0" height="5px" width="1px"></td>
+					</tr>
+				</tbody></table></td>
+			</tr><tr>
+				<td><table cellpadding="2px" cellspacing="0" width="100%">
+					<tbody><tr class="footer">
+						<td>Last Visit: 31 Jan '13 - 8:43 &nbsp; &nbsp; Last Update: 8 Feb '13 - 5:44</td><td><a href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?fid=1680519&amp;df=90&amp;mpp=25&amp;noise=3&amp;prof=False&amp;sort=Position&amp;view=Quick&amp;spc=Relaxed">Refresh</a></td><td style="text-align:right;white-space:nowrap;"><input id="_mbnUrl" value="/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?fid=1680519&amp;df=90&amp;mpp=25&amp;noise=3&amp;prof=False&amp;sort=Position&amp;view=Quick&amp;spc=Relaxed&amp;fr=10" type="hidden"><span class="nav-link selected">1</span></td>
+					</tr>
+				</tbody></table></td>
+			</tr>
+		
+	</tbody></table><p class="small-text"><img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_general.gif" alt="General" align="top" height="16px" width="16px"> General &nbsp;&nbsp; <img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_news.gif" alt="News" align="top" height="16px" width="16px"> News &nbsp;&nbsp; <img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_idea.gif" alt="Suggestion" align="top" height="16px" width="16px"> Suggestion &nbsp;&nbsp; <img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_question.gif" alt="Question" align="top" height="16px" width="16px"> Question &nbsp;&nbsp; <img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_bug.gif" alt="Bug" align="top" height="16px" width="16px"> Bug &nbsp;&nbsp; <img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_answer.gif" alt="Answer" align="top" height="16px" width="16px"> Answer &nbsp;&nbsp; <img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_joke.gif" alt="Joke" align="top" height="16px" width="16px"> Joke &nbsp;&nbsp; <img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_rant.gif" alt="Rant" align="top" height="16px" width="16px"> Rant &nbsp;&nbsp; <img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/msg_admin.gif" alt="Admin" align="top" height="16px" width="16px"> Admin &nbsp;&nbsp; </p><p class="small-text">Use Ctrl+Left/Right to switch messages, Ctrl+Up/Down to switch threads, Ctrl+Shift+Left/Right to switch pages.</p>
+
+				
+
+			</div>
+			
+		</div></td>
+		<td>
+			<div id="ctl00_RightSideBar" class="container-article-info">
+
+				<div class="header">About Article</div>
+				<div class="article-summary">
+
+					
+					
+
+					
+					
+
+					
+					<div class="summary"><span id="ctl00_ArticleDescr">Simple example 
+showing how to implement the load balancing if you need to increase the 
+performance by distributing the workload across multiple services.</span></div>
+
+					<a id="ctl00_InfoBox_ParentLink"></a>
+
+<table class="article-info" cellpadding="0" cellspacing="0">
+
+	
+	<tbody><tr><td>Type&nbsp;</td><td class="value"><a id="ctl00_InfoBox_TypeName" href="http://www.codeproject.com/script/Articles/Types.aspx?#Article">Article</a></td></tr>
+	
+
+	<tr><td>Licence&nbsp;</td><td class="value"><a href="http://www.codeproject.com/info/cpol10.aspx" title="The Code Project Open License (CPOL)">CPOL</a></td></tr>
+
+	
+
+	<tr><td>First Posted&nbsp;</td><td class="value" nowrap="nowrap">22 Jan 2012</td></tr>
+
+	<tr><td>Views&nbsp;</td><td class="value">8,582</td></tr>
+
+	
+	<tr><td>Downloads&nbsp;</td><td class="value">507</td></tr>
+		
+
+	
+	<tr><td>Bookmarked&nbsp;</td><td class="value">28 times</td></tr>
+	
+
+	
+
+	
+	
+	
+	<tr><td colspan="2"></td>
+	</tr>
+	
+	
+</tbody></table>
+
+					<div class="tags"> 
+					<span id="ctl00_TagsList_TagWrp" class="tags">
+	
+	
+	
+	<span id="ctl00_TagsList_VisibleTags"><span class="t"><a rel="tag" href="http://www.codeproject.com/Tags/C--hash--">C#</a></span><span class="t"><a rel="tag" href="http://www.codeproject.com/Tags/.NET">.NET</a></span></span> 
+
+	
+	
+</span>
+
+					</div>
+
+					<div class="nowrap align-left">
+						 
+
+<a id="ctl00_ActionLinks_PrintLnk" href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?display=Print">
+	<img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/print.gif" style="border:0" height="46px" width="46px">
+</a>
+
+<a id="ctl00_ActionLinks_MailLink" href="http://www.codeproject.com/script/common/TellFriend.aspx?obtid=2&amp;obid=318290">
+	<img src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/email.gif" style="border:0" height="46px" width="46px">
+</a>
+					</div>
+
+					
+				</div>
+
+				<div style="width:160px;margin: 10px auto;">
+					<div class="lqm_ad" lqm_publisher="lqm.codeproject.site" lqm_zone="ros" lqm_format="160x600" lqm_tags="C#, .NET,rating4.5"><iframe id="lqmad4" marginwidth="0" marginheight="0" frameborder="0" height="600" scrolling="no" width="160"></iframe></div>
+				</div>
+
+				
+<div class="padded-top">
+<div class="header">Top News</div>
+
+<p><a id="ctl00_News_News_ctl01_Link" href="http://arstechnica.com/tech-policy/2013/01/how-newegg-crushed-the-shopping-cart-patent-and-saved-online-retail/">How Newegg crushed the “shopping cart” patent and saved online retail</a></p>
+
+Get the <a id="ctl00_News_News_ctl02_Subscribe" href="http://www.codeproject.com/Feature/Insider/">Insider News</a> free each morning.
+</div>
+
+				
+				<div class="padded-top">
+					
+	<div id="ctl00_RelatedArticles_RelatedResults_ctl00_header" class="header">Related Articles</div>
+	<div class="content-list">	
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl01_Link" class="title" href="http://www.codeproject.com/KB/showcase/dundas_chartani.aspx">Creating animations with Dundas Chart for ASP.NET</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl02_Link" class="title" href="http://www.codeproject.com/KB/showcase/dundas_smartlabels.aspx">Smarter Data Labels with Dundas Chart SmartLabels</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl03_Link" class="title" href="http://www.codeproject.com/KB/showcase/Dundas_chartareas.aspx">Understanding Chart Areas with Dundas Chart for .NET</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl04_Link" class="title" href="http://www.codeproject.com/KB/database/SQLReportingSelectAll.aspx">Add "Select All" to parameter lists in SQL Reporting</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl05_Link" class="title" href="http://www.codeproject.com/KB/audio-video/SheepWMP.aspx">Using screensavers inside the Windows Media Player</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl06_Link" class="title" href="http://www.codeproject.com/KB/showcase/DundasMap_AJAX.aspx">Making Sense of Geographic Data with Dundas Map and AJAX</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl07_Link" class="title" href="http://www.codeproject.com/KB/windows/Anil_Kumar_Gupta.aspx">Handling connection notification between a desktop machine and Windows CE based devices</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl08_Link" class="title" href="http://www.codeproject.com/KB/showcase/HeraAppFramework.aspx">Create data-driven applications with the Hera Application Framework</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl09_Link" class="title" href="http://www.codeproject.com/KB/showcase/RedGate_SelfDocDatabase.aspx">Towards the self-documenting database: extended properties</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl10_Link" class="title" href="http://www.codeproject.com/KB/usability/access-audit-testing.aspx">Accessibility audit vs. accessibility testing</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl11_Link" class="title" href="http://www.codeproject.com/KB/showcase/digitalsignatures.aspx">Digital Signatures and PDF Documents</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl12_Link" class="title" href="http://www.codeproject.com/KB/GDI-plus/GrayscaleFilter.aspx">Color Scale Filter</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl13_Link" class="title" href="http://www.codeproject.com/KB/vb/Windows_Media_Player_COM.aspx">WMP Power Hour APP</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl14_Link" class="title" href="http://www.codeproject.com/KB/aspnet/MergeLandscape.aspx">Merge Landscape and Portrait PDFs using ASP.NET</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl15_Link" class="title" href="http://www.codeproject.com/KB/mobile/sms_gateway_survey.aspx">How to conduct an SMS survey using a cell phone connected SMS gateway and MS Access</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl16_Link" class="title" href="http://www.codeproject.com/KB/showcase/barcodes_in_docs.aspx">Using Barcodes in Documents – Best Practices</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl17_Link" class="title" href="http://www.codeproject.com/KB/winsdk/HowToRetrieve.aspx">How to Retrieve EMC Centera Cluster/Pool Capabilities</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl18_Link" class="title" href="http://www.codeproject.com/KB/showcase/dotimage_toolkit.aspx">"Hey! Is That My Car? How to Sharpen a QuickBird Satellite Image Using DotImage"</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl19_Link" class="title" href="http://www.codeproject.com/KB/showcase/sharpoint_federator.aspx">Integrate your SharePoint environment into the open standards-based WebSphere Portal platform using the Visual Studio IDE</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl20_Link" class="title" href="http://www.codeproject.com/KB/office/Excel-2007-dbf-files.aspx">VBScript / Excel 2007 - An easy way to access DBF files</a>
+		
+	</div>
+	
+	<div class="content-list-item">
+		<a id="ctl00_RelatedArticles_RelatedResults_ctl21_Link" class="title" href="http://www.codeproject.com/KB/windows/wm_callhistory.aspx">Retrieving and Storing Call History</a>
+		
+	</div>
+	
+	</div>
+	
+
+				</div>
+
+				
+				
+			</div>
+		</td>
+		</tr></tbody></table>
+
+		
+		<div class="theme1-background" style="height:2px"></div>
+
+		<div class="extended tiny-text">
+			<div class="row">
+				<div class="float-left">
+					<a id="ctl00_PermaLink" href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work">Permalink</a> | 
+					<a id="ctl00_AdvertiseLink" href="http://lakequincy.com/">Advertise </a> |
+					<a id="ctl00_PrivacyLink" href="http://www.codeproject.com/info/privacy.aspx">Privacy</a> |
+					<a id="ctl00_Mobile" rel="nofollow" href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?display=Mobile">Mobile</a>
+					<br>
+								
+					
+					Web04 |
+					2.6.130206.1 |
+					Last Updated 22 Jan 2012								
+				</div>
+				<div class="float-right align-right">
+					Article Copyright 2012 by Ondrej_Uzovic<br>Everything else
+					Copyright © <a href="mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2013 <br>
+					<a id="ctl00_TermsOfUseLink" href="http://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a>
+				</div>
+
+				
+
+
+<div class="page-width">
+Layout: <a id="ctl00_PageWidth_FixedT" title="Fixed width layout" rel="nofollow" class=" active" href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?PageFlow=FixedWidth">fixed</a>
+|
+<a id="ctl00_PageWidth_FluidT" title="Fluid layout" rel="nofollow" href="http://www.codeproject.com/Articles/318290/How-to-Implement-Load-Balancing-to-Distribute-Work?PageFlow=Fluid">fluid</a>
+</div>
+
+
+
+			</div>
+		</div>
+		
+
+		<br clear="all">
+		
+			
+
+	</div> 
+	</div>
+</div>
+
+
+<div style="display:none;" id="lqm_AdTable">
+	
+</div>
+
+
+<script type="text/javascript" language="Javascript" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/jquery.js"></script><script type="text/javascript">//<![CDATA[
+if (typeof jQuery == 'undefined') {
+    document.write(unescape("%3Cscript src='/script/JS/jquery-1.6.2.min.js' type='text/javascript' %3E%3C/script%3E"));
+}//]]></script>
+<script type="text/javascript" language="Javascript" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/article.js"></script>
+<script type="text/javascript" language="Javascript" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/navbar.js"></script>
+<script type="text/javascript" language="Javascript" src="How%20to%20Implement%20Load%20Balancing%20to%20Distribute%20Workload%20-%20CodeProject_pliki/Notifications.js"></script>
+<script type="text/javascript" language="Javascript">//<![CDATA[
+$(document).ready(function() { anchorAnimate(); });
+(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));
+(function() {var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })();
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){ js=d.createElement(s);js.id=id; js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+$(function ()
+                        {
+                        $('.oauth').click(function () {
+                            $this = $(this);
+                            href = $this.attr('href');
+                            var myWindow = window.open(href, 'popup',
+                                        'width=600,height=400,location=0,menubar=0,resizeable=0,scrollbars=0,toolbar=0');
+                            myWindow.focus();
+                            var timer = setInterval(function () {
+                                            if (myWindow.closed) {
+                                                clearInterval(timer);
+                                                // window.location.reload(); // May do a POST reload, shows a warning
+                                                window.location = window.location; // force a GET reload
+                                            }
+                                        }, 200);
+                            return false;
+                        });
+                    });
+var oSrchFlt = false, oSrchBox=false,srchBoxFoc=false;
+$(document).ready(function() {
+ if(InitWatermark)InitWatermark('sb_tb', 'Search for articles, questions, tips');
+ var sbar = $('#sb_tb'); 
+ var sfilter = $('#SearchFilter');
+ if (sbar && sfilter) {
+  sfilter.removeClass('popup'); sfilter.hide();
+  sbar.blur(function() {
+ if (!oSrchFlt)sfilter.hide();
+ srchBoxFoc=false;
+ /*sbar.animate( { width:'210px' }, { queue:false, duration:300 });
+*/ });
+  sbar.focus(function() {
+ oSrchFlt=false;srchBoxFoc=true;
+ sfilter.show();
+ /*sbar.animate( { width:'500px' }, { queue:false, duration:300 });
+*/ });
+  sbar.mouseleave(function() { oSrchBox=false; });
+  sbar.mouseover(function() { oSrchBox=true; });
+  sfilter.mouseleave(function() { oSrchFlt=false; if (!srchBoxFoc&&!oSrchBox)sfilter.hide();});
+  sfilter.mouseover(function() { oSrchFlt=true; });
+ }
+});
+$("#ctl00_RateArticle_RateItemWrapper").removeClass("container-rating");$('#clear-rate_ctl00_RateArticle_RCD').click(function () { $('#ctl00_RateArticle_RCD').hide(); return false;});
+function PostBack_ctl00_RateArticle_RateItemWrapper() {
+  return rateItem(318290,2,1,true,true,3,'LargeStars');
+}
+function ChkRtctl00_RateArticle(val, objId) {if (val<=3||true) {
+$('div[name=RateItem_' + objId + '] .rating-comment').css("display","");}
+else $('div[name=RateItem_' + objId + '] .rating-comment').css("display","none");}
+
+forumDir = '/script/Forums/';
+staticServer = 'http://s.codeproject.com';
+allowReporting = false;
+allowRating = false;
+allowRatingDisplay = true;
+var smoothScroll = false;
+Selected        = -1;
+oldTitle        = document.title;
+minMessageScore = 1;
+minMessageScore = 5;
+abuseScore      = -2;
+spamScore       = -1;
+getRatingUrl    = '/script/Ratings/Ajax/GetRatings.aspx';
+noiseThreshold  = 3;
+getRatingRefKey = 'obrs';
+
+
+//]]>
+</script>
+
+
+<canvas id="cv1" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><canvas id="cv2" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas></body></html>
