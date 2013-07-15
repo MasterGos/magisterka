@@ -1,0 +1,944 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+<meta http-equiv="Creation-date" content="18 sty 2000 10:19 GMT">
+<meta http-equiv="Reply-to" content="para@prz.rzeszow.pl">
+<meta name="Author" content="Paweł Dymora &amp; Mirosław Mazurek">
+<meta name="description" content="Prace zaliczeniowe studentów">
+<meta name="Keywords" content="organizacja procesow obliczeniowych,prace zliczeniowe,
+corba, java, inca, systemy rozproszone, Architektura oprogramowania">
+<title>Architektura oprogramowania systemów rozproszonych</title>
+</head>
+
+<body background="Architektura%20oprogramowania%20system%C3%B3w%20rozproszonych_pliki/zerojeden.jpg">
+
+<font face="Times New Roman"><p>Paweł Gontarz</p>
+<p>Maciej Lasko </p>
+</font><font face="Arial">
+<p>4FDS - systemy i sieci komputerowe</p>
+
+<p>POLITECHNIKA RZESZOWSKA</p>
+</font><b><font face="Arial" size="2">
+</font><font face="Verdana" size="2"><p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</font></b><font face="Arial" size="6"><p align="CENTER">Architektura oprogramowania systemów rozproszonych</p>
+</font><b><font face="Verdana" size="2"><p>&nbsp;</p>
+</font><font face="Arial"><p>Streszczenie</p>
+</font><font color="#000000" size="2"><p align="JUSTIFY"></p></font></b><font color="#000000" size="2"></font><dir><font color="#000000" size="2"><b>
+</b></font><dir><font color="#000000" size="2"><b>
+</b></font><dir><font color="#000000" size="2"><b>
+
+</b></font><font face="Times New Roman" size="2"><p align="JUSTIFY">Rosnące
+ zapotrzebowanie systemów, które łączyłyby w jedną całość nowe elementy,
+ inspiruje rozwój architektury w kierunku rozdzielania składników. 
+Autorzy opisują dwie implementacje takiej architektury i dwie 
+przykładowe aplikacje, jedna opierana na produkcie Java RMI i druga 
+używająca Corba-based. Praca w dość czytelny sposób zaznajamia nas z 
+problemami oprogramowania systemów rozproszonych. Naświetlone zostały 
+wszelkiego rodzaju błędy i usterki z jakimi możemy się tutaj spotkać.</p></font></dir><font face="Times New Roman" size="2">
+
+</font>
+
+</dir></dir>
+<b><font face="Arial" size="3">1. Wstęp<br></font></b><font face="Arial" size="3"></font><dir><font face="Arial" size="3"><b>
+</b></font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Większość
+ przedsiębiorstw ma duże zapotrzebowanie na programowe systemy 
+wspierające ich różnorodne przedsięwzięcia. Międzynarodowy Instytut Norm
+ Technicznych szacuje, że około 85 procent instalowanego oprogramowania 
+przypada w większości na duże organizacje, które z niego korzystają. 
+Mimo to jednak większość aplikacji stosuje się do monolitycznych i 
+pojedynczych zastosowań, które są kosztowne w budowie i </font>m<font face="Times New Roman">ało
+ odporne na błędy. W przemyśle gdzie systemy muszą być rozmieszczone 
+szybko według określonych zasad, upraszcza się i automatyzuje syntezę 
+oprogramowania stosując do tego wielokrotnie wykorzystywane, wypróbowane
+ i niezbędne składniki. Stąd też ostatnie</font> <font face="Times New Roman">zainteresowanie
+ składowymi oprogramowania od strony inżynierii pośród badaczy i 
+praktyków. Nasze prace prowadzone w kierunku badania architektury, 
+technologii i produktów przeznaczonych do budowy oprogramowania 
+systemowego na dużą skalę , szczególnie wyso</font>k<font face="Times New Roman">o
+ interakcyjnego, rozdzielają aplikacje na takie jakie są potrzebne dla 
+komunikujących się klientów. W rozwoju architektury oprogramowania 
+systemów rozproszonych staraliśmy się stworzyć architekturę z prostymi 
+mechanizmami dla tworzonych połączeń między s</font>k<font face="Times New Roman">ładnikami.
+ Wierzymy, że w przyszłych, otwartych i elastycznych systemach będziemy 
+się opierali na luźno powiązanych konfiguracjach , rozdzielanych 
+składników owych systemów, które mimo to będą skalowalne, zwięzłe i w 
+pełni kierowalne. Powinna tutaj zaistn</font>i<font face="Times New Roman">eć
+ możliwość rozkładania istniejących systemów na spójne składniki, które 
+mogły by być połączone z innymi, nowymi składnikami i użyte w innych 
+zastosowaniach.</font></p><font face="Times New Roman">
+<p align="JUSTIFY">Dla zachowania kompatybilności, architektura 
+oprogramowania powinna być realizowana przy pomocy dostępnych 
+technologii i produktów.</p>
+</font><b><font face="Arial"></font></b></dir><b><font face="Arial">2. Definiowanie architektury oprogramowania
+</font></b><dir><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Opierając
+ się na różnych źródłach stwierdzamy, że badania prowadzone nad budową 
+oprogramowania nie wyłoniły jako takiej definicji architektury 
+oprogramowania. Większość definicji łączy w sobie składniki, łączniki 
+oraz kila atrybutów powiązanych racjonalną podstawą i własnościami. 
+Definicja architektury języków takich jak RAPIDE formalnie definiuje 
+architektoniczne powiązania składników pod względem interfejsu jak i 
+innych komponen</font>t<font face="Times New Roman">ów. Większość 
+definicji istnieje dla "składników" jako całości , nie odróżniając przy 
+tym składników będących obiektami, programami itp. Architektura jest 
+teoretycznym modelem definiowania i rozwijania składników systemowych 
+oraz sposobu ich interpretacji</font>,<font face="Times New Roman"> przez co odróżniamy to od infrastruktury wprowadzającej w życie pojęciowy model. </font></p><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">	Infrastruktura 
+oprogramowania wywodząca się od infrastruktur systemów i produktów musi 
+stosować się do norm architektonicznych. Np. prosta architektura typu 
+klient-server łączy w sobie interfejs użytkownika i administratora bazy 
+danych. Specyficzne produkty łączą X Window i Oracle DBMS. 
+Infrastruktura składająca się z tych produktów i składników wymaga 
+połączenia ich ze sobą w jedną całość. Architektura oprogramowania musi </font>b<font face="Times New Roman">yć
+ wykonywana używając dostępnych technologii i produktów, które 
+współdziałają ze sobą. Wybranie jednak najnowocześniejszych technologii i
+ produktów nie gwarantuje spójności architektury. Z drugiej jednak 
+strony, definiując spójną architekturę nie bacząc </font>n<font face="Times New Roman">a
+ istniejące technologie można doprowadzić do złego dopasowania między 
+teoretycznym modelem architektury a przedmiotem modelu, tkwiącego w 
+istniejących produktach. To złe dopasowanie z kolei prowadzi do braku 
+akceptacji dłuższego rozwoju ponieważ nowators</font>k<font face="Times New Roman">ie
+ składniki muszą zostać stworzone zanim zostanie skonstruowana zawartość
+ aplikacji. Skupiamy się dlatego na architekturze, takiej, która 
+pozwalałaby wprowadzać w życie główne obiekty architektury - Corba, 
+DCOM, Java RMI.&nbsp;</font></p><font face="Times New Roman">
+</font></dir><b><font face="Arial"> 3. INCA (Architektura oprogramowania systemów rozproszonych)
+</font></b><font face="Arial"></font><dir><font face="Arial"><b>
+
+
+</b></font><font face="Times New Roman"><p align="JUSTIFY">Architektura 
+oprogramowania systemów rozproszonych buduje mechanizmy połączeń między 
+składnikami, które następnie wprowadza się i stosuje w architekturze. 
+Mimo, że to ogranicza w pewien sposób spokojne przygotowanie składników,
+ to jednak praktycznie te wszystkie niedogodności tak naprawdę ułatwiają
+ trudny proces komponowania składników w jedną całość według określonych
+ zasad narzuconych przez względy architektoniczne. Nie definiuje się 
+jako tako niezależnych mechanizmów umożliwiających uniwersalne łączenie 
+składników. </p>
+<p align="JUSTIFY">	INCA jako pojęciowy model definiuje cztery większe elementy:</p></font></dir><font face="Times New Roman">
+
+
+
+</font><ul><font face="Times New Roman">
+</font><dir><font face="Times New Roman">
+</font><dir><font face="Times New Roman">
+<li>składniki </li>
+</font><li>zdalne zdarzenia </li>
+<font face="Times New Roman"><li>czas wykonania konfiguracji narzędzi w odniesieniu do składników </li>
+<li>wzajemne oddziaływanie zarządców</li></font></dir></dir></ul><font face="Times New Roman">
+
+</font><b><font face="Arial"><p align="JUSTIFY">Składniki </p></font></b><font face="Arial"></font><dir><font face="Arial"><b>
+
+
+</b></font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Składniki
+ są ważną sprawą dla podstawowej części architektury. Są one 
+gruboziarniste, odbudowują działanie f-cji podobnie jak lista 
+telekomunikacyjnych usług dla dostępnych klientów. Konwencjonalny 
+składnik gruboziarnisty przeznaczony do ponownego użycia , j</font>e<font face="Times New Roman">st to często za mało do praktycznego użycia od czasu zwiększonych wymagań aplikacji.</font></p><font face="Times New Roman">
+<p align="JUSTIFY">Wchodzące w skład INCA składniki składają się z jednej albo wielu części:</p></font></dir><font face="Times New Roman">
+
+
+</font><ul><font face="Times New Roman">
+</font><dir><font face="Times New Roman"></font><dir><font face="Times New Roman">
+<li>nieodzowny serwer, który wykonuje takie funkcje jak np. zabezpieczanie długich odcinków </li>
+</font><li><p align="JUSTIFY">fu<font face="Times New Roman">nkcjonalny interfejs użytkownika pozwalający na współdziałanie z business function </font></p></li><font face="Times New Roman">
+<li><p align="JUSTIFY">wewnętrzny dostęp do usług bazy danych, który hermetyzuje dostęp do niej</p></li></font></dir></dir></ul><dir><font face="Times New Roman">
+</font></dir><font face="Times New Roman">
+</font><p align="JUSTIFY"></p>
+
+<p align="JUSTIFY"></p>
+<font size="2"></font><p align="CENTER"><font size="2">
+<img src="Architektura%20oprogramowania%20system%C3%B3w%20rozproszonych_pliki/rys1.jpg" height="364" width="601">
+<br>
+</font><i><font face="Arial" size="2">Rys1) Wielofunkcyjne składniki w INCA</font></i></p><i><font face="Arial" size="2">
+</font></i><b><font size="2"><p align="JUSTIFY">&nbsp;</p></font></b><font size="2"></font><dir><font size="2"><b>
+
+</b></font><dir><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Pierwszy
+ rysunek obrazuje abstrakcyjną konfigurację składników. W pełni 
+programowalne pojedyncze składniki stosuje się w trzeciej warstwie 
+modelu client-server. Składniki są luźno powiązane ze zdarzeniami 
+wywołań większości składników serwera. W tej pozio</font>m<font face="Times New Roman">ej
+ kompozycji możemy doszukać się logicznych buisness function w 
+przeciwieństwie do pionowych kompozycji opieranych na fizycznej 
+funkcjonalności. Taka infrastruktura dostarcza hierarchicznej spójności 
+składników systemu, ułatwiając kompozycję aplikacji z </font>i<font face="Times New Roman">stniejących składników z minimalnym wpływem na inne składniki. </font></p></dir><font face="Times New Roman">
+</font></dir><font face="Times New Roman">
+</font><b></b><dir><b><font face="Arial"><p align="JUSTIFY">Zdalne zdarzenia</p></font></b><font face="Arial"></font><dir><font face="Arial"><b>
+
+</b></font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Servery należą do odmiennych składników komunikujących się na wypadek zawiadomienia.</font></p>
+<font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Składniki
+ serwera mogą być informowane o charakterystycznych zdarzeniach 
+generowanych przez inne składniki. Zdarzenie generowane przez składniki 
+serwera są źródłem; zdarzeń odbieranych przez nasłuchujących. Od kiedy 
+słuchacz może być odległy , potrzebujemy w takim wypadku niezawodnych 
+mechanizmów transferu zdarzeń między źródłem a słuchaczem p</font><font>o</font><font face="Times New Roman">nad siecią. </font><font color="#000000" face="Times New Roman">Jedno
+ z rozwiązań zakładałoby stworzenie centralnego serwera informacji do 
+którego źródło przekazywałoby te zdarzenia. Serwer informacji natomiast 
+wysyłał by te zdarzenia do nasłuchujących. To wszystko nie będzie jednak
+ działało dla rozdzielanych składników. Tym niemniej, komunikacja od i 
+do serwera i wykonanie ładowania tworzą wąskie gardła i pojedyncze 
+uszkodzenia. Dla uniknięcia tych zatorów INCA decentralizuje kontrolę 
+przepływu zdarzeń. Do ułatwienia połączeń między składnikami , definiuje</font><font color="#000000">m</font><font color="#000000" face="Times New Roman">y
+ ogólną metodę do nadających się składników, i generujemy klasę 
+składników od których wywodzą się wszystkie składniki określające 
+zdarzenia.&nbsp;</font></p><font color="#000000" face="Times New Roman">
+<p align="JUSTIFY">Rysunek 2 obrazuje zdarzenia źródła (Serwer A) z listą słuchaczy zawierającą uprawnienia dla trzech komponentów:</p>
+</font><font color="#000000"><p align="JUSTIFY">serwera B, C i D. </p></font></dir><font color="#000000">
+
+</font><p align="CENTER"><font color="#000000"><br>
+</font><font color="#000000" size="2"><br>
+<img src="Architektura%20oprogramowania%20system%C3%B3w%20rozproszonych_pliki/rys2.jpg" height="222" width="324"><br>
+<br>
+</font><i><font color="#000000" face="Arial" size="2">Rys2) Wielofunkcyjne składniki w INCA Odległe składniki w INCA</font></i></p><i><font color="#000000" face="Arial" size="2">
+</font></i><font color="#000000" size="2"><p align="JUSTIFY">&nbsp;</p>
+</font><b><font color="#000000" face="Arial"><p align="JUSTIFY">Czas wykonania konfiguracji</p></font></b><font color="#000000" face="Arial"></font><dir><font color="#000000" face="Arial"><b>
+
+</b></font><font face="Times New Roman"><p align="JUSTIFY">Architektura 
+ustala połączenia składników bardziej w czasie wykonania niż w czasie 
+kompilacji lub projektowania ( podobnie jak w modelu JavaBeans ). Jeden 
+składnik przyłącza się do innych po czym jeden z nich albo obaj mają 
+rozmieszczać i wytwarzać egzemplarze.</p>
+<p align="JUSTIFY">Taka dynamiczna konfiguracja pozwala nam przystosować aplikacje podczas gdy one przyczyniają się do ich</p></font></dir><font face="Times New Roman">
+
+
+<ul>
+<dir>
+<li>dostępności </li>
+<li><p align="JUSTIFY">niezawodności, od tego czasu rozbity lub wadliwy składnik może być zastąpiony w aplikacji </p></li>
+<li><p align="JUSTIFY">osiągnięć, od tego czasu połączenia mogą być 
+rekonfigurowane jako rezultat zmian obciążeń procesora lub obciążeń 
+sieci między składnikami</p></li></dir></ul>
+</font></dir><dir><font face="Times New Roman">
+
+</font><p align="JUSTIFY"><font face="Times New Roman">Architektura 
+definiuje narzędzia konfiguracji składników, które pozwalają ustalić 
+administratorowi oraz rejestrować zdarzenia między obiektami serwera. 
+Narzędzie to łączy zdarzenia źródła ze słuchaczami przez powiązanie 
+dynamicznych skoków do źródła serwera. INCA pozwala też na 
+rekonfigurację związku źródło - słuchacz w serwerze konfiguracji plików,
+ które serwer czyta w czasie uruchomienia. Od czasu braku 
+scentralizowania baz danych, połączenie ma miejsce w czasie wykonywania 
+konfiguracji narzęd</font><font>z</font><font face="Times New Roman">i. Narzędzie jednak nie bierze udziału w czasie transmisji . </font></p><font face="Times New Roman">
+</font><b><font></font></b><font></font><p align="JUSTIFY"><font><b>Rysunek 3</b></font><font face="Times New Roman">
+ pokazuje konfigurację narzędzi w interfejsie użytkownika. Do ustalenia 
+nowego związku, administrator wyszczególnia nazwy składników, nazwy 
+instancji i lokalizacje dla zarówno słuchaczy jak i źródła. Źródło 
+ładuje wtedy właściwą klasę zastępczą i wytwarza obiekt zastępczy ( 
+stosowane podczas dynamicznego ładowania klas Javy ). Nazwa klasy 
+zastępczej jest kształtowana przez łączenie nazw z przyrostkiem "Proxy" 
+(np. LoggerProxy). Odległe </font><font>s</font><font face="Times New Roman">kładniki nie potrzebują być aktywowane kiedy kreowane jest zastępstwo (wymaga to silnego połączenia w czasie wykonywania). </font></p><font face="Times New Roman">
+</font><font color="#000000" size="2"><p align="JUSTIFY">&nbsp;</p>
+</font><p align="CENTER"><img src="Architektura%20oprogramowania%20system%C3%B3w%20rozproszonych_pliki/rys3.jpg" height="450" width="480"><font color="#000000" size="2"><br>
+<br>
+</font><i><font color="#000000" face="Arial" size="2">Rys3) Konfiguracja interfejsu narzędziowego</font></i></p><i><font color="#000000" face="Arial" size="2">
+</font></i><b><font color="#000000" face="Arial"><p align="JUSTIFY">
+</p></font></b></dir><b><font color="#000000" face="Arial">
+Interakcyjny zarządca 	 <p></p>
+</font></b><font face="Times New Roman"></font><dir><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Dla
+ poziomej kompozycji składników , za pomocą dostępnych elementów 
+interfejsu użytkownika, główne elementy architektoniczne muszą zespalać 
+wiele klientów w pojedynczą aplikację. INCA definiuje interakcyjnego 
+zarządcę, który pozwala sprawować kontrolę nad</font><font> </font><font face="Times New Roman">przebiegiem
+ aplikacji. To także dotyczy jasnego celu serwera informacji, który 
+obsługuje interfejs użytkownika, akceptuje informacje kontrolne od 
+składników serwera i odwołuje się do składników klienta. Interakcyjny 
+zarządca tworzy globalny i unikalny ide</font><font>n</font><font face="Times New Roman">tyfikator
+ sesji, inicjalizuje pierwszy składnik, dostarcza zdalne usługi dla 
+serwera, które służą do późniejszego uruchomienia składników. Zarządca 
+ten również wykorzystuje i obsługuje przestoje składników. Każda stacja 
+robocza działająca na aplikacjach o</font><font>p</font><font face="Times New Roman">artych o INCA chce mieć jedną instancję interakcyjnego zarządcy.&nbsp; </font></p></dir><font face="Times New Roman">
+
+
+</font><b><font face="Arial"><p>4. Prototyp aplikacji</p></font></b><font face="Arial"></font><dir><font face="Arial"><b>
+
+</b></font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Tworzymy
+ Service Provisioning Scenario (scenariusz świadczenia usług ) dla 
+zbadania architektury. Ten dobrze znany scenariusz telekomunikacyjny 
+symuluje sesję między k</font><font>lientem i phone rep.</font><font color="#ff0000"> </font><font face="Times New Roman">Ekran
+ powitalny rezerwuje miejsce na numer telefonu klienta i przycisk 
+pozwalający odszukać pewne dane klienta. Zakładka z listą dostępnych 
+usług pozwala klientowi wybrać nową usługę taką jak np., LongDistance 
+(patrz rys. 3). Na zakończenie ta interakcja prowadzi do utworzenia 
+nowego obiektu obsługi żądania. Kiedy była tworzona ta nowa usługa, 
+serwer zabezpieczający aktualizował dane klienta z nowym objektem 
+usługowym i powiadamiał phone rep</font><font color="#ff0000"> </font><font face="Times New Roman">(i ewentualnie użytkownika) przez e-mail. 	Identyfikujemy pięć składników do usług klienta. &nbsp;</font></p></dir><font face="Times New Roman">
+
+
+</font><ul><font face="Times New Roman">
+</font><dir><font face="Times New Roman">
+</font><li><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Przywitanie.
+ Ten składnik dostarcza interfejs użytkownika przez WelcomeApllet, który
+ akceptuje podstawowy numer telefonu klienta i przekazuje go do 
+WelcomeServer. WelcomeServer wywołuje wtedy CustomerArri</font><font>valEvent. </font></p></li><font>
+</font><font face="Times New Roman"><li><p align="JUSTIFY">Klient . W 
+momencie kiedy przyjmowane przez CustomerArrivalEvent, ten składnik 
+tworzy aktualną bazę danych do odzyskiwania szczegółowych informacji 
+klienta. Teraz zwraca się z prośbą do AppletMnager o uruchomienie 
+CustomerApplet wyświetlajacego te dane. Na prośbę klienta 
+,CustomerApplets zawiadamia serwer, którego klient potrzebuje do 
+podglądnięcia ServiceOptions. Ten serwer generuje 
+ServiceOptionsRequestEvent. </p></li>
+</font><font <li=""><p align="JUSTIFY"></p></font><p align="JUSTIFY"><font <li="">ServiceOptions. Po otrzymaniu ServiceOptionsRequestEvent ServiceOptio</font><font face="Times New Roman">nsServer
+ prosi o pokazanie opcji usług dostępnych dla klienta, takich jak np. 
+LongDistance lub CallWaiting (obsługiwanie połączeń). Kiedy użytkownik 
+wybiera opcje usługi, interfejs użytkownika wywołuje serwer z opcjami 
+generującymi ServiceOptionSelectedEv</font><font>ent 
+</font><font face="Times New Roman"></font></p><li><p align="JUSTIFY"><font face="Times New Roman">LongDistance.
+ Po otrzymaniu ServiceOptionSelectedEvent z wyborem "LongDistance" 
+,serwer generuje listę nośników i pyta stosowny AppletMenager o 
+uruchomienie LongDistanceApplet, który wyświetli tą listę. Kiedy 
+użytkownik wybierze nośnik LongDistanceApplet zawiadomi serwer 
+generujący LDSelectedEvent. LongDistanceServer wtedy dodaje nowe żądania
+ obsługi danych klienta przez Customer serwer. </font></p></li><font face="Times New Roman">
+<li><p align="JUSTIFY">LDHandler. Kiedy otrzymywany jest 
+LDSelectedEvent, serwer łączy odpowiednie nośniki. Po otrzymaniu 
+potwierdzenia połączenia wysyłany jest e-mail do phone rep i klienta 
+(jeżeli klient ma e-mail) po czym zostają zaktualizowane dane klienta 
+przeznaczone do pokazania aby ServiceRequest zostało zamknięte i dodane 
+do nowych ActiveService objektów. </p></li></font></dir></ul><font face="Times New Roman">
+
+</font><font color="#000000"><p align="JUSTIFY">&nbsp;</p></font><dir><font color="#000000">
+
+</font><p align="CENTER"><img src="Architektura%20oprogramowania%20system%C3%B3w%20rozproszonych_pliki/rys4.jpg" height="415" width="584"></p>
+<i><font color="#000000" face="Arial" size="2"><p align="CENTER">Rys4) Prototyp aplikacji: części składowe odbiorcy</p>
+</font></i><font color="#000000" size="2"><p align="JUSTIFY">&nbsp;</p>
+</font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">To
+ wszystko obrazuje rysunek 4. My też definiujemy ogólny rejestrator 
+składników , który oczekuje na sygnał od obiektu serwera o zajściu 
+jakiegoś zdarzenia po czym umieszcza go w bazie danych. Taki składnik 
+może być dynamicznie przyłączany do innych komponentów rejestrujących 
+działania, bez oddziaływania na inne składniki w systemie.</font><font color="#000000">&nbsp;</font></p></dir><font color="#000000">
+
+</font><b><font face="Arial"><p>5. Dwie implementacje INCA</p></font></b><font face="Arial"></font><dir><font face="Arial"><b>
+
+</b></font><font face="Times New Roman"><p align="JUSTIFY">My 
+implementujemy pojęciowy model INCA w oparciu o Java RMI i Corba. 
+Szkielet modelu redukuje w większości trudności związane z implementacją
+ INCA rozdzielającą obiekty struktury. </p></font></dir><font face="Times New Roman">
+<dir <="" font=""><b><font color="#000000" face="Arial"><p>Definicja składników programu</p></font></b><font color="#000000" face="Arial"></font><dir><font color="#000000" face="Arial"><b>
+
+</b></font><font face="Times New Roman"><p align="JUSTIFY">W ostatniej 
+pracy Eric Evans i Daniel Rogers, Java applets oddziałuje wzajemnie z 
+odległymi serwerami za pośrednictwem Corba. Autorzy zauważają że 
+stosowanie Java applet pomaga rozwiązywać niektóre problemy związane z 
+klientem. Evans i Rogers stosują też serwery Corba do adresowania 
+platform i języków niezależnych </p>
+<p align="JUSTIFY">Nasze pojęcie o strukturalnych elementach opisuje jasno migrację implementacji INCA względem różnych struktur. </p>
+</font><p align="JUSTIFY"><font face="Times New Roman">	Robert Allen i 
+David Garlan badają duże kompozycje składników. Koncentrują się tutaj na
+ temacie związanym począwszy od języków programowania stosowanych do 
+kompozycji systemów, do wyrafinowanych mechanizmów połączeń. Oni też 
+wprowadzają pojęcie "łączniki składników", pierwsza klasa obiektów 
+obejmuje protokół tłumaczenia który uzupełnia spis składników w 
+interfejsie. My skupiamy się na programowaniu modelu, umożliwiającego 
+dynamiczne łączenia </font><font>s</font><font face="Times New Roman">ię składników. </font></p><font face="Times New Roman">
+<p align="JUSTIFY">	George Heineman definiuje szkielet dla dających się 
+przystosować składników oprogramowania, który próbuje zilustrować 
+technikę odbudowy składników, które ponownie będą mogły być używane. Ten
+ szkielet jest językowo i architektonicznie niezależny. Nie dostarcza on
+ jednak ogólnych mechanizmów do łączenia składników. </p></font></dir><font face="Times New Roman">
+
+</font><b><font face="Arial"><p>Utrzymywanie INCA po przez implementację </p></font></b><font face="Arial"></font><dir><font face="Arial"><b>
+
+</b></font><font face="Times New Roman"><p align="JUSTIFY">Uważamy to za
+ bardzo ważne dla wyraźnego rozdzielenia elementów, które budują 
+architekturę i infrastrukturę, szczególnie wtedy kiedy architektura musi
+ migrować ponad czasowo od jednej technologii do drugiej.</p>
+<p align="JUSTIFY">	Najpierw decydujemy się na stworzenie interfejsu 
+użytkownika z wykorzystaniem elementów appletu aby można było 
+zapoczątkować przeglądanie stron internetowych. Ta decyzja spowodowała 
+zastosowanie Java jako języka programowania w odniesieniu do naszych 
+składników interfejsu użytkownika i elementów serwera.</p>
+</font><p align="JUSTIFY"><font face="Times New Roman">	Na poziomie 
+architektury definiujemy grupę klas i interfejsów, które wyrażają 
+zasadnicze reguły INCA. Na poziomie infrastruktury, tworzymy elementy 
+architektoniczne przy pomocy specyficznych narzędzi używanych jako 
+udogodnienie w odniesieniu do wszystkich rozdzielanych elementów 
+szkieletu. Ten rozdzielany element szkieletu powinien ustalać 
+przeźroczystą lokalizację dla dostarczania</font><font> </font><font face="Times New Roman">pewnego
+ zdalnego komunikatu i wyznaczać usługi serwisów. Na poziomie aplikacji,
+ uzupełniliśmy system za pomocą aplikacyjnej instancji zawierającej 
+komponenty. Ilustracja 5 pokazuje ogólny obiektowy model dla elementów 
+serwera przy trzech poziomach abstakc</font><font>ji.</font></p><font>
+</font><font face="Times New Roman"><p align="JUSTIFY">Server INCA zawiera następujące klasy bazowe: Component, ServerHandle, Event i EventProxy.</p></font></dir><font face="Times New Roman">
+
+
+</font><ul><font face="Times New Roman">
+</font><dir><font face="Times New Roman">
+<li><p align="JUSTIFY">Component(elementy) definiują usługi dołączania i
+ usuwania słuchacza, i przywołują z powrotem do obsłużenia wyników 
+wysłanych do komponentów. </p></li>
+</font><font></font><li><font>ServerHandle </font><font face="Times New Roman">definiuje trzy elementy niezbędne do lokalizacji i łączenia określonych serwerów: </font></li><font face="Times New Roman">
+</font><font><li>nazwa komponentu, </li>
+<li>nazwa serwera, </li>
+</font><font face="Times New Roman"><li>nazwa głównego (macierzystego) komputera w którym serwer rezyduje. </li>
+<li><p align="JUSTIFY">Event definiuje zawartość zależną od generowanego
+ zdarzenia. Zdarzenia INCA są wypisane na maszynie i każde zdarzenie 
+obiektu zawiera dwa poziomy informacji. Pierwszy poziom, który jest 
+aplikacyjnie-niezależny , zawiera SeeeionID identyfikujący sesję w 
+jakiej wyniki zdarzenia zaszły, i odwołanie przez stację roboczą do 
+InteractionManager, która ustawiła SessionID Drugi poziom dodaje 
+specyficzną informację dla komponentu </p></li>
+</font><li><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">EventProxy
+ jest przeznaczone dla zdarzenia poprzedzającego wysyłanie i używa 
+podstawowego rozdzielania szkieletu (obiektu do wezwania odbierającego 
+metodę zgłoszenia). Jego metoda forward() jest na wzór projektowanego 
+wzorca Template Method . Metoda forward() wzywa metodę filter() do 
+eliminacji pewnych zdarzeń nie interesujacych dla słuchacza, wtedy wiąże
+ swój ServerHandle do specyficznego zdal</font><font>n</font><font face="Times New Roman">ego
+ odwołania i ostatecznie przesyła komunikat o zdarzeniu do odbiornika. 
+Specyficzne podklasy EventProxy będą narzucać zmianę metody filter() 
+jako niezbędną.</font></p></li></dir></ul><font face="Times New Roman">
+</font></dir><font face="Times New Roman">
+</font><dir><font face="Times New Roman">
+
+</font><font><p align="JUSTIFY">&nbsp;</p>
+</font><p align="CENTER"><img src="Architektura%20oprogramowania%20system%C3%B3w%20rozproszonych_pliki/rys5.jpg" height="372" width="599"></p>
+<i><font color="#000000" face="ARIAL" size="2"><p align="CENTER">Rys 5) Rodzajowe klasy serwera.</p>
+</font></i><font size="2"><p align="JUSTIFY">&nbsp;</p>
+</font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Jak
+ pokazano na rysunku 5 definiujemy proste implementacje odnośnie tamtych
+ specyficznych elementów architektonicznych stosownie do ustalonego 
+rozdzielonego szkieletu w infrastrukturze poziomu</font><font color="#000000" face="Times New Roman">.
+ W pewnych przypadkach tamtej implementacji (na przykład, metody w 
+SimpleComponentImpl które wspierają rejestrację) będzie to wystarczające
+ dla wielu elementów, chociaż komponenty serwera mogą narzucać zmianę 
+owych metod w razie potrzeby. W poziomie aplikacji, każdy element 
+serwera, podobnie jak WelcomeImpl, rozszerz</font><font color="#000000">a</font><font color="#000000" face="Times New Roman"> rodzajową implementację.</font></p><font color="#000000" face="Times New Roman">
+</font><font color="#000000"><p align="JUSTIFY">&nbsp;</p></font></dir><font color="#000000">
+
+</font><p align="CENTER"><img src="Architektura%20oprogramowania%20system%C3%B3w%20rozproszonych_pliki/rys6.jpg" height="276" width="456"></p>
+</font><dir><font face="Times New Roman"></font><i><font color="#000000" face="ARIAL" size="2"><p align="CENTER">Rys 6) Rodzajowy interfejs użytkownika.</p>
+</font></i><font color="#000000" size="2"><p align="JUSTIFY">&nbsp;</p>
+</font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Rysunek
+ 6 pokazuje porównywalny model dla elementów interfejsu użytkownika, 
+który jest w pewnym sensie prostszy niż po stronie servera. W 
+architekturze poziomu istnieje InteractionManager . W poziomie 
+infrastruktury definiujemy konkretny AppletManager, który jest 
+specjalizowany w InteractionManager dla środowiska stron internetowych. 
+AppletManager jest sam w sobie odd</font><font>a</font><font face="Times New Roman">lonym,
+ aplikacyjno-niezależnym serverem. My również definiujemy rodzajową 
+klasę SimpleApplet która wie jak znaleźć swój AppletManager i jak 
+zbierać w górnym kontekście informację pozwalającą na przejście do 
+zrzeszonego servera. . W poziomie aplikacji, pod</font><font>k</font><font face="Times New Roman">lasy z SimpleApplet definiują specyficzny interfejs użytkownika i logiczną aplikację. </font></p><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">Wprowadzenie tych
+ poziomów abstrakcji oddzielnie pozwoliło nam opisywać implementacje w 
+każdej strukturze, gdzie generowane, rodzajowe klasy dopasowywały się do
+ struktur</font><font>alnego modelu obiektu.</font></p></dir><font>
+
+</font><b><font <p="" face="Arial">6. Zdalne wywołanie metody w Java<p></p></font></b><font <p="" face="Arial"></font><dir><font <p="" face="Arial"><b>
+
+</b></font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Przy
+ tworzeniu aplikacji z użyciem gniazdek napotykamy na wiele poważnych 
+problemów. Dwa najważniejsze z nich zostały zasygnalizowane w poniższym 
+tekście. Po pierwsze, gniazdka służą do przesyłania tablic bajtów, 
+napisów oraz prostych typów danych, takich jak liczby całkowite albo 
+zmiennoprzecinkowe. Jeżeli nadawca chce wysłać bardziej skomplikowaną 
+strukturę danych : na przykład tablicę tablic, wektor obiektów 
+nieznanego typu albo złożony obiekt zaw</font><font>i</font><font face="Times New Roman">erający
+ podobiekty, musi on sam troszczyć się o to, jak zakodować tę strukturę w
+ postaci danych zrozumiałych dla gniazdek. Z reguły taką zrozumiałą 
+strukturę będzie tablica bajtów. Odbiorca musi się zatroszczyć o 
+poprawne rozkodowanie, czyli odtworzenie p</font><font>r</font><font face="Times New Roman">zesłanej
+ struktury danych. Sytuacja taka ma kilka negatywnych następstw. 
+Programiści unikają bowiem czasochłonnego kodowania obiektów i starają 
+się kodować informację za pomocą niewielkiej ilości danych o 
+prymitywnych typach. Jeżeli już zdecydują się na p</font><font>r</font><font face="Times New Roman">zesyłanie
+ obiektów, poprawne napisanie metod zakodowania i rozkodowania zajmuje 
+dużo czasu i łatwo w nich o błędy. Dla każdego typu obiektu, który może 
+być przesyłany, potrzebna jest także osobna para metod do kodowania i 
+rozkodowywania. </font></p><font face="Times New Roman">
+</font><font></font><p align="JUSTIFY"><font>Drugim problemem </font><font face="Times New Roman">związanym
+ z użyciem gniazdek jest konieczność pisania kodu, który podejmuje 
+decyzje na podstawie otrzymanych wiadomości. Kod taki musi znaleźć się w
+ każdym programie, który używa gniazdek do czegoś więcej oprócz 
+transferu danych </font></p><font face="Times New Roman">
+</font><font></font><p align="JUSTIFY"><font>Zasygnalizowane problemy z</font><font face="Times New Roman">
+ użyciem gniazdek (i innych protokołów wykorzystujących strumienie 
+bajtów) mogą zostać wyeliminowane przez abstrakcję zdalnego wywołania 
+metody (ang. remote method invocation - RMI). Podstawowym elementem 
+składowym tego rozwiązania jest zdalny obiekt, czy</font><font>l</font><font face="Times New Roman">i
+ taki, który może mieścić się na dowolnym komputerze - zarówno na 
+lokalnej maszynie użytkownika, jak i na komputerze, do którego dostęp 
+jest możliwy tylko poprzez sieć. RMI pozwala na wywoływanie metod na 
+zdalnych obiektach oraz przekazywanie argumentów </font><font>d</font><font face="Times New Roman">o tych metod prawie w taki sam sposób, jak w sytuacji lokalnej, czyli w przypadku standardowego wywołania metody na obiekcie. </font></p><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">Sam pomysł nie 
+jest nowy -- stosuje się go od lat w projektach badawczych oraz w dość 
+popularnym mechanizmie RPC (ang. remote procedure call). W ciągu 
+ostatnich kilkunastu miesięcy pojęcie RMI stało się też znane wśród 
+wielu użytkowników Internetu. Powodem jest wprowadzenie RMI do 
+specyfikacji Javy przez Sun Microsystems. Od wersji JDK 1.1, java.rmi 
+jest pełnoprawnym, podstawowym p</font><font a<="" font=""><font face="Times New Roman">kietem Javy, a liczba aplikacji wykorzystujących Java RMI stale rośnie. </font></font></p><font a<="" font=""><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">Bardzo istotnym 
+zagadnieniem jest przyszłość RMI. Niewątpliwie Java staje się ważnym 
+elementem Internetu. Jest jednak pewne, że spora część aplikacji będzie 
+nadal rozwijana w bardziej okrzepłych językach, takich jak C czy C++. 
+Trzeba pamiętać, że dobrze działających programów napisanych w językach 
+innych niż Java jest sporo. Tymczasem Java RMI nie zapewnia możliwości 
+komunikacji z tymi programami (prace nad tym zagadnieniem trwają). J</font><font e<="" font=""><font face="Times New Roman">żeli
+ zatem np. klient napisany jest w Javie i wykorzystuje Java RMI, serwer 
+też musi korzystać z RMI. W przypadku gniazdek tego problemu nie ma. 
+Klient może być napisany w Javie, a serwer na przykład w C i oba będą 
+współpracowały tak, jakby do ich napisan</font><font>i</font><font a="" użyto="" tego="" samego="" języka.="" <="" p="" face="Times New Roman">
+</font></font></p><p align="JUSTIFY"><font e<="" font=""><font a="" użyto="" tego="" samego="" języka.="" <="" p="" face="Times New Roman">RMI
+ w szczególności ułatwia znajdowanie zdalnych obiektów, wywoływanie 
+zdalnych metod oraz przesyłanie złożonych struktur danych. Postaramy się
+ przybliżyć czytelnikom zagadnienia związane ze zdalnym wywołaniem 
+metody, a przede wszystkim wykorzystanie Java RMI do pisania aplikacji 
+rozproszonych. Przykładem będzie serwer przechowujący wiadomości 
+zostawiane i odbierane przez klientów. Omówimy sposób tworzenia zdalnych
+ obiektów, ich lokalizacji przez klientów, przekazywanie argumen</font><font>t</font><font face="Times New Roman">ów
+ zdalnemu wywołaniu metody, rolę zdalnych interfejsów i obiektów 
+zastępczych oraz środowisko tworzenia i wykonywania programów 
+stworzonych przy wykorzystaniu Java RMI. </font></font></p></font></dir><font a<="" font=""><font e<="" font=""><font face="Times New Roman">
+
+</font><b><font face="Arial"><p>7. Serwer wiadomości </p></font></b><font face="Arial"></font><dir><font face="Arial"><b>
+
+</b></font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Konstruowany
+ przez nas serwer ma oferować użytkownikom możliwość zostawiania 
+wiadomości dla innych użytkowników oraz odczytywania wiadomości 
+przychodzących od innych użytkowników. Wiadomość może być chroniona 
+hasłem, tzn. zostawiający ją użytkownik może wyspecyfikować hasło, które
+ musi zostać podane przez osobę chcącą odczytać ten komunikat. Wszystkie
+ przesłane komunikaty są przechowywane na centralnym serwerze; 
+użytkownicy kontaktuje się z nim za pomocą programów-klientów. 
+Komunikaty nie chronione hasłem to obiekty klasy java.lang.String, 
+natomiast komunikaty chronio</font><font>n</font><font face="Times New Roman">e są obiektami klasy </font>EncryptedMessage<font face="Times New Roman">.
+ Jedyna metoda tej klasy pozwala na weryfikację hasła; jeżeli 
+weryfikacja zakończy się sukcesem, getMessage zwraca właściwą wiadomość.
+ Istotnym elementem definicji klasy EncryptedMessage jest to, że 
+implementuje ona interfejs java.io.Serializable. Oznacza to, że 
+programista nie musi implementować żadnych dodatkowych metod, zaś 
+obiekty danej klasy mogą być przekazywane jako argumenty metodom 
+wywoływanym na zdalnych obiekt</font><font>a</font><font face="Times New Roman">ch. Wyjaśnione to zostanie dokładniej w dalszej części artykułu. </font></p><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">Tu jest kod implementujący </font>serwer<font face="Times New Roman">.
+ Klasa MessageServer różni się od dowolnej innej klasy o podobnym 
+przeznaczeniu, ale takiej, która nie będzie używana razem z RMI. Po 
+pierwsze, klasa MessageServer jest podklasą klasy 
+java.rmi.UnicastRemoteObject. Oznacza to m.in., że metody wywoływane na 
+obiektach tej klasy będą wykorzystywały do komunikacji protokół sieciowy
+ TCP/IP - zapewnione więc będzie niez</font><font>a</font><font face="Times New Roman">wodne
+ przesyłanie danych (o ile nie nastąpi np. poważna awaria sieci). Po 
+drugie, klasa MessageServer implementuje zdalny interfejs 
+MessageServerIf</font><font face="Times New Roman"> - rozszerza on 
+interfejs java.rmi.Remote. Każda klasa implementująca MessageServerIf 
+będzie zatem implementowała także java.rmi.Remote. Ponadto, obiekty klas
+ implementujących java.rmi.Remote (i tylko one!) mogą być zdalnymi 
+obiektami, czyli takimi, na których metody mogą za pomocą RMI wywoływać 
+programy Javy wykonujące się </font><font>n</font><font face="Times New Roman">a
+ innych komputerach. Obiekty klasy MessageServer mogą więc być obiektami
+ zdalnymi. Istotną cechą interfejsu MessageServerIf jest też to, że 
+wywoływanie zadeklarowanych tam metod może spowodować powstanie wyjątku 
+java.rmi.RemoteException. Wyjątek ten służ</font><font>y</font><font face="Times New Roman">
+ Java RMI do sygnalizowania problemów z działaniem mechanizmów RMI, np. 
+zerwanie połączenia sieciowego podczas wykonywania metody na zdalnym 
+obiekcie albo przerwanie działania komputera, na którym zlokalizowany 
+jest zdalny obiekt. </font></p><font face="Times New Roman">
+</font><font></font><p align="JUSTIFY"><font>Opisane kodowanie zdalny</font><font face="Times New Roman">ch
+ obiektów przy użyciu Java RMI nie wystarcza jeszcze do stworzenia 
+aplikacji rozproszonej. Brakującym elementem jest możliwość odnalezienia
+ w sieci interesującego nas zdalnego obiektu. By zrozumieć, jak RMI 
+pozwala obiektom na znajdowanie się w sieci, p</font><font>r</font><font face="Times New Roman">ześledzimy
+ działania, dzięki którym obiekt klasy MessageServer może być 
+wykorzystywany za pomocą RMI przez inne obiekty. Pierwszym krokiem jest 
+zarejestrowanie obiektu w spisie (ang. registry) zdalnych obiektów Javy,
+ rezydujących na danym komputerze. Raze</font><font>m</font><font face="Times New Roman">
+ z JDK 1.1 oraz późniejszymi wersjami dostarczany jest program 
+rmiregistry, który powinien być uruchomiony na danym komputerze przed 
+tworzeniem zdalnych obiektów. Program ten to właśnie spis lokalnie 
+rezydujących zdalnych obiektów (czyli obiektów implemen</font><font>t</font><font face="Times New Roman">ujących
+ interfejs java.rmi.Remote), pozwalający programom Javy na lokalizację 
+zdalnych obiektów, a także na otrzymywanie do nich referencji, 
+umożliwiających wywoływanie zdalnych metod. Poniższe dwie linie kodu 
+demonstrują, w jaki sposób stworzony zostaje </font><font>o</font><font face="Times New Roman">biekt dostępny dla innych programów Javy: </font></p><font face="Times New Roman">
+</font><i><font><p align="JUSTIFY">MessageServer messageServer = new MessageServer();</p>
+</font></i><p align="JUSTIFY"><font>Naming.rebind("SimpleMessageServer", messageServer);</font></p><font>
+</font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Pierwsza
+ linia tworzy obiekt za pomocą wywołania konstruktora. Druga woła 
+statyczną metodę rebind klasy java.rmi.Naming, powodującą, że spis 
+zdalnych obiektów ulokowanych na lokalnym komputerze jest "proszony" o 
+przechowanie obiektu messageServer i związanie z nim nazwy 
+SimpleMessageServer. Nazwa ta pozwoli innym obiektom na znalezienie 
+messageServer w sieci. Se</font><font>r</font><font face="Times New Roman">wer wiadomości, utworzony na podstawie Java RMI jest zatem gotowy. W jaki sposób klienci mogą go odnaleźć? </font></p><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">W przypadku 
+programowania z gniazdkami programy rozproszone lokalizują swoje 
+komponenty za pomocą nazw komputerów oraz numerów portów. RMI także 
+wykorzystuje internetowe adresy komputerów, ale zamiast mało mówiących 
+numerów portów pozwala na związanie ze zdalnymi obiektami nazw w postaci
+ napisów. W naszym przykładzie takim napisem, identyfikującym serwer 
+wiadomości w obrębie danego komputera jest Sim</font><font>p</font><font face="Times New Roman">leMessageServer.
+ Znając ten identyfikator oraz wiedząc, na którym komputerze znajduje 
+się serwer, klienci mogą łatwo nawiązać z nim kontakt: </font></p><font face="Times New Roman">
+</font><i><font><p align="JUSTIFY">Object obj=Naming.lookup("//ciastko.cis.com.pl/SimpleMessageServer");</p>
+<p align="JUSTIFY">MessageServerIf mServer = (MessageServerIf) obj;</p>
+</font></i><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Kod
+ ten jest wykonywany przez każdego klienta w celu uzyskania możliwości 
+kontaktowania się z serwerem (poprzedni fragment kodu, demonstrujący 
+tworzenie obiektu typu MessageServer, wykonywany jest na komputerze, na 
+którym rezyduje serwer). Pierwsza linia korzysta z metody lookup klasy 
+java.rmi.Naming i w rezultacie zwraca obiekt zastępczy (ang. proxy 
+object) mServer. Jedyne podobieństwo między obiektem zastępczym dla 
+danego zdalnego obiektu (mServer) a tym właśnie obiektem zdalnym 
+(messageServer) pole</font><font>g</font><font face="Times New Roman">a 
+na tym, że oba implementują te same zdalne interfejsy, rozszerzające 
+java.rmi.Remote. Dzięki temu obiekt zastępczy zwrócony przez metodę 
+lookup można rzutować na dowolny zdalny interfejs implementowany przez 
+dany zdalny obiekt - w naszym przypadku jest </font><font>to interfejs MessageServerIf. </font></p><font>
+</font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Metody
+ rebind i lookup uzupełniają się, pierwsza z nich wiąże nazwę, 
+identyfikator z obiektem, druga zaś wykorzystuje tę nazwę do 
+odnalezienia obiektu. Argumentem dla metody lookup jest napis w postaci 
+//adresKomputera/identyfikatorObiektu. W naszym przykładzie podana jest 
+tekstowa postać adresu komputera: ciastko.cis. com.pl, ale można używać 
+również numerycznych adresów internetowych. Identyfikatorem jest dobrze 
+już znany napis SimpleMessageServer. Ponieważ lookup zwraca obi</font><font>e</font><font face="Times New Roman">kty
+ typu java.lang.Object, konieczne jest użycie rzutowania typów w celu 
+otrzymania obiektu o typie umożliwiającym bezpośrednie wywoływanie metod
+ (druga linia fragmentu kodu). Zauważmy, że rzutujemy na typ interfejsu 
+MessageServerIf, a nie na typ MessageS</font><font>e</font><font face="Times New Roman">rver.
+ Wynika to stąd, że klient nie musi (a w wielu sytuacjach po prostu nie 
+może) znać dokładnego typu zdalnego obiektu-serwera. Decydują tu względy
+ zarówno techniczne (np. klasa serwera wraz z innymi klasami, 
+koniecznymi do poprawnego załadowania, może </font><font>m</font><font face="Times New Roman">ieć
+ bardzo duży rozmiar i ściąganie jej podczas wywoływania lookup może 
+długo trwać), jak i konieczność ochrony kodu. Problem ochrony danych 
+wiąże się z ponoszeniem dużych nakładów finansowych oraz nierzadko 
+przynosi rezultaty w postaci nowych algorytmów </font><font>a</font><font face="Times New Roman">lbo
+ rozwiązań. Nie jest zatem pożądane, żeby skompilowane klasy Javy, 
+stosunkowo łatwo poddające się dekompilacji (nawet pomimo istnienia 
+programów mających utrudnić otrzymanie kodu źródłowego ze skompilowanych
+ klas), opuszczały dobrze strzeżone komputery</font><font> </font><font face="Times New Roman">posiadacza cennego oprogramowania. Java RMI, udostępniając zdalny obiekt poprzez obiekt zastępczy, rozwiązuje opisane problemy. </font></p><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">Różnice między 
+obiektami zastępczymi a właściwymi zdalnymi obiektami wynikają z funkcji
+ obiektów zastępczych. Ich rolą jest umożliwienie wywołania metod w taki
+ sam sposób, w jaki wywoływać je można na zwyczajnych obiektach Javy. 
+Inaczej mówiąc, to dzięki obiektom zastępczym używanie Java RMI 
+"wygląda" prawie tak samo jak wykorzystywanie zwyczajnych obiektów Javy.
+ Dla lepszego zro</font><font>z</font><font face="Times New Roman">umienia
+ roli obiektów zastępczych popatrzmy, co się dzieje, gdy klient wywoła 
+metodę storeEncryptedMessage na obiekcie zastępczym mServer:</font></p><font face="Times New Roman">
+</font><i><font><p align="JUSTIFY">EncryptedMessage msg = new EncryptedMessage("Wazny tekst", "Haslo: Hans Klos"); mServer.storeEncryptedMessage(msg); </p>
+</font></i><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Niezauważalnie
+ dla klienta zaczyna działać kod Java RMI. Najpierw argumenty przekazane
+ wywołaniu są zakodowywane jako tablica bajtów. Następnie tablica ta 
+przesyłana jest do komputera, na którym umieszczony jest serwer. Bajty 
+reprezentujące argumenty są r</font><font o<="" font=""><font face="Times New Roman">zkodowane
+ i odtwarzane są oryginalne argumenty. W naszym przykładzie, odtworzony 
+zostaje obiekt typu EncryptedMessage. Na obiekcie serwera 
+(messageServer, a więc właściwym, a nie zdalnym) wywoływana jest metoda 
+storeEncryptedMessage. Po jej wykonaniu rezu</font><font>l</font><font face="Times New Roman">tat
+ jest kodowany do tablicy bajtów i zwracany klientowi (w naszym 
+przykładzie metoda nie zwraca żadnych wartości, więc tablica ta będzie 
+pusta). Kod RMI po stronie klienta przetwarza otrzymane informacje, po 
+czym powoduje, że następuje powrót z metody st</font><font o<="" font=""><font face="Times New Roman">reEncryptedMessage
+ wywołanej na mServer i klient (dany wątek klienta) może kontynuować 
+wykonywanie swojego programu. Jeżeli wykonanie zdalnej metody 
+spowodowałoby powstanie jakiegokolwiek wyjątku, zarówno związanego z 
+kodem samej zdalnej metody, jak i z p</font><font>r</font><font face="Times New Roman">oblemami sieciowymi, klient zostanie poinformowany o tym przez stosowny wyjątek. </font></font></font></p><font o<="" font=""><font o<="" font=""><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">Po utworzeniu 
+serwera oraz klienta, klient może korzystać z usług serwera poprzez 
+wywoływania metod na odpowiednim obiekcie zastępczym, zupełnie tak samo 
+jak w przypadku wywoływania metod na obiektach lokalnych. Jedyną różnicą
+ jest to, że każda z takich zdalnych metod może spowodować powstanie 
+sytuacji wyjątkowej, związanej z sieciowym charakterem wywoływanej 
+zdalnej operacji. Dlatego konieczne jest zapewnienie obsługi tworzo</font><font>n</font><font face="Times New Roman">ego
+ w takich sytuacjach wyjątku java.rmi.RemoteException. Podobnie jak w 
+przypadku innych wyjątków Javy nie jest wymagane "ciasne" oplatanie 
+wywołania zdalnej metody przez try oraz catch -- można np. między tymi 
+dwoma słowami kluczowymi umieścić większy f</font><font>r</font><font face="Times New Roman">agment programu. Komunikacja oraz zależności między opisanymi obiektami oraz interfejsami są zbiorczo przedstawione na rysunku. </font></p><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">Wyjaśnienia 
+wymaga jeszcze konsekwencja implementowania przez daną klasę interfejsu 
+java.io.Serializable w kontekście RMI. Przypomnijmy, że taką klasą jest 
+EncryptedMessage. Gdyby nie implementowała ona java.io.Serializable, nie
+ mogłaby być przekazywana żadnej zdalnej metodzie. Wymieniony interfejs 
+nie ma żadnych metod ani pól, jest jedynie informację dla Javy, że dla 
+danej klasy</font><font> </font><font face="Times New Roman">trzeba 
+zapewnić metody serializacji, czyli pakowania jej obiektów w strumień 
+bajtów oraz rekonstrukcji klasy z takiego "płaskiego" strumienia. 
+Większość klas z pakietów java.lang oraz java.util jest serializowalna. 
+Serializowalne są też np. prymitywne typ</font><font>y</font><font face="Times New Roman">
+ danych w Javie, takie jak int, char, oraz tablice tych typów. 
+Przykładowo, java.lang.String, wchodząca w skład klasy EncryptedMessage,
+ jest serializowalna. Każda klasa składowa klasy serializowalnej musi 
+być serializowalna. Gdyby na przykład String nie i</font><font>m</font><font face="Times New Roman">plementował
+ java.io.Serializable, obiekty klasy EncryptedMessage nie byłyby 
+serializowalne, a co za tym idzie obiekty takie nie mogłyby być 
+argumentami zdalnych metod. Konieczność implementowania 
+java.io.Serializable dotyczy wszystkich obiektów, które w w</font><font>y</font><font face="Times New Roman">niku
+ wywoływania zdalnych metod mogą być przesyłane przez sieć. Oprócz 
+obiektów-argumentów dotyczy to więc także obiektów zwracanych przez 
+zdalne metody. Należy podkreślić tutaj, że implementowanie przez daną 
+klasę interfejsu Serializable jest rozszerzeni</font><font>e</font><font face="Times New Roman">m
+ możliwości stosowania tej klasy, a nie uszczupleniem -- może ona być w 
+dalszym ciągu wykorzystywana jako pełnoprawna klasa standardowej Javy. </font></p><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">Istotną różnicą 
+między "zwyczajną" Javą a Java RMI jest to, że argumenty przekazywane 
+zdalnym metodom są kopiowane. Oznacza to, że żadne ze zmian wartości pól
+ obiektów przekazanych zdalnej metodzie nie będą widoczne po stronie 
+wywołującego tę metodę. Nie jest to prawdą w przypadku standardowego 
+wywołania metody w Javie, gdzie zmiany wartości pól argumentów są zach</font><font>o</font><font face="Times New Roman">wywane
+ także po zakończeniu wywołania danej metody. Java RMI oferuje także 
+sporo innych możliwości, np. wskazywanie pól obiektów, które nie będą 
+serializowane przy przesyłaniu obiektu przez sieć. Pozwala to m.in. na 
+lokalne obliczenia z użyciem obiektów z</font><font a<="" font=""><font wierających="" tajne="" informacje,="" takie="" jak="" numery="" kart="" kredytowych="" czy="" dane="" dotyczące="" zarobków.="" pola="" z="" danymi,="" które="" nie="" powinny="" być="" przesyłane="" przez="" sieć="" ze="" względów="" bezpieczeństwa,="" są="" wskazywane="" słowem="" kluczowym="" transient.="" te="" będą="" miały="" wartość="" 0="" albo<="" font="" face="Times New Roman"><font> </font><font face="Times New Roman">null,
+ zależnie od typu pola, w odtworzonym u odbiorcy obiekcie. Wśród 
+zaawansowanych zagadnień związanych z Java RMI warto zwrócić uwagę na 
+automatyczne zwalnianie zdalnych obiektów, opierające się na liczeniu 
+zdalnych referencji (Java zapewnia automatycz</font><font>n</font><font face="Times New Roman">e
+ zarządzanie pamięcią), wykorzystanie klasy java.rmi. 
+ReMISecurityManager do kontroli działania zdalnych wywołań metod czy 
+wreszcie komunikację z użyciem RMI przez firewalle. </font></font></font></p></font></font></dir><font o<="" font=""><font o<="" font=""><font a<="" font=""><font wierających="" tajne="" informacje,="" takie="" jak="" numery="" kart="" kredytowych="" czy="" dane="" dotyczące="" zarobków.="" pola="" z="" danymi,="" które="" nie="" powinny="" być="" przesyłane="" przez="" sieć="" ze="" względów="" bezpieczeństwa,="" są="" wskazywane="" słowem="" kluczowym="" transient.="" te="" będą="" miały="" wartość="" 0="" albo<="" font="" face="Times New Roman"><font face="Times New Roman">
+
+</font><b><font face="Arial"><p>8. Implementacja RMI Javy</p></font></b><font face="Arial"></font><dir><font face="Arial"><b>
+
+</b></font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Nasza
+ pierwsza INCA implementacja używała Javy RMI do zdalnego doręczenia 
+informacji i servisu nazw . Każdy składnik serwera był zaimplementowany 
+jako zdalny obiekt RMI. Część składowa klienta, jeżeli istniała była 
+zaimplementowana jako aplet. Od czasu przeglądania efektu działania w 
+neutralnym trybie, każd</font><font>a</font><font face="Times New Roman">
+ pozycja która musiała być przechowywana, była wysyłana apletowi 
+podkomponentu serwera. Składniki apletu także zawierały odwołania do 
+jego objektu AppletMenager. </font></p><font face="Times New Roman">
+<p align="JUSTIFY">My realizowaliśmy konfigurację programu narzędziowego
+ podczas wykonywania się prostej aplikacji Javy, która zarządzała 
+spójnością pomiędzy aktywnym składnikiem oddziaływującym wzajemnie z ich
+ wewnętrznie wbudowanymi połączeniami obiektów. Zaimplementowaliśmy 
+także aplet zarządzający sterowalnym na odległość obiektem Javy.</p>
+</font><font></font><p align="JUSTIFY"><font>Dla zdalnego obiektu, nas</font><font face="Times New Roman">za
+ składowa klasy musi implementować interfejs java.rmi.Remote. W dodatku,
+ klasa SimpleComponentImpl musi zawierać interfejs SimpleComponent i 
+rozszerzoną klasę java.rmi.server.UnicastRemoteObject. Ta druga klasa 
+dostarcza wsparcia dla pakowanego obiektu </font><font>t</font><font face="Times New Roman">ak samo jak w przypadku zdalnego obiektu dla pojedyńczej z niczym nie powiązanej </font><font color="#000000" face="Times New Roman">aplikacji.
+ Ostatecznie, dla każdej części składowej aplikacji, takiej jak Welcome,
+ musimy definiować interfejs który rozszerza interfejs komponentu i 
+definiuje specjalną metodę zdalnego dostarczenia do servera Welcome. Ten
+ interfejs jest implementowany w klasie WelcomeImpl. </font></p><font color="#000000" face="Times New Roman">
+</font><p align="JUSTIFY"><font color="#000000" face="Times New Roman">W oparciu o kilka umownych procedur , stworzyliśmy server obiektowy jako sterowalne na odległość obiekty. Wygenerowaliśmy </font><font>wymagane odcinki i szkielet dla z</font><font face="Times New Roman">dalnych
+ obiektów przy pomocy wykonujacej się skompilowanej implementacji klasy 
+przez zdalne wywołanie metody kompilowania programu Javy, rmic.</font></p></dir><font face="Times New Roman">
+
+</font><b><font face="Arial"><p>9. Kilka słów o Corb-ie</p></font></b><dir><b><font face="Arial">
+
+</font><font></font></b><font></font><p align="JUSTIFY"><font><b>Common Object Request Broker Architekture</b></font><font face="Times New Roman"> (CORBA) definiuje strukturę umożliwiającą tworz</font><font>enie obiektowo zorientowanych rozproszonych aplikacji. </font></p><font>
+</font><font face="Times New Roman"><p align="JUSTIFY">Poniższy rysunek przedstawia działanie Object Request Broker.</p>
+</font><font color="#000000"><p align="JUSTIFY">&nbsp;</p></font></dir><font color="#000000">
+
+</font><p align="CENTER"><img src="Architektura%20oprogramowania%20system%C3%B3w%20rozproszonych_pliki/pol1.jpg" height="410" width="710"></p>
+<i><font color="#000000" face="ARIAL" size="2"><p align="CENTER">Rys 7) Działanie Object Request Broker</p>
+</font></i><b><font color="#000000" face="Arial">
+</font></b><font color="#000000" face="Arial"></font><dir><font color="#000000" face="Arial"><b>
+
+<p align="JUSTIFY">Obiekty w CORBA</p></b></font><dir><font color="#000000" face="Arial"><b>
+
+</b></font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Obiekty
+ te są standardowymi obiektami implementowanymi w jednym z obsługiwanych
+ przez CORBA języków programowania (Java, C++, Smalltalk). Za pomocą 
+kilku odwołań do interfejsu programisty ORB można uczynić obiekty 
+dostępnymi w sieci dla klientów. Klienci mogą być napisani w jednym z 
+obsług</font><font>i</font><font face="Times New Roman">wanych języków programowania i mogą odwoływać się do metod obiektów CORBA używając zwykłej składni języka programowania.</font></p><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">Chociaż obiekty 
+CORBA są implementowane przy użyciu standardowych języków programowania,
+ każdy obiekt posiada jasno zdefiniowany przy użyciu </font><b><font>CORBA Interface Definition Language</font></b><font face="Times New Roman">
+ (IDL) interfejs. Definicja interfejsu specyfikuje bez robienia 
+dodatkowych założeń co do implementacji obiektu, które metody będą 
+dostępne dla klienta.</font></p><font face="Times New Roman">
+<p align="JUSTIFY">Aby wywoływać metody obiektu CORBA klient potrzebuje 
+tylko definicję IDL obiektu. Klient nie musi znać takich szczegółów jak 
+język programowania użyty do implementacji obiektu, położenie obiektu w 
+sieci czy system operacyjny pod jakim obiekt jest uruchomiony.</p>
+</font><font></font><p align="JUSTIFY"><font>Rozdzielenie interfejsu obiektu i jego implementacji ma ki</font><font face="Times New Roman">lka
+ zalet. Pozwala na przykład zmienić język programowania użyty do 
+implementacji obiektu bez zmieniania sposobu dostępu klienta do obiektu.
+ Pozwala również na uczynienie istniejących już obiektów dostępnymi 
+poprzez sieć.</font></p></dir><font face="Times New Roman">
+
+</font><b><font color="#000000" face="Arial"><p align="JUSTIFY">Struktura aplikacji CORBA</p></font></b><font color="#000000" face="Arial"></font><dir><font color="#000000" face="Arial"><b>
+
+</b></font><font></font><p align="JUSTIFY"><font>Pierwszy</font><font face="Times New Roman">m
+ krokiem w tworzeniu aplikacji CORBA jest zdefiniowanie interfejsów do 
+obiektów w systemie przy użyciu CORBA IDL. Następnie należy skompilować 
+interfejsy używając kompilatora IDL.</font></p><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">Kompilator IDL z definicji w języku IDL tworzy kod źródłowy w Javie. Kod te</font><font>n zawiera <u>client stub code</u></font><font face="Times New Roman"> pozwalający na tworzenie programów klienta oraz </font><u><font>server skeleton code</font></u><font face="Times New Roman">, który pozwala na implementację obiektów CORBA.</font></p><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">Jeżeli klient wywołuje metodę obiektu, do którego wcześniej nie było odwołań ORB zwraca się do bazy danych zwane</font><font>j <b>Implementation Respository</b></font><font face="Times New Roman"> aby ustalić dokładnie do którego obiektu ma zostać przesłane żądanie wywołania metody. </font></p></dir><font face="Times New Roman">
+
+</font><p align="CENTER"><img src="Architektura%20oprogramowania%20system%C3%B3w%20rozproszonych_pliki/pol2.jpg" height="390" width="720"></p>
+<i><font color="#000000" face="ARIAL" size="2"><p align="CENTER">Rys 8) Wywołanie metody obiektu Corba</p>
+</font></i>&nbsp;<b><font color="#000000" face="Arial"><p align="JUSTIFY">Struktura dynamicznej aplikacji CORBA.</p>
+</font></b><font color="#000000"><p align="JUSTIFY"></p></font><dir><font color="#000000">
+
+</font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Trudnością
+ w zwykłym programowaniu CORBA jest to, że programy klienta mogą 
+wywoływać jedynie metody obiektów, których interfejsy były znane w 
+momencie kompilacji. Jeżeli klient chce otrzymać w trakcie uruchomienia 
+informację o interfejsie IDL obiektu to potrzebne j</font><font>e</font><font face="Times New Roman">st alternatywne, dynamiczne podejście do programowania CORBA.</font></p><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">Program klienta może w trakcie swojego działania informacje o interfejsach implementowanych przez obiekty w siec z </font><b><font>CORBA Interface Respository</font></b><font face="Times New Roman">. Klient może wtedy wywoływać metody obiektów używając składnika ORB nazywanego </font><b><font>Dynamic call Interface</font></b><font> (DII).</font></p><font>
+</font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">CORBA
+ umożliwia również dynamiczne programowanie serwera. Program CORBA może 
+otrzymać wywołania metod poprzez interfejsy IDL, dla których nie 
+istnieje żaden obiekt CORBA. Używając składnika ORB nazy</font><font>wanego <b>Dynamic Skeleton Interface</b></font><font face="Times New Roman"> (DSI), serwer może sprawdzić strukturę wywołań tych metod i zaimplementować je w trakcie działania.</font></p></dir><font face="Times New Roman">
+
+</font><b><font color="#000000" face="Arial"><p align="JUSTIFY">Komunikacja pomiędzy składnikami ORB</p></font></b><font color="#000000" face="Arial"></font><dir><font color="#000000" face="Arial"><b>
+
+</b></font><font face="Times New Roman"><p align="JUSTIFY">Składniki ORB
+ czynią rozproszenie programów niewidocznym dla programistów sieciowych.
+ Aby to osiągnąć muszą się komunikować ze sobą poprzez sieć.</p>
+</font><p align="JUSTIFY"><font face="Times New Roman">W wielu sieciach 
+istnieją różne implementacje ORB. Programy utworzone za pomocą jednej 
+implementacji muszą współdziałać ze stworzonymi za pomocą innej. Aby to 
+zapewnić CORBA specyfikuje standardowy protokół sieciowy nazywany </font><b><font>Internet Inter-ORB Protocol</font></b><font face="Times New Roman"> (IIOP), za pomocą którego komunikują się składniki ORB.</font></p><font face="Times New Roman">
+</font><b><u><font></font></u></b><u><font></font></u><font><p align="JUSTIFY"><u><b>Object Management Architecture </b></u>(OMA)</p>
+</font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">&nbsp;ORB jest jednym ze składników OMA. Architektura ta definiuje strukturę dla komunikacji pomiędzy r</font><font>ozproszonymi obiektami. Zawiera on cztery elementy:</font></p></dir><font>
+
+
+</font><ul><font>
+</font><dir><font>
+<li>Obiekty aplikacji </li>
+<li>Object Request Broker </li>
+</font><font face="Times New Roman"><li>Usługi CORBA (CORBAservices) </li>
+<li>Ułatwienia CORBA (CORBAfacilities)</li></font></dir></ul><font face="Times New Roman">
+</font></dir><font face="Times New Roman">
+</font><dir><font face="Times New Roman">
+
+</font><p align="JUSTIFY"><font face="Times New Roman">&nbsp;Obiekty 
+aplikacji są obiektami które implementują zdefiniowane przez programistę
+ interfejsy IDL. Te obiekty komunikują się między sobą oraz z </font><b><font>CORBAservices</font></b><font> i <b>CORBAfacilities </b></font><font face="Times New Roman">,
+ za pośrednictwem ORB. CORBAservices i CORBAfacilities są zbiorem 
+obiektów które implementują interfejsy IDL zdefiniowane przez CORBA oraz
+ dostarczają usługi dla pew</font><font>nych rozproszonych aplikacji</font></p><font>
+</font><font color="#000000"><p align="JUSTIFY"></p>
+<p align="JUSTIFY"></p></font></dir><font color="#000000">
+
+</font><p align="CENTER"><img src="Architektura%20oprogramowania%20system%C3%B3w%20rozproszonych_pliki/pol3.jpg" height="359" width="604"></p>
+<i><p font="" face="ARIAL" align="CENTER">Rys 9) Object Management Architecture</p>
+</i></font><i><font size="4"><p align="JUSTIFY"></p>
+</font></i><b><font face="Arial"></font></b><font face="Arial"><p><b>Implementacja Corby</b> </p></font><dir><font face="Arial">
+
+</font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Do
+ implementacji INCA używaliśmy również Visigenic Visibroker dla Javy, 
+wersji 3.2. Każdy komponent servera i AppletManager były implementowane 
+jako obiekty Corby. Wchodzące w skład aplety są w dużej mierze 
+niezmienialne według wykonania Javy RMI. Pierwsza modyfikacja powstaje w
+ momencie gdy obiekty mają do czynienia z nieznacznie różnymi w</font><font>y</font><font face="Times New Roman">jątkami narzucanymi przez zdalne metody na serwerach.</font></p><font face="Times New Roman">
+</font><p align="JUSTIFY"><font face="Times New Roman">	Wszystkie 
+obiekty Corby, włączając nasze części składowe klasy są pochodnymi z 
+klasy org.omg.Corba.Object. Ważne jest tutaj zapisanie ustawień plików 
+IDL, które opisywały interfejs dla architektury elementów i składników 
+aplikacji. Te znajdowały zasilanie w Visibroker compiler idl2java do 
+generowania odpowiedniego szkieletu, jak i dodatkowo pomocniczych klas. 
+Ten proces jest jednak bardziej skomplikowany niż w Java RMI, ponieważ 
+utworzenie wygenerowany</font><font>c</font><font face="Times New Roman">h klas jest naprawdę długie.</font></p></dir><font face="Times New Roman">
+
+</font><b><font face="Arial"></font></b><font face="Arial"><p><b>Ewaluacja</b> </p></font><dir><font face="Arial">
+
+</font><font face="Times New Roman"><p align="JUSTIFY">Oceniane obiekty INCA zamodelowane w charakterystyczny sposób architektoniczny dostarczają następującego wglądu.</p></font></dir><font face="Times New Roman">
+
+
+</font><ul><font face="Times New Roman">
+</font><dir><font face="Times New Roman"></font><li><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Component
+ - składniki rozdrobnione adoptowaliśmy w pewnym stopniu na nowo. Każdy 
+obiekt jest, w efekcie, małym pakietem client-server. Jak do tej pory to
+ wszystko pracowało dobrze , ale przyszłe użycie tych elementów, 
+zwłaszcza w innym kontekście mogłoby nie być najlepszym posunięciem. 
+Doświadczenie pozwala nam stwierdzić iż, dawniej implementowaliśmy c</font><font>z</font><font face="Times New Roman">ęści
+ elementów w infrastrukturze rdzenia a pierwszy z dwóch komponentów, 
+łatwo mógł być dodany do nowych komponentów bez zakłócania już 
+istniejących. </font></p></li><font face="Times New Roman">
+</font><li><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Distributed control (sterowanie rozproszone) - INCA nie ma żadnych pojedyńczych składników</font><font color="#000000">, które kont</font><font color="#000000" face="Times New Roman">rolowały
+ by wzajemne oddziaływanie pomiędzy częściami składowymi. Każdy element 
+słucha i tworzy zdarzenia dla których jest skonfigurowany .Generuje 
+także swoje własne zdarzenia rozdzielając je do poszczególnych 
+zarejestrowanych słuchaczy . To rozdzielanie</font><font color="#000000"> </font><font color="#000000" face="Times New Roman">jest
+ kontrolowane poprzez system. Od tego czasu nie ma tam pojedynczych 
+punktów uszkodzeń. Dla uniknięcia utraty obiektów, które mogły by być 
+przyczyną awarii aplikacji, system może być skonfigurowany na wielorakie
+ sposoby w zależności od potrzeby. </font></p></li><font color="#000000" face="Times New Roman">
+</font><font color="#000000"></font><li><font color="#000000"></font><p align="JUSTIFY"><font color="#000000">Platform independence</font><font face="Times New Roman">
+ (niezależność platformy sprzętu komputerowego) - komponenty serwerów 
+mogą działać na różnych komputerach i platformach na których Java 
+Virtual Machine i oprogramowanie Corby są zaimplementowane. </font></p></li><font face="Times New Roman">
+<li><p align="JUSTIFY">Locaion transparency (położenie przezroczystości)
+ - obiekty mogą doręczać zdarzenia do innych składników bez względu na 
+lokalizacje obiektu adresata. </p></li>
+<li><p align="JUSTIFY">Browser-based user interface (osadzenie 
+przeglądarki w interfejsie użytkownika) - przeglądarka światowej 
+pajęczyny dostarcza zintegrowanej platformy dla części obiektów klienta,
+ które wymagają GUI. Równocześnie, przeglądarka i aplet INCA wymuszają 
+na projektantach komponentów aby oni byli przywiązani do rozwiniętego 
+modelu pajęczyny. </p></li>
+</font><li><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Administration
+ - komponent narzędzia konfiguracyjnego wykonuje w sposób łatwy 
+rekonfigurowanie połączeń między wypadkowymi źródłami a swoimi 
+budowanymi składnikami . Jednakże, server tożsamości , który był używany
+ jako lokalny serwer odbiornik, mógłby stać się poważnym 
+administracyjnym wyjściem</font><font color="#000000">. Z tuzinami lub </font><font color="#000000" face="Times New Roman">setkami serverów tego rodzaju , uruchamianie/zamykanie procedur będzie musiało byś przeprowadzane z dużą uwagą. </font></p></li><font color="#000000" face="Times New Roman">
+</font><font face="Times New Roman"></font><li><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">Event
+ (wypadkowy model) - używanie zdarzeń do luźnego łączenia składników 
+serwerów zwykle okazywało się być trafnym posunięciem. My dokonaliśmy 
+odkrycia które, opisaliśmy odnośnie sposobu działania aplikacji. Obydwa 
+elementy LongDistance i LDHandler miały za zadanie nawiązać bezpośrednie
+ połączenie do klienta servera w celu uaktualnienia bazy danych. 
+Składniki te pierwotnie funkcjonowały jako</font><font> </font><font face="Times New Roman">serwery bazodanowe mające możliwość uaktualnienia i poprawiania metod, które łączą bezpośrednio pojedyncze lub grupy serwerów </font><font color="#000000" face="Times New Roman">.
+ Kluczowym zamierzeniem tego problemu było stworzenie pracującego 
+przykładowego serwera bazodanowego oraz egzemplarza znającego serwer, 
+który potrzebuje odwoływać się do jego metod. My rozwiązaliśmy to w 
+naszym sposobie działania przez chwilowe przyjęcie odwoływania się do 
+serwera odbiorcy jako część wynikowych danych. Ale kiedy liczba 
+scenariuszy przyrostów, wyniki modelowania zwiększają zakres działania, 
+staje się to konieczne - jest to podstawa dotycząca systemowej 
+skalowalności.</font></p></li></dir></ul><font color="#000000" face="Times New Roman">
+
+</font><font color="#000000"><p align="JUSTIFY">&nbsp;</p></font><dir><font color="#000000">
+
+</font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">My
+ eksperymentowaliśmy z kilkoma przeglądarkami światowej pajęczyny i 
+znaleźliśmy poważne usterki w tym jak one obsługują strony internetowe i
+ zarządzają apletami. Owe środki aplikacji nie mogły wykonać zliczenia 
+na przeglądarce utrzymywanych aktywnie ustawionych apletów żądanych dla 
+sesji. Różne przeglądarki stron internetowych również stosują różne 
+zabezpieczenie. Wspierają one również mało konsekwent</font><font>nie aplety Javy.</font></p><font>
+</font><font face="Times New Roman"></font><p align="JUSTIFY"><font face="Times New Roman">W
+ tej implementacji używaliśmy tylko HotJavy . Założyliśmy, że 
+implementacja Javy RMI będzie prostsza od Corby z dwóch zasadniczych 
+powodów. Pierwszym, naszym językiem implementacyjnym jest Java i model 
+zdalnego obiektu Javy jest naturalnym rozwinięciem lokalnego obiektu 
+modelu; model - językowo niezależnego obiektu Corby, jednak musi być 
+odwzorowany w Javie. Na przykład, w implementacji Javy RMI, jeżeli 
+klient zawiera odwołanie do zdalnego obiektu Javy, który jest bardziej 
+charakterystyczn</font><font>y</font><font face="Times New Roman">m 
+typem, proste opuszczenie wystarcza aby traktować obiekt referencyjny 
+jako odwołanie do bardziej specyficznego typu. W implementacji Corby, 
+jeżeli klient zawiera odwołanie do obiektu Corby odwoływanego, który 
+jest bardziej specyficznym typem, opuszczony</font><font> </font><font face="Times New Roman">nie
+ będzie pracował. Właściwie w kodzie klienta, my używaliśmy rozkazu 
+"narrow" w stosownej klasie Helper do wykonania rzutowania bardziej 
+charakterystycznych przykładów odwołań Corby. </font></p><font face="Times New Roman">
+</font><font <p="" align="JUSTIFY">	Wszelkie prowadzone prace w kierunku badania architektury oprogramowa</font><font nia="" za="" podstawę="" przyjmują="" prowadzenie="" doświadczeń="" na="" składnikach="" ugruntowanych="" w="" architekturach,="" które="" podtrzymują="" wielokrotne="" połączenia="" i="" współdziałają="" technologicznie.="" my="" tutaj="" szczególnie="" zainteresowaliśmy="" się="" przyszłymi="" implementacjami="" inca,="" używanie<="" font="" face="Times New Roman"><font>m</font><font face="Times New Roman">
+ DCOM i Enterprise JavaBeans. Ciekawą sprawą jeżeli chodzi o ten obszar 
+zainteresowań było by zbadanie wymagań pod względem konfigurowalości, 
+administracji i monitoringu. <p></p></font></font></dir><font nia="" za="" podstawę="" przyjmują="" prowadzenie="" doświadczeń="" na="" składnikach="" ugruntowanych="" w="" architekturach,="" które="" podtrzymują="" wielokrotne="" połączenia="" i="" współdziałają="" technologicznie.="" my="" tutaj="" szczególnie="" zainteresowaliśmy="" się="" przyszłymi="" implementacjami="" inca,="" używanie<="" font="" face="Times New Roman"><font face="Times New Roman">
+
+</font><b><font face="Arial"><p>10. Literatura</p>
+
+</font></b>
+
+
+<dir><font size="2">
+</font><ol><font size="2">
+<br>
+<li>Israel Ben-Shaul, James W. Gish, William Robinson, <i>An Integrated Network Component Architecture</i> ,Columbia 1998 </li>
+<li>www.cis.com.pl</li>
+</font><font size="2"><li>www.agh.pl/corba</li></font></ol><font size="2">
+
+</font></dir>
+
+
+<p align="JUSTIFY">&nbsp;</p>
+</font><font color="#000000"><p align="JUSTIFY">&nbsp;</p>
+<p align="JUSTIFY">&nbsp;</p>
+</font><font><p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</font>
+
+</font></font></font></font></font></body></html>

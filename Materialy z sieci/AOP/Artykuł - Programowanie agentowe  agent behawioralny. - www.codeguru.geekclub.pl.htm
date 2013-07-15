@@ -1,0 +1,1667 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="static"><head><script src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/pl.js" type="text/javascript"></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    
+    <script src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/ga.js" async="" type="text/javascript"></script><script type="text/javascript"> 
+        // to będzie do usunięcia razem z mechanizmem wersjonowania css
+        function requireLibrary(libraryName) {
+            document.write('<script type="text/javascript" src="' + libraryName + '\"><\/script>');
+        }
+    </script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/jquery-1.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/jquery-ui-1.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/jquery_002.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/jquery.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/date.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/jquery_003.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/shCore.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/shBrushCSharp.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/shBrushSql.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/shBrushJScript.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/shBrushVb.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/shBrushPowerShell.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/simpleScripts.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/WSSCodeGuruBase.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/ajaxLoader.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/TinyMce.js"></script><script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/tiny_mce_src.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/TagsPicker.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/TagsList.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/QuestionsEditor.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/ctrlSimpleUserBox.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/SlideMenu.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/ForumsBox.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/ChangeThreadTitle.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/EventsBox.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/UserExists.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/CtrlReportExternalActivity.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/Register.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/ShowEventSurvey.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/AbuseReport.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/ProfileSettings.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/NewThread.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/SendMessage.js"></script>
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/LogOn.js"></script>
+    
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/MainPage.js"></script>
+    
+    
+    <link type="text/css" href="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/style.css" rel="stylesheet" media="all">
+    <link type="text/css" href="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/jquery-ui-1.css" rel="stylesheet" media="all">
+    <link type="text/css" href="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/jquery.css" rel="stylesheet" media="all">
+    <link type="text/css" href="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/datePicker.css" rel="stylesheet" media="all">
+    <link type="text/css" href="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/shCore.css" rel="stylesheet" media="all">
+    <link type="text/css" href="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/shThemeDefault.css" rel="stylesheet" media="all">
+    
+    <link type="text/css" href="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/styleGeek.css" rel="stylesheet" media="all">
+    <link href="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/cg.css" rel="stylesheet" type="text/css" media="all">
+                <link href="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/print.css" rel="stylesheet" type="text/css" media="print">
+        <link rel="image_src" href="http://www.codeguru.geekclub.pl/_img/logoCG.png">
+        <link rel="shortcut icon" type="image/x-icon" href="http://www.codeguru.geekclub.pl/_img/favicon-cg.ico">
+        <link rel="icon" type="image/ico" href="http://www.codeguru.geekclub.pl/_img/favicon-cg.ico">
+    
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            if (window.location.host.indexOf('wss') != -1) {
+                $("#articleDetailsMainHeader a").addClass("textType2");
+            }
+            else if (window.location.host.indexOf("codeguru") != -1) {
+                $("#articleDetailsMainHeader a").addClass("textType3");
+            }
+            else if (window.location.host.indexOf("modernux") != -1) {
+                $("#articleDetailsMainHeader a").addClass("textType235");
+            }
+
+            var getCookie = $.cookie('wsscgfont');
+            $('.' + getCookie).trigger('click');
+        });
+    </script>
+    <link id="head_head_lnkCanonical" rel="canonical" href="http://www.codeguru.geekclub.pl/baza-wiedzy/programowanie-agentowe-agent-behawioralny,2492">
+
+<title>
+	Artykuł - Programowanie agentowe: agent behawioralny. - www.codeguru.geekclub.pl
+</title><div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;"><iframe src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/sh113.htm" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0px none; left: 0px; top: 0px;" title="AddThis utility frame" id="_atssh824"></iframe></div><script src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/core064.js" type="text/javascript"></script></head>
+<body id="main"><div style="visibility: hidden; position: absolute; top: 0px; overflow: hidden; padding: 0px; width: 0px; left: 0px;" id="WzTtDiV" class="tooltipCalendar"></div>
+    
+    
+    <script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/wz_tooltip.js"></script>
+    
+    <form method="post" action="programowanie-agentowe-agent-behawioralny,2492" onsubmit="javascript:return WebForm_OnSubmit();" id="form1">
+<div class="aspNetHidden">
+<input name="__EVENTTARGET" id="__EVENTTARGET" value="" type="hidden">
+<input name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" type="hidden">
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTA4MzY4MTg0N2QYAgUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFKWN0bDAwJGN0bDAwJGlkY3RybFNlYXJjaGJveCRjaGJTZWFyY2hCaW5nBS9jdGwwMCRjdGwwMCRjcGhNYWluJGNwaExlZnQkY29udHJvbENvbW1lbnRzTGlzdA8UKwABZGQpG9pPzFqSm+9+LqewZ2DZrhjvrg==" type="hidden">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/WebResource.js" type="text/javascript"></script>
+
+
+<script src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/ScriptResource_002.js" type="text/javascript"></script>
+<script src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/ScriptResource.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input name="__SCROLLPOSITIONX" id="__SCROLLPOSITIONX" value="0" type="hidden">
+	<input name="__SCROLLPOSITIONY" id="__SCROLLPOSITIONY" value="0" type="hidden">
+	<input name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCAKtu+foCgKngvprAsrrg+UGAsqmvigCuLiAywICn9PJvwsCo9GS3AECuLHWgw7qdAcTcROeiEe2h0KsU4e872+avw==" type="hidden">
+</div>
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ctl00$MainScriptManager', 'form1', ['tctl00$ctl00$upSystemMessage','upSystemMessage','tctl00$ctl00$cphMain$cphLeft$upComments','cphMain_cphLeft_upComments'], [], [], 90, 'ctl00$ctl00');
+//]]>
+</script>
+
+    <script type="text/javascript">
+		//<![CDATA[
+        var WSSCodeGuruBase = new WSSCodeGuruBase();
+        
+    //]]>
+    </script>
+    <input value=".www.geekclub.pl" id="hiddenUrlEnd" type="hidden">
+    <div id="mainWrapper">
+        <div id="wrapper">
+            <div id="top">
+                <div class="logoWrapper clearfix">
+                    <a href="http://www.codeguru.geekclub.pl/" id="divLogoMain" class="logoCG">
+                        
+                    </a><a id="linkPortalBack" href="http://www.geekclub.pl/">
+                        <span style="left: 90px;" class="logoArrow"></span></a><span>BETA</span>
+                </div>
+                <div id="login" class="fr ">
+                    <div id="loginDisabled">
+                        Aby się zalogować, najpiew wybierz portal.</div>
+                    <div id="registerDisabled">
+                        Aby się zarejestrować, najpiew wybierz portal.</div>
+                    
+
+<script type="text/javascript">
+    $().ready(function () {
+        $("#idctrlSearchbox_btnSearch").click(function (e) {
+            if ($("#idctrlSearchbox_txtSearch").val().length > 0 && $("#idctrlSearchbox_txtSearch").val() != "Szukaj...") {
+                return true;
+            } else {
+                e.preventDefault();
+                //// In webforms, avoid postback
+                return false;
+            }
+        });
+    });
+</script>
+
+<div class="topSearch">
+    <div class="login200 fr">
+        <span class="checkbox fr topSearch">bing<span class="checkWrap"><input id="idctrlSearchbox_chbSearchBing" name="ctl00$ctl00$idctrlSearchbox$chbSearchBing" type="checkbox"></span>
+        </span>
+        <a href="http://www.codeguru.geekclub.pl/wyszukiwarka" class="brown"><span>wyszukiwanie zaawansowane</span></a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="fr">
+        <input name="ctl00$ctl00$idctrlSearchbox$txtSearch" value="Szukaj..." id="idctrlSearchbox_txtSearch" class="searchBing" onclick="this.value='';" onblur="onblur_idctrlSearchbox_txtSearch" onfocus="onfocus_idctrlSearchbox_txtSearch" onkeypress="doClickNoValid('idctrlSearchbox_btnSearch','idctrlSearchbox_txtSearch',event)" type="text">
+        <div class="myButton fr">
+            <input name="ctl00$ctl00$idctrlSearchbox$btnSearch" value="" onclick="disableInputs();" id="idctrlSearchbox_btnSearch" type="submit">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+//    function onfocus_idctrlSearchbox_txtSearch()
+//    {
+//        WSSCodeGuruBase.defaultButtonID = 'idctrlSearchbox_btnSearch';
+//    }
+
+//    function onblur_idctrlSearchbox_txtSearch()
+//    {
+//        WSSCodeGuruBase.defaultButtonID = null;
+//    }
+
+//    function disableInputs()
+//    {
+//        $('input:text:not(#idctrlSearchbox_txtSearch)').add('textarea').attr('disabled', 'disabled');
+//    }
+
+    //]]>
+</script>
+                    <div class="clearfix">
+                    </div>
+                    <div class="login200 fr">
+                        
+<div id="searchBoxOne">
+    <div style="clear: both;">
+    </div>
+    <div id="loginButtons" class="fr">
+        <div id="loginAndPasswordControl_pNotLogged">
+	
+            <ul>
+                <li class="fl">
+                    <a href="https://www.codeguru.geekclub.pl/logowanie?returnUrl=/baza-wiedzy/programowanie-agentowe-agent-behawioralny,2492" class="logIn" id="logInLink">Zaloguj</a>
+                </li>
+                <li class="fr">
+                    <a href="http://www.codeguru.geekclub.pl/rejestracja" class="register" id="registerLink">Zarejestruj</a>
+                </li>
+            </ul>
+        
+</div>
+        
+    </div>
+    <!-- end loginButtons -->
+</div>
+<!-- end searchBoxOne -->
+
+                    </div>
+                </div>
+                <!-- end login -->
+                <div class="actions">
+                    <div style="clear: both">
+                    </div>
+                    <div id="divMainMenusWraper">
+                        <div id="menu">
+                            <div style="display: none;" id="menuMain">
+                                <a href="http://www.wss.geekclub.pl/" id="first" class="menuMainTab" alt="WSS">
+                                    <p class="menuMainTitle">
+                                        Specjalista IT<br>
+                                        <span class="menuMainSub">WSS</span></p>
+                                </a><a href="http://www.codeguru.geekclub.pl/" id="second" class="menuMainTab">
+                                    <p class="menuMainTitle">
+                                        Programista<br>
+                                        <span class="menuMainSub" alt="CODEGURU">CODEGURU</span></p>
+                                </a><a href="http://www.modernux.geekclub.pl/" id="third" class="menuMainTab" alt="METROONE">
+                                    <p class="menuMainTitle">
+                                        Designer<br>
+                                        <span class="menuMainSub">ModernUX</span></p>
+                                </a>
+                                <div style="clear: both">
+                                </div>
+                            </div>
+                            <div id="menuMainSmall">
+                                <a href="http://www.wss.geekclub.pl/" id="firstSmall" class="menuMainTabSmall"></a><a href="http://www.codeguru.geekclub.pl/" id="secondSmall" class="menuMainTabSmall codeguruMenuSmallClass"></a><a href="http://www.modernux.geekclub.pl/" id="thirdSmall" class="menuMainTabSmall"></a>
+                                <div style="clear: both">
+                                </div>
+                            </div>
+                            <div style="clear: both">
+                            </div>
+                        </div>
+                        <div style="background: none repeat scroll 0% 0% rgb(129, 203, 58);" id="mainMenu">
+                            <ul>
+                                
+                                <li class="backgroundType3" id="newsNav"><a class="news" href="http://www.codeguru.geekclub.pl/aktualnosci">
+                                    <span style="color: white;" id="newsHeader">Aktualności</span></a></li>
+                                <li class="active backgroundType3" id="articleNav"><a class="knowlege active" href="http://www.codeguru.geekclub.pl/baza-wiedzy">
+                                    <span style="color: white;">
+                                        Baza wiedzy</span></a></li>
+                                <li class="backgroundType3" id="forumNav"><a class="board" href="http://www.codeguru.geekclub.pl/forum">
+                                    <span style="color: white;">Forum</span></a></li>
+                                <li id="eventsNav" class="modernux-hide backgroundType3"><a class="events" href="http://www.codeguru.geekclub.pl/kalendarium"><span style="color: white;">Kalendarium</span></a></li>
+                                <li id="groupsNav" class="modernux-hide backgroundType3"><a class="groups" href="http://www.codeguru.geekclub.pl/grupy"><span style="color: white;">Grupy</span></a></li>
+                                <li class="backgroundType3" id="usersNav"><a class="users" href="http://www.codeguru.geekclub.pl/uzytkownicy/geek-club">
+                                    <span style="color: white;">Użytkownicy</span></a></li>
+                                <li id="clubNav" class="modernux-hide backgroundType3"><a class="club" href="http://www.codeguru.geekclub.pl/geek-club/"><span style="color: white;">Geek Club</span></a></li>
+                                
+                                
+                                <li id="inspirationsMUXNav" class="modernux-nav nodisplay backgroundType3"><a class="invitations" href="http://www.codeguru.geekclub.pl/inspiracje"><span style="color: white;">Inspiracje</span></a></li>
+                                <li id="projectsMUXNav" class="modernux-nav nodisplay backgroundType3"><a class="projects" href="http://www.modernux.pl/projekty"><span style="color: white;">Projekty</span></a></li>
+                                <li id="galleryOfTemplatesMUXNav" class="modernux-nav nodisplay backgroundType3"><a class="templates" href="http://www.codeguru.geekclub.pl/szablony">
+                                    <span style="color: white;">Galeria Szablonów</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="whiteWrap">
+                        <div class="systemMessageContainer">
+                            <div id="upSystemMessage">
+	
+                                    
+                                    
+                                
+</div>
+                        </div>
+                        <div id="content" class="mainCol">
+                            
+    <div class="leftCol mainCol">
+        
+    <input name="ctl00$ctl00$cphMain$cphLeft$hfArticleId" id="cphMain_cphLeft_hfArticleId" value="2492" type="hidden">
+    <h2 id="articleDetailsMainHeader">
+        <a class="textType3" href="http://www.codeguru.geekclub.pl/baza-wiedzy">Baza wiedzy </a>
+    </h2>
+    <div class="headlineAddons articleIcons" style="display: none">
+        <div class="fontSizer">
+            <a href="#" class="small">A</a> <a href="#" class="medium">A</a> <a href="#" class="large">
+                A</a>
+        </div>
+        <div class="icons" style="display: none">
+            <a href="#" onclick="window.print();" id="print">
+                <img src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/iconPrint.gif" alt="Drukuj"></a>
+            <a id="cphMain_cphLeft_hlPrintPdf" href="http://www.codeguru.geekclub.pl/artykul/wydruk_pdf/2492" target="_blank"><img src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/iconToPdf.gif" alt="Ekportuj do PDF"></a>
+        </div>
+    </div>
+    <div class="newsDetails">
+        <h3>
+            <span id="cphMain_cphLeft_lTitle">Programowanie agentowe: agent behawioralny.</span></h3>
+        <div class="info">
+            <span class="gray">
+                10-01-2006 01:20
+                |
+                <a id="cphMain_cphLeft_hlAuthor" class="brown" href="http://www.codeguru.geekclub.pl/uzytkownik/Kaczy27/publikacje">Kaczy27</a>
+                | Aktualizacja: 21-01-2010 02:04
+            </span>
+        </div>
+        <div id="cphMain_cphLeft_divMainContent" class="newsLeft full BorderType3">
+	
+            
+            <div class="newsSummary wyswig">
+                Programowanie agentowe to rozszerzenie paradygmatu 
+programowania obiektowego. Najkrócej ujmując jest to budowa obiektów 
+obdarzonych autonomią zachowań i do pewnego stopnia inteligencją w 
+działaniu. Niniejszy artykuł zawiera w ramach wstępu teoretycznego 
+przegląd możliwych zastosowań oraz przykładową implementację. 
+
+Chętnych zapraszam do konkursu z grupy potyczek algorytmicznych. 
+Szczegóły na końcu artykułu.
+
+</div>
+            <div class="newsContent wyswig">
+                <p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Wstęp.<!--?xml:namespace prefix = o ns = "urn:schemas-microsoft-com:office:office" /--><o:p></o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Niniejszy
+ artykuł mieści się raczej w gatunku ciekawostek algorytmicznych. 
+Programowanie agentowe to ciekawy temat, ale jego zastosowania znajdują 
+się raczej w kategorii złożonych projektów dla dużych zespołów. 
+Technicznie natomiast stanowi mam nadzieję dobry przykład programowanie 
+obiektowego i&nbsp;programowania wielowątkowego w C# na platformie .NET.
+ </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Kod pisany był pod Microsoft Visual Studio C# Express, nie mam pojęcia czy kompiluje się i działa pod VS 2003.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Teoria:<o:p></o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Programowanie
+ agentowe, albo programowanie zorientowane agentowo (ang. Agent Oriented
+ Programming) jest dość wiekową już dziedziną, czy też metodologią 
+programowania. Narodziła się w jakiś czas po programowaniu obiektowym, 
+ale teoretyczne fundamenty położone zostały dużo wcześniej w ramach 
+badań nad sztuczną inteligencją. Nie należy jednak myśleć o niej jak o 
+zakurzonym pudełku na strychu, bowiem największe postępy w badaniach AOP
+ poczynione zostały w ostatnim dziesięcioleciu, a wejście .NET Framework
+ na rynek otwiera kolejne możliwości.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Żeby zobrazować problem, oto&nbsp; kilka przykładów. <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<ol style="MARGIN-TOP: 0cm" type="1">
+<li class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><span style=": 10pt"><strong>Inteligentny odkurzacz</strong> </span><span style=": 10pt"><o:p>&nbsp;</o:p> </span></li></ol>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt">Nasz
+ odkurzacz to prosty robot. Porusza się po pokojach w poszukiwaniu 
+brudu. Jeśli go znajdzie - zbiera go i szuka dalej. Jest na tyle 
+sprytny, by omijać przeszkody i opróżniać zbiornik po jego napełnieniu 
+we właściwym do tego miejscu. Przyszłość? Właściwie nie, mamy tu do 
+czynienia z prostą obróbką obrazu z kamery i danych z czujników kurzu, 
+obsługą prostych elementów mechanicznych (koła, ssawka) i niezbyt 
+wyrachowaną sztuczną inteligencją. Oczywiście robot nie poradzi sobie z 
+chodzeniem po schodach, ale może „wychodzić” na łowy sam, kiedy 
+domownicy wyjdą do pracy, albo witać ich miłym piskiem (w rodzaju R2D2 z
+ Gwiezdnych Wojen), rozpoznając nowe pokłady kurzu na ich obuwiu.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<ol style="MARGIN-TOP: 0cm" start="2" type="1">
+<li class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><span style=": 10pt"><strong>Usługi sieciowe i autonomiczny kupiec</strong> </span><span style=": 10pt"><o:p>&nbsp;</o:p> </span></li></ol>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt">Nasz
+ agent to program, któremu powierzamy zadanie dokonania zakupu w 
+Internecie. Określamy rodzaj produktu, jego parametry, maksymalną cenę i
+ wypuszczamy go w świat. A on (zauważcie jak łatwo przychodzi uosabianie
+ tego typu programów) odwala za nas całą żmudną robotę: przejrzy tysiące
+ stron internetowych, wyszuka dostawców, wytarguje najlepsze możliwe 
+ceny, a na koniec wróci, byśmy spośród trzech opcji wybrali tę, która 
+najbardziej nam odpowiada, szybka transakcja kartą i już. Za dwa dni 
+nowa pralka, czy torba cukierków trafi do nas pocztą. Tym razem to 
+jeszcze daleka przyszłość, choć już w zasięgu. Strony internetowe oparte
+ o HTML zupełnie się do tego nie nadają, budowa kompletnej 
+ogólnoświatowej aplikacji jest w zasięgu chyba tylko Microsoftu, choć i 
+tu mam wątpliwości. Ale mamy WebServices, a to już jest coś, na czym 
+można tego typu rozwiązania oprzeć. Teoria już jest, są całe systemy 
+komunikacji, negocjacji, gromadzenia wiedzy, infrastruktura 
+interoperabilności i wszystko w zasięgu ręki i .NET Framework 2.0.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<ol style="MARGIN-TOP: 0cm" start="3" type="1">
+<li class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><span style=": 10pt"><strong>Model społeczności</strong> </span><span style=": 10pt"><o:p>&nbsp;</o:p> </span></li></ol>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt">Zima
+ zawsze zaskakuje drogowców, wybory prawie zawsze zaskakują agencje 
+sondażowe. Wyobraźcie sobie, co by było, gdyby wprowadzić do komputera 
+armię 30 milionów agentów i na zasadzie ich komunikacji, zachowań, 
+zmiany poglądów i nastawienia zbudować model społeczeństwa. Potem na tym
+ modelu badać reakcje na plotkę, że kandydat na prezydenta w 
+dzieciństwie zabierał lizaki młodszym kolegom. Jak szybko się taka 
+plotka roznosi, jaki ma wpływ na preferencje wyborcze? Fascynujące 
+prawda? Jeszcze krok do prawdziwego manipulowania społeczeństwem .... 
+ale to jeszcze trochę. Najlepsze, co się udało na razie zrobić to 
+zbadać, w jaki sposób plemiona ludzkie zamieszkujących na terenach 
+obecnej Francji parę tysięcy lat temu wpadły na pomysł przemieszczania 
+się za stadami zwierzyny i cykliczną wędrówkę po terytoriach, żeby 
+uniknąć wyjałowienia terenów łowieckich. Nauka jest raczej na etapie 
+modelowania bardzo rojów prostych organizmów (mrówki, termity, pszczoły)
+ i stad zwierząt (wilki, delfiny). Odwzorowywanie osobników tak 
+chaotycznych jak ludzie jest jak dotąd, po prostu poza naszym zasięgiem 
+zarówno w kwestii budowy tak złożonego modelu jak i mocy obliczeniowej 
+potrzebnej do jego przeliczenia.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<ol style="MARGIN-TOP: 0cm" start="4" type="1">
+<li class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><span style=": 10pt"><strong>Pomocnik sortujący pocztę</strong> </span><span style=": 10pt"><o:p>&nbsp;</o:p> </span></li></ol>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt">Spam
+ to jest poważny problem, ale trudniejsze jest zapanowanie nad setkami 
+ważnych emaili trafiających do skrzynki użytkownika w dużej korporacji. 
+Wiem, bo doświadczyłem, szkoda, że wtedy nie miałem obecnej wiedzy. W 
+każdym bądź razie, wyobraźcie sobie zmieniającą się sytuację, ludzie 
+odchodzą z pracy, przychodzą, adresy się zmieniają, filtry antyspamowe 
+nie nadążają z wyłapywaniem nowych źródeł śmieci. Nasz szef wysyła ważne
+ maile z poleceniami, a dodatkowo rozsyła pogadanki motywujące. Na pomoc
+ zmierza pomocnik pocztowy. Zamiast żmudnie tworzyć samemu reguły i je 
+aktualizować. Wykonujemy przez pewien czas ręcznie wszystkie operacje. 
+Nasz pomocnik widzi: przyszedł mail od <a href="mailto:boss@company.com">boss@company.com</a>
+ i najpierw został przeczytany, a potem wrzucony do folderu ważne. 
+Zapisze sobie zawartość tego maila do bazy wiedzy do późniejszego 
+porównania. Po kilku razach wyciąga wnioski, uogólnia reguły i nabywa 
+wiedzy. Kiedy następnym razem przyjdzie taki mail zapyta usłużnie, czy 
+chcesz go przeczytać, czy też ponieważ wygląda na nieistotny (ma w 
+treści zwrot „dział kadr donosi”) przeczytasz go później, o czym 
+przypomni ci 30 minut przed Twoim wyjściem z pracy. Kiedy zaobserwuje, 
+że zawsze się z nim zgadzasz, nie będzie się pytał tylko automatycznie 
+przeprowadzi daną akcję. Prawda, że piękne? Co więcej tego typu 
+rozwiązania już są, choć z tego co wiem raczej akademickie. No, ale nic 
+nie stoi na przeszkodzie, żeby odpalić sobie Tools for Office, i zrobić 
+sobie nakładkę na Outlooka, w MS Agent są nawet animowane ludziki żeby 
+to jakoś spersonalizować.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<ol style="MARGIN-TOP: 0cm" start="5" type="1">
+<li class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><span style=": 10pt"><strong>Robodrużyna piłkarska</strong> </span><span style=": 10pt"><o:p>&nbsp;</o:p> </span></li></ol>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt">Bardziej
+ zaawansowany przykłady to problemy, które wymagają współpracy kilku 
+agentów. Sztandarowy to modelowanie stada wilków (lub jednostek na polu 
+walki): są wolniejsze, mniej wytrzymałe od łosia, karibu czy innego 
+zwierzęcia, ale dzięki współpracy mogą dogonić ofiarę szybszą i 
+silniejszą od pojedynczego wilka. W RoboCup (konkurs dla programistów i 
+konstruktorów robotów) jest cały szereg tego typu konkurencji. Np. 
+podawanie piłki pomiędzy robotami, i uniemożliwienie jej przechwycenia 
+przez obrońcę, który porusza się dwukrotnie szybciej od atakujących. 
+Kluczem jest zdolność komunikacji i realizacji zadań w grupie.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<ol style="MARGIN-TOP: 0cm" start="6" type="1">
+<li class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><strong><span style=": 10pt">Mobilne centrum obliczeniowe</span> <span style=": 10pt"><o:p>&nbsp;</o:p> </span></strong></li></ol>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt">Programowanie
+ rozproszone to też właściwa domena dla programowania agentowego. 
+Wyobraźcie sobie sieć komputerową na uczelni. Jest tam 150 komputerów, z
+ czego w różnych salach zajętych jest połowa. Gdyby program mógł 
+wykonywać obliczenia na tych nieużywanych, przenosząc się w miarę 
+potrzeby pomiędzy komputerami. Co prawda część z nich pracuje pod 
+kontrolą Linuksa, a część ma zainstalowane Windowsy w różnych wersjach, 
+po za tym jest też kilka Maców na uczelnianej poligrafii. Abstrakcja? 
+Wcale nie, polecam .NET Remoting - naprawdę poszerza horyzonty (o ile 
+wcześniej mózg się nie zagotuje).<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<ol style="MARGIN-TOP: 0cm" start="7" type="1">
+<li class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l0 level1 lfo1; tab-stops: list 36.0pt"><span style=": 10pt"><strong>Oprogramowanie sondy kosmicznej</strong> </span><span style=": 10pt"><o:p>&nbsp;</o:p> </span></li></ol>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 18pt"><span style=": 10pt">Ostatni
+ przykład to domena oprogramowania dla sytuacji ekstremalnych. Sonda 
+kosmiczna w kosmosie ma to do siebie, że czas reakcji na polecenia bywa 
+dość długi (tydzień na przykład). Dajmy na to następujący scenariusz: 
+system wykrywa przegrzewanie się procesora na jednej z płytek. Zgodnie z
+ procedurą następuje wysłanie komunikatu i błyskawiczna reakcja Houston z
+ poleceniem natychmiastowego wyłączenia układu całość od momentu 
+wykrycia awarii do jej usunięcia zamyka się w czasie dwóch tygodni i 30 
+sekund, to może być zbyt długi okres. Prawdopodobnie w dzień po wysłaniu
+ komunikatu sonda stanie się kolejnym bardzo drogim metalowym kubełkiem 
+na śmieci wyrzuconym w kosmos przez bałaganiarską ludzkość. System 
+powinien samodzielnie dokonać diagnozy, podjąć decyzję, wykonać 
+określoną sekwencję czynności i powiadomić centralę o udanym zabiegu.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Agent<o:p></o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt" align="justify"><span style=": 10pt">Istotnym
+ elementem wszystkich wymienionych rodzajów agentów (nie bójmy się tego 
+słowa) jest ich autonomiczność pojmowana jako zdolność do samodzielnego 
+podejmowania akcji oraz inteligencja pojmowana jako zdolność do oceny 
+sytuacji i podejmowania decyzji. Złożoność agenta, dodatkowe możliwości 
+(umiejętność uczenia się, mobilność, komunikacja w otoczeniu 
+wieloagentowym) są zależne od celu, dla którego został zbudowany. Agent 
+nie jest narzędziem uniwersalnym zawsze trzeba go dopasować do potrzeb. 
+Jest niezastąpiony w sytuacji zmiennej, niedeterministycznej. Jeśli 
+problem jest znany i niezmienny nie ma sensu inwestować w inteligencję, 
+metodologia programowania obiektowego będzie nie tylko łatwiejsza w 
+zastosowaniu, będzie również wydajniejsza i bardziej niezawodna.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Jeśli
+ jednak zdecydujemy się już na budowę systemu agentowego, należałoby się
+ zastanowić, z czego agent będzie zbudowany. Jako, że najwygodniejsze są
+ analogie do znanego nam świata, pozwolę sobie zaproponować podział na 
+umysł i ciało (duchem zajmę się być może w następnej publikacji). Umysł 
+będzie rozważał, co by tu zrobić i jak, natomiast ciało będzie tę czarną
+ robotę wykonywać z lepszym lub gorszym skutkiem.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Otoczenie<o:p></o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Agenci
+ nie funkcjonują w próżni (nie mówię tu o sondach kosmicznych, ale o 
+agentach abstrakcyjnych). Do działania potrzebują jakiegoś kontekstu – 
+świata, postrzeganego za pomocą kamer, czujników, polecenia ls pod 
+Unixem (gdyby ktoś miał wątpliwości, to tak, wszystkie usługi systemowe 
+pod Windows i demony pod Linuxem są swego rodzaju agentami – spełniają 
+wszystkie przesłanki: są autonomiczne, postrzegają otoczenie, realizują 
+założone cele, komunikują się ze sobą itp. itd.)<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Więc
+ otoczenie – jest takim kontekstem dla agenta. Agent nie zna i reguły 
+nie musi znać całego otoczenia. Otoczenie z mniejszą lub większą 
+dokładnością możemy zdyskretyzować – kolor zapisać w RGB, czas 
+odmierzyć, co do sekundy itp. Zatem, otoczenie jest dyskretne. Nie 
+znaczy to jednak, że jest stałe, o nie! Przecież istnieje w nim nie 
+tylko nasz agent, który choćby z braku wiedzy o nim nie ma nad nim 
+pełnej kontroli, ale ono samo z reguły jest dynamiczne. Jeśli więc np. 
+agent - autopilot kierujący samolotem przed chwilą czuł się bezpiecznie 
+nie znaczy to, że za chwilę wędrowny ptak nie wkręci mu się w silnik. 
+Albo, gdy dwa roboty zakładające stałość otoczenia spróbują przejść 
+przez drzwi (klasyczny przykład sekcji krytycznej) najprawdopodobniej 
+zaklinują się w drzwiach. Przyjmujemy, że otoczenie jest dyskretne i 
+niedeterministyczne. Natomiast agent jest obiektem deterministycznym, 
+dyskretnym i autonomicznym.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Agent behawioralny<o:p></o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Agent
+ behawioralny jest agentem reaktywnym. W taksonomii agentów wyróżniamy 
+dwie główne kategorie architektur: reaktywną i symboliczną. Pierwsza nie
+ zajmuje się modelowanie stanu umysłowego, wiedzy czy dedukcji, a 
+jedynie reaguje na zaobserwowany stan otoczenia: klasyczny przykład to 
+termoregulator, którego inteligencję można zawrzeć w zdaniu: „jeśli jest
+ zbyt zimno włącz podgrzewanie”. Druga z kolei wywodzi się z 
+„prawdziwej” sztucznej inteligencji, w której agent gromadzi wiedzę, 
+analizuje dane historyczne, ustala cele i metody ich osiągnięcia. Może 
+to zaowocować sytuacją, w której dążyć on będzie (w myśl algorytmu o 
+poszukiwaniu innych rozwiązań, jeśli obecne się nie powiedzie) do raz 
+obranego celu nie zważając na zmiany otoczenia, zmiany, które mogą 
+spowodować, iż cel stanie się całkowicie nieosiągalny. W rezultacie 
+najczęściej stosowaną w praktyce kategorią są architektury hybrydowe 
+łączące oba sposoby rozumowania. Uzyskanie równowagi między nimi jest 
+niezwykle trudne. <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Przykład programu agentowego<o:p></o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"></span>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Ponieważ mam problem z załadowaniem załącznika do artykułu, można go pobrać pod tym adresem: <a class="" title="project files" href="http://nawodzie.pl/codeguru/BehavioralAgents.zip" target="_blank">BehavioralAgents.zip </a></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">W 
+ramach wprawki z programowania agentowego, chciałbym przedstawić wam 
+rozwiązanie problemu przeszukiwania przestrzeni dwuwymiarowej. Jest to 
+klasyczny problem sztucznej inteligencji, podobnie zresztą jak i 
+rozwiązanie. Szczegóły znajdują się w [7]. Przedstawmy następującą 
+sytuację:<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><em>"Bezzałogowy
+ statek kosmiczny ląduje na planecie bogatej w złoża radioaktywnej 
+substancji mogącej służyć za paliwo dla stacji bazowej. Pierwszym celem 
+po wylądowaniu jest zgromadzenie zapasów tego surowca. Do dyspozycji 
+mamy bardzo proste roboty zbierające i przenoszące materiał. Potrafią 
+odbierać sygnał radiowy i wyszukiwać surowce w swoim bezpośrednim 
+otoczeniu na podstawie promieniowania emitowanego przez surowce. 
+Niestety nie posiadają one aparatury potrzebnej do dwustronnej 
+komunikacji. W jaki sposób możliwie efektywnie pozbierać zasoby?"<o:p></o:p></em> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Wskazówka:
+ agent na podstawie natężenia sygnału nadawanego z bazy jest w stanie 
+określić jej położenie i odległość (prosta triangulacja) do niej.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: center" align="center"><!--?xml:namespace prefix = v ns = "urn:schemas-microsoft-com:vml" /--><v:shapetype id="_x0000_t75" stroked="f" filled="f" path="m@4@5l@4@11@9@11@9@5xe" o:preferrelative="t" o:spt="75" coordsize="21600,21600"><v:stroke joinstyle="miter"></v:stroke><v:formulas><v:f eqn="if lineDrawn pixelLineWidth 0"></v:f><v:f eqn="sum @0 1 0"></v:f><v:f eqn="sum 0 0 @1"></v:f><v:f eqn="prod @2 1 2"></v:f><v:f eqn="prod @3 21600 pixelWidth"></v:f><v:f eqn="prod @3 21600 pixelHeight"></v:f><v:f eqn="sum @0 0 1"></v:f><v:f eqn="prod @6 1 2"></v:f><v:f eqn="prod @7 21600 pixelWidth"></v:f><v:f eqn="sum @8 21600 0"></v:f><v:f eqn="prod @7 21600 pixelHeight"></v:f><v:f eqn="sum @10 21600 0"></v:f></v:formulas><v:path o:connecttype="rect" gradientshapeok="t" o:extrusionok="f"></v:path><o:lock aspectratio="t" v:ext="edit"></o:lock></v:shapetype><span style=": 10pt"><o:p><img alt="Environment2.gif" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/Environment2.gif" border="0" height="476" width="516"> </o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt" align="center"><span style=": 10pt">Rys. 1.&nbsp; Zbieranie surowców z nieznanego obszaru.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Proponuję
+ przemyśleć zadanie. Tymczasem zajmijmy się modelem otoczenia. Bez 
+zmniejszania ogólności zadania ograniczymy je do jednej ćwiartki układu 
+współrzędnych. Dodatkowo dla uproszczenia przyjmijmy, że model otoczenia
+ przechowujemy w stacji bazowej:<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">
+</span></span></p><table id="C#" cellpading="2" bgcolor="#eeeeee" border="0" cellspacing="10" width="100%">
+<tbody>
+<tr>
+<td valign="top"><b>[Kod C#]</b> <br><br>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span></span><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">interface</span> <span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="COLOR: teal">IEnvironment<o:p></o:p></span> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: teal">Field</span> <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">this</span>[<span style="COLOR: blue">int</span> x, <span style="COLOR: blue">int</span> y]<span style="mso-spacerun: yes">&nbsp; </span>{ <span style="COLOR: blue">get</span>; }<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: teal">Field</span>[,]<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>State<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{ <span style="COLOR: blue">get</span>; }<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: teal">List</span>&lt;<span style="COLOR: teal">Agent</span>&gt; Agents<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{ <span style="COLOR: blue">get</span>; }<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">void</span> CreateResources(<span style="COLOR: teal">Field</span> field, <span style="COLOR: blue">int</span> amount);<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes">void</span> <span style=": 10pt; : 'Courier New'; mso-no-proof: yes">CreateAgent();<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>}</span> </p></td></tr></tbody></table><p></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Stacja bazowa (kolor czarny na rysunku), przechowuje zatem mapę otoczenia <b style="mso-bidi-font-weight: normal">State</b> jako dwuwymiarowa tablicę obiektów Field reprezentujących pola na mapie i listę robotów <b style="mso-bidi-font-weight: normal">Agents</b>. Może utworzyć nowego agenta (kolor czerwony) za pomocą metody <b style="mso-bidi-font-weight: normal">CreateAgent</b>, oraz na potrzeby testów nowe zbiory zasobów (kolor niebieski) przy pomocy metody <b style="mso-bidi-font-weight: normal">CreateResources</b>.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt" align="center"><span style=": 10pt"><o:p>&nbsp;<img alt="Environment.gif" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/Environment.gif" border="0" height="198" width="201"></o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: center" align="center"><span style=": 10pt"><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: center" align="center"><span style=": 10pt">Rys. 2 Model otoczenia przechowywany przez stację bazową<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Podstawową cegiełką otoczenia jest pole Field. Opisuje je następujący interfejs:<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">
+</span></span></p><table id="C#" cellpading="2" bgcolor="#eeeeee" border="0" cellspacing="10" width="100%">
+<tbody>
+<tr>
+<td valign="top"><b>[Kod C#]</b> <br><br>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">interface</span> <span style="COLOR: teal">IField<o:p></o:p></span> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span></span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">int</span> X { <span style="COLOR: blue">get</span>; }<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">int</span> Y { <span style="COLOR: blue">get</span>; }<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">int</span> Resources<span style="mso-spacerun: yes">&nbsp;&nbsp; </span>{ <span style="COLOR: blue">get</span>; <span style="COLOR: blue">set</span>; }<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;</span> <span style="COLOR: teal">List</span>&lt;<span style="COLOR: teal">Field</span>&gt; NeighbouringFields<span style="mso-spacerun: yes">&nbsp; </span>{ <span style="COLOR: blue">get</span>; }<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">double</span> <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>DistanceToBase<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{ <span style="COLOR: blue">get</span>; }<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span> </p></td></tr></tbody></table><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span><p></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">X i
+ Y to oczywiście współrzędne pola na mapie. Składowa Resources opisuje 
+liczbę surowców znajdujących się na tym polu. Pomocniczo określimy 
+jeszcze dwie dodatkowe składowe: odległość od bazy <b style="mso-bidi-font-weight: normal">DistanceToBase</b> i pola sąsiadujące <b style="mso-bidi-font-weight: normal">NeighbouringFields</b>. To ostatnie służyć nam będzie do określenia obszaru obejmowanego przez czujniki agenta.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Kolej
+ na głównego aktora (czy też aktorów) naszej opowieści. Agent również 
+jest obiektem, ale ponieważ jest jednostką autonomiczną jest również 
+obiektem wstydliwym (ang. shy object). Co oznacza, że jego interfejs 
+powinien być możliwie ograniczony, nie chcemy aby ktoś mógł zmieniać 
+jego stan.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; 
+</span></span></p><table id="C#" cellpading="2" bgcolor="#eeeeee" border="0" cellspacing="10" width="100%">
+<tbody>
+<tr>
+<td valign="top"><b>[Kod C#]</b><br><br>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes"></span><span style="COLOR: blue">&nbsp;&nbsp;&nbsp; interface </span><span style="COLOR: teal">IAgent<o:p></o:p></span></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: teal">Field</span><span style="mso-spacerun: yes">&nbsp;&nbsp; </span>Location { <span style="COLOR: blue">get</span>; }<o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes">void</span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>GatherResources();<o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">void</span><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>Return();<o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span></p></td></tr></tbody></table><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><o:p>&nbsp;</o:p> </span><p></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Mamy tu, więc położenie agenta <b style="mso-bidi-font-weight: normal">Location</b> oraz dwie komendy, które możemy mu wydać: zbieraj surowce <b style="mso-bidi-font-weight: normal">GatherResources</b> oraz wracaj do bazy <b style="mso-bidi-font-weight: normal">Return</b>.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Warto
+ zauważyć jedną z istotnych różnic pomiędzy programowaniem agentowym, a 
+obiektowym. Obiekty wykonują zlecone im zadania, ponieważ nie mają 
+innego wyjścia, natomiast agent robi to, czego od niego żądamy tylko 
+wtedy, kiedy tego chce (ang. </span><span style=": 10pt; mso-ansi-language: EN-US" lang="EN-US">Objects do things for free. Agents do things because they want to). </span><span style=": 10pt">Zasadą
+ jest, że konstruując otoczenie musimy się spodziewać, że agenci będą 
+tworzeni przez innych programistów i nie muszą współpracować z naszymi 
+agentami, mogą być antagonistycznie nastawieni względem naszych agentów,
+ lub neutralnie, ale mieć swoje własne cele do osiągnięcia (klasyczny 
+przykład negocjacje handlowe).<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Ponieważ,
+ agent działa w oddzielnym wątku nie możemy go tak po prostu ustawić w 
+dowolnym miejscu na mapie lub zabić, kiedy przestanie być potrzebny a 
+jedynie grzecznie poprosić, aby udał się na poszukiwania lub wrócił do 
+bazy. <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Wracając do agenta zdefiniujmy jego strukturę wewnętrzną. Jak mówiłem, złożymy ją z dwóch elementów: mózgu i ciała.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">
+</span></span></p><table id="C#" cellpading="2" bgcolor="#eeeeee" border="0" cellspacing="10" width="100%">
+<tbody>
+<tr>
+<td valign="top"><b>[Kod C#]</b> <br><br>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">interface</span> <span style="COLOR: teal">IBody<o:p></o:p></span> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">bool</span> <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>HasResource { <span style="COLOR: blue">get</span>; }<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">bool</span> <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>MoveTo(<span style="COLOR: teal">Field</span> neighbouringField);<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">bool</span> <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>PickupResources();<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;</span>&nbsp;<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="COLOR: blue">void</span><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>DropResources();<o:p></o:p></span>&nbsp;<span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span></span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes">}</span> <span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US"><span lang="EN-US"><o:p></o:p></span></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">interface</span> <span style="COLOR: teal">IBrain<o:p></o:p></span> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">bool</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Overriden { <span style="COLOR: blue">get</span>; <span style="COLOR: blue">set</span>; }<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: teal">Action</span>&nbsp;<span style="mso-spacerun: yes">&nbsp;&nbsp;</span><span style="mso-tab-count: 1">&nbsp;</span>Decide();<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: teal">Field</span> <span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp; </span>Search();<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: teal">Field</span> <span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp; </span>RoadToBase();<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">public</span> <span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="COLOR: blue">class</span> <span style="COLOR: teal">Agent</span> : <span style="COLOR: teal">IAgent<o:p></o:p></span></span>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">protected</span> <span style="COLOR: teal">Environment</span> <span style="mso-spacerun: yes">&nbsp;&nbsp; </span>environment;<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">protected</span> <span style="COLOR: teal">Field</span> <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>location;<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">protected</span> <span style="COLOR: teal">Body</span> <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>body;<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">protected</span> <span style="COLOR: teal">Brain</span> <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>brain;<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">public</span> Agent(<span style="COLOR: teal">Environment</span> environment)<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">this</span>.body<span style="mso-spacerun: yes">&nbsp;&nbsp; </span>= <span style="COLOR: blue">new </span><span style="COLOR: teal">Body</span>(<span style="COLOR: blue">this</span>);<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span style="mso-spacerun: yes">&nbsp;</span> <span style="COLOR: blue">this</span>.brain<span style="mso-spacerun: yes">&nbsp; </span>= <span style="COLOR: blue">new </span><span style="COLOR: teal">Brain</span>(<span style="COLOR: blue">this</span>, <span style="COLOR: blue">this</span>.body);<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">this</span>.environment<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>= environment;<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">this</span>.location<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>= <span style="COLOR: blue">this</span>.environment[0, 0];<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes">}<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes">}</span> <span style=": 10pt"><o:p></o:p></span></p></td></tr></tbody></table><span style=": 10pt"><o:p>&nbsp;</o:p> </span><p></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Ciało agenta <b style="mso-bidi-font-weight: normal">Body</b>, wykonuje następujące zadania: podnosi surowce <b style="mso-bidi-font-weight: normal">PickupResources</b>, kładzie surowce <b style="mso-bidi-font-weight: normal">DropResources</b>, oraz przemieszcza się <b style="mso-bidi-font-weight: normal">MoveTo</b>. Mózg <b style="mso-bidi-font-weight: normal">Brain </b>ma świadomość istnienia ciała (to widać w wywołaniu konstruktora) oraz ma trzy metody: głównym jego zadaniem jest myślenie <b style="mso-bidi-font-weight: normal">Decide</b>, czyli wybór jednej z dwóch strategii działania: szukaj surowców <b style="mso-bidi-font-weight: normal">Search</b>, oraz znajdź drogę do bazy <b style="mso-bidi-font-weight: normal">RoadToBase</b>.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Dodatkowe właściwości to <b style="mso-bidi-font-weight: normal">HasResources</b> na potrzeby mózgu ciało informuje o posiadaniu surowców, oraz narzucenie woli <b style="mso-bidi-font-weight: normal">Override</b> przez stację bazową nakazujące agentowi powrót do bazy.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Jak
+ widzimy we fragmencie kodu klasy Agent następuje zadeklarowanie 
+składowych jako ukrytych, manipulować może nimi tylko agent. Przekazanie
+ w konstruktorze otoczenia <b style="mso-bidi-font-weight: normal">Environment</b>
+ ustawia kontekst jego działania. Agent, co widać w konstruktorze 
+tworzony jest zawsze w punkcie (0,0) czyli w miejscu w którym znajduje 
+się baza.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Zauważcie,
+ że po takim zdefiniowaniu interfejsów ich implementacja staje się 
+trywialna. Jedyny problem jaki pozostał to komunikacja międzywątkowa o 
+czym za chwilę.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Pora na rozwiązanie zagadki: <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l1 level1 lfo2; tab-stops: list 36.0pt"><span style=": 10pt">&nbsp;&nbsp;&nbsp;1.&nbsp; Metoda trywialna: wypuszczamy agenta z następującym algorytmem: <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l1 level2 lfo2; tab-stops: list 72.0pt"><span style=": 10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ jeśli masz surowce i jesteś w bazie, to upuść surowce<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l1 level2 lfo2; tab-stops: list 72.0pt"><span style=": 10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ jeśli masz surowce i nie jesteś w bazie, to idź do bazy<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l1 level2 lfo2; tab-stops: list 72.0pt"><span style=": 10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+
+ jeśli nie jesteś w bazie, nie masz surowców i możesz podnieść surowce, 
+to je podnieś<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l1 level2 lfo2; tab-stops: list 72.0pt"><span style=": 10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ jeśli nie masz surowców i widzisz surowce poza bazą, to idź do nich<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l1 level2 lfo2; tab-stops: list 72.0pt"><span style=": 10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+
+ jeśli nie masz surowców i nie widzisz surowców to idź w dowolnym 
+kierunku<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 35.4pt"><span style=": 10pt"></span>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 35.4pt"><span style=": 10pt">Problem
+ z tym rozwiązaniem polega na tym, że agent każdorazowo musi wyszukiwać 
+złoża surowców, nie ma pamięci, w której mógłby zapisać sobie położenie 
+złoża.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l1 level1 lfo2; tab-stops: list 36.0pt"><span style=": 10pt">&nbsp;&nbsp;&nbsp;2.&nbsp;Metoda aktywująca wiedzę (ang. emerging knowledge), dodaje następujące kroki algorytmu<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l1 level1 lfo2; tab-stops: list 36.0pt"><span style=": 10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l1 level1 lfo2; tab-stops: list 36.0pt"><span style=": 10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+
+ jeśli wracasz do bazy z surowcami to zostaw za sobą dwie grudki surowca
+ jako ślad (ang. trail)<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-list: l1 level1 lfo2; tab-stops: list 36.0pt"><span style=": 10pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+
+ jeśli nie masz surowców i widzisz grudki surowca (promieniowanie tak 
+jak surowce ale słabsze) to podnieś jedną i idź w kierunku przeciwnym do
+ bazy.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 35.4pt"><span style=": 10pt">W efekcie pojawiają się następujące zjawiska<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 71.4pt; TEXT-INDENT: -18pt; mso-list: l2 level1 lfo3; tab-stops: list 71.4pt"><span style=": 10pt; : Symbol; mso-fareast-: Symbol; mso-bidi-: Symbol"><span style="mso-list: Ignore">·<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><span style=": 10pt">agent najkrótszą możliwą drogą potrafi wrócić do źródła zasobów<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 71.4pt; TEXT-INDENT: -18pt; mso-list: l2 level1 lfo3; tab-stops: list 71.4pt"><span style=": 10pt; : Symbol; mso-fareast-: Symbol; mso-bidi-: Symbol"><span style="mso-list: Ignore">·<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><span style=": 10pt">po wyczerpaniu się surowców w źródle ścieżka samoistnie zanika<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 71.4pt; TEXT-INDENT: -18pt; mso-list: l2 level1 lfo3; tab-stops: list 71.4pt"><span style=": 10pt; : Symbol; mso-fareast-: Symbol; mso-bidi-: Symbol"><span style="mso-list: Ignore">·<span style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><span style=": 10pt">wynurza
+ się (ang. emerge) nowa, nie istniejąca wcześniej forma komunikacji, 
+pomiędzy agentami, inni agenci po natrafieniu na ścieżkę znajdą zasoby i
+ przeniosą je do bazy. Cel został osiągnięty przy wykorzystaniu 
+mechanizmów obecnych w istniejącej implementacji. Tego rodzaju formy 
+komunikacji znane są w zbiorowiskach prostych organizmów (mrówki, 
+pszczoły) – rolę grudek surowca spełniają w nich znaczniki feromonowe.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 35.4pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Aby wdrożyć drugi z tych algorytmów, musimy dokonać prostego rozszerzenia niektórych interfejsów:<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp; 
+</span></span></p><table id="C#" cellpading="2" bgcolor="#eeeeee" border="0" cellspacing="10" width="100%">
+<tbody>
+<tr>
+<td valign="top"><b>[Kod C#]</b><br><br>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span></span><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">interface</span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="COLOR: teal">IField<o:p></o:p></span></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">int</span> Stones<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{ <span style="COLOR: blue">get</span>; <span style="COLOR: blue">set</span>; }<o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">interface</span><span style="COLOR: teal">IBody<o:p></o:p></span></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;</span><span style="COLOR: blue">bool</span><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>PickupStone();<o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">void</span><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>DropStones();<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp;</span><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;</span><span style="mso-spacerun: yes">&nbsp;&nbsp; </span></span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes">}<o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">interface</span><span style="COLOR: teal">IBrain<o:p></o:p></span></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: teal">Field</span> FollowTrail();<o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span></p></td></tr></tbody></table><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><o:p>&nbsp;</o:p> </span><p></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Powyżej wymieniłem wszystkie niezbędne zmiany. Grudka (ang. stone). Podążać&nbsp;ścieżką (ang. FollowTrail).<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Ok,
+ mając tak zarysowany projekt, opiszmy kilka bardziej interesujących 
+szczegółów kodu. Pełne archiwum dostępne jest pod linkiem gdzieś na tej 
+stronie. Przeglądając je zmuszeni będziecie do posługiwania się językiem
+ angielskim większość słownictwa została wyjaśniona w treści artykułu. 
+Komentarze są w języku polskim, ale nie ma ich zbyt dużo. Kod jest na 
+tyle czytelny, że nie ma potrzeby ich tam umieszczać, jeśli ktoś mimo 
+wszystko ma pytania, proszę o maile lub komentarze.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Komunikacja międzywątkowa.<o:p></o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Żeby
+ dodatkowo nie gmatwać projektu zdecydowałem się na najprostsze z 
+możliwych rozwiązań, czyli komunikację za pośrednictwem składowej 
+statycznej klasy.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">W klasie Environment zadeklarowana jest następująca składowa, indeksator i akcesory:<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 35.4pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes"></span></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt">
+</span></p><table id="C#" cellpading="2" bgcolor="#eeeeee" border="0" cellspacing="10" width="100%">
+<tbody>
+<tr>
+<td valign="top"><b>[Kod C#]</b> <br><br><span style=": 10pt"><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static</span> <span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="COLOR: blue">protected</span> <span style="COLOR: teal">Field</span>[,] map;<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">public</span> <span style="COLOR: teal">Field</span>[,] State<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{ <span style="COLOR: blue">get</span> { <span style="COLOR: blue">return</span><span style="COLOR: teal">Environment</span>.map; } }<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">public</span> <span style="COLOR: teal">Field</span> <span style="COLOR: blue">this</span>[<span style="COLOR: blue">int</span> x, <span style="COLOR: blue">int</span> y]<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">get </span>{ ... }<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes">protected</span> <span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="COLOR: blue">set </span>{ ... } <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>}</span> </p></span></td></tr></tbody></table><p></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt"></span>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt">Dzięki
+ temu zabiegowi wszystkie instancje klasy Environment (także te w innych
+ wątkach), odwołując się do mapy pól odwołują się do jednego obszaru w 
+pamięci. Wszystkie zmiany w tym obszarze są natychmiast widoczne w 
+pozostałych wątkach bez potrzeby odprawiania magicznych rytuałów 
+komunikacji międzyprocesowej zawartej w bibliotece System.Remoting. Jest
+ to oczywiście spore uproszczenie. Agent powinien być uruchomiony w 
+oddzielnym procesie. Jednak tego rodzaju komplikacja nie wniesie nic 
+nowego w temacie artykułu a spowoduje, że zamiast kategorii artykułów 
+średnio zaawansowanych, będzie musiała być zakwalifikowana do grupy 
+artykułów trudnych.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt">Zwróćcie
+ uwagę, że tablica pól inicjowana jest w konstruktorze, i jedynie 
+otoczenie może tworzyć elementy tej tablicy (atrybut protected przy 
+akcesorze set w indeksatorze). Sam indeksator umożliwia prosty dostęp do
+ poszczególnych pól (np. podczas tworzenia agenta) przy pomocy składni: <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes">
+</span></p><table id="C#" cellpading="2" bgcolor="#eeeeee" border="0" cellspacing="10" width="100%">
+<tbody>
+<tr>
+<td valign="top"><b>[Kod C#]</b> <br><br><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes">this</span> <span style=": 10pt; : 'Courier New'; mso-no-proof: yes">.location<span style="COLOR: blue"> = this</span>.environment[0, 0];</span> </td></tr></tbody></table><p></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt">jest to równoważne składni:<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">
+</span></p><table id="C#" cellpading="2" bgcolor="#eeeeee" border="0" cellspacing="10" width="100%">
+<tbody>
+<tr>
+<td valign="top"><b>[Kod C#]</b> <br><br><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">this</span> <span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">.location<span style="COLOR: blue"> = this</span>.environment.State[0, 0];</span> </td></tr></tbody></table><p></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt">Tworzenie agenta polega na utworzeniu nowej instancji obiektu agent i uruchomieniu go w oddzielnym wątku:<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">
+</span></p><table id="C#" cellpading="2" bgcolor="#eeeeee" border="0" cellspacing="10" width="100%">
+<tbody>
+<tr>
+<td valign="top"><b>[Kod C#]</b> <br><br>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">public</span> <span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="COLOR: blue">void</span> CreateAgent()<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: teal">Agent</span> <span style="mso-spacerun: yes">&nbsp;&nbsp; </span>agent<span style="mso-spacerun: yes">&nbsp;&nbsp; </span>= <span style="COLOR: blue">new </span><span style="COLOR: teal">Agent</span>(<span style="COLOR: blue">this</span>);<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 35.4pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: teal">Thread</span> <span style="mso-spacerun: yes">&nbsp; </span>thread<span style="mso-spacerun: yes">&nbsp; </span>= n</span> <span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">ew</span> <span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="COLOR: teal">Thread</span>(<span style="COLOR: blue">new </span><span style="COLOR: teal">ThreadStart</span>(agent.GatherResources));<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>thread.Start();<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes">}<o:p></o:p></span> </p></td></tr></tbody></table><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><o:p>&nbsp;</o:p> </span><p></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt">Ogólna postać metod uruchamianych w oddzielnym wątku ma postać:<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 35.4pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">
+</span></p><table id="C#" cellpading="2" bgcolor="#eeeeee" border="0" cellspacing="10" width="100%">
+<tbody>
+<tr>
+<td valign="top"><b>[Kod C#]</b> <br><br>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 35.4pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">public</span> <span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="COLOR: blue">void</span> GatherResources() <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 35.4pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 35.4pt; TEXT-INDENT: 35.4pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: blue; : 'Courier New'; mso-no-proof: yes">bool</span> <span style=": 10pt; : 'Courier New'; mso-no-proof: yes">warunek_zakonczenia)<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; TEXT-INDENT: 35.4pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span style="COLOR: blue">while</span> (warunek_zakonczenia)<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: green; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>// treść metody <span style="mso-spacerun: yes">&nbsp;</span><o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 70.8pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span><span style="COLOR: green">// i ewentualne zmiana wartości flagi&nbsp;warunek_zakonczenia <o:p></o:p></span></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 70.8pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: green; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>// w celu&nbsp;wyjścia z pętli</span>&nbsp;<span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 70.8pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>...<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 70.8pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: green; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>// uśpienie wątku po to by dać innym wątkom <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 70.8pt; mso-layout-grid-align: none"><span style=": 10pt; COLOR: green; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>// możliwość pracy</span> <span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt 35.4pt; TEXT-INDENT: 35.4pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span><span style="COLOR: teal">Thread</span>.Sleep(500); <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">}<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes">}<o:p></o:p></span> </p></td></tr></tbody></table><span style=": 10pt"><o:p>&nbsp;</o:p> </span><p></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt">Z chwilą zakończenia wykonywania metody wątek jest usuwany.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Sekcja krytyczna w komunikacji międzywątkowej.<o:p></o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">W 
+algorytmie istnieją dwa momenty, w których niezbędna jest sekcja 
+krytyczna. Ma to miejsce w tedy gdy dwa roboty próbują jednocześnie 
+podnieść ostatnią znajdujący się na polu jednostkę surowca oraz 
+analogicznie w momenci podnoszenia grudek. Znów, aby nie wdawać się w 
+niepotrzebne komplikacje zastosowałem najprostsze rozwiązanie: <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">
+</span></span></p><table id="C#" cellpading="2" bgcolor="#eeeeee" border="0" cellspacing="10" width="100%">
+<tbody>
+<tr>
+<td valign="top"><b>[Kod C#]</b> <br><br>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="COLOR: blue">&nbsp;&nbsp;&nbsp; public</span> <span style="COLOR: blue">class</span> <span style="COLOR: teal">Field</span> : <span style="COLOR: teal">IField<o:p></o:p></span></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">protected</span> <span style="COLOR: blue">int</span> resources;<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">public</span> <span style="COLOR: blue">int</span> Resources<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">set</span> <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">if</span> (<span style="COLOR: blue">value</span> &lt; 0)<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">throw</span> <span style="COLOR: blue">new</span> <span style="COLOR: teal">Exception</span>(</span> <span style=": 10pt; COLOR: maroon; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">"Unable to set negative resource amount"</span> <span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US">);<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">this</span>.resources = <span style="COLOR: blue">value</span>;<span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>}</span> <span style=": 10pt; mso-ansi-language: EN-US" lang="EN-US"><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">public</span> <span style="COLOR: blue">class</span> <span style="COLOR: teal">Body</span> : <span style="COLOR: teal">IBody<o:p></o:p></span></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;</span> <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">public</span> <span style="COLOR: blue">bool</span> PickupResources()<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;</span> <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">try<o:p></o:p></span> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">this</span>.agent.Location.Resources--;<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>}<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">catch</span> <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>{<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">return</span> <span style="COLOR: blue">false</span>;<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes; mso-ansi-language: EN-US" lang="EN-US"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes">}<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; mso-layout-grid-align: none"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="COLOR: blue">return</span> <span style="COLOR: blue">true</span>;<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt; : 'Courier New'; mso-no-proof: yes"><span style="mso-spacerun: yes">&nbsp;</span> <span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>}</span> <span style=": 10pt"><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><span style="mso-spacerun: yes">&nbsp;&nbsp;&nbsp;&nbsp;</span> </span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes">}</span> <span style=": 10pt"><o:p></o:p></span></p></td></tr></tbody></table><span style=": 10pt"><o:p>&nbsp;</o:p> </span><p></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Kiedy agent próbuje zmienić liczbę surowca w polu, operator </span><span style=": 10pt; : 'Courier New'; mso-no-proof: yes">--</span> <span style=": 10pt">najpierw
+ dokonuje pobrania wartości, dekrementacji, a następnie przypisania. 
+Jeśli w wyniku równoległych działań obaj agenci spróbują podnieść 
+ostatni zasób jeden z nich uzyska wartość ujemną. To spowoduje, że 
+akcesor set w klasie Field rzuci wyjątkiem. Jeśli tak będzie agent nie 
+podniesie surowca i zacznie szukanie innych źródeł.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Nie
+ jest to rozwiązanie idealne, wciąż może zaistnieć sytuacja, w której 
+dwa wątki najpierw dokonają pobrania wartości 1 (ostatnia jednostka 
+surowca), potem oba ustawią wartość na zero. W rezultacie liczba 
+przyniesionych surowców do bazy będzie o jeden większa od liczby 
+surowców wygenerowanych w otoczeniu. Jest to jednak sytuacja na tyle 
+mało prawdopodobna, że zwiększanie komplikacji przez wprowadzanie sekcji
+ krytycznych dostępnych w obiekcie Thread nie miało uzasadnienia.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Sterowanie agentem<o:p></o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Publicznie
+ dostępne są jedynie dwie metody.&nbsp;Metoda GatherResources jest 
+nieskończoną pętlą, aby ją zakończyć trzeba wywołać metodę Return. Jej 
+działanie polega porzuceniu standardowego trybu postępowania i 
+rozpoczęciu wykonywania procedury powrotnej. Algorytm jest tu bardzo 
+prosty: wróć do bazy, jeśli masz jednostkę surowca to ją zostaw w bazie 
+oraz jeśli jesteś w bazie i nie masz surowców to zakończ działanie. <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Pętla w metodzie GatherResources wykrywa decyzję o zakończeniu działania i wychodzi z pętli.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Prezentacja graficzna wyniku.<o:p></o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt" align="center"><span style=": 10pt"><o:p>&nbsp;<img alt="EnvironmentDisplay.gif" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/EnvironmentDisplay.gif" border="0" height="242" width="545"></o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: center" align="center"><span style=": 10pt"><o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt; TEXT-ALIGN: center" align="center"><span style=": 10pt">Rys. 3. Okno główne aplikacji<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Bazując na dostępnych publicznie właściwościach State i Agents otoczenia możliwe jest wykonanie dowolnej <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">formy prezentacji. Budowa graficznej jest prosta i zawiera się w ciele klasy opisującej formularz <b style="mso-bidi-font-weight: normal">EnvironmentDisplay</b>.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">W 
+klasie tej tworzone jest otoczenie, a przy pomocy przycisków tworzone są
+ zasoby i realizowane jest sterowanie agentami. Graficzny wyświetlacz 
+obrazuje sytuację otoczenia. Pętla odświeżająca obraz również pracuje w 
+oddzielnym wątku, dzięki czemu nie występuje zablokowanie interfejsu. 
+Powinna wykonywać się częściej niż cykle ruchu agentów, dzięki czemu 
+łatwiej będzie obserwować ich zachowanie. <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Samo rysowanie odbywa się przy pomocy obiektu klasy Graphics z biblioteki System.Drawing. <o:p></o:p></span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Zakończenie.<o:p></o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><o:p>&nbsp;</o:p> </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Mam nadzieję, że artykuł okazał się dla was interesujący. Pisanie tego kodu sprawiło mi sporo frajdy. </span></p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"></span>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"><span style=": 10pt">Konkurs </span>&nbsp;</span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt"></span>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">Spodziewam
+ się, że za zgłoszenie tego artykułu niezależnie od jego oceny przez 
+recenzentów zgodnie z regulaminem otrzymam punkty Codeguru. </span><span style=": 10pt">Niniejszym
+ chciałbym ogłosić konkurs, zwycięzca otrzyma te punkty zamiast mnie 
+(może władze portalu dorzucą coś od siebie). Zasady są proste poprawić 
+inteligencję agentów poprzez dołożenie klas dziedziczących po klasie 
+Brain i Agent w taki sposób by wyszukiwanie i znoszenie surowców 
+odbywało się sprawniej. Ocena polegać będzie na rozrzuceniu po mapie o 
+rozmiarze 15, 100 jednostek surowców w paczkach nie większych niż 20 
+jednostek na pole, uruchomieniu 10 agentów i pomiarze czasu 
+rzeczywistego zebrania surowców. Eksperyment powtórzony będzie 10 razy, 
+wynik będzie średnią tych czasów. Zabronione jest: modyfikowanie klas 
+Body, Environment i Field, ustanawianie bezpośredniej komunikacji między
+ agentami, bezpośrednie odwoływanie się i przeszukiwanie mapy modelu 
+(np. poprzez odwoływanie się to składowej State otoczenia). Rozwiązania 
+będą porównywane przy standardowych czasach uśpienia wątków wynoszących 
+500 ms dla agenta i 500 ms dla&nbsp;aktualizacji obrazu.<o:p></o:p></span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style=": 10pt">W 
+razie wątpliwości, co do wyników, decydujący głos mają władze portalu. 
+Wszystkie rozwiązania zostaną dołączone do wglądu do treści artykułu.</span> </p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style="mso-ansi-language: EN-US" lang="EN-US"><o:p><span style=": 10pt"></span></o:p></span>&nbsp;</p>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style="mso-ansi-language: EN-US" lang="EN-US"><o:p><span style=": 10pt">Literatura (oprócz msdn) </span></o:p></span></p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US">1.<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Michael Wooldridge, “An Introduction to Multiagent Systems”, John&nbsp;Wiley&nbsp;&amp;&nbsp;Sons,&nbsp;2002</span> <span class="ZwykytekstZnakZnakZnak"><span style="mso-bidi-: 'Times New Roman'"><o:p></o:p></span></span></p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US">2.<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Ronald Fagin, Joseph Halpern, Yoram Moses, Moshe Vardi, “Reasoning about Knowledge”, </span></p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MIT Press, 2003 </span></p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US">3.<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Michael Wooldridge, Manuela Veloso, “Artificial Intelligence Today”, Springer,&nbsp;1999 </span></p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US">4.<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Gerhard Weiss, “Multiagent Systems, A Modern Approach to Distributed Modern </span></p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Approach to Artificial Intelligence”,&nbsp; </span><span lang="EN-US">MIT Press, 1999 </span></p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US">5. <span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Stuart Russel, Peter Norvig, “Artificial Intelligence: A Modern Approach”, Prentice Hall, 1995 </span></p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US">6.<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Michael Wooldridge, Nicholas Jennigs, “Intelligent Agents: Theory and Practice”, Knowledge </span></p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Engineering Review </span></p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US">7.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Steels.L, "Cooperation between distributed agents through self organization", </span></p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Decentralized AI 1st European Workshop, Amsterdam, 1989 </span></p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US"></span>&nbsp;</p><span lang="EN-US">
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt"><span style="mso-ansi-language: EN-US" lang="EN-US"><o:p><span style=": 10pt">Linki&nbsp;(oprócz msdn) </span></o:p></span></p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US">1.<span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://www.agentlink.org/">www.agentlink.org</a></span></span> </p>
+<p class="LITERATURA" style="MARGIN: 0cm 0cm 0pt 51pt; TEXT-ALIGN: left" align="left"><span lang="EN-US"><span style="mso-tab-count: 1">2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="http://www.robocup.org/">www.robocup.org</a></span> </span></p></span><p><strong><em>Załączniki:</em></strong></p><ul><li><a class="doclist" title="pobierz BehavioralAgents.zip" href="http://wss.pl/Data/Publications/Articles/Attachments/14301/BehavioralAgents.zip">BehavioralAgents.zip</a></li></ul> </div>
+            <div>
+                
+                
+            </div>
+            
+            <div class="info hideTags">
+                
+                
+            </div>
+        
+</div>
+        <div class="share cl">
+            
+<script type="text/javascript">
+//<![CDATA[
+    var addthis_config = {
+        pubid: "ra-4e159fd86a13a893",
+        ui_language: "pl",
+        ui_use_css: false
+    };
+    var addthis_share = {
+        email_template: "DEFAULT"
+    };
+    function convertStringToBoolean(string) {
+        var sObject = String(string);
+        if (sObject.toLowerCase() === 'false') {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    function getPageHeight() {
+        var wrapperHeight = $('#wrapper').height();
+        var footerHeight = $('#footer').height() + 20;
+        return wrapperHeight + footerHeight;
+    }
+    var isWSS = convertStringToBoolean('False');
+    if (isWSS) {
+        addthis_share.email_template = 'WSS';
+    } else {
+        addthis_share.email_template = 'CG';
+    }
+//]]>
+</script>
+<script type="text/javascript" src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/addthis_widget.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+    function addthisClose(evt) {
+        $("#at20mc").hide();
+    }
+    function addthisOpen(evt) {
+        $("#at20mc").css('height', getPageHeight());
+        $("#at16pcc").css('top', window.scrollY);
+        $("#at20mc").show();
+        
+    }
+    addthis.addEventListener('addthis.menu.close', addthisClose);
+    addthis.addEventListener('addthis.menu.open', addthisOpen);
+//]]>
+</script>
+
+    
+    <div class="addthis_toolbox addthis_default_style">
+        <ul>
+            <li>
+                <a href="#" title="E-mail" class="addthis_button_email">
+                    <img src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/iconShareMail.gif" alt="E-mail">
+                </a>
+            </li>
+            <li>
+                <a href="#" title="Tweet" class="addthis_button_twitter">
+                    <img src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/iconShareTwitter.gif" id="cphMain_cphLeft_ctrlSocialMedia_Img1" alt="Twitter">
+                </a>
+            </li>
+            <li>
+                <a href="#" title="Facebook" class="addthis_button_facebook">
+                    <img src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/iconShareFacebook.gif" alt="Lubię to">
+                </a>
+            </li>
+            <li>
+                <a title="Blip" target="_blank" href="http://www.addthis.com/bookmark.php?v=250&amp;winname=addthis&amp;pub=ra-4e159fd86a13a893&amp;source=tbx-250&amp;lng=pl&amp;s=blip&amp;url=http%3A%2F%2Fwww.codeguru.geekclub.pl%2Fbaza-wiedzy%2Fprogramowanie-agentowe-agent-behawioralny%2C2492&amp;title=Artyku%C5%82%20-%20Programowanie%20agentowe%3A%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl&amp;ate=AT-ra-4e159fd86a13a893/-/-/51156082840e6318/2&amp;frommenu=1&amp;uid=51156082ef32e938&amp;email_template=CG&amp;ct=1&amp;pre=http%3A%2F%2Fwww.google.pl%2Furl%3Fsa%3Dt%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dweb%26cd%3D3%26ved%3D0CDcQFjAC%26url%3Dhttp%253A%252F%252Fwww.codeguru.geekclub.pl%252Fbaza-wiedzy%252Fprogramowanie-agentowe-agent-behawioralny%252C2492%26ei%3DemAVUe2uDY-IhQec9oGwDg%26usg%3DAFQjCNERgzhn_vhaKfZu1UPYYJSvtabLfg%26bvm%3Dbv.42080656%2Cd.ZG4&amp;tt=0&amp;captcha_provider=nucaptcha" class="addthis_button_blip">
+                    <img src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/iconShareBlip.gif" alt="Blip">
+                </a>
+            </li>
+            <li>
+                <a title="Linkedin" target="_blank" href="http://www.addthis.com/bookmark.php?v=250&amp;winname=addthis&amp;pub=ra-4e159fd86a13a893&amp;source=tbx-250&amp;lng=pl&amp;s=linkedin&amp;url=http%3A%2F%2Fwww.codeguru.geekclub.pl%2Fbaza-wiedzy%2Fprogramowanie-agentowe-agent-behawioralny%2C2492&amp;title=Artyku%C5%82%20-%20Programowanie%20agentowe%3A%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl&amp;ate=AT-ra-4e159fd86a13a893/-/-/51156082840e6318/3&amp;frommenu=1&amp;uid=51156082764bd52a&amp;email_template=CG&amp;ct=1&amp;pre=http%3A%2F%2Fwww.google.pl%2Furl%3Fsa%3Dt%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dweb%26cd%3D3%26ved%3D0CDcQFjAC%26url%3Dhttp%253A%252F%252Fwww.codeguru.geekclub.pl%252Fbaza-wiedzy%252Fprogramowanie-agentowe-agent-behawioralny%252C2492%26ei%3DemAVUe2uDY-IhQec9oGwDg%26usg%3DAFQjCNERgzhn_vhaKfZu1UPYYJSvtabLfg%26bvm%3Dbv.42080656%2Cd.ZG4&amp;tt=0&amp;captcha_provider=nucaptcha" class="addthis_button_linkedin">
+                    <img src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/iconShareLinkedin.gif" alt="LinkedIn">
+                </a>
+            </li>
+            <!--
+            <li>
+                <a class="addthis_button_wykop" >
+                    Wykop
+                </a>
+            </li>
+            <li>
+                <a class="addthis_button_favorites" >
+                    Ulubione
+                </a>
+            </li>
+            -->
+        </ul>
+    <div class="atclear"></div></div>
+
+        </div>
+    </div>
+    <div class="similarNews">
+        
+<p><span id="cphMain_cphLeft_ctrlSimilarArticles_labelSimilarArticles">Podobne artykuły</span></p>
+    <div class="similars">
+    
+            <div>
+                <span class="gray">21-11-2011</span>
+                <span class="similarAuthor">
+                    Łukasz Arciszewski
+                </span>
+                <a id="cphMain_cphLeft_ctrlSimilarArticles_repSimilarArticles_hlArticle_0" href="http://www.codeguru.geekclub.pl/baza-wiedzy/dzien-10---31-days-with-windows-phone,2585">Dzień 10 - "31 Days with Windows Phone"</a>
+            </div>
+        
+    </div>
+        <div class="cl">
+        </div>
+    </div>
+    <div id="comments" class="comments">
+        <div id="cphMain_cphLeft_upComments">
+	
+                
+<p class="title">
+    <span class="commentsCount"><span>
+        Komentarze</span>
+       <span class="commentCloud">0 </span>
+    </span>
+</p>
+<input name="ctl00$ctl00$cphMain$cphLeft$controlCommentsList$hfObjectId" id="cphMain_cphLeft_controlCommentsList_hfObjectId" value="2492" type="hidden">
+
+
+
+                
+<script type="text/javascript">
+    //<![CDATA[
+    $(document).ready(function () {
+        //pokazywanie i ukrywanie diva blokującego komentarz
+        $('.notLoggedWrap').hover(function () {
+            $('.notLogged').css('visibility', 'visible');
+        }, function () {
+            $('.notLogged').css('visibility', 'hidden');
+        });
+        if (Sys.WebForms.PageRequestManager != null && Sys.WebForms.PageRequestManager != undefined) {
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(
+                function () {
+                    //pokazywanie i ukrywanie diva blokującego komentarz
+                    $('.notLoggedWrap').hover(function () {
+                        $('.notLogged').css('visibility', 'visible');
+                    }, function () {
+                        $('.notLogged').css('visibility', 'hidden');
+                    });
+                }
+            );
+        }
+        $('.txtCount').textCounter();
+    });
+    //]]>
+</script>
+<div class="newComment">
+    <p class="add" style="display:none"> 
+        Dodaj komentarz
+        <span id="cphMain_cphLeft_controlNewComment_rfvComment" class="error" style="display:none;">Komentarz musi posiadać treść</span>
+        <span id="cphMain_cphLeft_controlNewComment_revComment" class="error" style="display:none;">Treść komentarza zawiera nieprawidłowe znaki lub jest za długa</span>
+    </p>
+    <div class="comment">
+        <div id="cphMain_cphLeft_controlNewComment_divAvatarBox" class="avatarBox">
+                
+
+<div class="simpleUserBox">
+    <a id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_hlUserAvatar" class="author"><img src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/default-avatar-wide.png" alt="avatar"></a>
+    
+    <!-- end marks -->
+    
+    
+    <div id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_divTooltip" class="divTooltipOuter">
+        <div class="simpleUserBoxTooltip">
+            <span id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_hlArticleAuthorName"></span> 
+            
+            <span id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_hlArticleAuthorLastName"></span> 
+            <div id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_divNumberOfPoints" class="numberOfPoints">
+                <span id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_lblNumberOfPoints" class="number"></span>
+                <span class="pointsN">pkt.</span>
+                <div class="cl"></div>
+                <span id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_lblPointsRankName" class="pointsRankName"></span>
+            </div>
+            <div class="regularRanks">
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="marks fl">
+        <ul>
+            <li id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_li_10" class="markGray"></li>
+            <li id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_li_9" class="markGray"></li>
+            <li id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_li_8" class="markGray"></li>
+            <li id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_li_7" class="markGray"></li>
+            <li id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_li_6" class="markGray"></li>
+            <li id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_li_5" class="markGray"></li>
+            <li id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_li_4" class="markGray"></li>
+            <li id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_li_3" class="markGray"></li>
+            <li id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_li_2" class="markGray"></li>
+            <li id="cphMain_cphLeft_controlNewComment_controlSimpleUserBox_li_1" class="markGray"></li>
+            </ul>
+    </div>
+
+        </div>
+        <div class="commentText relative">
+            <span class="newCommentArrow"></span>
+            <input name="ctl00$ctl00$cphMain$cphLeft$controlNewComment$hfObjectId" id="cphMain_cphLeft_controlNewComment_hfObjectId" value="2492" type="hidden">
+            <textarea name="ctl00$ctl00$cphMain$cphLeft$controlNewComment$tbxComment" rows="4" cols="20" id="cphMain_cphLeft_controlNewComment_tbxComment" class="txtCount"></textarea><div style="font-size: 12px; font-family: Arial; color: rgb(0, 0, 0); text-align: right; width: 680px; opacity: 0;" class="textCounter">&nbsp;</div>
+            
+            <div id="cphMain_cphLeft_controlNewComment_divNotLogged" class="notLoggedWrap">
+                <div class="notLogged">
+                    <p><a class="showLogin" href="https://www.codeguru.geekclub.pl/logowanie?returnUrl=/baza-wiedzy/programowanie-agentowe-agent-behawioralny,2492">Zaloguj się</a> lub <a href="https://www.codeguru.geekclub.pl/rejestracja">Zarejestruj się</a> aby wykonać tę czynność.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>    
+</div>
+            
+</div>
+    </div>
+
+    </div>
+
+    <div class="rightCol">
+        
+    
+
+        <a href="https://www.codeguru.geekclub.pl/rejestracja" class="bigButton">Załóż konto</a>
+    <div class="divForum">
+        <a href="http://www.codeguru.geekclub.pl/forum" class="forumBigButton">
+            Dzisiaj już<br>
+            82 nowe<br>
+            posty na forum 
+        <img src="Artyku%C5%82%20-%20Programowanie%20agentowe%20%20agent%20behawioralny.%20-%20www.codeguru.geekclub.pl_pliki/arrowForum.png" alt=""> </a>
+    </div>
+
+
+
+        <!-- w późniejszym etapie box do wywalenia i zastąpienia kontrolką, na razie jako zaslepka -->
+        
+
+        
+<div class="custom-right-column">
+    <p>.</p>
+</div>
+
+        
+<div class="tags">
+    <div id="cphMain_CtrlTagsBox1_panHotTags" class="hotTags">
+	
+        <strong>
+            Gorące tagi</strong>
+        
+                <ul>
+            
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repHotTags_HyperLink1_0" href="http://www.codeguru.geekclub.pl/tag/wszystkie/windows-server-2012,432">Windows Server 2012</a>
+                </li>
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repHotTags_HyperLink1_1" href="http://www.codeguru.geekclub.pl/tag/wszystkie/vguru,426">vGuru</a>
+                </li>
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repHotTags_HyperLink1_2" href="http://www.codeguru.geekclub.pl/tag/wszystkie/geek-club,413">Geek Club</a>
+                </li>
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repHotTags_HyperLink1_3" href="http://www.codeguru.geekclub.pl/tag/wszystkie/private-cloud,224">Private Cloud</a>
+                </li>
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repHotTags_HyperLink1_4" href="http://www.codeguru.geekclub.pl/tag/wszystkie/wirtualizacja,370">Wirtualizacja</a>
+                </li>
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repHotTags_HyperLink1_5" href="http://www.codeguru.geekclub.pl/tag/wszystkie/hyper-v,108">Hyper-V</a>
+                </li>
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repHotTags_HyperLink1_6" href="http://www.codeguru.geekclub.pl/tag/wszystkie/windows-8,344">Windows 8</a>
+                </li>
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repHotTags_HyperLink1_7" href="http://www.codeguru.geekclub.pl/tag/wszystkie/azure,23">Azure</a>
+                </li>
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repHotTags_HyperLink1_8" href="http://www.codeguru.geekclub.pl/tag/wszystkie/windows-phone,360">Windows Phone</a>
+                </li>
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repHotTags_HyperLink1_9" href="http://www.codeguru.geekclub.pl/tag/wszystkie/aspnet,18">ASP.NET</a>
+                </li></ul>
+    
+</div>
+    <div id="cphMain_CtrlTagsBox1_panNormalTags" class="tagCloud">
+	
+        <strong>
+            Tagi</strong>
+        
+                <ul>
+            
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repNormalTags_hlTag_0" class="tagCounter5" href="http://www.codeguru.geekclub.pl/tag/wszystkie/access-2010,3">Access 2010</a></li>
+            
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repNormalTags_hlTag_1" class="tagCounter5" href="http://www.codeguru.geekclub.pl/tag/wszystkie/ad-rms,9">AD RMS</a></li>
+            
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repNormalTags_hlTag_2" class="tagCounter5" href="http://www.codeguru.geekclub.pl/tag/wszystkie/bitlocker,28">BitLocker</a></li>
+            
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repNormalTags_hlTag_3" class="tagCounter5" href="http://www.codeguru.geekclub.pl/tag/wszystkie/crystal-reports,55">Crystal Reports</a></li>
+            
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repNormalTags_hlTag_4" class="tagCounter5" href="http://www.codeguru.geekclub.pl/tag/wszystkie/dpm,67">DPM</a></li>
+            
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repNormalTags_hlTag_5" class="tagCounter5" href="http://www.codeguru.geekclub.pl/tag/wszystkie/dynamic-memory,68">Dynamic Memory</a></li>
+            
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repNormalTags_hlTag_6" class="tagCounter5" href="http://www.codeguru.geekclub.pl/tag/wszystkie/dlr,63">DLR</a></li>
+            
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repNormalTags_hlTag_7" class="tagCounter5" href="http://www.codeguru.geekclub.pl/tag/wszystkie/exchange-online,75">Exchange Online</a></li>
+            
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repNormalTags_hlTag_8" class="tagCounter5" href="http://www.codeguru.geekclub.pl/tag/wszystkie/expression-encoder,81">Expression Encoder</a></li>
+            
+                <li>
+                    <a id="cphMain_CtrlTagsBox1_repNormalTags_hlTag_9" class="tagCounter5" href="http://www.codeguru.geekclub.pl/tag/wszystkie/forefront-threat-management-gateway,94">Forefront Threat Management Gateway</a></li>
+            
+                </ul>
+    
+</div>
+</div>
+<div class="cl">
+</div>
+<a href="http://www.codeguru.geekclub.pl/tagi/wszystkie">
+    Pokaż wszystkie tagi</a>         
+    </div>
+    <div class="cl"></div>
+
+                            <div class="cl">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                    <div class="footer">
+                        <div class="links">
+                            <div class="row">
+                                
+                                <ul>
+                                    <li><a href="http://www.codeguru.geekclub.pl/mapa-witryny">Mapa witryny</a></li>
+                                    <li><span>|</span></li>
+                                    <li><a href="http://www.codeguru.geekclub.pl/kontakt">Kontakt z redakcją</a></li>
+                                    <li><span>|</span></li>
+                                    <li><a href="http://www.codeguru.geekclub.pl/baza-wiedzy/o-portalu-codegurupl,1335">O serwisie</a></li>
+                                </ul>
+                            </div>
+                            <div class="row">
+                                <ul>
+                                    <li><a href="http://go.microsoft.com/?linkid=9796300" class="target-blank" target="_blank">
+                                        Znaki towarowe</a></li>
+                                    <li><span>|</span></li>
+                                    <li><a href="http://go.microsoft.com/?linkid=9796299" class="target-blank" target="_blank">
+                                        Zasady użytkowania witryny Microsoft.com</a></li>
+                                    <li><span>|</span></li>
+                                    <li><a href="http://www.microsoft.com/privacystatement/pl-pl/core/default.aspx" class="target-blank" target="_blank">Ochrona prywatności i pliki cookies</a></li>
+                                    <li><span>|</span></li>
+                                    <li><a href="http://go.microsoft.com/?linkid=9796298" class="target-blank" target="_blank">
+                                        Napisz do nas</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="copyright">
+                            <a href="http://www.microsoft.pl/" class="target-blank" target="_blank">Microsoft</a>
+                            ©
+                            2013
+                            Microsoft
+                        </div>
+                        <div class="middle">
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_Validators =  new Array(document.getElementById("cphMain_cphLeft_controlNewComment_rfvComment"), document.getElementById("cphMain_cphLeft_controlNewComment_revComment"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var cphMain_cphLeft_controlNewComment_rfvComment = document.all ? document.all["cphMain_cphLeft_controlNewComment_rfvComment"] : document.getElementById("cphMain_cphLeft_controlNewComment_rfvComment");
+cphMain_cphLeft_controlNewComment_rfvComment.controltovalidate = "cphMain_cphLeft_controlNewComment_tbxComment";
+cphMain_cphLeft_controlNewComment_rfvComment.focusOnError = "t";
+cphMain_cphLeft_controlNewComment_rfvComment.errormessage = "Komentarz musi posiadać treść";
+cphMain_cphLeft_controlNewComment_rfvComment.display = "Dynamic";
+cphMain_cphLeft_controlNewComment_rfvComment.validationGroup = "NewComment";
+cphMain_cphLeft_controlNewComment_rfvComment.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+cphMain_cphLeft_controlNewComment_rfvComment.initialvalue = "";
+var cphMain_cphLeft_controlNewComment_revComment = document.all ? document.all["cphMain_cphLeft_controlNewComment_revComment"] : document.getElementById("cphMain_cphLeft_controlNewComment_revComment");
+cphMain_cphLeft_controlNewComment_revComment.controltovalidate = "cphMain_cphLeft_controlNewComment_tbxComment";
+cphMain_cphLeft_controlNewComment_revComment.focusOnError = "t";
+cphMain_cphLeft_controlNewComment_revComment.errormessage = "Treść komentarza zawiera nieprawidłowe znaki lub jest za długa";
+cphMain_cphLeft_controlNewComment_revComment.display = "Dynamic";
+cphMain_cphLeft_controlNewComment_revComment.validationGroup = "NewComment";
+cphMain_cphLeft_controlNewComment_revComment.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+cphMain_cphLeft_controlNewComment_revComment.validationexpression = "^((?![\\d\\w\\sąćęłńóśżźĄĆĘŁŃÓŚŻŹ/#„”\\$\\?\\,\\.\\@\\!\\^\\&\\(\\)_\\-\\{\\}\\[\\]\';\":`~\\|%=]&#)[\\d\\w\\sąćęłńóśżźĄĆĘŁŃÓŚŻŹ/#„”\\$\\?\\,\\.\\@\\!\\^\\&\\(\\)_\\-\\{\\}\\[\\]\';\":`~\\|%=]){0,512}$";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+theForm.oldSubmit = theForm.submit;
+theForm.submit = WebForm_SaveScrollPositionSubmit;
+
+theForm.oldOnSubmit = theForm.onsubmit;
+theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+
+document.getElementById('cphMain_cphLeft_controlNewComment_rfvComment').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('cphMain_cphLeft_controlNewComment_rfvComment'));
+}
+
+document.getElementById('cphMain_cphLeft_controlNewComment_revComment').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('cphMain_cphLeft_controlNewComment_revComment'));
+}
+//]]>
+</script>
+</form>
+    <div id="accountPopUp" class="popupBackground" style="display: none;">
+        <div class="greyPopup">
+        </div>
+        <div class="popupWarning">
+            <h2>Wybierz opcję</h2>
+            <a href="#" class="roundButton blue save" id="hrefLogIn">Zaloguj</a>
+            <a href="#" class="roundButton blue save" id="hrefRegister">Zarejestruj</a>
+            <a href="#" class="roundButton blue save" id="hrefClose">Anuluj</a>
+        </div>
+    </div>
+    <div class="prelegent-tooltip">
+    </div>
+    <script type="text/javascript">
+        $().ready(function () {
+            $("#hrefClose").click(function () {
+                $("#accountPopUp").hide();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+	//<![CDATA[
+        function InitializeFancybox() {
+
+            $.each($("a"), function () {
+                if ($(this).attr("href")) {
+                    if (($(this).attr("href").indexOf("pl/logowanie") != -1) 
+                        || ($(this).attr("href").indexOf("com/logowanie") != -1)
+                        || ($(this).attr("href").indexOf("local/logowanie") != -1)) {
+                        $(this).removeClass("fancybox").addClass("showLogin");
+                        $(this).removeClass("fancyboxPage").addClass("showLogin");
+                        $(this).removeClass("fancyboxLoginPage").addClass("showLogin");
+                        $(this).removeClass("fancyboxPageBigger").addClass("showLogin");
+                    }
+                }
+            });
+
+            $("#logInLink").removeClass("showLogin");
+            $("#registerLink").removeClass("showLogin");
+
+            $("a.showLogin").click(function () {
+                if ($(this).attr("href").indexOf("logowa") != -1) {
+                    $("#accountPopUp").show();
+                    $("#hrefLogIn").attr("href", $("#logInLink").attr("href"));
+                    $("#hrefRegister").attr("href", $("#registerLink").attr("href"));
+
+                    try {
+                        $.fancybox.close();
+                    } catch (e) {
+
+                    }
+
+                    return false;
+                }
+            });
+
+            $('a[href*="/rejestracja"]').click(function () {
+                var myHost = window.location.host;
+                if (myHost.indexOf('wss') != -1) {
+                    $("#registerDisabled").hide();
+                }
+                else if (myHost.indexOf("codeguru") != -1) {
+                    $("#registerDisabled").hide();
+                }
+                else if (myHost.indexOf("modernux") != -1) {
+                    $("#registerDisabled").hide();
+                }
+                else {
+                    $("#loginDisabled").hide();
+                    $("#registerDisabled").show();
+                    scroll(0, 0);
+                    return false;
+                }
+            });
+
+            $('a[href*="/logowanie"]').click(function () {
+                var myHost = window.location.host;
+                if (myHost.indexOf('wss') != -1) {
+                    $("#loginDisabled").hide();
+                }
+                else if (myHost.indexOf("codeguru") != -1) {
+                    $("#loginDisabled").hide();
+                }
+                else if (myHost.indexOf("modernux") != -1) {
+                    $("#loginDisabled").hide();
+                }
+                else {
+                    $("#registerDisabled").hide();
+                    $("#loginDisabled").show();
+                    scroll(0, 0);
+                    return false;
+                }
+            });
+
+            $("#registerLink").click(function () {
+                var myHost = window.location.host;
+                if (myHost.indexOf('wss') != -1) {
+                    $("#registerDisabled").hide();
+                }
+                else if (myHost.indexOf("codeguru") != -1) {
+                    $("#registerDisabled").hide();
+                }
+                else if (myHost.indexOf("modernux") != -1) {
+                    $("#registerDisabled").hide();
+                }
+                else {
+                    $("#registerDisabled").show();
+                    return false;
+                }
+            });
+
+            $("#logInLink").click(function () {
+                var myHost = window.location.host;
+                if (myHost.indexOf('wss') != -1) {
+                    $("#loginDisabled").hide();
+                }
+                else if (myHost.indexOf("codeguru") != -1) {
+                    $("#loginDisabled").hide();
+                }
+                else if (myHost.indexOf("modernux") != -1) {
+                    $("#loginDisabled").hide();
+                }
+                else {
+                    $("#loginDisabled").show();
+                    return false;
+                }
+            });
+
+            $(".fancybox").fancybox();
+            $(".fancyboxPage").fancybox({ 'type': 'iframe', 'autoDimensions': false, 'width': 770, 'height': 300, enableEscapeButton: true });
+            $('.fancyboxLoginPage').fancybox({ 'type': 'iframe', 'autoDimensions': false, 'autoScale': false, 'scrolling': 'no', 'width': 770, 'height': 350, enableEscapeButton: true });
+            $(".fancyboxPageBigger").fancybox({ 'type': 'iframe', 'autoDimensions': false, 'width': 770, 'height': 450, enableEscapeButton: true });
+        }
+
+        $(document).ready(function () {
+            InitializeFancybox();
+            SyntaxHighlighter.all();
+
+            WSSCodeGuruBase.InitDatepicker();
+        });
+        if (Sys.WebForms.PageRequestManager != null && Sys.WebForms.PageRequestManager != undefined) {
+            Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(showAjaxLoader);
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(hideAjaxLoader);
+
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(InitializeFancybox);
+        }
+
+    //]]>
+    </script>
+    <script type="text/javascript">            
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-37450929-1']);
+        _gaq.push(['_setDomainName', 'geekclub.pl']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div></body></html>
