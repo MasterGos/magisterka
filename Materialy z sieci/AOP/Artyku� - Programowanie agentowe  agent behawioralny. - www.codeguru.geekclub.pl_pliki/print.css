@@ -1,8 +1,0 @@
-﻿* {margin:0;padding:0;line-height:1;}
-body, html, #mainWrapper {background: white !important;}
-#top, #mainMenu, .rightCol, #footer, .headlineAddons, .leftCol > div, .leftCol > table, .hideTags, h2, .newsRight, .share, .scrollTop {display: none;}
-#wrapper, #content, #whiteWrap, .leftCol, .newsDetails, .newsLeft {width: 100% !important;}
-#content {margin: 0;}
-.leftCol .newsDetails {display: block !important;}
-#whiteWrap {box-shadow: 0 0 0 #ffffff; -moz-box-shadow: 0 0 0 #ffffff; -webkit-box-shadow: 0 0 0 #ffffff;}
-h3 {font-size:22px!important;margin:0;padding:0;line-height:1!important;padding-bottom:20px;display:block;min-height:80px;}
