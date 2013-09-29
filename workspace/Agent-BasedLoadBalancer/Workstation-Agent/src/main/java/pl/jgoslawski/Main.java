@@ -7,7 +7,6 @@ public class Main {
 
 	public static void main(String[] args) {		
 	    Logger logger = LogManager.getLogger(Main.class);
-		//DOMConfigurator.configure("log4j.xml");
 		logger.info("Hello World");
 	}
 
