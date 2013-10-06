@@ -12,5 +12,6 @@
   	<module>LoadBalancer-Agent</module>
   	<module>Workstation-Agent</module>
   	<module>Forwarder</module>
+  	<module>Workstation</module>
   </modules>
 </project>

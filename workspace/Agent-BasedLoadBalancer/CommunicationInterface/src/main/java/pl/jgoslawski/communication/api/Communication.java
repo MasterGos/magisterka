@@ -8,5 +8,6 @@ import pl.jgoslawski.communication.api.exceptions.CouldNotSetMessageListenerExce
 public interface Communication {
 
 	public void sendMessage(Serializable message) throws CouldNotSendMessageException;
+	
 	public void setMessageListener(MessageListener messageListener) throws CouldNotSetMessageListenerException;
 }

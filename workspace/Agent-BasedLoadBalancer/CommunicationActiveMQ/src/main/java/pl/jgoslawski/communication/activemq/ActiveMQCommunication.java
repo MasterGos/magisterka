@@ -16,18 +16,26 @@ import pl.jgoslawski.communication.api.MessageListener.ErrorType;
 import pl.jgoslawski.communication.api.exceptions.CouldNotSendMessageException;
 import pl.jgoslawski.communication.api.exceptions.CouldNotSetMessageListenerException;
 
-public class CommunicationImpl implements Communication,
+public class ActiveMQCommunication implements Communication,
 		javax.jms.MessageListener {
 
 	private MessageProducer producer;
 	private MessageConsumer consumer;
 	private MessageListener messageListener;
 
-	public CommunicationImpl(MessageProducer producer, MessageConsumer consumer) {
+	public ActiveMQCommunication(MessageProducer producer, MessageConsumer consumer) {
 		this.producer = producer;
 		this.consumer = consumer;
 	}
+	
+	public ActiveMQCommunication(MessageConsumer consumer) {
+		this.consumer = consumer;
+	}
 
+	public ActiveMQCommunication(MessageProducer producer) {
+		this.producer = producer;
+	}
+	
 	@Override
 	public void sendMessage(Serializable message)
 			throws CouldNotSendMessageException {
@@ -48,7 +56,7 @@ public class CommunicationImpl implements Communication,
 			consumer.setMessageListener(this);
 			this.messageListener = messageListener;
 		} catch (Exception e) {
-			throw new CouldNotSetMessageListenerException();
+			throw new CouldNotSetMessageListenerException(e.getMessage());
 		}
 
 	}
