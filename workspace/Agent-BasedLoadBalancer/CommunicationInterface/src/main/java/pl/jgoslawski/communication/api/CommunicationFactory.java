@@ -4,11 +4,11 @@ import pl.jgoslawski.communication.api.exceptions.CouldNotCreateCommunicationExc
 
 public interface CommunicationFactory {
 
-	public Communication create() throws CouldNotCreateCommunicationExcpetion;
+	public Communication create(String dectination) throws CouldNotCreateCommunicationExcpetion;
 	 
-	public Communication createSendingOnly() throws CouldNotCreateCommunicationExcpetion;
+	public Communication createSendingOnly(String dectination) throws CouldNotCreateCommunicationExcpetion;
 	
-	public Communication createListenerOnly() throws CouldNotCreateCommunicationExcpetion;
+	public Communication createListenerOnly(String dectination) throws CouldNotCreateCommunicationExcpetion;
 	
 	
 }

@@ -7,7 +7,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 import pl.jgoslawski.communication.api.ConnectionsManager;
 import pl.jgoslawski.communication.api.exceptions.CouldNotReturnConnectionException;
-
+import pl.jgoslawski.communication.api.exceptions.CouldNotCleanUpCommunicationExcpetion;
 
 public class ActiveMQConnectionsManager implements ConnectionsManager<Connection> {
 
@@ -35,10 +35,11 @@ public class ActiveMQConnectionsManager implements ConnectionsManager<Connection
 
 
 	@Override
-	public void cleanUp() {
+	public void cleanUp() throws CouldNotCleanUpCommunicationExcpetion  {
 		try {
-			connection.stop();
+			connection.close();
 		} catch (JMSException e) {
+			throw new CouldNotCleanUpCommunicationExcpetion(e.getMessage());
 		}	
 	}
 

@@ -16,26 +16,17 @@ public class ActiveMQCommunicationFactory implements CommunicationFactory {
 	private ActiveMQConnectionsManager connectionManager;
 	
 	private Session session;
+
 	
-	private String destinationName;
-	
-	public ActiveMQCommunicationFactory(ActiveMQConnectionsManager connectionManager,String destinationName)
+	public ActiveMQCommunicationFactory(ActiveMQConnectionsManager connectionManager)
 	{
 		this.connectionManager = connectionManager;
-		this.destinationName = destinationName;
 	}
 	
 
-	public String getDestinationName() {
-		return destinationName;
-	}
-
-	public void setDestinationName(String destinationName) {
-		this.destinationName = destinationName;
-	}
-
+	
 	@Override
-	public Communication create() throws CouldNotCreateCommunicationExcpetion {
+	public Communication create(String destinationName) throws CouldNotCreateCommunicationExcpetion {
 		try {
 			lazyCreateSesion();
 			Destination destination = session.createQueue(destinationName);
@@ -48,7 +39,7 @@ public class ActiveMQCommunicationFactory implements CommunicationFactory {
 	}
 
 	@Override
-	public Communication createSendingOnly() throws CouldNotCreateCommunicationExcpetion {
+	public Communication createSendingOnly(String destinationName) throws CouldNotCreateCommunicationExcpetion {
 		try {
 			lazyCreateSesion();
 			Destination destination = session.createQueue(destinationName);
@@ -60,7 +51,7 @@ public class ActiveMQCommunicationFactory implements CommunicationFactory {
 	}
 
 	@Override
-	public Communication createListenerOnly() throws CouldNotCreateCommunicationExcpetion{
+	public Communication createListenerOnly(String destinationName) throws CouldNotCreateCommunicationExcpetion{
 		try {
 			lazyCreateSesion();
 			Destination destination = session.createQueue(destinationName);

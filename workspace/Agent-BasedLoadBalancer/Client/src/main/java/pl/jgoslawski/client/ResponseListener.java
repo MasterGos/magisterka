@@ -15,8 +15,8 @@ public class ResponseListener implements MessageListener {
 	
 	@Override
 	public void onError(ErrorType arg0) {
-		
-		
+
+		logger.error(arg0.name());
 	}
 
 	@Override
