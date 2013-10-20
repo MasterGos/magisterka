@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import pl.jgoslawski.communication.api.MessageListener;
+import pl.jgoslawski.communication.messages.Response;
 
 public class ResponseListener implements MessageListener {
 
@@ -21,8 +22,8 @@ public class ResponseListener implements MessageListener {
 
 	@Override
 	public void onMessage(Serializable arg0) {
-		
-		
+		Response response = (Response)arg0;
+		logger.info("Response message: ID =  "+ response.getID() + " Result = " + response.getResult());
 	}
 
 }

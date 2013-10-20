@@ -66,6 +66,7 @@ public class ActiveMQCommunicationFactory implements CommunicationFactory {
 	{
 		if(session == null){
 				session = connectionManager.getConnection().createSession(false, Session.AUTO_ACKNOWLEDGE);
+				
 		}
 	}
 

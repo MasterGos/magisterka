@@ -1,0 +1,1 @@
+java -jar Workstation\target\Workstation-0.0.1-SNAPSHOT-jar-with-dependencies.jar

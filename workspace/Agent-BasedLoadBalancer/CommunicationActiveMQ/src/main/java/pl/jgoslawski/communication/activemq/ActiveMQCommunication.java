@@ -69,11 +69,12 @@ public class ActiveMQCommunication implements Communication,
 			try {
 				serializableMessage = ((ObjectMessage) message).getObject();
 				messageListener.onMessage(serializableMessage);
+				return;
 			} catch (JMSException e) {
 				messageListener.onError(ErrorType.UNKNOW_ERROR);
 			}
 		}
-		messageListener.onError(ErrorType.UNKOW_MESSAGE);
+		messageListener.onError(ErrorType.UNKNOW_MESSAGE);
 	}
 
 }

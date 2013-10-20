@@ -1,5 +1,6 @@
 package pl.jgoslawski.client;
 
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.logging.log4j.LogManager;
@@ -26,7 +27,8 @@ public class RequestSender implements Runnable {
 	
 	@Override
 	public void run() {
-		
+		long currentId = 0;
+		Random random = new Random();
 		while(!stop.get())
 		{
 			try {
@@ -34,8 +36,14 @@ public class RequestSender implements Runnable {
 			} catch (InterruptedException e1) {
 				logger.error(e1.getMessage());
 			}
-			try {
-				communicatio.sendMessage(new Request());
+			try{
+				
+				currentId++;
+				long A = random.nextLong();
+				long B = random.nextLong();
+				logger.info("Sending request: ID = " +  currentId +" A = "+A + " B = "+B );
+				communicatio.sendMessage(new Request(currentId,A,B));
+				
 			} catch (CouldNotSendMessageException e) {
 				logger.error("Could not send message: "+e.getMessage());
 			}

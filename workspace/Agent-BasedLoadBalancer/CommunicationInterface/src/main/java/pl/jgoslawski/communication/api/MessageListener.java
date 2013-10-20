@@ -7,7 +7,7 @@ public interface MessageListener {
 	public enum ErrorType
 	{
 		UNKNOW_ERROR,
-		UNKOW_MESSAGE
+		UNKNOW_MESSAGE
 	}
 	
 	public void onMessage(Serializable message);
